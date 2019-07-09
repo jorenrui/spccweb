@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono&display=swap');
+
+h1 {
+    font-family: 'Roboto Mono', monospace;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a:hover {
+    color: #f9ae17;
+}
+
+/* =======================================
+ * SITE HEADER
+ * ======================================= */
+
+.site-header {
+    background: #0f1c70;
+    display: grid;
+    grid-template-columns: 0.4fr 0.6fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: ". ." ". .";
+}
+
+.site-header .logo img {
+    width: 300px;
+}
+
+.site-nav {
+    margin-top: 2%;
+    margin-right: 5%;
+}
+
+.site-header nav {
+    text-align: right;
+}
+
+.site-header nav ul {
+    margin: 0;
+    list-style: none;
+    display: inline-flex;
+}
+
+.site-header nav li {
+    padding: 10px 20px;
+    text-transform: uppercase;
+}
+
+.site-header a {
+    font-size: 18px;
+}
+
+#nav-portal {
+    margin-right: 15px;
+}
+
+#nav-portal li {
+    padding: 0 5px 0 5px;
+}
+
+#nav-portal a {
+    font-size: 12px;
+}
