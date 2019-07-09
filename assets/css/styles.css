@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono&display=swap');
 
+body {
+    background-color: #0f1c70;
+}
+
+.particles-background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
 h1 {
     font-family: 'Roboto Mono', monospace;
 }

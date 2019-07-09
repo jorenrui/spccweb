@@ -40,5 +40,40 @@
             </nav>
         </div>
     </header>
+
+    <section>
+        <canvas class="particles-background"></canvas>
+    </section>
+
+    <script src="assets/js/particles.js"></script>
+    <script>
+        let particles = Particles.init({
+            selector: '.particles-background',
+            color: '#f2f2f2',
+            connectParticles: true,
+            maxParticles: 100,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    options: {
+                        maxParticles: 50
+                    }
+                },
+                {
+                    breakpoint: 425,
+                    options: {
+                        maxParticles: 30,
+                        connectParticles: false
+                    }
+                },
+                {
+                    breakpoint: 320,
+                    options: {
+                        maxParticles: 0
+                    }
+                }
+            ]
+        });
+    </script>
 </body>
 </html>
