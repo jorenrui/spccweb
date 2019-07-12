@@ -24,14 +24,20 @@
             </a>
         </div>
 
+        <div class="mobile-nav">
+            <a href="javascript:void(0);" class="icon" onclick="toggleNavResponsive()">
+                <i id="navIcon" class="fa fa-2x fa-bars"></i>
+            </a>
+        </div>
+
         <div id="siteNav" class="site-nav">
-            <nav id="nav-portal">
+            <nav class="nav-portal">
                 <ul>
                     <li><a href="student.html">student</a></li>
                     <li><a href="faculty.html">faculty</a></li>
                 </ul>
             </nav>
-            <nav id="nav-main">
+            <nav class="nav-main">
                 <ul>
                     <li><a href="#">home</a></li>
                     <li><a href="about.html">about</a></li>
@@ -48,34 +54,7 @@
     </section>
 
     <script src="assets/js/particles.js"></script>
-    <script>
-        let particles = Particles.init({
-            selector: '.particles-background',
-            color: '#f2f2f2',
-            connectParticles: true,
-            maxParticles: 100,
-            responsive: [{
-                    breakpoint: 768,
-                    options: {
-                        maxParticles: 50
-                    }
-                },
-                {
-                    breakpoint: 425,
-                    options: {
-                        maxParticles: 30,
-                        connectParticles: false
-                    }
-                },
-                {
-                    breakpoint: 320,
-                    options: {
-                        maxParticles: 0
-                    }
-                }
-            ]
-        });
-    </script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
