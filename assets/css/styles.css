@@ -40,7 +40,7 @@ a:hover {
     display: grid;
     grid-template-columns: 0.4fr 0.6fr;
     grid-template-rows: 1fr;
-    grid-template-areas: ". ." ". .";
+    grid-template-areas: ". ."". .";
 }
 
 .site-header .logo img {
@@ -81,4 +81,34 @@ a:hover {
 
 #nav-portal a {
     font-size: 12px;
+}
+
+
+/* =======================================
+ * RESPONSIVENESS
+ * ======================================= */
+
+/* mobile: up to 768px */
+@media only screen and (max-width: 768px) {
+    /* */
+}
+
+/* tablet: up to from 769px */
+@media only screen and (min-width: 769px) {
+    /* */
+}
+
+/* desktop: up to from 1024px */
+@media only screen and (min-width: 1024px) {
+    /* */
+}
+
+/* widescreen: up to from 1216px */
+@media only screen and (min-width: 1216px) {
+    /* */
+}
+
+/* fullhd: up to from 1408px */
+@media only screen and (min-width: 1408px) {
+    /* */
 }
