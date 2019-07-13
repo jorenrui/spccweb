@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400|Roboto+Mono:300,700&display=swap');
 
 body {
   background-color: #0f1c70;
@@ -13,7 +13,7 @@ body {
   z-index: -1;
 }
 
-h1 {
+h2 {
   font-family: 'Roboto Mono', monospace;
 }
 
@@ -36,11 +36,14 @@ a:hover {
  * ======================================= */
 
 .site-header {
+  width: 100%;
+  position: fixed;
   background: #0f1c70;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr auto;
-  grid-template-areas: '. .' '. .';
+  grid-template-areas: '. .''. .';
+  z-index: 25;
 }
 
 .site-header .logo img {
@@ -118,9 +121,81 @@ a:hover {
   .site-nav.responsive li:hover {
     background: #f9ae17;
   }
+
   .site-nav.responsive a:hover {
     color: #fff;
   }
+}
+
+/* =======================================
+ * HERO SECTION
+ * ======================================= */
+
+section.hero {
+  height: 550px;
+  display: grid;
+  padding-top: 100px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: '. .''. .';
+  justify-items: center;
+  align-items: center;
+  color: #fff;
+}
+
+section.hero .content {
+  width: 400px;
+}
+
+section.hero .headline {
+  margin: 0;
+  font-size: 100px;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+}
+
+section.hero .description {
+  margin: 10px 0;
+  font-size: 28px;
+  font-weight: 300;
+  font-family: 'Roboto Mono', monospace;
+}
+
+section.hero .btn {
+  display: inline-block;
+  padding: 20px 30px;
+  margin: 30px 0;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+section.hero .btn:hover {
+  color: #0f1c70;
+  background: #fff;
+}
+
+section.hero .image {
+  width: 100%;
+  text-align: right;
+}
+
+section.hero img {
+  width: 75%;
+  min-width: 75%;
+}
+
+section.hero .img-overlay {
+  width: 40%;
+  height: 75%;
+  position: absolute;
+  top: 23%;
+  right: 1%;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.52);
 }
 
 /* =======================================
