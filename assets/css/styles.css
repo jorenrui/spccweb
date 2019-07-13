@@ -81,7 +81,8 @@ a:hover {
   font-size: 12px;
 }
 
-/* Mobile Navigation */
+/* Responsiveness */
+
 .mobile-nav {
   display: none;
   padding-top: 20px;
@@ -198,6 +199,8 @@ section.hero .image::before {
   height: 460px;
   background: rgba(255, 255, 255, 0.52);
 }
+
+/* Responsiveness */
 
 @media screen and (max-width: 1023px) {
 
