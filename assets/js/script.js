@@ -26,13 +26,13 @@ function toggleNavResponsive() {
         connectParticles: true,
         maxParticles: 100,
         responsive: [{
-                breakpoint: 768,
+                breakpoint: 1023,
                 options: {
                     maxParticles: 50
                 }
             },
             {
-                breakpoint: 425,
+                breakpoint: 500,
                 options: {
                     maxParticles: 30,
                     connectParticles: false
