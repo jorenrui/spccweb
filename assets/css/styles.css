@@ -25,7 +25,7 @@ a {
 
 .section {
   width: 100%;
-  height: 650px;
+  height: auto;
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -203,7 +203,7 @@ section.hero a:active {
 section.hero {
   color: #fff;
   background: #0f1c70;
-  padding-top: 80px;
+  padding: 80px 0 150px 0;
 }
 
 section.hero .content {
@@ -469,6 +469,125 @@ section.about-brief .bg .circle-pattern-big {
   section.about-brief .link {
     font-size: 16px;
     padding-left: 0;
+  }
+}
+
+/* =======================================
+ * PROGRAMS SECTION
+ * ======================================= */
+
+section.programs {
+  color: #fff;
+  background: #0f1c70;
+  padding: 80px 0;
+  justify-items: center;
+}
+
+section.programs div {
+  grid-column: 1 / span 2;
+}
+
+section.programs .content {
+  width: 500px;
+}
+
+section.programs .headline {
+  font-size: 70px;
+  margin-left: -100px;
+  letter-spacing: 0.1em;
+}
+
+section.programs ul {
+  list-style: none;
+  font-family: 'Roboto Mono', monospace;
+}
+
+section.programs li {
+  margin: 20px 0;
+}
+
+section.programs li.level-1 {
+  margin: 50px 0;
+}
+
+section.programs li.level-1 > span {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+section.programs ul.strands {
+  font-size: 14px;
+}
+
+section.programs .bg .circle-pattern-big {
+  width: 300px;
+  position: absolute;
+  bottom: -5%;
+  left: -5%;
+}
+
+section.programs .bg .circle-pattern-small {
+  width: 150px;
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1023px) {
+  section.programs .bg .circle-pattern-big {
+    width: 200px;
+    bottom: -3%;
+    left: -3%;
+  }
+
+  section.programs .bg .circle-pattern-small {
+    width: 100px;
+    bottom: 15%;
+    left: 15%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section.programs .content {
+    width: 300px;
+  }
+
+  section.programs .headline {
+    font-size: 40px;
+    margin-left: 0;
+  }
+
+  section.programs li {
+    font-size: 14px;
+  }
+
+  section.programs li.level-1 > span {
+    font-size: 16px;
+  }
+
+  section.programs .bg .circle-pattern-big {
+    width: 130px;
+    bottom: -5%;
+    left: -5%;
+  }
+
+  section.programs .bg .circle-pattern-small {
+    width: 50px;
+    bottom: 10%;
+    left: 10%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  section.programs .headline {
+    font-size: 25px;
+    margin-left: 0;
+  }
+
+  section.programs .bg .circle-pattern-small {
+    display: none;
   }
 }
 
