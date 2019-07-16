@@ -675,14 +675,14 @@ section.latest-news .bg .circle-pattern-small-top {
 section.latest-news .bg .circle-pattern-big {
   width: 170px;
   position: absolute;
-  bottom: 0%;
+  bottom: -3%;
   left: -3%;
 }
 
 section.latest-news .bg .circle-pattern-small {
   width: 85px;
   position: absolute;
-  bottom: 0%;
+  bottom: 2%;
   left: 13%;
 }
 
