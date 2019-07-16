@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400|Roboto+Mono:300,400,700&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 h2,
 h3,
 .btn {
@@ -592,6 +596,142 @@ section.programs .bg .circle-pattern-small {
   }
 }
 
+/* =======================================
+ * LATEST NEWS SECTION
+ * ======================================= */
+
+section.latest-news {
+  padding: 150px 5%;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+section.latest-news .headline {
+  color: #0f1c70;
+  font-size: 70px;
+  letter-spacing: 0.1em;
+  grid-column: 1 / span 3;
+}
+
+section.latest-news article {
+  width: 100%;
+  padding: 10px;
+  justify-self: center;
+}
+
+section.latest-news article > img {
+  width: 100%;
+  min-width: 80%;
+  border-radius: 10px;
+}
+
+section.latest-news h3 {
+  margin: 10px 0 5px 0;
+}
+
+section.latest-news article a.title {
+  color: #0f1c70;
+  letter-spacing: 0.1em;
+  font-family: 'Roboto Mono', monospace;
+}
+
+section.latest-news article a.title:hover,
+section.latest-news article a.title:active {
+  color: #f9ae17;
+}
+
+section.latest-news .meta {
+  font-size: 16px;
+  color: rgb(37, 37, 37, 0.8);
+  font-family: 'Open Sans', sans-serif;
+}
+
+section.latest-news .meta::before {
+  content: 'by ';
+}
+
+section.latest-news .publish-date::before {
+  content: '⚬';
+  margin: 0 8px;
+}
+
+section.latest-news .article-content {
+  line-height: 26px;
+}
+
+section.latest-news .bg .circle-pattern-big-top {
+  width: 170px;
+  position: absolute;
+  top: -6%;
+  right: 15%;
+}
+
+section.latest-news .bg .circle-pattern-small-top {
+  width: 85px;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+
+section.latest-news .bg .circle-pattern-big {
+  width: 170px;
+  position: absolute;
+  bottom: 0%;
+  left: -3%;
+}
+
+section.latest-news .bg .circle-pattern-small {
+  width: 85px;
+  position: absolute;
+  bottom: 0%;
+  left: 13%;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1023px) {
+  section.latest-news .headline {
+    text-align: center;
+  }
+
+  section.latest-news article {
+    width: 60%;
+    min-width: 400px;
+    margin: 25px 0;
+    grid-column: 1 / span 3;
+  }
+
+  section.latest-news .bg .circle-pattern-big-top {
+    top: -3%;
+  }
+
+  section.latest-news .bg .circle-pattern-small-top {
+    top: 5%;
+  }
+
+  section.latest-news .bg .circle-pattern-small {
+    left: 25%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section.latest-news .headline {
+    font-size: 50px;
+  }
+
+  section.latest-news article {
+    min-width: 320px;
+  }
+
+  section.latest-news .bg .circle-pattern-small {
+    left: 45%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  section.latest-news .bg .circle-pattern-small {
+    left: 50%;
+  }
+}
 /* =======================================
  * RESPONSIVENESS
  * ======================================= */
