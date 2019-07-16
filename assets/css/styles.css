@@ -732,6 +732,185 @@ section.latest-news .bg .circle-pattern-small {
     left: 50%;
   }
 }
+
+/* =======================================
+ * SITE FOOTER SECTION
+ * ======================================= */
+
+.site-footer {
+  color: #fff;
+  background: #0f1c70;
+  padding-top: 120px;
+  display: grid;
+  grid-column-gap: 6%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+}
+
+.site-footer .school-info {
+  margin-left: 15%;
+  text-align: right;
+}
+
+.site-footer .school-info .headline,
+.site-footer .school-info .sub-headline {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.site-footer .school-info .headline {
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.site-footer .school-info .sub-headline {
+  font-size: 30px;
+}
+
+.site-footer .school-info .content {
+  font-size: 18px;
+  padding-left: 15%;
+  line-height: 29px;
+  margin: 25px 0;
+  font-weight: 100;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.site-footer .school-info .credited-logo > img {
+  margin: 0 5px;
+}
+
+.site-footer .contact-info {
+  margin-top: 8%;
+  margin-right: 15%;
+}
+
+.site-footer .contact-info .item {
+  margin: 25px 0;
+}
+
+.site-footer .contact-info .item p,
+.site-footer .contact-info .item li {
+  font-weight: 100;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.site-footer .contact-info p.field {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.site-footer .contact-info .content {
+  font-size: 22px;
+  padding-left: 20px;
+}
+
+.site-footer .contact-info ul {
+  list-style: none;
+}
+
+.site-footer .contact-info a {
+  color: #fff;
+}
+
+.site-footer .contact-info a:hover,
+.site-footer .contact-info a:active {
+  color: #f9ae17;
+}
+
+.site-footer .content i {
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+.site-footer .copyright,
+.site-footer .credits {
+  margin: 100px 25px 15px 25px;
+  font-weight: 100;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.site-footer .credits {
+  text-align: right;
+}
+
+.site-footer .credits a {
+  color: #f9ae17;
+}
+
+.site-footer .copyright::before {
+  content: '© ';
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1023px) {
+  .site-footer .school-info .headline {
+    font-size: 30px;
+  }
+
+  .site-footer .school-info .sub-headline {
+    font-size: 25px;
+  }
+
+  .site-footer .school-info {
+    margin-left: 5%;
+  }
+
+  .site-footer .contact-info {
+    margin-right: 5%;
+  }
+
+  .site-footer .school-info .content {
+    font-size: 16px;
+  }
+
+  .site-footer .contact-info p.field {
+    font-size: 22px;
+  }
+
+  .site-footer .contact-info .content {
+    font-size: 18px;
+    padding-left: 10px;
+  }
+
+  .site-footer .copyright,
+  .site-footer .credits {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .site-footer .school-info,
+  .site-footer .contact-info {
+    text-align: left;
+    margin: 0;
+    padding: 25px;
+    grid-column: 1 / span 2;
+  }
+
+  .site-footer .school-info .content {
+    padding-left: 0;
+    padding-right: 10px;
+  }
+
+  .site-footer .copyright,
+  .site-footer .credits {
+    text-align: center;
+    grid-column: 1 / span 2;
+  }
+
+  .site-footer .copyright {
+    margin-bottom: 0;
+  }
+
+  .site-footer .credits {
+    margin: 10px 0;
+  }
+}
+
 /* =======================================
  * RESPONSIVENESS
  * ======================================= */
