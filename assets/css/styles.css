@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400|Roboto+Mono:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Mono:300,400,700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -207,7 +207,7 @@ section.hero a:active {
 section.hero {
   color: #fff;
   background: #0f1c70;
-  padding: 80px 0 150px 0;
+  padding: 80px 0 180px 0;
 }
 
 section.hero .content {
@@ -305,6 +305,10 @@ section.hero .particles-background {
 }
 
 @media only screen and (max-width: 768px) {
+  section.hero {
+    padding: 80px 0 350px 0;
+  }
+
   section.hero .content {
     width: 20em;
   }
@@ -351,6 +355,119 @@ section.hero .particles-background {
 
   section.hero .btn {
     font-size: 14px;
+  }
+}
+
+/* =======================================
+ * UPCOMING EVENTS SECTION
+ * ======================================= */
+
+section.upcoming-events {
+  margin-top: -80px;
+  grid-template-columns: 2fr;
+}
+
+section.upcoming-events .content {
+  position: relative;
+  justify-self: right;
+}
+
+section.upcoming-events .title {
+  position: absolute;
+  width: 220px;
+  top: 0;
+  left: -30%;
+  color: #fff;
+  text-align: right;
+  display: inline-block;
+}
+
+section.upcoming-events .headline {
+  margin: 0;
+}
+
+section.upcoming-events a {
+  margin: 0 10px;
+  color: #fff;
+}
+
+section.upcoming-events a:hover,
+section.upcoming-events a:active {
+  color: #f9ae17;
+}
+
+section.upcoming-events .card {
+  width: 150px;
+  height: 150px;
+  padding: 25px;
+  margin: 0 20px;
+  border-radius: 10px;
+  color: #0f1c70;
+  display: inline-block;
+  background: #f9ae17;
+}
+
+section.upcoming-events .card .date {
+  margin: 3px;
+  font-size: 26px;
+  font-weight: 800;
+  font-family: 'Open Sans', sans-serif;
+}
+
+section.upcoming-events .card .event {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1023px) {
+  section.upcoming-events .title {
+    width: 170px;
+    font-size: 12px;
+  }
+
+  section.upcoming-events .card {
+    width: 120px;
+    height: 120px;
+    padding: 15px;
+    margin: 0 10px;
+  }
+
+  section.upcoming-events .card .date {
+    font-size: 22px;
+  }
+
+  section.upcoming-events .card .event {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section.upcoming-events .content {
+    width: 100%;
+    display: grid;
+    grid-row-gap: 25px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas: '. .' '. .';
+  }
+
+  section.upcoming-events .content div {
+    grid-column: span 1;
+    justify-self: center;
+  }
+
+  section.upcoming-events .content .title {
+    top: -70px;
+    left: 10px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  section.upcoming-events .content div {
+    grid-column: span 2;
   }
 }
 
