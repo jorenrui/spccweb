@@ -1,3 +1,14 @@
+/* ======================================
+ * CONTENTS
+ * - SITE HEADER
+ * - HERO SECTION - HOMEPAGE
+ * - UPCOMING EVENTS SECTION - HOMEPAGE
+ * - ABOUT BRIEF SECTION - HOMEPAGE
+ * - PROGRAMS SECTION - HOMEPAGE
+ * - LATEST NEWS SECTION - HOMEPAGE
+ * - SITE FOOTER SECTION
+ * ====================================== */
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Mono:300,400,700&display=swap');
 
 * {
@@ -201,7 +212,7 @@ section.hero a:active {
 }
 
 /* =======================================
- * HERO SECTION
+ * HERO SECTION - HOMEPAGE
  * ======================================= */
 
 section.hero {
@@ -359,7 +370,7 @@ section.hero .particles-background {
 }
 
 /* =======================================
- * UPCOMING EVENTS SECTION
+ * UPCOMING EVENTS SECTION - HOMEPAGE
  * ======================================= */
 
 section.upcoming-events {
@@ -472,7 +483,7 @@ section.upcoming-events .card .event {
 }
 
 /* =======================================
- * ABOUT BRIEF SECTION
+ * ABOUT BRIEF SECTION - HOMEPAGE
  * ======================================= */
 
 section.about-brief {
@@ -595,7 +606,7 @@ section.about-brief .bg .circle-pattern-big {
 }
 
 /* =======================================
- * PROGRAMS SECTION
+ * PROGRAMS SECTION - HOMEPAGE
  * ======================================= */
 
 section.programs {
@@ -714,7 +725,7 @@ section.programs .bg .circle-pattern-small {
 }
 
 /* =======================================
- * LATEST NEWS SECTION
+ * LATEST NEWS SECTION - HOMEPAGE
  * ======================================= */
 
 section.latest-news {
