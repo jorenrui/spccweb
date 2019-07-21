@@ -1096,6 +1096,116 @@ section.page-cover .particles-background {
   z-index: 1;
 }
 
+/* Responsiveness */
+
+@media screen and (max-width: 1023px) {
+  section.page-cover h1 {
+    font-size: 30px;
+    padding: 10px 15px;
+  }
+
+  section.page-cover h1::before {
+    width: 200px;
+    top: -20%;
+    left: -10%;
+    border: 3px solid #f9ae17;
+  }
+
+  section.page-cover h1::after {
+    width: 200px;
+    bottom: -20%;
+    right: -10%;
+    border: 3px solid #f9ae17;
+  }
+}
+
+/* =======================================
+ * ABOUT SECTION - ABOUT PAGE
+ * ======================================= */
+
+section.about {
+  color: #fff;
+  background: #0f1c70;
+  padding: 200px 0;
+}
+
+section.about .image {
+  text-align: right;
+}
+
+section.about img {
+  width: 90%;
+}
+
+section.about .content {
+  width: 90%;
+  padding: 0 50px;
+}
+
+section.about .content h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+section.about .content .description {
+  padding-right: 50px;
+}
+
+section.about .content p {
+  line-height: 25px;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1023px) {
+  section.about {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  section.about img {
+    width: 400px;
+    min-width: 350px;
+  }
+
+  section.about .content {
+    margin-top: -25px;
+    padding: 10px 10px 0 20px;
+  }
+
+  section.about .content .description {
+    padding-right: 0;
+  }
+
+  section.about .content h2 {
+    font-size: 22px;
+  }
+
+  section.about .content p {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section.about div {
+    grid-column: 1 / span 2;
+  }
+
+  section.about .image {
+    text-align: center;
+  }
+
+  section.about img {
+    width: 100%;
+  }
+
+  section.about .content {
+    width: 80%;
+    padding: 0;
+    margin-top: 0;
+    justify-self: center;
+  }
+}
+
 /* =======================================
  * RESPONSIVENESS
  * ======================================= */
