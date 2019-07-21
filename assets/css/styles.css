@@ -48,12 +48,12 @@ a {
   grid-template-areas: '. .' '. .';
 }
 
-.section .bg {
-  z-index: 1;
-}
-
 .section * {
   z-index: 10;
+}
+
+.section .bg {
+  z-index: 1;
 }
 
 .site-header a,
@@ -63,6 +63,7 @@ section.hero a {
 
 .site-header a:hover,
 .site-header a:active,
+.site-header li.active a,
 section.hero a:hover,
 section.hero a:active {
   color: #f9ae17;
@@ -1037,6 +1038,62 @@ section.latest-news .bg .circle-pattern-small {
   .site-footer .credits {
     margin: 10px 0;
   }
+}
+
+/* =======================================
+ * PAGE COVER SECTION
+ * ======================================= */
+section.page-cover {
+  color: #fff;
+  background: #0f1c70;
+  padding: 90px 0 0 0;
+  justify-items: center;
+}
+
+section.page-cover .page-title {
+  grid-column: 1 / span 2;
+}
+
+section.page-cover h1 {
+  margin-top: 80px;
+  margin-bottom: -50px;
+  color: #f9ae17;
+  padding: 20px 25px;
+  font-size: 50px;
+  font-weight: 400;
+  background: #0f1c70;
+  position: relative;
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+}
+
+section.page-cover h1::before {
+  content: '';
+  width: 280px;
+  height: 100px;
+  position: absolute;
+  top: -20%;
+  left: -30%;
+  border: 5px solid #f9ae17;
+}
+
+section.page-cover h1::after {
+  content: '';
+  width: 280px;
+  height: 100px;
+  position: absolute;
+  bottom: -20%;
+  right: -30%;
+  border: 5px solid #f9ae17;
+}
+
+section.page-cover .particles-background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
 }
 
 /* =======================================
