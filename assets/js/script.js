@@ -16,6 +16,13 @@ function toggleNavResponsive() {
     }
 }
 
+$('.tab-nav a').click(function (e) {
+    e.preventDefault();
+    const target = $(this).data("target");
+    $('.tab-content > div').removeClass("tab-current");
+    $(target).addClass("tab-current");
+});
+
 (() => {
     'use strict';
 
@@ -46,4 +53,5 @@ function toggleNavResponsive() {
             }
         ]
     });
+
 })();

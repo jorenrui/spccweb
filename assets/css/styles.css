@@ -1164,7 +1164,7 @@ section.about .content p {
 
   section.about img {
     width: 400px;
-    min-width: 350px;
+    min-width: 320px;
   }
 
   section.about .content {
@@ -1203,6 +1203,186 @@ section.about .content p {
     padding: 0;
     margin-top: 0;
     justify-self: center;
+  }
+}
+
+/* =======================================
+ * INFO TAB - ABOUT PAGE
+ * ======================================= */
+section.info-tab {
+  height: 700px;
+}
+
+section.info-tab .tab-menu {
+  padding: 50px 25px;
+  background: #f9ae17;
+}
+
+section.info-tab .tab-nav {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+section.info-tab .tab-nav li {
+  margin: 50px;
+}
+
+section.info-tab .tab-nav a {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: 'Roboto Mono', monospace;
+}
+
+section.info-tab .tab-nav a:hover,
+section.info-tab .tab-nav a:active,
+section.info-tab .tab-nav a:focus,
+section.info-tab li.active a {
+  color: #0f1c70;
+}
+
+section.info-tab .tab-content {
+  height: 650px;
+}
+
+section.info-tab .tab-content > div {
+  width: 48%;
+  height: 600px;
+  padding: 50px;
+  background: #fff;
+  position: absolute;
+}
+
+section.info-tab .tab-content > div h2 {
+  color: #0f1c70;
+  text-align: center;
+}
+
+section.info-tab h2 {
+  font-size: 40px;
+}
+
+section.info-tab #tab-mission p,
+section.info-tab #tab-vision p {
+  text-indent: 2em;
+  font-size: 28px;
+  line-height: 45px;
+}
+
+section.info-tab #tab-president {
+  text-align: center;
+}
+
+section.info-tab #tab-president img {
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+}
+
+section.info-tab #tab-president h3 {
+  font-size: 26px;
+}
+
+section.info-tab #tab-president p {
+  margin-top: -20px;
+  font-size: 18px;
+}
+
+section.info-tab #tab-hymn h2 {
+  margin-bottom: 0px;
+}
+
+section.info-tab #tab-hymn p {
+  text-align: center;
+}
+
+section.info-tab .tab-current {
+  z-index: 11;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1023px) {
+  section.info-tab .tab-menu {
+    padding: 80px 25px;
+  }
+
+  section.info-tab .tab-content > div {
+    padding: 60px 25px;
+  }
+
+  section.info-tab .tab-nav a,
+  section.info-tab h2 {
+    font-size: 35px;
+  }
+
+  section.info-tab #tab-mission p,
+  section.info-tab #tab-vision p {
+    font-size: 22px;
+    line-height: 35px;
+  }
+
+  section.info-tab #tab-president img {
+    width: 250px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section.info-tab .tab-menu {
+    padding: 10px;
+    text-align: center;
+  }
+
+  section.info-tab .tab-menu ul {
+    display: inline-flex;
+  }
+
+  section.info-tab .tab-nav li {
+    margin: 0 20px;
+  }
+
+  section.info-tab .tab-nav a {
+    font-size: 18px;
+  }
+
+  section.info-tab .tab-content > div {
+    width: 100%;
+    padding: 50px;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  section.info-tab .tab-nav li {
+    margin: 0 10px;
+  }
+
+  section.info-tab .tab-nav a {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  section.info-tab .tab-menu ul {
+    display: block;
+  }
+
+  section.info-tab .tab-menu li {
+    margin: 20px 0;
+  }
+
+  section.info-tab h2 {
+    font-size: 28px;
+  }
+
+  section.info-tab #tab-mission p,
+  section.info-tab #tab-vision p {
+    font-size: 16px;
+  }
+
+  section.info-tab .tab-content > div {
+    padding: 60px 10px;
   }
 }
 
