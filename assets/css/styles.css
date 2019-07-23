@@ -1424,3 +1424,93 @@ section.info-tab .tab-current {
     padding: 60px 10px;
   }
 }
+
+/* =======================================
+ * CONTACT SECTION - CONTACT PAGE
+ * ======================================= */
+section.contact {
+  color: #fff;
+  background: #0f1c70;
+}
+
+section.contact .description {
+  width: 50%;
+  margin: 20px auto;
+  font-size: 22px;
+  font-weight: 300;
+  text-align: center;
+  line-height: 30px;
+  grid-column: 1 / -1;
+}
+
+section.contact form {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
+section.contact .form-group {
+  width: 100%;
+  height: auto;
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: '. .' '. .';
+}
+
+section.contact input,
+section.contact textarea {
+  font-size: 18px;
+  padding: 15px 25px;
+  width: 350px;
+  color: #fff;
+  background: none;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+section.contact textarea {
+  height: 200px;
+}
+
+::placeholder {
+  color: #bebebe;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #bebebe;
+}
+
+::-ms-input-placeholder {
+  color: #bebebe;
+}
+
+section.contact label {
+  margin: 15px 0;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: lowercase;
+  font-family: 'Roboto Mono', monospace;
+}
+
+section.contact label::after {
+  content: '.';
+}
+
+section.contact .btn-submit {
+  display: block;
+  grid-column: 2 / -1;
+  width: 250px;
+  color: #fff;
+  font-size: 18px;
+  background: none;
+  border: 3px solid #fff;
+  font-family: 'Roboto Mono', monospace;
+}
+
+section.contact .btn-submit:hover {
+  color: #0f1c70;
+  background: #fff;
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <title>SPCC - Caloocan | Contact</title>
+  <meta name="description" content="Systems Plus Computer College - Caloocan Website." />
+  <meta name="author" content="Joeylene Rivera" />
+
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="assets/img/logo.png" alt="SPCC Logo" />
+      </a>
+    </div>
+
+    <div class="mobile-nav">
+      <a href="javascript:void(0);" class="icon" onclick="toggleNavResponsive()">
+        <i id="navIcon" class="fa fa-2x fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="siteNav" class="site-nav">
+      <nav class="nav-portal">
+        <ul>
+          <li><a href="student.html">student</a></li>
+          <li><a href="faculty.html">faculty</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-main">
+        <ul>
+          <li><a href="index.html">home</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="news.html">news</a></li>
+          <li class="active"><a href="contact.html">contact</a></li>
+          <li class="cat"><a href="enroll.html">enroll</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- end Site Header -->
+
+  <!-- Page Cover Section -->
+  <section class="section page-cover contact-cover">
+    <div class="page-title">
+      <h1>Contact</h1>
+    </div>
+
+    <canvas class="particles-background"></canvas>
+  </section>
+  <!-- end Page Cover Section -->
+
+  <!-- Contact Section -->
+  <section class="section contact">
+    <p class="description">Got something to ask? Inquire and send us a message. You can also email us at
+      <b>spcc.caloocan1985@gmail.com</b>.</p>
+    <form class="contact-form" action="#" method="post" id="contactForm" novalidate="novalidate">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Juan Dela Cruz">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="e.g. juandelacruz@gmail.com">
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject">
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" value="submit" class="btn btn-submit">
+          Send Message
+        </button>
+      </div>
+    </form>
+  </section>
+  <!-- end Contact Section -->
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="school-info">
+      <img src="assets/img/logo-with-shadows.png" alt="SPCC Logo" />
+      <div class="headline">Systems Plus Computer College</div>
+      <div class="sub-headline">Caloocan Campus</div>
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua. Nam aliquam sem et tortor consequat id porta nibh
+        venenatis.
+      </div>
+      <div class="credited-logo">
+        <img src="assets/img/deped-logo.png" alt="DepEd Logo" />
+        <img src="assets/img/ched-logo.png" alt="CHED Logo" />
+        <img src="assets/img/tesda-logo.png" alt="Tesda Logo" />
+      </div>
+    </div>
+
+    <div class="contact-info">
+      <div class="item">
+        <p class="field">visit us.</p>
+        <p class="content">
+          141-143, 10th Avenue, Corner 6th & 7th, East Grace Park, Caloocan City
+        </p>
+      </div>
+
+      <div class="item">
+        <p class="field">contact us.</p>
+        <ul class="content">
+          <li>Principal’s Office: 367-75-01</li>
+          <li>Admission’s Office: 364-21-29</li>
+          <li>Registrar’s Office: 365-47-43</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <p class="field">social media.</p>
+        <div class="content">
+          <a target="_blank" href="https://www.facebook.com/SPCCCaloocanOfficial">
+            <i class="fa fa-facebook-square"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright">
+      2019 Systems Plus Computer College - Caloocan
+    </div>
+    <div class="credits">
+      Made with love by
+      <a target="_blank" href="team.html">
+        JOBRYGE
+      </a>
+    </div>
+  </footer>
+  <!-- end Footer -->
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/particles.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>
