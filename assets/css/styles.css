@@ -1470,6 +1470,18 @@ section.contact textarea {
   font-family: 'Open Sans', sans-serif;
 }
 
+section.contact .form-group:hover,
+section.contact input:focus,
+section.contact textarea:focus {
+  color: #f9ae17;
+}
+
+section.contact input:focus,
+section.contact input:hover,
+section.contact textarea:focus section.contact textarea:hover {
+  border: 2px solid #f9ae17;
+}
+
 section.contact textarea {
   height: 200px;
 }
