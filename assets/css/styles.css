@@ -1133,7 +1133,7 @@ section.about .image {
   text-align: right;
 }
 
-section.about img {
+section.about .image img {
   width: 90%;
 }
 
@@ -1155,6 +1155,13 @@ section.about .content p {
   line-height: 25px;
 }
 
+section.about .bg .circle-pattern-big {
+  width: 200px;
+  position: absolute;
+  bottom: 0%;
+  right: -5%;
+}
+
 /* Responsiveness */
 
 @media screen and (max-width: 1023px) {
@@ -1162,7 +1169,7 @@ section.about .content p {
     grid-template-columns: 1fr 2fr;
   }
 
-  section.about img {
+  section.about .image img {
     width: 400px;
     min-width: 320px;
   }
@@ -1182,6 +1189,10 @@ section.about .content p {
 
   section.about .content p {
     font-size: 14px;
+  }
+
+  section.about .bg .circle-pattern-big {
+    bottom: -5%;
   }
 }
 
@@ -1203,6 +1214,11 @@ section.about .content p {
     padding: 0;
     margin-top: 0;
     justify-self: center;
+  }
+
+  section.about .bg .circle-pattern-big {
+    width: 150px;
+    bottom: -3%;
   }
 }
 
