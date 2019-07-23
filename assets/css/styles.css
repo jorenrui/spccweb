@@ -1443,6 +1443,10 @@ section.contact .description {
   grid-column: 1 / -1;
 }
 
+section.contact .description b {
+  color: #f9ae17;
+}
+
 section.contact form {
   grid-column: 1 / -1;
   justify-self: center;
@@ -1525,4 +1529,59 @@ section.contact .btn-submit {
 section.contact .btn-submit:hover {
   color: #0f1c70;
   background: #fff;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1023px) {
+  section.contact .description {
+    width: 60%;
+    font-size: 18px;
+  }
+
+  section.contact label {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section.contact .description {
+    width: 80%;
+  }
+  section.contact input,
+  section.contact textarea {
+    padding: 10px 20px;
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  section.contact .description {
+    width: 75%;
+  }
+
+  section.contact form {
+    width: 60%;
+    min-width: 300px;
+  }
+
+  section.contact label,
+  section.contact input,
+  section.contact textarea,
+  section.contact .btn-submit {
+    grid-column: 1 / -1;
+  }
+
+  section.contact .btn-submit {
+    width: 200px;
+    padding: 20px;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  section.contact .description {
+    font-size: 16px;
+    width: 90%;
+  }
 }
