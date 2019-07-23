@@ -7,6 +7,10 @@
  * - PROGRAMS SECTION - HOMEPAGE
  * - LATEST NEWS SECTION - HOMEPAGE
  * - SITE FOOTER SECTION
+ * - PAGE COVER SECTION
+ * - ABOUT SECTION - ABOUT PAGE
+ * - INFO TAB - ABOUT PAGE
+ * - CONTACT SECTION - CONTACT PAGE
  * ====================================== */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Mono:300,400,700&display=swap');
@@ -1050,6 +1054,15 @@ section.page-cover {
   justify-items: center;
 }
 
+section.page-cover::after {
+  content: '';
+  height: 120px;
+  width: 100%;
+  z-index: 2;
+  grid-column: 1 / span 2;
+  background: #0f1c70;
+}
+
 section.page-cover .page-title {
   grid-column: 1 / span 2;
 }
@@ -1087,6 +1100,11 @@ section.page-cover h1::after {
   border: 5px solid #f9ae17;
 }
 
+section.contact-cover h1::before,
+section.contact-cover h1::after {
+  width: 350px;
+}
+
 section.page-cover .particles-background {
   position: absolute;
   top: 0;
@@ -1116,6 +1134,11 @@ section.page-cover .particles-background {
     bottom: -20%;
     right: -10%;
     border: 3px solid #f9ae17;
+  }
+
+  section.contact-cover h1::before,
+  section.contact-cover h1::after {
+    width: 230px;
   }
 }
 
@@ -1400,33 +1423,4 @@ section.info-tab .tab-current {
   section.info-tab .tab-content > div {
     padding: 60px 10px;
   }
-}
-
-/* =======================================
- * RESPONSIVENESS
- * ======================================= */
-
-/* mobile: up to 768px */
-@media only screen and (max-width: 768px) {
-  /* */
-}
-
-/* tablet: up to from 769px */
-@media only screen and (min-width: 769px) {
-  /* */
-}
-
-/* desktop: up to from 1024px */
-@media only screen and (min-width: 1024px) {
-  /* */
-}
-
-/* widescreen: up to from 1216px */
-@media only screen and (min-width: 1216px) {
-  /* */
-}
-
-/* fullhd: up to from 1408px */
-@media only screen and (min-width: 1408px) {
-  /* */
 }
