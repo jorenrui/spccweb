@@ -1531,6 +1531,34 @@ section.contact .btn-submit:hover {
   background: #fff;
 }
 
+section.contact .bg .circle-pattern-big-top {
+  width: 150px;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+
+section.contact .bg .circle-pattern-small-top {
+  width: 80px;
+  position: absolute;
+  top: 25%;
+  right: 10%;
+}
+
+section.contact .bg .circle-pattern-big {
+  width: 200px;
+  position: absolute;
+  bottom: -5%;
+  left: -5%;
+}
+
+section.contact .bg .circle-pattern-small {
+  width: 100px;
+  position: absolute;
+  bottom: 20%;
+  left: 8%;
+}
+
 /* Responsiveness */
 
 @media screen and (max-width: 1023px) {
@@ -1542,6 +1570,24 @@ section.contact .btn-submit:hover {
   section.contact label {
     font-size: 22px;
   }
+
+  section.contact .bg .circle-pattern-big-top {
+    width: 120px;
+  }
+
+  section.contact .bg .circle-pattern-big {
+    width: 150px;
+  }
+
+  section.contact .bg .circle-pattern-small-top {
+    width: 50px;
+    top: 20%;
+  }
+
+  section.contact .bg .circle-pattern-small {
+    width: 80px;
+    bottom: 15%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1552,6 +1598,16 @@ section.contact .btn-submit:hover {
   section.contact textarea {
     padding: 10px 20px;
     width: 300px;
+  }
+
+  section.contact .bg .circle-pattern-small {
+    left: 15%;
+    bottom: 15%;
+  }
+
+  section.contact .bg .circle-pattern-small-top,
+  section.contact .bg .circle-pattern-big-top {
+    display: none;
   }
 }
 
@@ -1576,6 +1632,13 @@ section.contact .btn-submit:hover {
     width: 200px;
     padding: 20px;
     font-size: 16px;
+  }
+
+  section.contact .bg .circle-pattern-big-top,
+  section.contact .bg .circle-pattern-big,
+  section.contact .bg .circle-pattern-small,
+  section.contact .bg .circle-pattern-small-top {
+    display: none;
   }
 }
 
