@@ -1181,8 +1181,8 @@ section.about .content p {
 section.about .bg .circle-pattern-big {
   width: 200px;
   position: absolute;
-  bottom: 0%;
-  right: -5%;
+  bottom: -5%;
+  right: 2%;
 }
 
 /* Responsiveness */
@@ -1213,10 +1213,6 @@ section.about .bg .circle-pattern-big {
   section.about .content p {
     font-size: 14px;
   }
-
-  section.about .bg .circle-pattern-big {
-    bottom: -5%;
-  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1237,11 +1233,6 @@ section.about .bg .circle-pattern-big {
     padding: 0;
     margin-top: 0;
     justify-self: center;
-  }
-
-  section.about .bg .circle-pattern-big {
-    width: 150px;
-    bottom: -3%;
   }
 }
 
