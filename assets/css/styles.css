@@ -11,6 +11,7 @@
  * - ABOUT SECTION - ABOUT PAGE
  * - INFO TAB - ABOUT PAGE
  * - CONTACT SECTION - CONTACT PAGE
+ * - ENROLLMENT SECTION - ENROLL PAGE
  * ====================================== */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Mono:300,400,700&display=swap');
@@ -1637,5 +1638,120 @@ section.contact .bg .circle-pattern-small {
   section.contact .description {
     font-size: 16px;
     width: 90%;
+  }
+}
+
+/* =======================================
+ * ENROLLMENT SECTION - ENROLL PAGE
+ * ======================================= */
+
+section.enroll {
+  color: #fff;
+  background: #0f1c70;
+  padding: 20px 0 80px 0;
+  justify-items: center;
+}
+
+section.enroll div {
+  grid-column: 1 / span 2;
+}
+
+section.enroll .note {
+  margin-top: -20px;
+  margin-bottom: 50px;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+section.enroll .content {
+  width: 400px;
+  margin: 0 auto;
+}
+
+section.enroll .title {
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+}
+
+section.enroll li {
+  margin: 20px 0;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.enroll-requirements {
+  margin-bottom: 30px;
+}
+
+section.enroll .bg .circle-pattern-big {
+  width: 300px;
+  position: absolute;
+  bottom: -5%;
+  left: -5%;
+}
+
+section.enroll .bg .circle-pattern-small {
+  width: 150px;
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1023px) {
+  section.enroll .title {
+    font-size: 22px;
+  }
+
+  section.enroll .bg .circle-pattern-big {
+    width: 200px;
+    bottom: -3%;
+    left: -3%;
+  }
+
+  section.enroll .bg .circle-pattern-small {
+    width: 100px;
+    bottom: 15%;
+    left: 15%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section.enroll .bg .circle-pattern-small {
+    display: none;
+  }
+
+  section.enroll .bg .circle-pattern-big {
+    width: 150px;
+  }
+
+  section.enroll .title {
+    font-size: 16px;
+  }
+
+  section.enroll .note {
+    margin-top: -10px;
+    font-size: 14px;
+  }
+
+  section.enroll li {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  section.enroll .bg .circle-pattern-big {
+    display: none;
+  }
+
+  section.enroll .title {
+    margin: 0 auto;
+    width: 250px;
+  }
+
+  section.enroll .content {
+    width: 300px;
   }
 }
