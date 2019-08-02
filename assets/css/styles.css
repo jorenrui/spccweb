@@ -144,12 +144,14 @@ section.hero a:active {
 }
 
 .site-nav li.cat:hover,
-.site-nav li.cat:active {
+.site-nav li.cat:active,
+.site-nav li.cat.active {
   background: #fff;
 }
 
 .site-header li.cat:hover a,
-.site-header li.cat:active a {
+.site-header li.cat:active a,
+.site-header li.cat.active a {
   color: #0f1c70;
 }
 
