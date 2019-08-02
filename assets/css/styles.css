@@ -12,6 +12,7 @@
  * - INFO TAB - ABOUT PAGE
  * - CONTACT SECTION - CONTACT PAGE
  * - ENROLLMENT SECTION - ENROLL PAGE
+ * - POLICIES SECTION - ENROLL PAGE
  * ====================================== */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Mono:300,400,700&display=swap');
@@ -1753,5 +1754,79 @@ section.enroll .bg .circle-pattern-small {
 
   section.enroll .content {
     width: 300px;
+  }
+}
+
+/* =======================================
+ * POLICIES SECTION - ENROLL PAGE
+ * ======================================= */
+section.policies {
+  padding: 20px 0 80px 0;
+  justify-items: center;
+}
+
+section.policies div {
+  grid-column: 1 / span 2;
+}
+
+section.policies .headline {
+  color: #0f1c70;
+  font-size: 40px;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+section.policies .policy-group {
+  width: 800px;
+  margin: 50px auto;
+}
+
+section.policies .title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+section.policies li {
+  margin: 20px 0;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1023px) {
+  section.policies .headline {
+    font-size: 30px;
+  }
+
+  section.policies .policy-group {
+    width: 700px;
+  }
+
+  section.policies .title {
+    font-size: 16px;
+  }
+
+  section.policies li {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section.policies .policy-group {
+    width: 450px;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  section.policies .headline {
+    font-size: 22px;
+  }
+
+  section.policies .policy-group {
+    width: 300px;
+  }
+
+  section.policies .title {
+    font-size: 14px;
   }
 }
