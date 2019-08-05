@@ -1846,8 +1846,9 @@ section.team {
 }
 
 section.team .card {
-  height: 550px;
-  width: 800px;
+  width: 90vw;
+  max-width: 800px;
+  height: auto;
   padding: 50px 0;
   grid-column: 1 / -1;
   text-align: center;
@@ -1895,4 +1896,36 @@ section.team .name {
 section.team .team-member p {
   margin: 10px;
   font-size: 14px;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 860px) {
+  section.team {
+    padding: 50px 0;
+    height: auto;
+  }
+
+  section.team .card {
+    width: 75vw;
+  }
+
+  section.team .team-member {
+    margin: 25px 0;
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  section.team .card h1 {
+    font-size: 30px;
+  }
+
+  section.team .card h2 {
+    font-size: 22px;
+  }
+
+  section.team img.avatar {
+    width: 150px;
+  }
 }
