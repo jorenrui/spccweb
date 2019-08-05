@@ -1838,15 +1838,15 @@ section.policies li {
  * TEAM SECTION - ENROLL PAGE
  * ======================================= */
 section.team {
-  width: auto;
-  height: 665px;
+  height: 100vh;
+  width:  100vw;
   background-position: center;
   background-repeat: repeat;
   background-image: url('../img/bg-pattern.png');
 }
 
 section.team .card {
-  height: 500px;
+  height: 550px;
   width: 800px;
   padding: 50px 0;
   grid-column: 1 / -1;
@@ -1855,6 +1855,10 @@ section.team .card {
   align-self: center;
   border-radius: 50px;
   background: #fcfcfc;
+}
+
+section.team .title {
+  margin-bottom: 20px;
 }
 
 section.team .card h1,
@@ -1874,6 +1878,21 @@ section.team .card h2 {
   font-size: 30px;
 }
 
+section.team .team-member {
+  margin: 0 25px;
+  display: inline-block;
+}
+
 section.team img.avatar {
   width: 200px;
+}
+
+section.team .name {
+  color: #0f1c70;
+  font-size: 16px;
+}
+
+section.team .team-member p {
+  margin: 10px;
+  font-size: 14px;
 }
