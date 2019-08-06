@@ -13,7 +13,7 @@
  * - CONTACT SECTION - CONTACT PAGE
  * - ENROLLMENT SECTION - ENROLL PAGE
  * - POLICIES SECTION - ENROLL PAGE
- * - TEAM SECTION - ENROLL PAGE
+ * - TEAM SECTION - TEAM PAGE
  * ====================================== */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Mono:300,400,700&display=swap');
@@ -1835,7 +1835,7 @@ section.policies li {
 }
 
 /* =======================================
- * TEAM SECTION - ENROLL PAGE
+ * TEAM SECTION - TEAM PAGE
  * ======================================= */
 section.team {
   height: 100vh;
