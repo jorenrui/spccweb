@@ -16,6 +16,7 @@
  * - TEAM SECTION - TEAM PAGE
  * - FEATURED NEWS SECTION - NEWS PAGE
  * - NEWS SECTION - NEWS PAGE
+ * - ARTICLE PAGE
  * ====================================== */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Mono:300,400,700&display=swap');
@@ -2161,7 +2162,6 @@ section.news .article-content {
 /* Responsiveness */
 
 @media only screen and (max-width: 768px) {
-
   section.news article,
   section.news article img {
     width: 85vw;
@@ -2182,5 +2182,101 @@ section.news .article-content {
   section.news article .news-meta,
   section.news article .article-content {
     padding: 0 10vw;
+  }
+}
+
+/* =======================================
+ * ARTICLE PAGE
+ * ======================================= */
+section.article {
+  padding: 150px 0;
+}
+
+section.article article {
+  grid-column: 1 / -1;
+  width: 80vw;
+  justify-self: center;
+}
+
+section.article .news-meta {
+  width: 60vw;
+  margin: 25px auto;
+  text-align: center;
+}
+
+section.article h1.title a {
+  color: #0f1c70;
+  font-size: 45px;
+  letter-spacing: 0.1em;
+  font-family: 'Roboto Mono', monospace;
+}
+
+section.article .meta {
+  font-size: 16px;
+  color: #252525;
+  font-family: 'Open Sans', sans-serif;
+}
+
+section.article .meta::before {
+  content: 'written by ';
+}
+
+section.article .publish-date::before {
+  content: '|';
+  margin: 0 8px;
+}
+
+section.article img {
+  width: 80vw;
+  height: auto;
+  margin: 50px 0;
+}
+
+section.article .article-content {
+  width: 50vw;
+  margin: 0 auto;
+}
+
+section.article .article-content * {
+  line-height: 26px;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+section.article .button {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1023px) {
+  section.article .news-meta,
+  section.article .article-content {
+    width: 70vw;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  section.article article,
+  section.article img {
+    width: 90vw;
+  }
+
+  section.article h1.title a {
+    font-size: 35px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  section.article article,
+  section.article img,
+  section.article .news-meta,
+  section.article .article-content {
+    width: 90vw;
+  }
+
+  section.article img {
+    margin: 25px 0;
   }
 }
