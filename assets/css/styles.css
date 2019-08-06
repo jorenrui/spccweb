@@ -54,7 +54,7 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr auto;
-  grid-template-areas: '. .' '. .';
+  grid-template-areas: '. .''. .';
 }
 
 .section * {
@@ -110,7 +110,7 @@ section.hero a:active {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr auto;
-  grid-template-areas: '. .' '. .';
+  grid-template-areas: '. .''. .';
   z-index: 25;
 }
 
@@ -474,7 +474,7 @@ section.upcoming-events .card .event {
     grid-row-gap: 25px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr auto;
-    grid-template-areas: '. .' '. .';
+    grid-template-areas: '. .''. .';
   }
 
   section.upcoming-events .content div {
@@ -655,7 +655,7 @@ section.programs li.level-1 {
   margin: 50px 0;
 }
 
-section.programs li.level-1 > span {
+section.programs li.level-1>span {
   font-size: 26px;
   font-weight: 700;
 }
@@ -708,7 +708,7 @@ section.programs .bg .circle-pattern-small {
     font-size: 14px;
   }
 
-  section.programs li.level-1 > span {
+  section.programs li.level-1>span {
     font-size: 16px;
   }
 
@@ -758,7 +758,7 @@ section.latest-news article {
   justify-self: center;
 }
 
-section.latest-news article > img {
+section.latest-news article>img {
   width: 100%;
   min-width: 80%;
   border-radius: 10px;
@@ -918,7 +918,7 @@ section.latest-news .bg .circle-pattern-small {
   font-family: 'Open Sans', sans-serif;
 }
 
-.site-footer .school-info .credited-logo > img {
+.site-footer .school-info .credited-logo>img {
   margin: 0 5px;
 }
 
@@ -1023,6 +1023,7 @@ section.latest-news .bg .circle-pattern-small {
 }
 
 @media only screen and (max-width: 768px) {
+
   .site-footer .school-info,
   .site-footer .contact-info {
     text-align: left;
@@ -1299,7 +1300,7 @@ section.info-tab .tab-content {
   height: 650px;
 }
 
-section.info-tab .tab-content > div {
+section.info-tab .tab-content>div {
   width: 48%;
   height: 600px;
   padding: 50px;
@@ -1307,7 +1308,7 @@ section.info-tab .tab-content > div {
   position: absolute;
 }
 
-section.info-tab .tab-content > div h2 {
+section.info-tab .tab-content>div h2 {
   color: #0f1c70;
   text-align: center;
 }
@@ -1361,7 +1362,7 @@ section.info-tab .tab-current {
     padding: 80px 25px;
   }
 
-  section.info-tab .tab-content > div {
+  section.info-tab .tab-content>div {
     padding: 60px 25px;
   }
 
@@ -1399,7 +1400,7 @@ section.info-tab .tab-current {
     font-size: 18px;
   }
 
-  section.info-tab .tab-content > div {
+  section.info-tab .tab-content>div {
     width: 100%;
     padding: 50px;
   }
@@ -1433,7 +1434,7 @@ section.info-tab .tab-current {
     font-size: 16px;
   }
 
-  section.info-tab .tab-content > div {
+  section.info-tab .tab-content>div {
     padding: 60px 10px;
   }
 }
@@ -1472,7 +1473,7 @@ section.contact .form-group {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr auto;
-  grid-template-areas: '. .' '. .';
+  grid-template-areas: '. .''. .';
 }
 
 section.contact input,
@@ -1607,6 +1608,7 @@ section.contact .bg .circle-pattern-small {
   section.contact .description {
     width: 80%;
   }
+
   section.contact input,
   section.contact textarea {
     padding: 10px 20px;
@@ -1856,7 +1858,7 @@ section.policies li {
  * ======================================= */
 section.team {
   height: 100vh;
-  width:  100vw;
+  width: 100vw;
   background-position: center;
   background-repeat: repeat;
   background-image: url('../img/bg-pattern.png');
@@ -1965,7 +1967,7 @@ section.featured-news article {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr auto;
-  grid-template-areas: '. .' '. .';
+  grid-template-areas: '. .''. .';
   grid-gap: 25px;
   justify-items: center;
   align-items: center;
@@ -2159,6 +2161,7 @@ section.news .article-content {
 /* Responsiveness */
 
 @media only screen and (max-width: 768px) {
+
   section.news article,
   section.news article img {
     width: 85vw;
@@ -2166,6 +2169,7 @@ section.news .article-content {
 }
 
 @media only screen and (max-width: 400px) {
+
   section.news article,
   section.news article img {
     width: 100vw;
