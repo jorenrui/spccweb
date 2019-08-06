@@ -15,6 +15,7 @@
  * - POLICIES SECTION - ENROLL PAGE
  * - TEAM SECTION - TEAM PAGE
  * - FEATURED NEWS SECTION - NEWS PAGE
+ * - NEWS SECTION - NEWS PAGE
  * ====================================== */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Mono:300,400,700&display=swap');
@@ -1981,6 +1982,10 @@ section.featured-news .content {
   border: 5px solid #fff;
 }
 
+section.featured-news h2 {
+  margin: 15px 0;
+}
+
 section.featured-news a.title {
   color: #fff;
   letter-spacing: 0.1em;
@@ -2089,5 +2094,89 @@ section.featured-news .bg .circle-pattern-bottom {
   section.featured-news .content {
     padding: 10px 5px;
     border: none;
+  }
+}
+
+/* =======================================
+ * NEWS SECTION - NEWS PAGE
+ * ======================================= */
+section.news {
+  padding: 80px 0;
+}
+
+section.news article {
+  grid-column: 1 / -1;
+  width: 700px;
+  margin: 50px 0;
+  justify-self: center;
+}
+
+section.news article img {
+  width: 700px;
+  height: auto;
+  border-radius: 10px;
+}
+
+section.news h2 {
+  margin: 10px 0;
+}
+
+section.news a.title {
+  color: #0f1c70;
+  letter-spacing: 0.1em;
+  font-family: 'Roboto Mono', monospace;
+}
+
+section.news a.title:hover,
+section.news a.title:active {
+  color: #f9ae17;
+}
+
+section.news .meta {
+  font-size: 16px;
+  color: #252525b0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+section.news .meta::before {
+  content: 'by ';
+}
+
+section.news .publish-date::before {
+  content: '⚬';
+  margin: 0 8px;
+}
+
+section.news .news-meta {
+  margin-bottom: 30px;
+}
+
+section.news .article-content {
+  color: #252525;
+  line-height: 26px;
+}
+
+/* Responsiveness */
+
+@media only screen and (max-width: 768px) {
+  section.news article,
+  section.news article img {
+    width: 75vw;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  section.news article,
+  section.news article img {
+    width: 100vw;
+  }
+
+  section.news article img {
+    border-radius: 0;
+  }
+
+  section.news article .news-meta,
+  section.news article .article-content {
+    padding: 0 10vw;
   }
 }
