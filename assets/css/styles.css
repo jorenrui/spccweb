@@ -1110,6 +1110,11 @@ section.contact-cover h1::after {
   width: 350px;
 }
 
+section.enroll-cover h1::before,
+section.enroll-cover h1::after {
+  width: 300px;
+}
+
 section.page-cover .particles-background {
   position: absolute;
   top: 0;
