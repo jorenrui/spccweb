@@ -1053,6 +1053,15 @@ section.latest-news .bg .circle-pattern-small {
   }
 }
 
+@media only screen and (max-width: 450px) {
+  .site-footer .copyright,
+  .site-footer .credits {
+    font-size: 11px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 /* =======================================
  * PAGE COVER SECTION
  * ======================================= */
