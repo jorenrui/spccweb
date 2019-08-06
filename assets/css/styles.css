@@ -2161,7 +2161,7 @@ section.news .article-content {
 @media only screen and (max-width: 768px) {
   section.news article,
   section.news article img {
-    width: 75vw;
+    width: 85vw;
   }
 }
 
