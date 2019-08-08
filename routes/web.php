@@ -23,6 +23,16 @@ Route::get('/team', 'PagesController@team');
 
 Auth::routes();
 
+Route::resource('/posts','PostsController');
+Route::get('/news', 'PostsController@index');
+
+// Temporary route
+Route::get('/article', function () {
+	$title = 'News';
+
+	return view('posts.show')->with('title', $title);
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
