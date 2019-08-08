@@ -1,4 +1,4 @@
-@extends('layouts.pages')
+@extends('layouts.pages', ['title' => 'Enroll'])
 
 @section('content')
 <!-- Page Cover Section -->
