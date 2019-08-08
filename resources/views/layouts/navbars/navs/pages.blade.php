@@ -15,8 +15,7 @@
   <div id="siteNav" class="site-nav">
     <nav class="nav-portal">
       <ul>
-        <li><a href="{{ route('login') }}">student</a></li>
-        <li><a href="{{ route('login') }}">faculty</a></li>
+        <li><a href="{{ route('login') }}">Login to Portal</a></li>
       </ul>
     </nav>
     <nav class="nav-main">
