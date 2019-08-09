@@ -26,7 +26,7 @@
                         <i class="ni ni-single-02"></i>
                         <span>Profile</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <a href="/posts/create" class="dropdown-item">
                         <i class="ni ni-fat-add"></i>
                         <span>Add Post</span>
                     </a>
