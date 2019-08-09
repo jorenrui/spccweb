@@ -18,7 +18,7 @@
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/news', 'PagesController@news');
-Route::get('/article', 'PagesController@article');
+Route::get('/articles/{article}', 'PagesController@articles');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/enroll', 'PagesController@enroll');
 Route::get('/team', 'PagesController@team');

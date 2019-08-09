@@ -112,65 +112,29 @@
 <!-- end Programs Section -->
 
 <!-- Latest News Section -->
+@if(count($posts) > 2)
 <section class="section latest-news">
   <h2 class="headline">Latest News</h2>
-  <article>
-    <img src="{{ asset('spccweb/img/news/news1.jpg') }}" />
-    <h3>
-      <a href="article.html" class="title">
-        S.Y. 2019-2020 School Opening
-      </a>
-    </h3>
-    <div class="meta">
-      Admin
-      <span class="publish-date">Jun 24, 2019</span>
-    </div>
-    <div class="article-content">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt...
-      </p>
-      <a href="article.html" class="link">Read More</a>
-    </div>
-  </article>
-  <article>
-    <img src="{{ asset('spccweb/img/news/news2.jpg') }}" />
-    <h3>
-      <a href="article.html" class="title">
-        Basketball: ADU vs SPCC
-      </a>
-    </h3>
-    <div class="meta">
-      Admin
-      <span class="publish-date">Mar 17, 2019</span>
-    </div>
-    <div class="article-content">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt...
-      </p>
-      <a href="article.html" class="link">Read More</a>
-    </div>
-  </article>
-  <article>
-    <img src="{{ asset('spccweb/img/news/news3.jpg') }}" />
-    <h3>
-      <a href="article.html" class="title">
-        Blessing and Opening of the New Gymnasium
-      </a>
-    </h3>
-    <div class="meta">
-      Admin
-      <span class="publish-date">Dec 17, 2018</span>
-    </div>
-    <div class="article-content">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt...
-      </p>
-      <a href="article.html" class="link">Read More</a>
-    </div>
-  </article>
+
+  @foreach ($posts as $post)
+    <article>
+      <img src="{{ asset('spccweb/img/news/news1.jpg') }}" />
+      <h3>
+        <a href="/articles/{{ $post->post_id }}" class="title">
+          {{ $post->title }}
+        </a>
+      </h3>
+      <div class="meta">
+        Admin
+        <span class="publish-date">{{ $post->created_at->format('M d, Y') }}</span>
+      </div>
+      <div class="article-content">
+        {!! str_limit(strip_tags($post->body), 135) !!}
+        <br>
+        <a href="/articles/{{ $post->post_id }}" class="link">Read More</a>
+      </div>
+    </article>
+  @endforeach
 
   <div class="bg">
     <img src="{{ asset('spccweb/img/circle-pattern.svg') }}" class="circle-pattern-small-top" />
@@ -179,5 +143,6 @@
     <img src="{{ asset('spccweb/img/circle-pattern.svg') }}" class="circle-pattern-big" />
   </div>
 </section>
+@endif
 <!-- end Latest News Section-->
 @endsection

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+
 class DashboardController extends Controller
 {
     /**
@@ -21,6 +23,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $posts = Post::orderBy('created_at', 'desc')->limit(5)->get();
+
+        return view('dashboard')->with('posts', $posts);
     }
 }

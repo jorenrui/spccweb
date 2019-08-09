@@ -11,6 +11,7 @@
 </section>
 <!-- end Page Cover Section -->
 
+@if(count($latest_post) == 1)
 <!-- Featured News -->
 <section class="section featured-news">
   <article>
@@ -20,21 +21,19 @@
     <div class="content">
       <div class="news-meta">
         <h2>
-          <a href="/article" class="title">
-            S.Y. 2019-2020 School Opening
+          <a href="/articles/{{ $latest_post[0]->post_id }}" class="title">
+            {{ $latest_post[0]->title }}
           </a>
         </h2>
         <div class="meta">
           Admin
-          <span class="publish-date">Jun 24, 2019</span>
+          <span class="publish-date">{{ $latest_post[0]->created_at->format('M d, Y') }}</span>
         </div>
       </div>
       <div class="article-content">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Ut enim ad minim...
-        </p>
-        <a href="/article" class="link">Read More</a>
+        {!! str_limit(strip_tags($latest_post[0]->body), 135) !!}
+        <br>
+        <a href="/articles/{{ $latest_post[0]->post_id }}" class="link">Read More</a>
       </div>
     </div>
   </article>
@@ -45,54 +44,41 @@
   </div>
 </section>
 <!-- end Featured News -->
+@endif
 
 <!-- News -->
+@if(count($posts) > 1)
 <section class="section news">
-  <article>
-    <img src="{{ asset('spccweb/img/news/news2.jpg') }}">
-    <div class="news-meta">
-      <h2>
-        <a href="/article" class="title">
-          Basketball: ADU vs SPCC
-        </a>
-      </h2>
-      <div class="meta">
-        Admin
-        <span class="publish-date">Aug 07, 2019</span>
-      </div>
-    </div>
-    <div class="article-content">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...
-      </p>
-      <a href="/article" class="link">Read More</a>
-    </div>
-  </article>
 
-  <article>
-    <img src="{{ asset('spccweb/img/news/news3.jpg') }}">
-    <div class="news-meta">
-      <h2>
-        <a href="/article" class="title">
-          Blessing and Opening of the New Gymnasium
-        </a>
-      </h2>
-      <div class="meta">
-        Admin
-        <span class="publish-date">Sep 07, 2019</span>
+  @foreach ($posts as $post)
+    @if($post->post_id != $latest_post[0]->post_id)
+    <article>
+      <img src="{{ asset('spccweb/img/news/news2.jpg') }}">
+      <div class="news-meta">
+        <h2>
+          <a href="/articles/{{ $post->post_id }}" class="title">
+            {{ $post->title }}
+          </a>
+        </h2>
+        <div class="meta">
+          Admin
+          <span class="publish-date">{{ $post->created_at->format('M d, Y') }}</span>
+        </div>
       </div>
-    </div>
-    <div class="article-content">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...
-      </p>
-      <a href="/article" class="link">Read More</a>
-    </div>
-  </article>
+      <div class="article-content">
+        {!! str_limit(strip_tags($post->body), 135) !!}
+        <br>
+        <a href="/articles/{{ $post->post_id }}" class="link">Read More</a>
+      </div>
+    </article>
+    @endif
+  @endforeach
+
+  <div class="pagination">
+    {{ $posts->links() }}
+  </div>
 </section>
+@endif
 <!-- end News -->
+
 @endsection
