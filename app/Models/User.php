@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -10,13 +10,17 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = 'users';
+    protected $primaryKey = 'user_id';
+    protected $username = 'username';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password', 'active', 'created_at', 'updated_at'
     ];
 
     /**
@@ -36,4 +40,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getName()
+    {
+    	$first_name = $this->attributes['first_name'];
+    	$middle_initial = $this->attributes['middle_name'][0] . '.';
+    	$last_name = $this->attributes['last_name'];
+
+        if($middle_initial == '.')
+            return $first_name . ' ' .$last_name;
+
+    	return $first_name . ' ' . $middle_initial . ' ' . $last_name;
+    }
 }
