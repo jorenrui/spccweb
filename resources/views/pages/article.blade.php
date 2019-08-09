@@ -6,7 +6,7 @@
   <article>
     <div class="news-meta">
       <h1 class="title">
-        <a href="article.html">
+        <a href="#">
           Blessing and Opening of the New Gymnasium
         </a>
       </h1>

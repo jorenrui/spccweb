@@ -14,6 +14,14 @@ class PagesController extends Controller
         return view('pages.about');
     }
 
+    public function news() {
+        return view('pages.news');
+    }
+
+    public function article() {
+        return view('pages.article');
+    }
+
     public function contact() {
         return view('pages.contact');
     }

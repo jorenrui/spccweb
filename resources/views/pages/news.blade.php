@@ -20,7 +20,7 @@
     <div class="content">
       <div class="news-meta">
         <h2>
-          <a href="article.html" class="title">
+          <a href="/article" class="title">
             S.Y. 2019-2020 School Opening
           </a>
         </h2>
@@ -34,7 +34,7 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
           dolore magna aliqua. Ut enim ad minim...
         </p>
-        <a href="article.html" class="link">Read More</a>
+        <a href="/article" class="link">Read More</a>
       </div>
     </div>
   </article>
@@ -52,7 +52,7 @@
     <img src="{{ asset('spccweb/img/news/news2.jpg') }}">
     <div class="news-meta">
       <h2>
-        <a href="article.html" class="title">
+        <a href="/article" class="title">
           Basketball: ADU vs SPCC
         </a>
       </h2>
@@ -67,7 +67,7 @@
         magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...
       </p>
-      <a href="article.html" class="link">Read More</a>
+      <a href="/article" class="link">Read More</a>
     </div>
   </article>
 
@@ -75,7 +75,7 @@
     <img src="{{ asset('spccweb/img/news/news3.jpg') }}">
     <div class="news-meta">
       <h2>
-        <a href="article.html" class="title">
+        <a href="/article" class="title">
           Blessing and Opening of the New Gymnasium
         </a>
       </h2>
@@ -90,7 +90,7 @@
         magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...
       </p>
-      <a href="article.html" class="link">Read More</a>
+      <a href="/article" class="link">Read More</a>
     </div>
   </article>
 </section>

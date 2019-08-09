@@ -17,6 +17,8 @@
 
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
+Route::get('/news', 'PagesController@news');
+Route::get('/article', 'PagesController@article');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/enroll', 'PagesController@enroll');
 Route::get('/team', 'PagesController@team');
@@ -24,14 +26,6 @@ Route::get('/team', 'PagesController@team');
 Auth::routes();
 
 Route::resource('/posts','PostsController');
-Route::get('/news', 'PostsController@index');
-
-// Temporary route
-Route::get('/article', function () {
-	$title = 'News';
-
-	return view('posts.show')->with('title', $title);
-});
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
