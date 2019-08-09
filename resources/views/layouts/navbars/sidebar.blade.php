@@ -30,7 +30,7 @@
                         <i class="ni ni-fat-add"></i>
                         <span>Add Post</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <a href="/posts" class="dropdown-item">
                         <i class="ni ni-single-copy-04"></i>
                         <span>Posts</span>
                     </a>

@@ -2,7 +2,7 @@
 <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
     <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('dashboard') }}">Dashboard</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">{{ $title }}</a>
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
             <li class="nav-item dropdown">
@@ -28,7 +28,7 @@
                         <i class="ni ni-fat-add"></i>
                         <span>Add Post</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <a href="/posts" class="dropdown-item">
                         <i class="ni ni-single-copy-04"></i>
                         <span>Posts</span>
                     </a>
