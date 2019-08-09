@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Dashboard'])
 
 @section('content')
     @include('layouts.headers.cards')
@@ -13,7 +13,7 @@
                                 <h3 class="mb-0">Lastest News</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#" class="btn btn-sm btn-primary">See all</a>
+                                <a href="/posts" class="btn btn-sm btn-primary">See all</a>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                                 <h3 class="mb-0">Events</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#" class="btn btn-sm btn-primary">See all</a>
+                                <a href="/events" class="btn btn-sm btn-primary">See all</a>
                             </div>
                         </div>
                     </div>
