@@ -33,7 +33,7 @@ Route::get('/article', function () {
 	return view('posts.show')->with('title', $title);
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
