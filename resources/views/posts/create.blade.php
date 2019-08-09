@@ -12,9 +12,8 @@
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-body">
-                      <form method="POST" action="#" enctype="multipart/form-data">
+                      <form id="form-post" method="POST" action="{{ action('PostsController@store') }}" enctype="multipart/form-data">
                           @csrf
-                          @method('PUT')
 
                           <div class="row">
                               <div class="col-12 col-lg-5">
@@ -38,18 +37,18 @@
                           <div class="row mb-7">
                             <div class="col-12 col-lg-12">
                               <label class="form-control-label" for="title">Body</label>
-                              <input id="body" name="body" type="hidden" value="hey" required>
+                              <input id="body" name="body" type="hidden" required>
                               <div id="editor" style="font-family: 'Open Sans', sans-serif"></div>
                             </div>
                           </div>
 
                           <div class="row">
                               <div class="col-12 col-lg-12">
-                                <button type="submit" class="btn btn-outline-info">
+                                <button type="submit" id="btn-publish" class="btn btn-outline-info">
                                   <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
                                   <span class="btn-inner--text">Publish</span>
                                 </button>
-                                <a href="/show" class="btn btn-outline-secondary">Cancel</a>
+                                <a href="/posts" class="btn btn-outline-secondary">Cancel</a>
                               </div>
                           </div>
                       </form>
@@ -88,8 +87,11 @@
         theme: 'snow'
       });
 
-      let initialBody = $("input#body").val();
-      $("#editor .ql-editor").html(initialBody);
+      $("#btn-publish").click(function(){
+          let body = $("#editor *").html();
+
+          $("input#body").val(body);
+      });
   });
 </script>
 @endpush

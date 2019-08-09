@@ -12,7 +12,7 @@
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-body">
-                      <form method="POST" action="#" enctype="multipart/form-data">
+                      <form method="POST" action="{{ action('PostsController@update', $post->post_id) }}" enctype="multipart/form-data">
                           @csrf
                           @method('PUT')
 
@@ -31,22 +31,22 @@
                           <div class="row">
                             <div class="col-12 col-lg-8">
                                 <label class="form-control-label" for="title">Title</label>
-                                <input id="title" name="title" class="form-control mb-3" type="text" placeholder="Enter title..." required>
+                                <input id="title" name="title" class="form-control mb-3" type="text" placeholder="Enter title..." value="{{$post->title}}" required>
                             </div>
                           </div>
 
                           <div class="row mb-7">
                             <div class="col-12 col-lg-12">
                               <label class="form-control-label" for="title">Body</label>
-                              <input id="body" name="body" type="hidden" value="hey" required>
+                              <input id="body" name="body" type="hidden" value="{{$post->body}}" required>
                               <div id="editor" style="font-family: 'Open Sans', sans-serif"></div>
                             </div>
                           </div>
 
                           <div class="row">
                               <div class="col-12 col-lg-12">
-                                <button type="submit" class="btn btn-outline-primary">Update</button>
-                                <a href="/show" class="btn btn-outline-secondary">Cancel</a>
+                                <button id="btn-publish" type="submit" class="btn btn-outline-primary">Update</button>
+                                <a href="/posts/{{$post->post_id}}" class="btn btn-outline-secondary">Cancel</a>
                               </div>
                           </div>
                       </form>
@@ -87,6 +87,12 @@
 
       let initialBody = $("input#body").val();
       $("#editor .ql-editor").html(initialBody);
+
+      $("#btn-publish").click(function(){
+          let body = $("#editor *").html();
+
+          $("input#body").val(body);
+      });
   });
 </script>
 @endpush

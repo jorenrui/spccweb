@@ -9,21 +9,30 @@
                 <div class="card shadow">
                     <img class="card-img-top" src="{{ asset('argon/img/theme/team-4-800x800.jpg') }}" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Why our world would end if new technologies disappeared</h5>
-                      <p class="card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium facilis nemo rerum debitis fuga...
-                      </p>
-                      <hr>
-                      <p><small>Written by Joeylene Rivera | Jul 23, 2019</small></p>
-                      <div class="button-group row">
-                          <div class="col-4">
-                            <a href="/posts" class="btn btn-outline-primary">Return</a>
-                          </div>
-                          <div class="col-8 text-right">
-                              <a href="#" class="btn btn-outline-info">Edit</a>
-                              <a href="#" class="btn btn-outline-danger">Delete</a>
-                          </div>
-                      </div>
+                        <h1 class="card-title mb-2">{{ $post->title }}</h1>
+                        <h5 class="mb-4">Written by Joeylene Rivera</h5>
+                        <div class="card-text">
+                            {!! $post->body !!}
+                        </div>
+                        <hr>
+                        <p>
+                            Created on {{ $post->created_at->format('g:iA M d, Y') }}
+                            | Updated on {{ $post->created_at->format('g:iA M d, Y') }}
+                        </p>
+                        <div class="button-group row mt-5">
+                            <div class="col-4">
+                                <a href="/posts" class="btn btn-outline-primary">Return</a>
+                            </div>
+                            <div class="col-8 text-right">
+                                <a href="/posts/{{$post->post_id}}/edit" class="btn btn-outline-info">Edit</a>
+                                <form method="POST" action="{{ action('PostsController@destroy', $post->post_id) }}" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
