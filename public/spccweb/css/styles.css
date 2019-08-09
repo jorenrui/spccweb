@@ -167,6 +167,41 @@ section.hero a:active {
   font-size: 12px;
 }
 
+div.pagination {
+  grid-column: 1 / -1;
+  margin-top: 50px;
+  text-align: center;
+}
+
+ul.pagination {
+  margin: 0;
+  list-style: none;
+  display: inline-flex;
+}
+
+ul.pagination .page-item:hover {
+  cursor: pointer;
+}
+
+ul.pagination .page-item .page-link {
+  color: #0f1c70;
+  margin: -1px;
+  padding: 20px 25px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 2px solid #0f1c70;
+  font-family: 'Open Sans', sans-serif;
+}
+
+ul.pagination .page-item.active .page-link {
+  color: #fff;
+  background: #0f1c70;
+}
+
+ul.pagination .page-item.disabled {
+  opacity: 0.3;
+}
+
 /* Responsiveness */
 
 .mobile-nav {
