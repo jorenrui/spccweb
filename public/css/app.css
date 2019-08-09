@@ -10,3 +10,15 @@
 .ql-container {
   border-radius: 0 0 .5rem .5rem;
 }
+
+.ql-align-center {
+  text-align: center;
+}
+
+.ql-align-justify {
+  text-align: justify;
+}
+
+.ql-align-right {
+  text-align: right;
+}
