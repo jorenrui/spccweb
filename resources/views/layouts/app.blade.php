@@ -17,6 +17,11 @@
         <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+
+        @yield('styles')
+
+        <!-- Custom CSS -->
+        <link type="text/css" href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
