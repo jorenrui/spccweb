@@ -2248,7 +2248,7 @@ section.article .news-meta {
   text-align: center;
 }
 
-section.article h1.title a {
+section.article h1.title {
   color: #0f1c70;
   font-size: 45px;
   letter-spacing: 0.1em;

@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-nowrap">Since last month</span>
+                                <span class="text-nowrap">This month</span>
                             </p>
                         </div>
                     </div>
