@@ -6,12 +6,10 @@
   <article>
     <div class="news-meta">
       <h1 class="title">
-        <a href="#">
-          {{ $post->title }}
-        </a>
+        {{ $post->title }}
       </h1>
       <div class="meta">
-        Admin
+        {{ $post->user->getName() }}
         <span class="publish-date">
           Created on {{ $post->created_at->format('g:iA M d, Y') }}
           | Updated on {{ $post->created_at->format('g:iA M d, Y') }}
@@ -24,7 +22,7 @@
     </div>
   </article>
   <div class="button">
-    <a href="/news" class="link">Return</a>
+    <a href="javascript:history.back()" class="link">Return</a>
   </div>
 </section>
 <!-- end Article -->

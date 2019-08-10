@@ -48,7 +48,7 @@
                                   <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
                                   <span class="btn-inner--text">Publish</span>
                                 </button>
-                                <a href="/posts" class="btn btn-outline-secondary">Cancel</a>
+                                <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Cancel</button>
                               </div>
                           </div>
                       </form>

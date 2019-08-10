@@ -125,14 +125,14 @@
         </a>
       </h3>
       <div class="meta">
-        Admin
+        {{ $post->user->getName() }}
         <span class="publish-date">{{ $post->created_at->format('M d, Y') }}</span>
       </div>
-      <div class="article-content">
+      <p class="article-content">
         {!! str_limit(strip_tags($post->body), 135) !!}
         <br>
         <a href="/articles/{{ $post->post_id }}" class="link">Read More</a>
-      </div>
+      </p>
     </article>
   @endforeach
 

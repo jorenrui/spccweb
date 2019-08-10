@@ -10,7 +10,7 @@
                     <img class="card-img-top" src="{{ asset('argon/img/theme/team-4-800x800.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <h1 class="card-title mb-2">{{ $post->title }}</h1>
-                        <h5 class="mb-4">Written by Joeylene Rivera</h5>
+                        <h5 class="mb-4">Written by {{ $post->user->getName() }}</h5>
                         <div class="card-text">
                             {!! $post->body !!}
                         </div>
@@ -21,17 +21,19 @@
                         </p>
                         <div class="button-group row mt-5">
                             <div class="col-4">
-                                <a href="/posts" class="btn btn-outline-primary">Return</a>
+                                <button type="button" class="btn btn-outline-primary" onclick="javascript:history.back()">Return</button>
                             </div>
-                            <div class="col-8 text-right">
-                                <a href="/posts/{{$post->post_id}}/edit" class="btn btn-outline-info">Edit</a>
-                                <form method="POST" action="{{ action('PostsController@destroy', $post->post_id) }}" style="display: inline;">
-                                    @csrf
-                                    @method('DELETE')
+                            @if(Auth::user()->user_id == $post->user_id)
+                                <div class="col-8 text-right">
+                                    <a href="/posts/{{$post->post_id}}/edit" class="btn btn-outline-info">Edit</a>
+                                    <form method="POST" action="{{ action('PostsController@destroy', $post->post_id) }}" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
 
-                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
-                                </form>
-                            </div>
+                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

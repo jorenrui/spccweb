@@ -46,7 +46,7 @@
                           <div class="row">
                               <div class="col-12 col-lg-12">
                                 <button id="btn-publish" type="submit" class="btn btn-outline-primary">Update</button>
-                                <a href="/posts/{{$post->post_id}}" class="btn btn-outline-secondary">Cancel</a>
+                                <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Cancel</button>
                               </div>
                           </div>
                       </form>

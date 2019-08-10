@@ -15,7 +15,7 @@
                         <p class="card-text">
                           {!! str_limit(strip_tags($post->body), 135) !!}
                         </p>
-                        <p><small>Written by Joeylene Rivera | {{ $post->created_at->format('M d, Y') }}</small></p>
+                        <p><small>Written by {{ $post->user->getName() }} | {{ $post->created_at->format('M d, Y') }}</small></p>
                         <div class="button-group row">
                           <div class="col-8">
                             <a href="/posts/{{ $post->post_id }}" class="btn btn-outline-primary btn-sm">View</a>

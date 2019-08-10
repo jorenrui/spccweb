@@ -14,7 +14,7 @@
                                     <h3 class="mb-0">Lastest News</h3>
                                 </div>
                                 <div class="col text-right">
-                                    <a href="/posts" class="btn btn-sm btn-primary">See all</a>
+                                    <a href="/posts" class="btn btn-sm btn-primary">See my posts</a>
                                 </div>
                             </div>
                         </div>
@@ -22,26 +22,30 @@
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
+                                        <th scope="col"></th>
                                         <th scope="col">Title</th>
+                                        <th scope="col">Description</th>
                                         <th scope="col">Author</th>
                                         <th scope="col">Date Published</th>
-                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($posts as $post)
                                         <tr>
-                                            <th scope="row">
-                                                {{ $post->title }}
-                                            </th>
-                                            <td>Joeylene Rivera</td>
-                                            <td>{{ $post->created_at->format('M d, Y') }}</td>
                                             <td class="text-right">
                                                 <a href="/posts/{{ $post->post_id }}" class="btn btn-outline-primary btn-sm">
                                                     <span class="btn-inner--icon"><i class="ni ni-folder-17"></i></span>
                                                     <span class="btn-inner--text">View</span>
                                                 </a>
                                             </td>
+                                            <th scope="row">
+                                                {{ $post->title }}
+                                            </th>
+                                            <th>
+                                                {!! str_limit(strip_tags($post->body), 50) !!}
+                                            </th>
+                                            <td>{{ $post->user->getName() }}</td>
+                                            <td>{{ $post->created_at->format('M d, Y') }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

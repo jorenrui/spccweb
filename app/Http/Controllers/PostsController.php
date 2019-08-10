@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(15);
+        $user = auth()->user();
+        $posts = $user->posts()->paginate(15);
 
         return view('posts.index')->with('posts', $posts);
     }
@@ -49,6 +51,7 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->user_id = auth()->user()->id;
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Created');
@@ -77,6 +80,11 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
+        // Check for correct user
+        if(auth()->user()->user_id != $post->user_id) {
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
+
         return view('posts.edit')->with('post', $post);
     }
 
@@ -99,9 +107,10 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->updated_at = now();
         $post->save();
 
-        return redirect('/posts')->with('success', 'Post Created');
+        return redirect('/posts')->with('success', 'Post Updated');
     }
 
     /**
@@ -113,6 +122,11 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+
+        // Check for correct user
+        if(auth()->user()->user_id != $post->user_id) {
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
 
         $post->delete();
 
