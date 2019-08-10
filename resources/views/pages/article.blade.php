@@ -16,7 +16,7 @@
         </span>
       </div>
     </div>
-    <img src="{{ asset('spccweb/img/news/news3.jpg') }}">
+    <img src="/storage/cover_images/{{$post->cover_image}}">
     <div class="article-content">
       {!! $post->body !!}
     </div>

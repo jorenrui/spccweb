@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label id="browse-image" for="cover_image" class="btn btn-outline-default">Choose Cover Image</label>
-                                    <input type="file" id="cover_image" name="cover_image" style="display: none">
+                                    <input type="file" id="cover_image" name="cover_image" value="{{$post->cover_image}}" style="display: none">
                                 </div>
                               </div>
                           </div>

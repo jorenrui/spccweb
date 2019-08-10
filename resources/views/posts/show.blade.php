@@ -7,7 +7,7 @@
         <div class="row mt-5">
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card shadow">
-                    <img class="card-img-top" src="{{ asset('argon/img/theme/team-4-800x800.jpg') }}" alt="Card image cap">
+                    <img class="card-img-top" src="/storage/cover_images/{{$post->cover_image}}" alt="Card image cap">
                     <div class="card-body">
                         <h1 class="card-title mb-2">{{ $post->title }}</h1>
                         <h5 class="mb-4">Written by {{ $post->user->getName() }}</h5>

@@ -5,11 +5,11 @@
 
     <div class="container-fluid mt--7">
         @if(count($posts) > 0)
-          <div class="row mt-5">
+          <div class="row">
               @foreach ($posts as $post)
-              <div class="col-xl-4 mb-5 mb-xl-0">
+              <div class="col-xl-4 mt-5 mb-5 mb-xl-0">
                   <div class="card shadow">
-                      <img class="card-img-top" src="{{ asset('argon/img/theme/team-4-800x800.jpg') }}" alt="Card image cap">
+                      <img class="card-img-top" src="/storage/cover_images/{{$post->cover_image}}" alt="Card image cap">
                       <div class="card-body">
                         <h3 class="card-title">{{ $post->title }}</h3>
                         <p class="card-text">
