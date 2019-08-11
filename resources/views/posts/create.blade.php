@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Create Post'])
+@extends('layouts.app', ['title' => 'Write Post'])
 
 @section('styles')
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                               <div class="col-12 col-lg-12">
                                 <button type="submit" id="btn-publish" class="btn btn-outline-info">
                                   <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
-                                  <span class="btn-inner--text">Publish</span>
+                                  <span class="btn-inner--text">Create Post</span>
                                 </button>
                                 <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Cancel</button>
                               </div>
