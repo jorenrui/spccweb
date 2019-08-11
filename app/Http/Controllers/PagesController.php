@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index() {
-        $posts = Post::orderBy('created_at', 'desc')->limit(3)->get();
+        $posts = Post::where('status', 'LIKE', 'Published')
+                        ->orderBy('created_at', 'desc')
+                        ->limit(3)
+                        ->get();
 
         return view('pages.index')->with('posts', $posts);
     }
@@ -18,8 +21,14 @@ class PagesController extends Controller
     }
 
     public function news() {
-        $latest_post = Post::orderBy('created_at', 'desc')->limit(1)->get();
-        $posts = Post::orderBy('created_at', 'desc')->paginate(15);
+        $latest_post = Post::where('status', 'LIKE', 'Published')
+                            ->orderBy('created_at', 'desc')
+                            ->limit(1)
+                            ->get();
+
+        $posts = Post::where('status', 'LIKE', 'Published')
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(15);
 
         return view('pages.news')->with(compact('latest_post', 'posts'));;
     }

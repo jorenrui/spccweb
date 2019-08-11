@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Show Post'])
+@extends('layouts.app', ['title' => 'View Post'])
 
 @section('content')
     @include('layouts.headers.plain')
@@ -7,6 +7,17 @@
         <div class="row mt-5">
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card shadow">
+
+                    @switch($post->status)
+                        @case('Published')
+                          <span class="badge badge-success badge-float">Published</span>
+                          @break
+
+                        @default
+                          <span class="badge badge-warning badge-float">Pending</span>
+                          @break
+                    @endswitch
+
                     <img class="card-img-top" src="/storage/cover_images/{{$post->cover_image}}" alt="Card image cap">
                     <div class="card-body">
                         <h1 class="card-title mb-2">{{ $post->title }}</h1>

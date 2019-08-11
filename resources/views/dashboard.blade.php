@@ -26,7 +26,7 @@
                                         <th scope="col">Title</th>
                                         <th scope="col">Description</th>
                                         <th scope="col">Author</th>
-                                        <th scope="col">Date Published</th>
+                                        <th scope="col">Date Created</th>
                                     </tr>
                                 </thead>
                                 <tbody>

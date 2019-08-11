@@ -22,3 +22,22 @@
 .ql-align-right {
   text-align: right;
 }
+
+.badge-float {
+  width: fit-content;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.badge-float.badge-success {
+  background: #93e7c3;
+}
+
+.badge-float.badge-danger {
+  background: #fbafbe;
+}
+
+.badge-float.badge-warning {
+  background: #fec9bd;
+}
