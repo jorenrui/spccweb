@@ -38,5 +38,16 @@ class UsersTableSeeder extends Seeder
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
+
+        $user = new User;
+        $user->user_id = 3;
+        $user->first_name = 'Joeylene';
+        $user->last_name = 'Rivera';
+        $user->username = 'jorenrui';
+        $user->email = 'joeylenerivera@gmail.com';
+        $user->password = Hash::make('secret');
+        $user->created_at = now();
+        $user->updated_at = now();
+        $user->save();
     }
 }

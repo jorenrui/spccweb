@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -25,12 +27,22 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // Create Roles and Assign Created Permissions
         $role = Role::create(['name' => 'writer']);
-        $role->givePermissionTo(['edit posts', 'delete posts', 'create posts', 'unpublish posts']);
+        $role->givePermissionTo(['edit posts', 'delete posts', 'create posts']);
 
-        $role = Role::create(['name' => 'moderator'])
-            ->givePermissionTo(['publish posts', 'unpublish posts']);
+        $role = Role::create(['name' => 'moderator']);
+        $role->givePermissionTo(['publish posts', 'delete posts']);
 
-        $role = Role::create(['name' => 'super-admin']);
+        $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo(Permission::all());
+
+        // Assign Roles
+        $user = User::find(1);
+        $user->assignRole('admin');
+
+        $user = User::find(2);
+        $user->assignRole('writer');
+
+        $user = User::find(3);
+        $user->assignRole('writer', 'moderator');
     }
 }
