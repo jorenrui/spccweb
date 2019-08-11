@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                        <img alt="Image placeholder" src="/storage/profile_pictures/default-female.png">
                         </span>
                     </div>
                 </a>
@@ -38,11 +38,11 @@
                     @endrole
                     @role('admin|moderator')
                     <a href="/posts/mod/published" class="dropdown-item {{ $title == 'All Published Posts' ? 'active' : '' }}">
-                        <i class="ni ni-air-baloon"></i>
+                        <i class="ni ni-books"></i>
                         <span>All Published Posts</span>
                     </a>
                     <a href="/posts/mod/approval" class="dropdown-item {{ $title == 'Approval of Posts' ? 'active' : '' }}">
-                        <i class="ni ni-air-baloon"></i>
+                        <i class="ni ni-check-bold"></i>
                         <span>Approval of Posts</span>
                     </a>
                     @endrole
@@ -254,6 +254,19 @@
                 <li class="nav-item {{ $title == 'View My Posts' ? 'active' : '' }}">
                     <a href="/posts" class="nav-link">
                         <i class="ni ni-single-copy-04"></i> View My Posts
+                    </a>
+                </li>
+                @endrole
+
+                @role('moderator')
+                <li class="nav-item {{ $title == 'All Published Posts' ? 'active' : '' }}">
+                    <a href="/posts/mod/published" class="nav-link">
+                        <i class="ni ni-books"></i> All Published Posts
+                    </a>
+                </li>
+                <li class="nav-item {{ $title == 'Approval of Posts' ? 'active' : '' }}">
+                    <a href="/posts/mod/approval" class="nav-link">
+                        <i class="ni ni-check-bold"></i> Approval of Posts
                     </a>
                 </li>
                 @endrole

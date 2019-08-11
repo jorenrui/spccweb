@@ -9,7 +9,7 @@
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg">
+                            <img alt="Image placeholder" src="/storage/profile_pictures/default-female.png">
                         </span>
                         <div class="media-body ml-2 d-none d-lg-block">
                             <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->getName() }}</span>
@@ -36,11 +36,11 @@
                     @endrole
                     @role('admin|moderator')
                     <a href="/posts/mod/published" class="dropdown-item {{ $title == 'All Published Posts' ? 'active' : '' }}">
-                        <i class="ni ni-air-baloon"></i>
+                        <i class="ni ni-books"></i>
                         <span>All Published Posts</span>
                     </a>
-                    <a href="/posts/mod/approval" class="dropdown-item {{ $title == 'Approve Posts' ? 'active' : '' }}">
-                        <i class="ni ni-air-baloon"></i>
+                    <a href="/posts/mod/approval" class="dropdown-item {{ $title == 'Approval of Posts' ? 'active' : '' }}">
+                        <i class="ni ni-check-bold"></i>
                         <span>Approval of Posts</span>
                     </a>
                     @endrole
