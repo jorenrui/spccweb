@@ -130,9 +130,8 @@
       </div>
       <p class="article-content">
         {!! str_limit(strip_tags($post->body), 135) !!}
-        <br>
-        <a href="/articles/{{ $post->post_id }}" class="link">Read More</a>
       </p>
+      <a href="/articles/{{ $post->post_id }}" class="link">Read More</a>
     </article>
   @endforeach
 

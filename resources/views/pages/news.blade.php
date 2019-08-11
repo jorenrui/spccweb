@@ -30,11 +30,10 @@
           <span class="publish-date">{{ $latest_post[0]->created_at->format('M d, Y') }}</span>
         </div>
       </div>
-      <div class="article-content">
+      <p class="article-content">
         {!! str_limit(strip_tags($latest_post[0]->body), 135) !!}
-        <br>
-        <a href="/articles/{{ $latest_post[0]->post_id }}" class="link">Read More</a>
-      </div>
+      </p>
+      <a href="/articles/{{ $latest_post[0]->post_id }}" class="link">Read More</a>
     </div>
   </article>
 
@@ -65,11 +64,10 @@
           <span class="publish-date">{{ $post->created_at->format('M d, Y') }}</span>
         </div>
       </div>
-      <div class="article-content">
+      <p class="article-content">
         {!! str_limit(strip_tags($post->body), 135) !!}
-        <br>
-        <a href="/articles/{{ $post->post_id }}" class="link">Read More</a>
-      </div>
+      </p>
+      <a href="/articles/{{ $post->post_id }}" class="link">Read More</a>
     </article>
     @endif
   @endforeach
