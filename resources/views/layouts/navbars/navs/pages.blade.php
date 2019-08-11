@@ -15,7 +15,21 @@
   <div id="siteNav" class="site-nav">
     <nav class="nav-portal">
       <ul>
-        <li><a href="{{ route('login') }}">Login to Portal</a></li>
+        @auth()
+          <li>
+            <a href="/profile">
+              Welcome, {{ auth()->user()->getName() }}!
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('dashboard') }}">
+              Return to Portal
+            </a>
+          </li>
+        @endauth
+        @guest()
+          <li><a href="{{ route('login') }}">Login to Portal</a></li>
+        @endguest
       </ul>
     </nav>
     <nav class="nav-main">
