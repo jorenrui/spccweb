@@ -20,27 +20,37 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Welcome!</h6>
                     </div>
-                    <a href="{{ route('profile.edit') }}" class="dropdown-item">
+                    <a href="{{ route('profile.edit') }}" class="dropdown-item {{ $title == 'Profile' ? 'active' : '' }}">
                         <i class="ni ni-single-02"></i>
                         <span>Profile</span>
                     </a>
-                    <a href="/posts/create" class="dropdown-item">
+                    @role('writer|admin')
+                    <a href="/posts/create" class="dropdown-item {{ $title == 'Write Post' ? 'active' : '' }}">
                         <i class="ni ni-fat-add"></i>
-                        <span>Add Post</span>
+                        <span>Write Post</span>
                     </a>
-                    <a href="/posts" class="dropdown-item">
+                    <a href="/posts" class="dropdown-item {{ $title == 'View My Posts' ? 'active' : '' }}">
                         <i class="ni ni-single-copy-04"></i>
-                        <span>Posts</span>
+                        <span>View My Posts</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    @endrole
+                    @role('admin|moderator')
+                    <a href="/posts/mod/published" class="dropdown-item {{ $title == 'All Published Posts' ? 'active' : '' }}">
                         <i class="ni ni-air-baloon"></i>
-                        <span>Events</span>
+                        <span>All Published Posts</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <a href="/posts/mod/approval" class="dropdown-item {{ $title == 'Approve Posts' ? 'active' : '' }}">
+                        <i class="ni ni-air-baloon"></i>
+                        <span>Approval of Posts</span>
+                    </a>
+                    @endrole
+                    @role('admin')
+                    <a href="#" class="dropdown-item {{ $title == 'Settings' ? 'active' : '' }}">
                         <i class="ni ni-settings-gear-65"></i>
                         <span>Settings</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    @endrole
+                    <a href="#" class="dropdown-item {{ $title == 'About' ? 'active' : '' }}">
                         <i class="ni ni-app"></i>
                         <span>About</span>
                     </a>

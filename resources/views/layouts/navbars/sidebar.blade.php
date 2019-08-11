@@ -22,27 +22,37 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Welcome!</h6>
                     </div>
-                    <a href="{{ route('profile.edit') }}" class="dropdown-item">
+                    <a href="{{ route('profile.edit') }}" class="dropdown-item {{ $title == 'Profile' ? 'active' : '' }}">
                         <i class="ni ni-single-02"></i>
                         <span>Profile</span>
                     </a>
-                    <a href="/posts/create" class="dropdown-item">
+                    @role('writer|admin')
+                    <a href="/posts/create" class="dropdown-item {{ $title == 'Write Post' ? 'active' : '' }}">
                         <i class="ni ni-fat-add"></i>
-                        <span>Add Post</span>
+                        <span>Write Post</span>
                     </a>
-                    <a href="/posts" class="dropdown-item">
+                    <a href="/posts" class="dropdown-item {{ $title == 'View My Posts' ? 'active' : '' }}">
                         <i class="ni ni-single-copy-04"></i>
-                        <span>Posts</span>
+                        <span>View My Posts</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    @endrole
+                    @role('admin|moderator')
+                    <a href="/posts/mod/published" class="dropdown-item {{ $title == 'All Published Posts' ? 'active' : '' }}">
                         <i class="ni ni-air-baloon"></i>
-                        <span>Events</span>
+                        <span>All Published Posts</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <a href="/posts/mod/approval" class="dropdown-item {{ $title == 'Approval of Posts' ? 'active' : '' }}">
+                        <i class="ni ni-air-baloon"></i>
+                        <span>Approval of Posts</span>
+                    </a>
+                    @endrole
+                    @role('admin')
+                    <a href="#" class="dropdown-item {{ $title == 'Settings' ? 'active' : '' }}">
                         <i class="ni ni-settings-gear-65"></i>
                         <span>Settings</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    @endrole
+                    <a href="#" class="dropdown-item {{ $title == 'About' ? 'active' : '' }}">
                         <i class="ni ni-app"></i>
                         <span>About</span>
                     </a>
@@ -75,23 +85,24 @@
             </div>
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <li class="nav-item {{ $title == 'Dashboard' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('dashboard') }}">
                         <i class="ni ni-tv-2 text-primary"></i> Dashboard
                     </a>
                 </li>
-                <li class="nav-item">
+                @role('admin')
+                <li class="nav-item {{ $title == 'Examination Period' ? 'active' : '' }}">
                     <a class="nav-link" href="#">
                         <i class="ni ni-ruler-pencil"></i> Examination Period
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ $title == 'Class Scheduling' ? 'active' : '' }}">
                     <a class="nav-link" href="#">
                         <i class="ni ni-calendar-grid-58"></i> Class Scheduling
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ $title == 'Manage Grades' ? 'active' : '' }}">
                     <a class="nav-link" href="#navbar-grades" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-grades">
                         <i class="ni ni-chart-bar-32"></i>
                         <span class="nav-link-text">Manage Grades</span>
@@ -112,7 +123,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ $title == 'Manage Students' ? 'active' : '' }}">
                     <a class="nav-link" href="#navbar-students" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-students">
                         <i class="ni ni-single-02"></i>
                         <span class="nav-link-text">Manage Students</span>
@@ -144,7 +155,7 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ $title == 'Manage Faculty' ? 'active' : '' }}">
                     <a class="nav-link" href="#navbar-faculty" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-faculty">
                         <i class="ni ni-badge"></i>
                         <span class="nav-link-text">Manage Faculty</span>
@@ -171,7 +182,7 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ $title == 'Manage Curriculum' ? 'active' : '' }}">
                     <a class="nav-link" href="#navbar-curriculum" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-curriculum">
                         <i class="ni ni-collection"></i>
                         <span class="nav-link-text">Manage Curriculum</span>
@@ -202,12 +213,15 @@
                         </ul>
                     </div>
                 </li>
+                @endrole
             </ul>
             <!-- Divider -->
             <hr class="my-3">
             <!-- Navigation -->
             <ul class="navbar-nav mb-md-3">
-                <li class="nav-item">
+
+                @role('admin')
+                <li class="nav-item {{ $title == 'System Settings' ? 'active' : '' }}">
                     <a class="nav-link" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
                         <i class="ni ni-settings"></i>
                         <span class="nav-link-text">System Settings</span>
@@ -224,11 +238,26 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ $title == 'User Management' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('user.index') }}">
                         <i class="ni ni-circle-08 text-pink"></i> User Management
                     </a>
                 </li>
+                @endrole
+
+                @role('writer')
+                <li class="nav-item {{ $title == 'Write Post' ? 'active' : '' }}">
+                    <a href="/posts/create" class="nav-link">
+                        <i class="ni ni-fat-add"></i> Write Post
+                    </a>
+                </li>
+                <li class="nav-item {{ $title == 'View My Posts' ? 'active' : '' }}">
+                    <a href="/posts" class="nav-link">
+                        <i class="ni ni-single-copy-04"></i> View My Posts
+                    </a>
+                </li>
+                @endrole
+
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();" class="nav-link">

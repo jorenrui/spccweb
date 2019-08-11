@@ -19,7 +19,7 @@ class PostsController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $posts = $user->posts()->paginate(6);
+        $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(6);
 
         return view('posts.index')->with('posts', $posts);
     }
@@ -64,13 +64,24 @@ class PostsController extends Controller
             $fileNameToStore = 'default.jpg';
         }
 
+        if(auth()->user()->hasRole('moderator') || auth()->user()->hasRole('admin')) {
+            $status = 'Published';
+        }
+        else {
+            $status = 'Pending';
+        }
         // Create Post
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->user_id;
         $post->cover_image = $fileNameToStore;
+        $post->status = $status;
         $post->save();
+
+        if(auth()->user()->hasRole('moderator') || auth()->user()->hasRole('admin')) {
+            return redirect('/posts')->with('success', 'Post Published');
+        }
 
         return redirect('/posts')->with('success', 'Post Created');
     }
@@ -99,7 +110,8 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         // Check for correct user
-        if(auth()->user()->user_id != $post->user_id) {
+        if(!auth()->user()->hasPermissionTo('edit posts') &&
+            auth()->user()->user_id != $post->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 
@@ -166,7 +178,8 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         // Check for correct user
-        if(auth()->user()->user_id != $post->user_id) {
+        if(!auth()->user()->hasPermissionTo('delete posts') &&
+            auth()->user()->user_id != $post->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 
@@ -178,4 +191,29 @@ class PostsController extends Controller
 
         return redirect('/posts')->with('success', 'Post Removed');
     }
+
+    public function published() {
+        $posts = Post::where('status', 'LIKE', 'Published')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(15);
+
+        return view('posts.published')->with('posts', $posts);
+    }
+
+    public function publish($id) {
+        $post = Post::find($id);
+        $post->status = 'Published';
+        $post->save();
+
+        return redirect('/posts/mod/approval')->with('success', 'Post Published');
+    }
+
+    public function approval() {
+        $posts = Post::where('status', 'LIKE', 'Pending')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(15);
+
+        return view('posts.approval')->with('posts', $posts);
+    }
+
 }

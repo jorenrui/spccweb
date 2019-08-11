@@ -25,14 +25,21 @@ Route::get('/team', 'PagesController@team');
 
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
+	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+});
+
+Route::group(['middleware' => ['role:admin|writer']], function () {
 	Route::resource('posts','PostsController');
 });
 
+Route::group(['middleware' => ['role:admin|moderator']], function () {
+	Route::get('/posts/mod/published', 'PostsController@published');
+	Route::get('/posts/mod/{post}/publish', 'PostsController@publish');
+	Route::get('/posts/mod/approval', 'PostsController@approval');
+});
