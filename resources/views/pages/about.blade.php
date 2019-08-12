@@ -20,18 +20,10 @@
     <h2>Systems Plus Computer College - Caloocan</h2>
     <div class="description">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+          Systems Plus Computer College (SPCC) is a private school founded in 1997. It is affiliated with Systems Plus Computer Foundation (SPCF) which was founded in 1985 at Balibago, Angeles City, Pampanga on June 27, 1985. With the growth of the school, campuses have been established in Cubao, Caloocan City, San Fernando, and in Miranda, Angeles City. SPCC - Caloocan has a Basic Education Department and a College Department.
       </p>
       <p>
-        Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+        Systems Plus Computer College offers meaningful opportunities for students who want to excel in the computer and technical education. The emphasis on academic excellence and well-grounded values are reflected in the degree programs offered by the school which showed evidence of innovation and high technology.
       </p>
     </div>
   </div>
