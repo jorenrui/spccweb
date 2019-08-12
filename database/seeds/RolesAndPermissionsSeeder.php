@@ -23,7 +23,6 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'delete posts']);
         Permission::create(['name' => 'create posts']);
         Permission::create(['name' => 'publish posts']);
-        Permission::create(['name' => 'unpublish posts']);
 
         // Create Roles and Assign Created Permissions
         $role = Role::create(['name' => 'writer']);
