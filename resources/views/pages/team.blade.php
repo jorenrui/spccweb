@@ -35,7 +35,7 @@
         <h3 class="name">Geraldine Mae Gonzales</h3>
         <p>Project Manager</p>
         <p>
-          <a href="#" class="link">
+          <a href="{{ asset('spccweb/resume/geraldine.pdf') }}" class="link">
             resume
           </a>
         </p>
@@ -45,7 +45,7 @@
         <h3 class="name">Bryan Garcia</h3>
         <p>System Analyst</p>
         <p>
-          <a href="#" class="link">
+          <a href="{{ asset('spccweb/resume/bryan.pdf') }}" class="link">
             resume
           </a>
         </p>
@@ -55,7 +55,7 @@
         <h3 class="name">Joeylene Rivera</h3>
         <p>Web Developer/Designer</p>
         <p>
-          <a href="#" class="link">
+          <a href="{{ asset('spccweb/resume/joeylene.pdf') }}" class="link">
             resume
           </a>
         </p>
