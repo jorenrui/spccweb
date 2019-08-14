@@ -29,7 +29,7 @@
                                 <tbody>
                                     @foreach ($posts as $post)
                                         <tr>
-                                            <td class="text-right">
+                                            <td class="text-right" scope="row">
 
                                                 <a href="/posts/mod/{{ $post->post_id }}/publish" class="btn btn-outline-primary btn-sm">
                                                   Publish
@@ -43,14 +43,14 @@
                                                 </form>
 
                                             </td>
-                                            <th scope="row">
+                                            <td>
                                               <a href="/posts/{{ $post->post_id }}">
                                                 {{ $post->title }}
                                               </a>
-                                            </th>
-                                            <th>
+                                            </td>
+                                            <td>
                                                 {!! str_limit(strip_tags($post->body), 50) !!}
-                                            </th>
+                                            </td>
                                             <td>{{ $post->user->getName() }}</td>
                                             <td>{{ $post->created_at->format('M d, Y') }}</td>
                                         </tr>
@@ -70,5 +70,7 @@
                 </div>
             </div>
         </div>
+
+        @include('layouts.footers.auth')
     </div>
 @endsection
