@@ -43,3 +43,7 @@ Route::group(['middleware' => ['role:admin|moderator']], function () {
 	Route::get('/posts/mod/{post}/publish', 'PostsController@publish');
 	Route::get('/posts/mod/approval', 'PostsController@approval');
 });
+
+Route::group(['middleware' => ['role:admin']], function () {
+	Route::resource('events','EventsController')->except('show');
+});

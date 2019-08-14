@@ -47,6 +47,10 @@
                     </a>
                     @endrole
                     @role('admin')
+                    <a href="/events" class="dropdown-item {{ $title == 'Events' ? 'active' : '' }}">
+                        <i class="ni ni-calendar-grid-58"></i>
+                        <span>Events</span>
+                    </a>
                     <a href="#" class="dropdown-item {{ $title == 'Settings' ? 'active' : '' }}">
                         <i class="ni ni-settings-gear-65"></i>
                         <span>Settings</span>
