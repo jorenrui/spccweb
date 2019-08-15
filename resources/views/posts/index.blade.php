@@ -26,11 +26,13 @@
                         <p class="card-text">
                           {!! str_limit(strip_tags($post->body), 135) !!}
                         </p>
-                        <p><small>Written by {{ $post->user->getName() }} | {{ $post->created_at->format('M d, Y') }}</small></p>
+                        <p><small>Written by {{ $post->user->getName() }} | {{ $post->getDateCreated() }}</small></p>
                         <div class="button-group row">
                           <div class="col-8">
                             <a href="/posts/{{ $post->post_id }}" class="btn btn-outline-primary btn-sm">View</a>
+                            @if(Auth::user()->user_id == $post->user_id || Auth::user()->hasRole('admin'))
                             <a href="/posts/{{$post->post_id}}/edit" class="btn btn-outline-info btn-sm">Edit</a>
+                            @endif
                           </div>
                           <div class="col-4 text-right">
                               <form method="POST" action="{{ action('PostsController@destroy', $post->post_id) }}" style="display: inline;">
