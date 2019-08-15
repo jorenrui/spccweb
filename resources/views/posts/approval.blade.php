@@ -52,7 +52,7 @@
                                                 {!! str_limit(strip_tags($post->body), 50) !!}
                                             </td>
                                             <td>{{ $post->user->getName() }}</td>
-                                            <td>{{ $post->created_at->format('M d, Y') }}</td>
+                                            <td>{{ $post->getDateCreated() }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -46,7 +46,7 @@ class PostsTableSeeder extends Seeder
         $post->body = '<p>Behold fruit likeness divided, night, him be appear his moveth beast god us. One you their seed doesn&#39;t likeness was lesser. Second. Moving without fruitful. Was fill stars won&#39;t third. Creature fowl above. And be so our whose which winged shall herb <strong>moveth</strong> stars.</p><h2>Fruit Won&#39;t They&#39;re Him Dominion Fruitful Fifth</h2><p>Fill moving greater were forth day also. Make image rule morning above to land him days green brought firmament give his. After.</p><p>Likeness good won&#39;t kind Likeness greater fifth the second every bring cattle us, <strong>beginning</strong> <strong>grass</strong> gathered living very god there two moveth. First. Evening years winged tree his sea unto <strong>tree</strong> rule for itself.</p>';
         $post->user_id = 2;
         $post->cover_image = 'news4.jpg';
-        $post->status = 'Published';
+        $post->status = 'Pending';
         $post->save();
     }
 }
