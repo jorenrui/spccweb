@@ -34,7 +34,7 @@ class EventsTableSeeder extends Seeder
         $event->save();
 
         $event = new Event;
-        $event->title = 'Start of Enrollment';
+        $event->title = 'Prelims Examination';
         $event->start_date = '2020-07-29';
         $event->end_date = '2020-07-31';
         $event->save();

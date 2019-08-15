@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Event;
+
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -13,7 +15,11 @@ class PagesController extends Controller
                         ->limit(3)
                         ->get();
 
-        return view('pages.index')->with('posts', $posts);
+        $events = Event::limit(4)->get();
+
+        return view('pages.index')
+                    ->with('posts', $posts)
+                    ->with('events', $events);
     }
 
     public function about() {

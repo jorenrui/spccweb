@@ -39,7 +39,20 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required'
+        ]);
+
+        // Update Event
+        $event = new Event;
+        $event->title = $request->input('title');
+        $event->start_date = $request->input('start_date');
+        $event->end_date = $request->input('end_date');
+        $event->save();
+
+        return redirect('/events')->with('success', 'Event Created');
     }
 
     /**
@@ -50,7 +63,9 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
-        return view('events.edit');
+        $event = Event::find($id);
+
+        return view('events.edit')->with('event', $event);
     }
 
     /**
@@ -62,7 +77,20 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required'
+        ]);
+
+        // Update Event
+        $event = Event::find($id);
+        $event->title = $request->input('title');
+        $event->start_date = $request->input('start_date');
+        $event->end_date = $request->input('end_date');
+        $event->save();
+
+        return redirect('/events')->with('success', 'Event Updated');
     }
 
     /**
@@ -73,6 +101,10 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::find($id);
+
+        $event->delete();
+
+        return redirect('/events')->with('success', 'Event Removed');
     }
 }

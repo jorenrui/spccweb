@@ -9,27 +9,28 @@
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-body">
-                      <form id="form-post" method="POST" action="{{ action('EventsController@store') }}">
+                      <form id="form-post" method="POST" action="{{ action('EventsController@update', $event->event_id) }}">
                           @csrf
+                          @method('PUT')
 
                           <div class="row">
                             <div class="col-12 col-lg-8">
                                 <label class="form-control-label" for="title">Event Title</label>
-                                <input id="title" name="title" class="form-control mb-3" type="text" placeholder="Enter title..." required>
+                                <input id="title" name="title" class="form-control mb-3" type="text" placeholder="Enter title..."  value="{{ $event->title }}" required>
                             </div>
                           </div>
 
                           <div class="row">
                             <div class="col-12 col-md-6 col-lg-3">
                                 <label class="form-control-label" for="start_date">Start Date</label>
-                                <input id="start_date" name="start_date" class="form-control mb-3" type="date" placeholder="Enter date..." required>
+                                <input id="start_date" name="start_date" class="form-control mb-3" type="date" placeholder="Enter date..." value="{{ $event->start_date }}" required>
                             </div>
                           </div>
 
                           <div class="row">
                             <div class="col-12 col-md-6 col-lg-3">
                                 <label class="form-control-label" for="end_date">End Date</label>
-                                <input id="end_date" name="end_date" class="form-control mb-3" type="date" placeholder="Enter date..." required>
+                                <input id="end_date" name="end_date" class="form-control mb-3" type="date" placeholder="Enter date..." value="{{ $event->end_date }}" required>
                             </div>
                           </div>
 

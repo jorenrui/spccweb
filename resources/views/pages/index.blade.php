@@ -16,6 +16,7 @@
 <!-- end Hero Section -->
 
 <!-- Upcoming Events Section -->
+@if(count($events) > 0)
 <section class="section upcoming-events">
   <div class="content">
     <div class="title">
@@ -29,24 +30,15 @@
         </a>
       </div>
     </div>
-    <div class="card">
-      <h3 class="date">20 May</h3>
-      <p class="event">Start of Enrollment</p>
-    </div>
-    <div class="card">
-      <h3 class="date">22 Jun</h3>
-      <p class="event">End of Enrollment</p>
-    </div>
-    <div class="card">
-      <h3 class="date">24 Jun</h3>
-      <p class="event">Start of Classes</p>
-    </div>
-    <div class="card">
-      <h3 class="date">08 Sep</h3>
-      <p class="event">Prelims Examination</p>
-    </div>
+    @foreach ($events as $event)
+      <div class="card">
+        <h3 class="date">{{ $event->getEventDate() }}</h3>
+        <p class="event">{{ $event->title }}</p>
+      </div>
+    @endforeach
   </div>
 </section>
+@endif
 <!-- end Upcoming Events Section -->
 
 <!-- About Section -->
@@ -123,7 +115,7 @@
       </h3>
       <div class="meta">
         {{ $post->user->getName() }}
-        <span class="publish-date">{{ $post->created_at->format('M d, Y') }}</span>
+        <span class="publish-date">{{ $post->getDateCreated() }}</span>
       </div>
       <p class="article-content">
         {!! str_limit(strip_tags($post->body), 135) !!}

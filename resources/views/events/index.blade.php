@@ -26,8 +26,7 @@
                             <tr>
                                 <th scope="col"></th>
                                 <th scope="col">Event Title</th>
-                                <th scope="col">Start Date</th>
-                                <th scope="col">End Date</th>
+                                <th scope="col">Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,8 +47,7 @@
 
                                 </td>
                                 <td>{{ $event->title }}</td>
-                                <td>{{ $event->start_date }}</td>
-                                <td>{{ $event->end_date }}</td>
+                                <td>{{ $event->getDate() }}</td>
                             </tr>
                           @endforeach
                         </tbody>

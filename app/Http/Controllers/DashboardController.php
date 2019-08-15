@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Event;
 
 class DashboardController extends Controller
 {
@@ -28,6 +29,12 @@ class DashboardController extends Controller
                         ->limit(5)
                         ->get();
 
-        return view('dashboard')->with('posts', $posts);
+        $events = Event::orderBy('start_date', 'desc')
+                    ->limit(5)
+                    ->get();
+
+        return view('dashboard')
+                    ->with('posts', $posts)
+                    ->with('events', $events);
     }
 }
