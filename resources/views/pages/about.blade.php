@@ -93,10 +93,10 @@
     </div>
     <div id="tab-president">
       <h2>President's Corner</h2>
-      <img src="{{ asset('spccweb/img/president.jpg') }}" alt="SPCC - Caloocan President" />
-      <h3>Dr. Edwin Bermillo Bunao</h3>
-      <p>School Director</p>
-      <p>Ed.D major in Educational Management</p>
+      <img src="{{ asset('spccweb/img/president.jpg') }}" alt="SPCF President" />
+      <h3>Lourdes R. Bustamante</h3>
+      <p>President</p>
+      <p>Systems Plus Computer Foundation</p>
     </div>
     <div id="tab-hymn">
       <h2>SPCC Hymn</h2>
