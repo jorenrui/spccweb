@@ -45,7 +45,7 @@ class EventsController extends Controller
             'end_date' => 'required'
         ]);
 
-        // Update Event
+        // Add Event
         $event = new Event;
         $event->title = $request->input('title');
         $event->start_date = $request->input('start_date');
