@@ -96,7 +96,7 @@
                 </li>
                 @role('admin')
                 <li class="nav-item {{ $title == 'Examination Period' ? 'active' : '' }}">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/acad_terms">
                         <i class="ni ni-ruler-pencil"></i> Examination Period
                     </a>
                 </li>
