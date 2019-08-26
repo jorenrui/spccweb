@@ -1,8 +1,43 @@
 @extends('layouts.app', ['title' => 'Write Post'])
 
 @section('styles')
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<link href="{{ asset('vendor/quilljs-1.3.6/quill.snow.css') }}" rel="stylesheet">
 @endsection
+
+@push('js')
+<script src="{{ asset('vendor/quilljs-1.3.6/quill.min.js') }}"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      let intervalFunc = function () {
+          let image_path = $('#cover_image').val().split('\\');
+          $('#browse-image').html(image_path[image_path.length - 1]);
+      };
+
+      $('#cover_image').on('click', function () {
+          setInterval(intervalFunc, 1);
+      });
+
+      let quill = new Quill('#editor', {
+        modules: {
+          toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline'],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'align': [] }]
+          ]
+        },
+        theme: 'snow'
+      });
+
+      $("#btn-publish").click(function(){
+          let body = $("#editor *").html();
+
+          $("input#body").val(body);
+      });
+  });
+</script>
+@endpush
 
 @section('content')
     @include('layouts.headers.plain')
@@ -60,38 +95,3 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
-
-@push('js')
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-      let intervalFunc = function () {
-          let image_path = $('#cover_image').val().split('\\');
-          $('#browse-image').html(image_path[image_path.length - 1]);
-      };
-
-      $('#cover_image').on('click', function () {
-          setInterval(intervalFunc, 1);
-      });
-
-      let quill = new Quill('#editor', {
-        modules: {
-          toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline'],
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            [{ 'align': [] }]
-          ]
-        },
-        theme: 'snow'
-      });
-
-      $("#btn-publish").click(function(){
-          let body = $("#editor *").html();
-
-          $("input#body").val(body);
-      });
-  });
-</script>
-@endpush
