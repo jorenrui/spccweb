@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-nowrap">This semester</span>
+                                <span class="text-nowrap">S.Y. {{ $curAcadTerm->sy }}</span>
                             </p>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-nowrap">This semester</span>
+                                <span class="text-nowrap">{{ $curAcadTerm->getAcadTerm() }}</span>
                             </p>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-nowrap">This month</span>
+                                <span class="text-nowrap">{{ $curAcadTerm->getAcadTerm() }}</span>
                             </p>
                         </div>
                     </div>
