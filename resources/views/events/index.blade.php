@@ -53,6 +53,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="card-footer">
+                    {{ $acadTerms->links() }}
+                </div>
               @else
                   <div class="row mt-3 mb-5">
                       <div class="col text-center">
