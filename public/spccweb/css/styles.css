@@ -441,6 +441,11 @@ section.upcoming-events .title {
   display: inline-block;
 }
 
+section.upcoming-events .pagination {
+  text-align: right;
+  margin-top:-3px;
+}
+
 section.upcoming-events .headline {
   margin: 0;
 }
