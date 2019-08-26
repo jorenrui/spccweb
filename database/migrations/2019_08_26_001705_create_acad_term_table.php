@@ -17,6 +17,12 @@ class CreateAcadTermTable extends Migration
             $table->string('acad_term_id', 6);
             $table->primary('acad_term_id');
             $table->string('sy', 9);
+            $table->date('prelims_start_date');
+            $table->date('prelims_end_date');
+            $table->date('midterms_start_date');
+            $table->date('midterms_end_date');
+            $table->date('finals_start_date');
+            $table->date('finals_end_date');
             $table->tinyInteger('semester');
         });
     }

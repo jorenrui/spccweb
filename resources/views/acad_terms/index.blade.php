@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Academic Terms'])
+@extends('layouts.app', ['title' => 'Examination Period'])
 
 @section('content')
     @include('layouts.headers.plain')
@@ -13,7 +13,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Academic Term</h3>
+                            <h3 class="mb-0">Academic Terms</h3>
                         </div>
                         <div class="col text-right">
                             <a href="/acad_terms/create" class="btn btn-sm btn-primary">Add Academic Term</a>
@@ -25,9 +25,12 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col" class="text-center">Academic Term ID</th>
+                                <th scope="col" class="text-center">ID</th>
                                 <th scope="col" class="text-center">School Year</th>
                                 <th scope="col" class="text-center">Semester</th>
+                                <th scope="col" class="text-center">Prelims</th>
+                                <th scope="col" class="text-center">Midterms</th>
+                                <th scope="col" class="text-center">Finals</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,10 +53,16 @@
                                 <td class="text-center">{{ $acadTerm->acad_term_id }}</td>
                                 <td class="text-center">{{ $acadTerm->sy }}</td>
                                 <td class="text-center">{{ $acadTerm->semester }}</td>
+                                <td class="text-center">{{ $acadTerm->getPrelimsDate() }}</td>
+                                <td class="text-center">{{ $acadTerm->getMidtermsDate() }}</td>
+                                <td class="text-center">{{ $acadTerm->getFinalsDate() }}</td>
                             </tr>
                           @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div class="card-footer">
+                    {{ $acadTerms->links() }}
                 </div>
               @else
                   <div class="row mt-3 mb-5">

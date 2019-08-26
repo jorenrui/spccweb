@@ -41,16 +41,34 @@ class AcadTermController extends Controller
     {
         $this->validate($request, [
             'sy' => 'required',
-            'semester' => 'required'
+            'semester' => 'required',
+            'prelims_start_date' => 'required',
+            'prelims_end_date' => 'required',
+            'midterms_start_date' => 'required',
+            'midterms_end_date' => 'required',
+            'finals_start_date' => 'required',
+            'finals_end_date' => 'required'
         ]);
 
         $acad_term_id = substr($request->input('sy'), 2, 2) . substr($request->input('sy'), 7, 7) . $request->input('semester');
+        $prelims_start_date = date("Y-m-d", strtotime($request->input('prelims_start_date')));
+        $prelims_end_date = date("Y-m-d", strtotime($request->input('prelims_end_date')));
+        $midterms_start_date = date("Y-m-d", strtotime($request->input('midterms_start_date')));
+        $midterms_end_date = date("Y-m-d", strtotime($request->input('midterms_end_date')));
+        $finals_start_date = date("Y-m-d", strtotime($request->input('finals_start_date')));
+        $finals_end_date = date("Y-m-d", strtotime($request->input('finals_end_date')));
 
         // Add Acad Term
         $acadTerm = new AcadTerm;
         $acadTerm->acad_term_id = $acad_term_id;
         $acadTerm->sy = $request->input('sy');
         $acadTerm->semester = $request->input('semester');
+        $acadTerm->prelims_start_date = $prelims_start_date;
+        $acadTerm->prelims_end_date = $prelims_end_date;
+        $acadTerm->midterms_start_date = $midterms_start_date;
+        $acadTerm->midterms_end_date = $midterms_end_date;
+        $acadTerm->finals_start_date = $finals_start_date;
+        $acadTerm->finals_end_date = $finals_end_date;
         $acadTerm->save();
 
         return redirect('/acad_terms')->with('success', 'Academic Term Created');
@@ -91,16 +109,34 @@ class AcadTermController extends Controller
     {
         $this->validate($request, [
             'sy' => 'required',
-            'semester' => 'required'
+            'semester' => 'required',
+            'prelims_start_date' => 'required',
+            'prelims_end_date' => 'required',
+            'midterms_start_date' => 'required',
+            'midterms_end_date' => 'required',
+            'finals_start_date' => 'required',
+            'finals_end_date' => 'required'
         ]);
 
         $acad_term_id = substr($request->input('sy'), 2, 2) . substr($request->input('sy'), 7, 7) . $request->input('semester');
+        $prelims_start_date = date("Y-m-d", strtotime($request->input('prelims_start_date')));
+        $prelims_end_date = date("Y-m-d", strtotime($request->input('prelims_end_date')));
+        $midterms_start_date = date("Y-m-d", strtotime($request->input('midterms_start_date')));
+        $midterms_end_date = date("Y-m-d", strtotime($request->input('midterms_end_date')));
+        $finals_start_date = date("Y-m-d", strtotime($request->input('finals_start_date')));
+        $finals_end_date = date("Y-m-d", strtotime($request->input('finals_end_date')));
 
         // Update Acad Term
         $acadTerm = AcadTerm::find($id);
         $acadTerm->acad_term_id = $acad_term_id;
         $acadTerm->sy = $request->input('sy');
         $acadTerm->semester = $request->input('semester');
+        $acadTerm->prelims_start_date = $prelims_start_date;
+        $acadTerm->prelims_end_date = $prelims_end_date;
+        $acadTerm->midterms_start_date = $midterms_start_date;
+        $acadTerm->midterms_end_date = $midterms_end_date;
+        $acadTerm->finals_start_date = $finals_start_date;
+        $acadTerm->finals_end_date = $finals_end_date;
         $acadTerm->save();
 
         return redirect('/acad_terms')->with('success', 'Academic Term Updated');
