@@ -14,7 +14,7 @@
 
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="{{ asset('vendor/normalize/normalize.min.css') }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
   <link rel="stylesheet" href="{{ asset('spccweb/css/styles.css') }}">
@@ -28,7 +28,7 @@
 
   @include('layouts.footers.pages')
 
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="{{ asset('vendor/jquery-3.2.1/jquery.min.js') }}"></script>
   <script src="{{ asset('spccweb/js/particles.js') }}"></script>
   <script src="{{ asset('spccweb/js/script.js') }}"></script>
 
