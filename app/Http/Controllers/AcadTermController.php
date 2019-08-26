@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AcadTerm;
+use App\Models\Setting;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,12 @@ class AcadTermController extends Controller
     {
         $acadTerms = AcadTerm::orderBy('acad_term_id', 'desc')->paginate(15);
 
-        return view('acad_terms.index')->with('acadTerms', $acadTerms);
+        $cur_acad_term_id = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $curAcadTerm = AcadTerm::find($cur_acad_term_id);
+
+        return view('acad_terms.index')
+                ->with('acadTerms', $acadTerms)
+                ->with('curAcadTerm', $curAcadTerm);
     }
 
     /**

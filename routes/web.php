@@ -47,4 +47,5 @@ Route::group(['middleware' => ['role:admin|moderator']], function () {
 Route::group(['middleware' => ['role:admin']], function () {
 	Route::resource('events','EventsController')->except('show');
 	Route::resource('acad_terms','AcadTermController');
+	Route::put('settings/set_cur_acad_term/{setting}','SettingsController@setCurAcadTerm');
 });
