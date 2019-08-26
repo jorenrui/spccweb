@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             PostsTableSeeder::class,
             EventsTableSeeder::class,
             AcadTermTableSeeder::class,
+            SettingsTableSeeder::class,
         ]);
     }
 }

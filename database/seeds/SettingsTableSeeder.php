@@ -1,0 +1,23 @@
+<?php
+
+use App\Models\Setting;
+
+use Illuminate\Database\Seeder;
+
+class SettingsTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('settings')->delete();
+
+        $setting = new Setting;
+        $setting->name = 'Current Acad Term';
+        $setting->value = '181901';
+        $setting->save();
+    }
+}
