@@ -49,8 +49,8 @@ class PagesController extends Controller
         return view('pages.contact');
     }
 
-    public function enroll() {
-        return view('pages.enroll');
+    public function admission() {
+        return view('pages.admission');
     }
 
     public function team() {

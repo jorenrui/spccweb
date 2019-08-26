@@ -11,8 +11,8 @@
  * - ABOUT SECTION - ABOUT PAGE
  * - INFO TAB - ABOUT PAGE
  * - CONTACT SECTION - CONTACT PAGE
- * - ENROLLMENT SECTION - ENROLL PAGE
- * - POLICIES SECTION - ENROLL PAGE
+ * - ENROLLMENT SECTION - ADMISSION PAGE
+ * - POLICIES SECTION - ADMISSION PAGE
  * - TEAM SECTION - TEAM PAGE
  * - FEATURED NEWS SECTION - NEWS PAGE
  * - NEWS SECTION - NEWS PAGE
@@ -1165,7 +1165,7 @@ section.contact-cover h1::after {
 
 section.enroll-cover h1::before,
 section.enroll-cover h1::after {
-  width: 300px;
+  width: 400px;
 }
 
 section.news-cover h1::before,
@@ -1715,7 +1715,7 @@ section.contact .bg .circle-pattern-small {
 }
 
 /* =======================================
- * ENROLLMENT SECTION - ENROLL PAGE
+ * ENROLLMENT SECTION - ADMISSION PAGE
  * ======================================= */
 
 section.enroll {
@@ -1830,7 +1830,7 @@ section.enroll .bg .circle-pattern-small {
 }
 
 /* =======================================
- * POLICIES SECTION - ENROLL PAGE
+ * POLICIES SECTION - ADMISSION PAGE
  * ======================================= */
 section.policies {
   padding: 20px 0 80px 0;

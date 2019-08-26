@@ -20,7 +20,7 @@ Route::get('/about', 'PagesController@about');
 Route::get('/news', 'PagesController@news');
 Route::get('/articles/{article}', 'PagesController@articles');
 Route::get('/contact', 'PagesController@contact');
-Route::get('/enroll', 'PagesController@enroll');
+Route::get('/admission', 'PagesController@admission');
 Route::get('/team', 'PagesController@team');
 
 Auth::routes();

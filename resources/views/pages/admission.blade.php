@@ -1,10 +1,10 @@
-@extends('layouts.pages', ['title' => 'Enroll'])
+@extends('layouts.pages', ['title' => 'Admission'])
 
 @section('content')
 <!-- Page Cover Section -->
 <section class="section page-cover enroll-cover">
   <div class="page-title">
-    <h1>Enroll</h1>
+    <h1>Admission</h1>
   </div>
 
   <canvas class="particles-background"></canvas>

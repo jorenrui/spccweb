@@ -46,8 +46,8 @@
         <li class="{{ $title == 'Contact' ? 'active' : '' }}">
           <a href="/contact">contact</a>
         </li>
-        <li class="cat {{ $title == 'Enroll' ? 'active' : '' }}">
-          <a href="/enroll">enroll</a>
+        <li class="cat {{ $title == 'Admission' ? 'active' : '' }}">
+          <a href="/admission">Admission</a>
         </li>
       </ul>
     </nav>
