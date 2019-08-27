@@ -54,7 +54,7 @@
                                 <td class="text-center">--</td>
                                 <td class="text-center">{{ $curriculum->effective_sy }}</td>
                                 <td class="text-left">
-                                {{-- @if($curCurriculum->curriculum_id == $curriculum->curriculum_id)
+                                @if($curCurriculum->curriculum_id == $curriculum->curriculum_id)
                                     <span class="badge badge-primary btn-sm">
                                         Current Current Curriculum
                                     </span>
@@ -67,7 +67,7 @@
                                             Set as Current Curriculum
                                         </button>
                                     </form>
-                                @endif --}}
+                                @endif
                                 </td>
                             </tr>
                           @endforeach

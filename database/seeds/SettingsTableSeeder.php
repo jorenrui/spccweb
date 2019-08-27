@@ -19,5 +19,10 @@ class SettingsTableSeeder extends Seeder
         $setting->name = 'Current Acad Term';
         $setting->value = '181901';
         $setting->save();
+
+        $setting = new Setting;
+        $setting->name = 'Current Curriculum';
+        $setting->value = '2018';
+        $setting->save();
     }
 }

@@ -18,4 +18,14 @@ class SettingsController extends Controller
 
         return redirect('/acad_terms')->with('success', 'Current Academic Term Updated');
     }
+
+    public function setCurCurriculum($curriculum_id) {
+        $id = Setting::where('name', 'LIKE', 'Current Curriculum')->get()[0]->setting_id;
+
+        $setting = Setting::find($id);
+        $setting->value = $curriculum_id;
+        $setting->save();
+
+        return redirect('/curriculums')->with('success', 'Current Curriculum Updated');
+    }
 }

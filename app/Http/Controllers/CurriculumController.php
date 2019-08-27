@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curriculum;
+use App\Models\Setting;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,12 @@ class CurriculumController extends Controller
     {
         $curriculums = Curriculum::orderBy('curriculum_id', 'desc')->paginate(15);
 
-        return view('curriculums.index')->with('curriculums', $curriculums);
+        $cur_curriculum_id = Setting::where('name', 'LIKE', 'Current Curriculum')->get()[0]->value;
+        $curCurriculum = Curriculum::find($cur_curriculum_id);
+
+        return view('curriculums.index')
+                ->with('curriculums', $curriculums)
+                ->with('curCurriculum', $curCurriculum);
     }
 
     /**
