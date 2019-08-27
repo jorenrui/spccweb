@@ -36,7 +36,7 @@
                         <tbody>
                           @foreach ($acadTerms as $acadTerm)
                             <tr>
-                                <td class="text-center">
+                                <td class="text-center" scope="row">
                                     <a href="/acad_terms/{{ $acadTerm->acad_term_id }}/edit" class="btn btn-outline-info btn-sm">
                                         Edit
                                     </a>
@@ -53,7 +53,7 @@
                                 <td class="text-center">{{ $acadTerm->getPrelimsDate() }}</td>
                                 <td class="text-center">{{ $acadTerm->getMidtermsDate() }}</td>
                                 <td class="text-center">{{ $acadTerm->getFinalsDate() }}</td>
-                                <td class="text-left" scope="row">
+                                <td class="text-left">
                                 @if($curAcadTerm->acad_term_id == $acadTerm->acad_term_id)
                                     <span class="badge badge-primary btn-sm">
                                         Current Acad Term
