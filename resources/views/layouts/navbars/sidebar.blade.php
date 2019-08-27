@@ -195,12 +195,12 @@
                     <div class="collapse" id="navbar-curriculum">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/curriculums/create">
                                     Add Curriculum
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/curriculums">
                                     Curriculum Masterlist
                                 </a>
                             </li>
