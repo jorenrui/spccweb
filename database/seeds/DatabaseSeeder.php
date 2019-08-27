@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             PostsTableSeeder::class,
             EventsTableSeeder::class,
             AcadTermTableSeeder::class,
+            Course2012TableSeeder::class,
+            // Course2018TableSeeder::class,
             CurriculumTableSeeder::class,
             SettingsTableSeeder::class,
         ]);
