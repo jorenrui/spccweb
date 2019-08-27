@@ -205,13 +205,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Add Subject
+                                <a class="nav-link" href="/courses/create">
+                                    Add Course
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Subject Masterlist
+                                <a class="nav-link" href="/courses">
+                                    Course Masterlist
                                 </a>
                             </li>
                         </ul>
