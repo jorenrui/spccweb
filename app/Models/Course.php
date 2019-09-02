@@ -11,4 +11,13 @@ class Course extends Model
     protected $casts = ['course_code' => 'string'];
     public $timestamps = false;
     public $incrementing = false;
+
+    /**
+     * Eloquent Relationships
+     */
+
+    public function curriculumDetails()
+    {
+        return $this->hasMany('App\Models\CurriculumDetails', 'course_code', 'course_code');
+    }
 }
