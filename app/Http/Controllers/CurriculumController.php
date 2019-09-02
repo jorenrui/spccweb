@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curriculum;
+use App\Models\CurriculumDetails;
 use App\Models\Setting;
 
 use Illuminate\Http\Request;
@@ -67,7 +68,14 @@ class CurriculumController extends Controller
      */
     public function show($id)
     {
-        //
+        $curriculum = Curriculum::find($id);
+
+        $curriculum_details = CurriculumDetails::where('curriculum_id', $curriculum->curriculum_id)
+                                ->get()->groupBy('sy');
+
+        return view('curriculums.show')
+                ->with('curriculum', $curriculum)
+                ->with('curriculum_details', $curriculum_details);
     }
 
     /**
