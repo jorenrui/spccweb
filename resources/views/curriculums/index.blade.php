@@ -35,7 +35,7 @@
                           @foreach ($curriculums as $curriculum)
                             <tr>
                                 <td class="text-left" scope="row">
-                                    <a href="/curriculums/{{ $curriculum->curriculum_id }}/show" class="btn btn-outline-primary btn-sm">
+                                    <a href="/curriculums/{{ $curriculum->curriculum_id }}" class="btn btn-outline-primary btn-sm">
                                       View
                                     </a>
 
@@ -51,7 +51,7 @@
                                     </form>
                                 </td>
                                 <td class="text-center">{{ $curriculum->curriculum_id }}</td>
-                                <td class="text-center">--</td>
+                                <td class="text-center">{{ $curriculum->getTotalUnits() }}</td>
                                 <td class="text-center">{{ $curriculum->effective_sy }}</td>
                                 <td class="text-left">
                                 @if($curCurriculum->curriculum_id == $curriculum->curriculum_id)
