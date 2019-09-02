@@ -9,7 +9,7 @@
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="Image placeholder" src="/storage/profile_pictures/default-female.png">
+                            <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-female_yaj9vd.png">
                         </span>
                         <div class="media-body ml-2 d-none d-lg-block">
                             <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->getName() }}</span>

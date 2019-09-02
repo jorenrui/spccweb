@@ -18,7 +18,7 @@
                           @break
                     @endswitch
 
-                    <img class="card-img-top" src="/storage/cover_images/{{$post->cover_image}}" alt="Card image cap">
+                    <img class="card-img-top" src="https://res.cloudinary.com/spccweb/cover_images/{{$post->cover_image}}" alt="Card image cap">
                     <div class="card-body">
                         <h1 class="card-title mb-2">{{ $post->title }}</h1>
                         <h5 class="mb-4">Written by {{ $post->user->getName() }}</h5>

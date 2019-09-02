@@ -20,7 +20,7 @@
                           @break
                       @endswitch
 
-                      <img class="card-img-top" src="/storage/cover_images/{{$post->cover_image}}" alt="Card image cap">
+                      <img class="card-img-top" src="https://res.cloudinary.com/spccweb/cover_images/{{$post->cover_image}}" alt="Card image cap">
                       <div class="card-body">
                         <h3 class="card-title">{{ $post->title }}</h3>
                         <p class="card-text">
