@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 
+use JD\Cloudder\Facades\Cloudder;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -45,39 +47,48 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'image|nullable'
+            'cover_image' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
 
-       // Handle File Upload
-       if($request->hasFile('cover_image')) {
+        // Handle File Upload via Cloudder
+        if ($request->hasFile('cover_image')) {
+            $cover_image = $request->file('cover_image');
+
             // Get the filename with the extension
-            $fileNameWithTheExt = $request->file('cover_image')->getClientOriginalName();
+            $filename = $cover_image->getClientOriginalName();
+
             // Get just filename
-            $filename = pathinfo($fileNameWithTheExt, PATHINFO_FILENAME);
+            $filename = time() . '_' . pathinfo($filename, PATHINFO_FILENAME);
+
             // Get just ext
             $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+
             // Upload the Image
-            $path = $request->file('cover_image')->storeAs('cover_images', $fileNameToStore, 'public');
+            $upload = Cloudder::upload($cover_image, $filename, [
+                'folder' => 'cover_images'
+            ]);
+
+            $fileNameToStore = $filename . '.' . $extension;
         } else {
-            $fileNameToStore = 'default.jpg';
+            $fileNameToStore = 'default-female.png';
         }
 
         if(auth()->user()->hasRole('moderator') || auth()->user()->hasRole('admin')) {
             $status = 'Published';
-        }
-        else {
+        } else {
             $status = 'Pending';
         }
-        // Create Post
-        $post = new Post;
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->user_id = auth()->user()->user_id;
-        $post->cover_image = $fileNameToStore;
-        $post->status = $status;
-        $post->save();
+
+        if($upload){
+            // Create Post
+            $post = new Post;
+            $post->title = $request->input('title');
+            $post->body = $request->input('body');
+            $post->user_id = auth()->user()->user_id;
+            $post->cover_image = $fileNameToStore;
+            $post->status = $status;
+            $post->save();
+        }
 
         if(auth()->user()->hasRole('moderator') || auth()->user()->hasRole('admin')) {
             return redirect('/posts')->with('success', 'Post Published');
@@ -133,18 +144,25 @@ class PostsController extends Controller
             'cover_image' => 'image|nullable'
         ]);
 
-        // Handle File Upload
-        if($request->hasFile('cover_image')) {
+        // Handle File Upload via Cloudder
+        if ($request->hasFile('cover_image')) {
+            $cover_image = $request->file('cover_image');
+
             // Get the filename with the extension
-            $fileNameWithTheExt = $request->file('cover_image')->getClientOriginalName();
+            $filename = $cover_image->getClientOriginalName();
+
             // Get just filename
-            $filename = pathinfo($fileNameWithTheExt, PATHINFO_FILENAME);
+            $filename = time() . '_' . pathinfo($filename, PATHINFO_FILENAME);
+
             // Get just ext
             $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+
             // Upload the Image
-            $path = $request->file('cover_image')->storeAs('cover_images', $fileNameToStore, 'public');
+            $upload = Cloudder::upload($cover_image, $filename, [
+                'folder' => 'cover_images'
+            ]);
+
+            $fileNameToStore = $filename . '.' . $extension;
         }
 
         // Update Post
@@ -154,9 +172,10 @@ class PostsController extends Controller
         $post->updated_at = now();
 
         if($request->hasFile('cover_image')) {
-            if($post->cover_image != 'default.jpg') {
+            if(!($post->cover_image == 'default-female.jpg' || $post->cover_image == 'default-male.jpg')) {
                 // Delete Image
-                Storage::disk('public')->delete('cover_images/'. $post->cover_image);
+                $filename = pathinfo($post->cover_image, PATHINFO_FILENAME);
+                Cloudder::destroy('cover_images/'. $filename);
             }
 
             $post->cover_image = $fileNameToStore;
@@ -185,8 +204,9 @@ class PostsController extends Controller
 
         $post->delete();
 
-        if($post->cover_image != 'default.jpg') {
-            Storage::disk('public')->delete('cover_images/'. $post->cover_image);
+        if(!($post->cover_image == 'default-female.jpg' || $post->cover_image == 'default-male.jpg')) {
+            $filename = pathinfo($post->cover_image, PATHINFO_FILENAME);
+            Cloudder::destroy('cover_images/'. $filename);
         }
 
         return redirect('/posts')->with('success', 'Post Removed');
