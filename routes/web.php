@@ -51,7 +51,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 	Route::put('settings/set_cur_acad_term/{setting}','SettingsController@setCurAcadTerm');
 
 	Route::resource('curriculums','CurriculumController');
+	Route::resource('curriculum_details','CurriculumDetailsController');
+	Route::resource('courses','CourseController')->except('show');
 	Route::put('settings/set_cur_curriculum/{setting}','SettingsController@setCurCurriculum');
 
-	Route::resource('courses','CourseController')->except('show');
 });
