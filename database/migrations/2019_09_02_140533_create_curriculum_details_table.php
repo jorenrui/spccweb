@@ -15,7 +15,7 @@ class CreateCurriculumDetailsTable extends Migration
     {
         Schema::create('curriculum_details', function (Blueprint $table) {
             $table->bigIncrements('curriculum_details_id');
-            $table->string('sy', 9);
+            $table->tinyInteger('sy');
             $table->tinyInteger('semester');
             $table->boolean('is_year_standing');
             $table->integer('curriculum_id')->unsigned();
