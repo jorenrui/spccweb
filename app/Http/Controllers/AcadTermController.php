@@ -145,6 +145,14 @@ class AcadTermController extends Controller
      */
     public function destroy($id)
     {
+        // Check if it is the current acad term
+        $setting_id = Setting::where('name', 'LIKE', 'Current Acad Term')
+                        ->get()[0]->setting_id;
+        $setting = Setting::find($setting_id);
+
+        if($setting->value == $id)
+            return redirect('/acad_terms')->with('error','Academic Term canot be deleted due to being set as the Current Academic Term. Change the Current Academic Term before deletion.');
+
         $acadTerm = AcadTerm::find($id);
 
         $acadTerm->delete();
