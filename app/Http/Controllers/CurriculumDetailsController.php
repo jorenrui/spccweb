@@ -2,29 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Curriculum;
+use App\Models\CurriculumDetails;
+use App\Models\Course;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CurriculumDetailsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    private function filterCourses($id, $except_course = null) {
+        $curriculum = Curriculum::find($id);
+        $cur_details = CurriculumDetails::where('curriculum_id', $curriculum->curriculum_id)
+                        ->orderBy('course_code', 'asc')->get();
+        $all_courses = Course::orderBy('course_code', 'asc')->get();
 
+        $courses = array();
+
+        foreach($all_courses as $course) {
+            $found = false;
+            foreach($cur_details as $cur_detail) {
+                if($course->course_code == $except_course) {
+                    break;
+                } else if($course->course_code == $cur_detail->course_code) {
+                    $found = true;
+                    break;
+                }
+            }
+
+            if(!$found)
+                array_push($courses, $course);
+        }
+
+        return $courses;
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $curriculum = Curriculum::find($id);
+        $courses = $this->filterCourses($id);
+
+        return view('curriculum_details.create')
+                ->with('curriculum', $curriculum)
+                ->with('courses', $courses);
     }
 
     /**
@@ -35,18 +59,24 @@ class CurriculumDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request, [
+            'curriculum_id' => 'required',
+            'course_code' => 'required',
+            'sy' => 'required',
+            'semester' => 'required',
+            'is_year_standing' => 'required'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        // Add Curriculum Detail
+        $cur_details = new CurriculumDetails;
+        $cur_details->curriculum_id = $request->input('curriculum_id');
+        $cur_details->course_code = $request->input('course_code');
+        $cur_details->sy = $request->input('sy');
+        $cur_details->semester = $request->input('semester');
+        $cur_details->is_year_standing = $request->input('is_year_standing');
+        $cur_details->save();
+
+        return redirect('/curriculums/' . $request->input('curriculum_id'))->with('success', 'Course Added to Curriculum');
     }
 
     /**
@@ -57,7 +87,12 @@ class CurriculumDetailsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cur_detail = CurriculumDetails::find($id);
+        $courses = $this->filterCourses($cur_detail->curriculum_id, $cur_detail->course_code);
+
+        return view('curriculum_details.edit')
+                ->with('cur_detail', $cur_detail)
+                ->with('courses', $courses);
     }
 
     /**
@@ -69,7 +104,24 @@ class CurriculumDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'curriculum_id' => 'required',
+            'course_code' => 'required',
+            'sy' => 'required',
+            'semester' => 'required',
+            'is_year_standing' => 'required'
+        ]);
+
+        // Update Curriculum Detail
+        $cur_details = CurriculumDetails::find($id);
+        $cur_details->curriculum_id = $request->input('curriculum_id');
+        $cur_details->course_code = $request->input('course_code');
+        $cur_details->sy = $request->input('sy');
+        $cur_details->semester = $request->input('semester');
+        $cur_details->is_year_standing = $request->input('is_year_standing');
+        $cur_details->save();
+
+        return redirect('/curriculums/' . $request->input('curriculum_id'))->with('success', 'Course in Curriculum Updated');
     }
 
     /**
@@ -80,6 +132,12 @@ class CurriculumDetailsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cur_detail = CurriculumDetails::find($id);
+
+        $curriculum_id = $cur_detail->curriculum_id;
+
+        $cur_detail->delete();
+
+        return redirect('/curriculums/' . $curriculum_id)->with('success', 'Course Removed in Curriculum');
     }
 }

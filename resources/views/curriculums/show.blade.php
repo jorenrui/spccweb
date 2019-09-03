@@ -11,6 +11,7 @@
             <div class="card-body row align-items-center">
               <div class="col">
                 <h2 class="mb-0">{{ $curriculum->curriculum_id }} Curriculum</h2>
+                <p class="text-muted text-sm">{{ $degree }}</p>
                 <p>
                   Effective S.Y.: {{ $curriculum->effective_sy }}
                   <br>
@@ -19,6 +20,9 @@
 
                 <div class="row">
                   <div class="col">
+                    <a href="/curriculums" class="btn btn-outline-secondary btn-sm">
+                      Return
+                    </a>
                     <a href="/curriculums/{{ $curriculum->curriculum_id }}/edit" class="btn btn-outline-info btn-sm">
                       Edit Curriculum
                     </a>
@@ -32,7 +36,7 @@
                   </div>
 
                   <div class="col text-right">
-                      <a href="/curriculum_details/create" class="btn btn-sm btn-primary">Add Course to Curriculum</a>
+                      <a href="/curriculum_details/create/{{ $curriculum->curriculum_id }}" class="btn btn-sm btn-primary">Add Course to Curriculum</a>
                   </div>
                 </div>
 
@@ -86,7 +90,9 @@
                                   <td class="text-left">{{ $cur_detail->course->description }}</td>
                                   <td class="text-center">{{ $cur_detail->course->units }}</td>
                                   <td class="text-center">{{ $cur_detail->course->lab_units }}</td>
-                                  <td class="text-center">-</td>
+                                  <td class="text-center">
+                                    {{ $cur_detail->getYearStadingReq() }}
+                                  </td>
                               </tr>
                             @endforeach
                           </tbody>
@@ -106,7 +112,7 @@
                   <div class="col text-center">
                       <p class="lead">Curriculum is empty</p>
                       <br>
-                      <a href="/curriculum_details/create" class="btn btn-primary btn-lg">Add Course to Curriculum</a>
+                      <a href="/curriculum_details/create/{{ $curriculum->curriculum_id }}" class="btn btn-primary btn-lg">Add Course to Curriculum</a>
                   </div>
               </div>
             </div>

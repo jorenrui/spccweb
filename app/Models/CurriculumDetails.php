@@ -46,6 +46,33 @@ class CurriculumDetails extends Model
     	return $sy . ' Year ' . $sem . ' Semester';
     }
 
+    public function getYearStadingReq()
+    {
+        $is_year_standing = $this->attributes['is_year_standing'];
+
+        if(!$is_year_standing)
+            return;
+        $sy = $this->attributes['sy'];
+
+        switch ($sy) {
+    		case 1:
+    			$sy = '1st';
+    			break;
+    		case 2:
+    			$sy = '2nd';
+    			break;
+            case 3:
+                $sy = '3rd';
+                break;
+
+    		default:
+                $sy =  $sy . 'th';
+    			break;
+        }
+
+        return $sy . ' Year Standing';
+    }
+
     /**
      * Eloquent Relationships
      */
