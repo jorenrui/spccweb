@@ -23,9 +23,12 @@ class CurriculumController extends Controller
         $cur_curriculum_id = Setting::where('name', 'LIKE', 'Current Curriculum')->get()[0]->value;
         $curCurriculum = Curriculum::find($cur_curriculum_id);
 
+        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+
         return view('curriculums.index')
                 ->with('curriculums', $curriculums)
-                ->with('curCurriculum', $curCurriculum);
+                ->with('curCurriculum', $curCurriculum)
+                ->with('degree', $degree);
     }
 
     /**
@@ -73,9 +76,12 @@ class CurriculumController extends Controller
         $curriculum_details = CurriculumDetails::where('curriculum_id', $curriculum->curriculum_id)
                                 ->get()->groupBy('sy');
 
+        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+
         return view('curriculums.show')
                 ->with('curriculum', $curriculum)
-                ->with('curriculum_details', $curriculum_details);
+                ->with('curriculum_details', $curriculum_details)
+                ->with('degree', $degree);
     }
 
     /**
@@ -122,6 +128,14 @@ class CurriculumController extends Controller
      */
     public function destroy($id)
     {
+        // Check if it is the current curriculum
+        $setting_id = Setting::where('name', 'LIKE', 'Current Curriculum')
+                        ->get()[0]->setting_id;
+        $setting = Setting::find($setting_id);
+
+        if($setting->value == $id)
+            return redirect('/curriculums')->with('error','Curriculum canot be deleted due to being set as the Current Curriculum. Change the Current Curriculum before deletion.');
+
         $curriculum = Curriculum::find($id);
 
         $curriculum->delete();
