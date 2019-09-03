@@ -14,6 +14,7 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h3 class="mb-0">Curriculum Masterlist</h3>
+                            <p class="text-muted text-sm">{{ $degree }}</p>
                         </div>
                         <div class="col text-right">
                             <a href="/curriculums/create" class="btn btn-sm btn-primary">Add Curriculum</a>

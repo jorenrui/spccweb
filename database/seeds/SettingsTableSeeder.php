@@ -16,6 +16,16 @@ class SettingsTableSeeder extends Seeder
         DB::table('settings')->delete();
 
         $setting = new Setting;
+        $setting->name = 'Degree';
+        $setting->value = 'Bachelor of Science in Information Technology';
+        $setting->save();
+
+        $setting = new Setting;
+        $setting->name = 'Degree Acronym';
+        $setting->value = 'BSIT';
+        $setting->save();
+
+        $setting = new Setting;
         $setting->name = 'Current Acad Term';
         $setting->value = '181901';
         $setting->save();
