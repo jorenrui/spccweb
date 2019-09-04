@@ -18,12 +18,12 @@ class DatabaseSeeder extends Seeder
             EventsTableSeeder::class,
             AcadTermTableSeeder::class,
             Course2012TableSeeder::class,
-            // Course2018TableSeeder::class,
+            Course2018TableSeeder::class,
             CurriculumTableSeeder::class,
             CurriculumDetails2012TableSeeder::class,
-            // CurriculumDetails2018TableSeeder::class,
+            CurriculumDetails2018TableSeeder::class,
             Prerequisite2012TableSeeder::class,
-            // Prerequisite2018TableSeeder::class,
+            Prerequisite2018TableSeeder::class,
             SettingsTableSeeder::class,
         ]);
     }
