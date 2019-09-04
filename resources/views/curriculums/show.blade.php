@@ -92,6 +92,15 @@
                                   <td class="text-center">{{ $cur_detail->course->lab_units }}</td>
                                   <td class="text-center">
                                     {{ $cur_detail->getYearStadingReq() }}
+                                    @if (count($cur_detail->prerequisites) > 0 && $cur_detail->getYearStadingReq() != '')
+                                        ,
+                                    @endif
+                                    @foreach($cur_detail->prerequisites as $prereq)
+                                      {{ $prereq->course_code }}
+                                      @if($loop->iteration != $loop->count)
+                                        ,
+                                      @endif
+                                    @endforeach
                                   </td>
                               </tr>
                             @endforeach

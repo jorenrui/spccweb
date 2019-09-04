@@ -45,10 +45,12 @@ class CurriculumDetailsController extends Controller
     {
         $curriculum = Curriculum::find($id);
         $courses = $this->filterCourses($id);
+        $prereq_courses = $curriculum->curriculumDetails;
 
         return view('curriculum_details.create')
                 ->with('curriculum', $curriculum)
-                ->with('courses', $courses);
+                ->with('courses', $courses)
+                ->with('prereq_courses', $prereq_courses);
     }
 
     /**
@@ -89,10 +91,13 @@ class CurriculumDetailsController extends Controller
     {
         $cur_detail = CurriculumDetails::find($id);
         $courses = $this->filterCourses($cur_detail->curriculum_id, $cur_detail->course_code);
+        $curriculum = Curriculum::find($cur_detail->curriculum_id);
+        $prereq_courses = $curriculum->curriculumDetails;
 
         return view('curriculum_details.edit')
                 ->with('cur_detail', $cur_detail)
-                ->with('courses', $courses);
+                ->with('courses', $courses)
+                ->with('prereq_courses', $prereq_courses);
     }
 
     /**

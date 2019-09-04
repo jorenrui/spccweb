@@ -75,8 +75,23 @@
                                     Pre-requisite (optional)
                                   </label>
                                   <select id="pre_req" name="pre_req" class="select2 form-control m-b"  multiple="multiple">
-                                    @foreach ($courses as $course)
-                                      <option value="{{ $course->course_code }}">{{ $course->course_code }} | {{ $course->description }}</option>
+                                    @foreach ($prereq_courses as $course)
+                                      @foreach ($cur_detail->prerequisites as $prereq)
+                                        {{ $found = false }}
+                                        @if($prereq->course_code == $course->course_code)
+                                          <option value="{{ $course->course_code }}" selected>
+                                            {{ $course->course_code }} | {{ $course->course->description }}
+                                          </option>
+                                          {{ $found = true }}
+                                          @break
+                                        @endif
+                                      @endforeach
+
+                                      @if(!$found)
+                                        <option value="{{ $course->course_code }}">
+                                          {{ $course->course_code }} | {{ $course->course->description }}
+                                        </option>
+                                      @endif
                                     @endforeach
                                   </select>
                               </div>
