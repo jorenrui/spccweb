@@ -21,7 +21,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'active', 'created_at', 'updated_at'
+        'username', 'email', 'password', 'active', 'created_at', 'updated_at',
+        'first_name', 'middle_name', 'last_name', 'gender', 'birthdate', 'contact_no', 'address',
     ];
 
     /**
@@ -42,6 +43,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getUserType()
+    {
+        if ($this->hasRole('admin'))
+            return 'Admin';
+        elseif ($this->hasRole('faculty'))
+            return 'Faculty';
+        elseif ($this->hasRole('registrar'))
+            return 'Registrar';
+        elseif ($this->hasRole('head registrar'))
+            return 'Head Registrar';
+        elseif ($this->hasRole('student'))
+            return 'Student';
+        elseif ($this->hasRole('moderator'))
+            return 'Moderator';
+        elseif ($this->hasRole('writer'))
+            return 'Writer';
+    }
+
     public function getName()
     {
     	$first_name = $this->attributes['first_name'];
@@ -49,9 +68,21 @@ class User extends Authenticatable
     	$last_name = $this->attributes['last_name'];
 
         if($middle_initial == '.')
-            return $first_name . ' ' .$last_name;
+            return $first_name . ' ' . $last_name;
 
     	return $first_name . ' ' . $middle_initial . ' ' . $last_name;
+    }
+
+    public function getSortableName()
+    {
+    	$first_name = $this->attributes['first_name'];
+    	$middle_initial = $this->attributes['middle_name'][0] . '.';
+    	$last_name = $this->attributes['last_name'];
+
+        if($middle_initial == '.')
+            return $last_name . ', ' . $first_name;
+
+    	return $last_name . ', ' . $first_name . ' ' . $middle_initial;
     }
 
     public function posts() {
