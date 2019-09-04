@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="/storage/profile_pictures/default-female.png">
+                        <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-female_yaj9vd.png">
                         </span>
                     </div>
                 </a>
