@@ -20,4 +20,9 @@ class Course extends Model
     {
         return $this->hasMany('App\Models\CurriculumDetails', 'course_code', 'course_code');
     }
+
+    public function prerequisites()
+    {
+        return $this->hasMany('App\Models\Prerequisite', 'course_code', 'course_code');
+    }
 }

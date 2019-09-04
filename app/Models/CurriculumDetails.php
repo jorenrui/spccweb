@@ -86,4 +86,9 @@ class CurriculumDetails extends Model
     {
         return $this->belongsTo('App\Models\Course', 'course_code', 'course_code');
     }
+
+    public function prerequisites()
+    {
+        return $this->hasMany('App\Models\Prerequisite', 'curriculum_details_id', 'curriculum_details_id');
+    }
 }
