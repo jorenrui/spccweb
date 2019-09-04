@@ -74,8 +74,9 @@
                                   <label class="form-control-label" for="pre_req">
                                     Pre-requisite (optional)
                                   </label>
-                                  <select id="pre_req" name="pre_req" class="select2 form-control m-b"  multiple="multiple">
+                                  <select id="pre_req" name="pre_req[]" class="select2 form-control m-b"  multiple="multiple">
                                     @foreach ($prereq_courses as $course)
+                                      {{ $found = false }}
                                       @foreach ($cur_detail->prerequisites as $prereq)
                                         {{ $found = false }}
                                         @if($prereq->course_code == $course->course_code)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curriculum;
 use App\Models\CurriculumDetails;
+use App\Models\Prerequisite;
 use App\Models\Course;
 
 use Illuminate\Http\Request;
@@ -78,6 +79,18 @@ class CurriculumDetailsController extends Controller
         $cur_details->is_year_standing = $request->input('is_year_standing');
         $cur_details->save();
 
+        // Add Pre requisites
+        if ($request->input('pre_req') != []) {
+
+            foreach($request->input('pre_req') as $course_code) {
+                $pre_req = new Prerequisite;
+                $pre_req->curriculum_details_id = $cur_details->curriculum_details_id;
+                $pre_req->course_code = $course_code;
+                $pre_req->save();
+            }
+
+        }
+
         return redirect('/curriculums/' . $request->input('curriculum_id'))->with('success', 'Course Added to Curriculum');
     }
 
@@ -125,6 +138,25 @@ class CurriculumDetailsController extends Controller
         $cur_details->semester = $request->input('semester');
         $cur_details->is_year_standing = $request->input('is_year_standing');
         $cur_details->save();
+
+        // Update Pre requisites
+        if ($request->input('pre_req') != []) {
+
+            // Delete All Pre requisites
+            foreach ($cur_details->prerequisites as $pre_req) {
+                $prerequisite = Prerequisite::find($pre_req->prerequisite_id);
+                $prerequisite->delete();
+            }
+
+            // Add Inputted Pre requisites
+            foreach ($request->input('pre_req') as $course_code) {
+                $prerequisite = new Prerequisite;
+                $prerequisite->curriculum_details_id = $cur_details->curriculum_details_id;
+                $prerequisite->course_code = $course_code;
+                $prerequisite->save();
+            }
+
+        }
 
         return redirect('/curriculums/' . $request->input('curriculum_id'))->with('success', 'Course in Curriculum Updated');
     }
