@@ -34,17 +34,17 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 });
 
-Route::group(['middleware' => ['role:admin|writer']], function () {
+Route::group(['middleware' => ['auth', 'role:admin|writer']], function () {
 	Route::resource('posts','PostsController');
 });
 
-Route::group(['middleware' => ['role:admin|moderator']], function () {
+Route::group(['middleware' => ['auth', 'role:admin|moderator']], function () {
 	Route::get('/posts/mod/published', 'PostsController@published');
 	Route::get('/posts/mod/{post}/publish', 'PostsController@publish');
 	Route::get('/posts/mod/approval', 'PostsController@approval');
 });
 
-Route::group(['middleware' => ['role:admin']], function () {
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::resource('events','EventsController')->except('show');
 
 	Route::resource('acad_terms','AcadTermController')->except('show');
