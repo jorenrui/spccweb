@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             CurriculumTableSeeder::class,
             CurriculumDetails2012TableSeeder::class,
             // CurriculumDetails2018TableSeeder::class,
+            Prerequisite2012TableSeeder::class,
+            // Prerequisite2018TableSeeder::class,
             SettingsTableSeeder::class,
         ]);
     }
