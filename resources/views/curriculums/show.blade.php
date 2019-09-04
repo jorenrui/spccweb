@@ -23,6 +23,7 @@
                     <a href="/curriculums" class="btn btn-outline-secondary btn-sm">
                       Return
                     </a>
+                    @role('admin')
                     <a href="/curriculums/{{ $curriculum->curriculum_id }}/edit" class="btn btn-outline-info btn-sm">
                       Edit Curriculum
                     </a>
@@ -33,11 +34,14 @@
 
                         <button type="submit" class="btn btn-outline-danger btn-sm">Delete Curriculum</button>
                     </form>
+                    @endrole
                   </div>
 
+                  @role('admin')
                   <div class="col text-right">
                       <a href="/curriculum_details/create/{{ $curriculum->curriculum_id }}" class="btn btn-sm btn-primary">Add Course to Curriculum</a>
                   </div>
+                  @endrole
                 </div>
 
               </div>
@@ -62,31 +66,19 @@
                       <table class="table align-items-center table-flush">
                           <thead class="thead-light">
                               <tr>
-                                  <th scope="col"></th>
                                   <th scope="col" class="text-center">Course Code</th>
                                   <th scope="col" class="text-left">Course Title</th>
                                   <th scope="col" class="text-center">Units</th>
                                   <th scope="col" class="text-center">Lab Units</th>
                                   <th scope="col" class="text-center">Pre-requisites</th>
+                                  <th scope="col" class="text-right"></th>
                               </tr>
                           </thead>
                           <tbody>
                             <!-- Curriculum Details per School Year -->
                             @foreach ($cur_details as $cur_detail)
                               <tr>
-                                  <td class="text-left" scope="row">
-                                      <a href="/curriculum_details/{{ $cur_detail->curriculum_details_id }}/edit" class="btn btn-outline-info btn-sm">
-                                          Edit
-                                      </a>
-
-                                      <form method="POST" action="{{ action('CurriculumDetailsController@destroy', $cur_detail->curriculum_details_id) }}" style="display: inline;">
-                                          @csrf
-                                          @method('DELETE')
-
-                                          <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
-                                      </form>
-                                  </td>
-                                  <td class="text-center">{{ $cur_detail->course_code }}</td>
+                                  <td class="text-center" scope="row">{{ $cur_detail->course_code }}</td>
                                   <td class="text-left">{{ $cur_detail->course->description }}</td>
                                   <td class="text-center">{{ $cur_detail->course->units }}</td>
                                   <td class="text-center">{{ $cur_detail->course->lab_units }}</td>
@@ -101,6 +93,27 @@
                                         ,
                                       @endif
                                     @endforeach
+                                  </td>
+                                  <td class="text-right">
+                                    @role('admin')
+                                    <div class="dropdown">
+                                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <i class="fas fa-ellipsis-v"></i>
+                                      </a>
+                                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a href="/curriculum_details/{{ $cur_detail->curriculum_details_id }}/edit" class="dropdown-item"">
+                                            Edit
+                                        </a>
+
+                                        <form method="POST" action="{{ action('CurriculumDetailsController@destroy', $cur_detail->curriculum_details_id) }}" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit"  class="dropdown-item">Delete</button>
+                                        </form>
+                                      </div>
+                                      @endrole
+                                    </div>
                                   </td>
                               </tr>
                             @endforeach
