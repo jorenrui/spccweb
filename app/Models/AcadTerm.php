@@ -65,4 +65,13 @@ class AcadTerm extends Model
 		public function getFormattedDate($date) {
 			return date("m/d/Y", strtotime($date));
 		}
+
+    /**
+     * Eloquent Relationships
+     */
+
+    public function students()
+    {
+        return $this->hasMany('App\Models\Student', 'acad_term_admitted_id', 'acad_term_id');
+    }
 }

@@ -32,4 +32,9 @@ class Curriculum extends Model
     {
         return $this->hasMany('App\Models\CurriculumDetails', 'curriculum_id', 'curriculum_id');
     }
+
+    public function students()
+    {
+        return $this->hasMany('App\Models\Student', 'curriculum_id', 'curriculum_id');
+    }
 }
