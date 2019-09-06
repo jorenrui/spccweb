@@ -44,9 +44,8 @@ Route::group(['middleware' => ['auth', 'role:admin|moderator']], function () {
 	Route::get('/posts/mod/approval', 'PostsController@approval');
 });
 
-Route::group(['middleware' => ['auth', 'role:admin']], function () {
-	Route::resource('events','EventsController')->except('show');
 
+Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::resource('acad_terms','AcadTermController')->except('show');
 	Route::put('settings/set_cur_acad_term/{setting}','SettingsController@setCurAcadTerm');
 
@@ -57,4 +56,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('curriculum_details/create/{curriculum}','CurriculumDetailsController@create');
 	Route::resource('courses','CourseController')->except('show');
 	Route::put('settings/set_cur_curriculum/{setting}','SettingsController@setCurCurriculum');
+});
+
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
+	Route::resource('events','EventsController')->except('show');
 });

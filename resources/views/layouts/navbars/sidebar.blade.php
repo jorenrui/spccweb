@@ -14,7 +14,11 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-female_yaj9vd.png">
+                        @if(auth()->user()->gender == 'F')
+                            <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-female.png">
+                        @else
+                            <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-male.png">
+                        @endif
                         </span>
                     </div>
                 </a>
@@ -91,21 +95,99 @@
             <ul class="navbar-nav">
                 <li class="nav-item {{ $title == 'Dashboard' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('dashboard') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> Dashboard
+                        <i class="ni ni-tv-2"></i> Dashboard
                     </a>
                 </li>
-                @role('admin')
+                @role('admin|registrar')
                 <li class="nav-item {{ $title == 'Examination Period' ? 'active' : '' }}">
                     <a class="nav-link" href="/acad_terms">
                         <i class="ni ni-ruler-pencil"></i> Examination Period
                     </a>
                 </li>
+                @endrole
+                @role('admin')
                 <li class="nav-item {{ $title == 'Class Scheduling' ? 'active' : '' }}">
                     <a class="nav-link" href="#">
                         <i class="ni ni-calendar-grid-58"></i> Class Scheduling
                     </a>
                 </li>
+                @endrole
+                @role('registrar|head registrar')
+                <li class="nav-item {{ $title == 'Grades Masterlist' ? 'active' : '' }}">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-chart-bar-32"></i> Grades Masterlist
+                    </a>
+                </li>
+                @endrole
+                @role('faculty')
+                <li class="nav-item {{ $title == 'View Faculty Load' ? 'active' : '' }}">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-bullet-list-67"></i> View Faculty Load
+                    </a>
+                </li>
+                @endrole
+                @role('student')
+                <li class="nav-item {{ $title == 'View Enlistment' ? 'active' : '' }}">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-bullet-list-67"></i> View Enlistment
+                    </a>
+                </li>
+                <li class="nav-item {{ $title == 'View Curriculum' ? 'active' : '' }}">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-collection"></i> View Curriculum
+                    </a>
+                </li>
+                @endrole
+                @role('admin')
+                <li class="nav-item {{ $title == 'Manage Faculty' ? 'active' : '' }}">
+                    <a class="nav-link" href="/acad_terms">
+                        <i class="ni ni-badge"></i> Manage Faculty
+                    </a>
+                </li>
+                @endrole
+                @role('head registrar')
+                <li class="nav-item {{ $title == 'Registrar Staff' ? 'active' : '' }}">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-badge"></i> Manage Registrar Staff
+                    </a>
+                </li>
+                @endrole
+                @role('admin|registrar')
+                <li class="nav-item {{ $title == 'Manage Students' ? 'active' : '' }}">
+                    <a class="nav-link" href="#navbar-students" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-students">
+                        <i class="ni ni-single-02"></i>
+                        <span class="nav-link-text">Manage Students</span>
+                    </a>
 
+                    <div class="collapse" id="navbar-students">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Add Student
+                                </a>
+                            </li>
+                            @role('admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Subject Creditation
+                                </a>
+                            </li>
+                            @endrole
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    View Enlistment
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Student Masterlist
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @endrole
+                @role('admin')
                 <li class="nav-item {{ $title == 'Manage Grades' ? 'active' : '' }}">
                     <a class="nav-link" href="#navbar-grades" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-grades">
                         <i class="ni ni-chart-bar-32"></i>
@@ -121,71 +203,14 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    Grade Report
+                                    Grades Masterlist
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item {{ $title == 'Manage Students' ? 'active' : '' }}">
-                    <a class="nav-link" href="#navbar-students" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-students">
-                        <i class="ni ni-single-02"></i>
-                        <span class="nav-link-text">Manage Students</span>
-                    </a>
-
-                    <div class="collapse" id="navbar-students">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Add Student
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Subject Creditation
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    View Enlistment
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Student Masterlist
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="nav-item {{ $title == 'Manage Faculty' ? 'active' : '' }}">
-                    <a class="nav-link" href="#navbar-faculty" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-faculty">
-                        <i class="ni ni-badge"></i>
-                        <span class="nav-link-text">Manage Faculty</span>
-                    </a>
-
-                    <div class="collapse" id="navbar-faculty">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Add Faculty
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Faculty Reassignment
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Faculty Masterlist
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
+                @endrole
+                @role('admin|registrar')
                 <li class="nav-item {{ $title == 'Manage Curriculum' ? 'active' : '' }}">
                     <a class="nav-link" href="#navbar-curriculum" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-curriculum">
                         <i class="ni ni-collection"></i>
@@ -195,18 +220,8 @@
                     <div class="collapse" id="navbar-curriculum">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="/curriculums/create">
-                                    Add Curriculum
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="/curriculums">
                                     Curriculum Masterlist
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/courses/create">
-                                    Add Course
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -228,11 +243,16 @@
                 <li class="nav-item {{ $title == 'System Settings' ? 'active' : '' }}">
                     <a class="nav-link" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
                         <i class="ni ni-settings"></i>
-                        <span class="nav-link-text">System Settings</span>
+                        <span class="nav-link-text">Settings</span>
                     </a>
 
                     <div class="collapse" id="navbar-settings">
                         <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    System Settings
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     Backup Database
