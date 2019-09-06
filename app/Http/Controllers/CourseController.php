@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Setting;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,8 +18,11 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::orderBy('course_code', 'asc')->paginate(15);
+        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
 
-        return view('courses.index')->with('courses', $courses);
+        return view('courses.index')
+                ->with('courses', $courses)
+                ->with('degree', $degree);
     }
 
     /**
