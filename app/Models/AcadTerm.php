@@ -74,4 +74,9 @@ class AcadTerm extends Model
     {
         return $this->hasMany('App\Models\Student', 'acad_term_admitted_id', 'acad_term_id');
     }
+
+    public function classes()
+    {
+        return $this->hasMany('App\Models\SClass', 'acad_term_id', 'acad_term_id');
+    }
 }

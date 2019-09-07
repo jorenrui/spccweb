@@ -20,4 +20,9 @@ class Employee extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id', 'user_id');
     }
+
+    public function classes()
+    {
+        return $this->hasMany('App\Models\SClass', 'instructor_id', 'employee_no');
+    }
 }
