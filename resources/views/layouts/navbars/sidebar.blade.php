@@ -107,7 +107,7 @@
                 @endrole
                 @role('admin')
                 <li class="nav-item {{ $title == 'Class Scheduling' ? 'active' : '' }}">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/classes">
                         <i class="ni ni-calendar-grid-58"></i> Class Scheduling
                     </a>
                 </li>

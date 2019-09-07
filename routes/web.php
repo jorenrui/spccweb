@@ -60,4 +60,6 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::resource('events','EventsController')->except('show');
+
+	Route::resource('classes','SClassController');
 });
