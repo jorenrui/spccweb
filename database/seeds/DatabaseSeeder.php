@@ -24,6 +24,9 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             PostsTableSeeder::class,
             EventsTableSeeder::class,
+            ClassTableSeeder::class,
+            // Class2012TableSeeder::class,
+            // Class2018TableSeeder::class,
             SettingsTableSeeder::class,
         ]);
     }
