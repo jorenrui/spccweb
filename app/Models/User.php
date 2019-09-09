@@ -85,6 +85,19 @@ class User extends Authenticatable
     	return $last_name . ', ' . $first_name . ' ' . $middle_initial;
     }
 
+    public function getNameWithTitle()
+    {
+    	$gender = $this->attributes['gender'];
+        $last_name = $this->attributes['last_name'];
+
+        if ($gender == 'M')
+            return 'Mr. ' . $last_name;
+        else if ($gender == 'F')
+            return 'Ms. ' . $last_name;
+
+        return 'Mx. ' . $last_name;
+    }
+
     public function posts() {
         return $this->hasMany('App\Models\Post', 'user_id', 'user_id');
     }
