@@ -8,13 +8,29 @@
 <script src="{{ asset('vendor/select2-4.0.10/select2.full.min.js') }}"></script>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('.select2').select2();
+$(document).ready(function() {
+  $('.select2').select2();
 
-    $('.select2-nosearch').select2({
-      minimumResultsForSearch: Infinity
-    });
+  $('.select2-nosearch').select2({
+    minimumResultsForSearch: Infinity
   });
+
+  $('#time_start').on('input', function() {
+    let time_start = $(this).val();
+    let hours = Number(time_start[0] + time_start[1]) + 3;
+    let time_end = null;
+
+    if(hours >= 24)
+      hours -= 24;
+
+    if(hours < 10)
+      time_end = '0' + (hours + time_start.substring(2));
+    else
+      time_end = hours + time_start.substring(2);
+
+    $('#time_end').val(time_end).change();
+  });
+});
 </script>
 @endpush
 
@@ -50,9 +66,16 @@
                                 <label class="form-control-label" for="course_code">Course</label>
                                 <select id="course_code" name="course_code" class="select2 form-control m-b" required>
                                   @foreach ($courses as $course)
-                                    <option value="{{ $course->course_code }}">{{ $course->course_code }} | {{ $course->description }}</option>
+                                  <option value="{{ $course->course_code }}">{{ $course->course_code }} {{ $course->description }} | {{ $course->units }} units</option>
                                   @endforeach
                                 </select>
+                            </div>
+                          </div>
+
+                          <div class="row mt-3">
+                            <div class="col-12 col-lg-3 col-md-6">
+                                <label class="form-control-label" for="section">Section (optional)</label>
+                                <input id="section" name="section" class="form-control mb-3" type="text" placeholder="e.g. 401-A">
                             </div>
                           </div>
 
@@ -69,25 +92,40 @@
                             </div>
                           </div>
 
-                          <div class="row mt-3">
-                            <div class="col-12 col-md-6">
-                                <label class="form-control-label" for="day">Day</label>
-                                <select id="day" name="day" class="select2-nosearch form-control m-b" required>
-                                  <option value="M" selected>Monday</option>
-                                  <option value="T">Tuesday</option>
-                                  <option value="W">Wednesday</option>
-                                  <option value="TH">Thursday</option>
-                                  <option value="F">Friday</option>
-                                </select>
-                            </div>
+                          <hr>
+
+                          <h3 class="mt-5">Schedule</h3>
+
+                          <div class="form-control-label mt-4 mb-2">Day:</div>
+                          <div class="custom-control custom-radio mb-3">
+                            <input name="day" class="custom-control-input" id="day1" type="radio" value="M" checked>
+                            <label class="custom-control-label" for="day1">Monday</label>
+                          </div>
+                          <div class="custom-control custom-radio mb-3">
+                            <input name="day" class="custom-control-input" id="day2" type="radio" value="T">
+                            <label class="custom-control-label" for="day2">Tuesday</label>
+                          </div>
+                          <div class="custom-control custom-radio mb-3">
+                            <input name="day" class="custom-control-input" id="day3" type="radio" value="T">
+                            <label class="custom-control-label" for="day3">Wednesday</label>
+                          </div>
+                          <div class="custom-control custom-radio mb-3">
+                            <input name="day" class="custom-control-input" id="day4" type="radio" value="T">
+                            <label class="custom-control-label" for="day4">Thursday</label>
+                          </div>
+                          <div class="custom-control custom-radio mb-3">
+                            <input name="day" class="custom-control-input" id="day5" type="radio" value="T">
+                            <label class="custom-control-label" for="day5">Friday</label>
                           </div>
 
                           <div class="row mt-3">
-                            <div class="col-12 col-md-6">
-                                <label class="form-control-label" for="time">Time</label>
-                                <select id="time" name="time" class="select2-nosearch form-control m-b" required>
-                                  <option value="9-12" selected>9:00-12:00PM</option>
-                                </select>
+                            <div class="col-6 col-md-3">
+                                <label class="form-control-label" for="time_start">Time Start</label>
+                                <input id="time_start" name="time_start" type="time" class="form-control m-b" autocomplete="off" required>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <label class="form-control-label" for="time_end">Time End</label>
+                                <input id="time_end" name="time_end" type="time" class="form-control m-b" autocomplete="off" required>
                             </div>
                           </div>
 
