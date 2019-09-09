@@ -12,6 +12,24 @@ class Course extends Model
     public $timestamps = false;
     public $incrementing = false;
 
+    public function getCredits()
+    {
+        $credits = $this->attributes['units'];
+        $lec_units = $this->attributes['units'];
+        $lab_units = $this->attributes['lab_units'];
+
+        $lec_units = round( ($credits / 2) / $lec_units );
+
+        if($lab_units != 0) {
+        	$lab_units = round( ($credits / 2) / $lab_units );
+
+	        return $credits . ' units, ' . $lec_units . ' lec and ' . $lab_units . ' lab';
+        }
+	    else {
+	        return $credits . ' units, ' . $lec_units . ' lec';
+	    }
+    }
+
     /**
      * Eloquent Relationships
      */
