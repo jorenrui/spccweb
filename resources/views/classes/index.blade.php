@@ -79,7 +79,7 @@
                           @foreach ($classes as $sclass)
                             <tr>
                               <td class="text-left" scope="row">
-                                  <a href="/classes/{{ $sclass->class_id }}/show" class="btn btn-outline-info btn-sm">
+                                  <a href="/classes/{{ $sclass->class_id }}" class="btn btn-outline-info btn-sm">
                                       View
                                   </a>
                               </td>
