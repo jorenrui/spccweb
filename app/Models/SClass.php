@@ -10,6 +10,22 @@ class SClass extends Model
     protected $primaryKey = 'class_id';
     public $timestamps = false;
 
+    public function getTime()
+    {
+        $time_start = date('h:iA', strtotime($this->attributes['time_start']));
+        $time_end =  date('h:iA', strtotime($this->attributes['time_end']));
+
+        return $time_start . ' - ' . $time_end;
+    }
+
+    public function getSchedule()
+    {
+        $day = $this->attributes['day'];
+        $time = $this->getTime();
+
+        return $day . ', ' . $time;
+    }
+
     /**
      * Eloquent Relationships
      */
