@@ -98,7 +98,22 @@ class User extends Authenticatable
         return 'Mx. ' . $last_name;
     }
 
+    /**
+     * Eloquent Relationships
+     */
+
     public function posts() {
         return $this->hasMany('App\Models\Post', 'user_id', 'user_id');
     }
+
+    public function student()
+    {
+        return $this->hasOne('App\Models\Student', 'user_id', 'user_id');
+    }
+
+    public function employee()
+    {
+        return $this->hasOne('App\Models\Employee', 'user_id', 'user_id');
+    }
+
 }
