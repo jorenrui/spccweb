@@ -67,7 +67,28 @@ class SClassController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'day' => 'required',
+            'time_start' => 'required',
+            'time_end' => 'required',
+            'acad_term_id' => 'required',
+            'course_code' => 'required',
+            'instructor_id' => 'required'
+        ]);
+
+        // Add Class
+        $sclass = new SClass;
+        $sclass->section = $request->input('section');
+        $sclass->day = $request->input('day');
+        $sclass->time_start = $request->input('time_start');
+        $sclass->time_end = $request->input('time_end');
+        $sclass->status = 'On-going';
+        $sclass->acad_term_id = $request->input('acad_term_id');
+        $sclass->course_code = $request->input('course_code');
+        $sclass->instructor_id = $request->input('instructor_id');
+        $sclass->save();
+
+        return redirect('/classes')->with('success', 'Class Created');
     }
 
     /**
@@ -89,7 +110,17 @@ class SClassController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $acad_terms = AcadTerm::where('acad_term_id', '>=', $cur_acad_term)->get();
+        $instructors = User::whereHas("roles", function($q){ $q->where("name", "faculty"); })->get();
+        $courses = Course::all();
+        $sclass = SClass::find($id);
+
+        return view('classes.edit')
+                ->with('courses', $courses)
+                ->with('acad_terms', $acad_terms)
+                ->with('instructors', $instructors)
+                ->with('sclass', $sclass);
     }
 
     /**
@@ -101,7 +132,28 @@ class SClassController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'day' => 'required',
+            'time_start' => 'required',
+            'time_end' => 'required',
+            'acad_term_id' => 'required',
+            'course_code' => 'required',
+            'instructor_id' => 'required'
+        ]);
+
+        // Update Class
+        $sclass = SClass::find($id);
+        $sclass->section = $request->input('section');
+        $sclass->day = $request->input('day');
+        $sclass->time_start = $request->input('time_start');
+        $sclass->time_end = $request->input('time_end');
+        $sclass->status = 'On-going';
+        $sclass->acad_term_id = $request->input('acad_term_id');
+        $sclass->course_code = $request->input('course_code');
+        $sclass->instructor_id = $request->input('instructor_id');
+        $sclass->save();
+
+        return redirect('/classes')->with('success', 'Class Created');
     }
 
     /**
@@ -112,6 +164,10 @@ class SClassController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sclass = SClass::find($id);
+
+        $sclass->delete();
+
+        return redirect('/classes')->with('success', 'Class Removed');
     }
 }
