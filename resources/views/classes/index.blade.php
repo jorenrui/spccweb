@@ -1,5 +1,21 @@
 @extends('layouts.app', ['title' => 'Class Scheduling'])
 
+@section('styles')
+<link href="{{ asset('vendor/select2-4.0.10/select2.min.css') }}" rel="stylesheet">
+@endsection
+
+@push('js')
+<script src="{{ asset('vendor/select2-4.0.10/select2.full.min.js') }}"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.select2').select2({
+      placeholder: 'Select a course'
+    });
+  });
+</script>
+@endpush
+
 @section('content')
     @include('layouts.headers.plain')
 
@@ -9,18 +25,41 @@
         <div class="col-xl-12 mb-5 mb-xl-0">
             <div class="card shadow">
 
-              @if(count($classes) > 0)
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
                             <h3 class="mb-0">Class Masterlist</h3>
                             <p class="text-muted text-sm">{{ $degree }}</p>
                         </div>
-                        <div class="col text-right">
-                            <a href="/classes/create" class="btn btn-sm btn-primary">Add Class</a>
-                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                      <form action="/classes?" method="GET" class="form-horizontal">
+                        <label class="form-control-label" for="select_acad_term">Academic Term: </label>
+                        <select class="col-{{ $selected_acad_term >= $cur_acad_term ? '7' :'3'}} select2 form-control m-b" name="select_acad_term" onchange="this.form.submit()">
+                          @foreach ($acad_terms as $acad_term)
+                            @if($selected_acad_term == $acad_term->acad_term_id)
+                              <option value="{{ $acad_term->acad_term_id }}" selected>
+                                {{ $acad_term->getAcadTerm() }}
+                              </option>
+                            @else
+                            <option value="{{ $acad_term->acad_term_id }}">
+                              {{ $acad_term->getAcadTerm() }}
+                            </option>
+                            @endif
+                          @endforeach
+                        </select>
+                      </form>
+                      </div>
+
+                      @if($selected_acad_term >= $cur_acad_term)
+                      <div class="col text-right">
+                          <a href="/classes/create" class="btn btn-sm btn-primary">Add Class</a>
+                      </div>
+                      @endif
                     </div>
                 </div>
+              @if(count($classes) > 0)
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
@@ -81,11 +120,13 @@
                     {{ $classes->links() }}
                 </div>
               @else
-                  <div class="row mt-3 mb-5">
+                  <div class="row border-1 mt-3 mb-5">
                       <div class="col text-center">
                           <p class="lead">No Class found</p>
+                          @if($selected_acad_term >= $cur_acad_term)
                           <br>
                           <a href="/classes/create" class="btn btn-primary btn-lg">Add Class</a>
+                          @endif
                       </div>
                   </div>
               @endif

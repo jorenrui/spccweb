@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SClass;
+use App\Models\AcadTerm;
 use App\Models\Setting;
 
 use Illuminate\Http\Request;
@@ -16,12 +17,26 @@ class SClassController extends Controller
      */
     public function index()
     {
-        $classes = SClass::orderBy('class_id', 'asc')->paginate(15);
         $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+
+        $acad_terms = AcadTerm::all();
+
+        if( request()->has('select_acad_term') ) {
+            $selected_acad_term = request('select_acad_term');
+        }
+        else {
+            $selected_acad_term = $cur_acad_term;
+        }
+
+        $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)->paginate(15);
 
         return view('classes.index')
                 ->with('classes', $classes)
-                ->with('degree', $degree);
+                ->with('degree', $degree)
+                ->with('acad_terms', $acad_terms)
+                ->with('cur_acad_term', $cur_acad_term)
+                ->with('selected_acad_term', $selected_acad_term);
     }
 
     /**
