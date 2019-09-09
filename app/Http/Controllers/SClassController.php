@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\SClass;
+use App\Models\Course;
+use App\Models\User;
 use App\Models\AcadTerm;
 use App\Models\Setting;
 
@@ -46,7 +48,15 @@ class SClassController extends Controller
      */
     public function create()
     {
-        //
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $acad_terms = AcadTerm::where('acad_term_id', '>=', $cur_acad_term)->get();
+        $instructors = User::whereHas("roles", function($q){ $q->where("name", "faculty"); })->get();
+        $courses = Course::all();
+
+        return view('classes.create')
+                ->with('courses', $courses)
+                ->with('acad_terms', $acad_terms)
+                ->with('instructors', $instructors);
     }
 
     /**
