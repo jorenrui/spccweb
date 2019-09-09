@@ -28,9 +28,9 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">Username</th>
+                                    <th scope="col" class="text-center">Username</th>
+                                    <th scope="col">Role(s)</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
                                     <th scope="col">Creation Date</th>
                                     <th scope="col"></th>
                                 </tr>
@@ -43,9 +43,9 @@
                                                 View
                                             </a>
                                         </td>
-                                        <td>{{ $user->username }}</td>
+                                        <td class="text-center">{{ $user->username }}</td>
+                                        <td>{{ $user->getRole() }}</td>
                                         <td>{{ $user->getSortableName() }}</td>
-                                        <td>{{ $user->email }}</td>
                                         <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
                                         <td class="text-right">
                                             <div class="dropdown">

@@ -30,7 +30,7 @@
                                         {{ auth()->user()->getName() }}
                                     </h3>
                                     <div class="h5 font-weight-300">
-                                        {{ auth()->user()->getUserType() }},
+                                        {{ auth()->user()->getRole() }},
                                         {{ auth()->user()->username }}
                                     </div>
                                     <div>

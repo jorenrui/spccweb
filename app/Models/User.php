@@ -43,22 +43,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getUserType()
+    public function getRole()
     {
-        if ($this->hasRole('admin'))
-            return 'Admin';
-        elseif ($this->hasRole('faculty'))
-            return 'Faculty';
-        elseif ($this->hasRole('registrar'))
-            return 'Registrar';
-        elseif ($this->hasRole('head registrar'))
-            return 'Head Registrar';
-        elseif ($this->hasRole('student'))
-            return 'Student';
-        elseif ($this->hasRole('moderator'))
-            return 'Moderator';
-        elseif ($this->hasRole('writer'))
-            return 'Writer';
+        $roles = $this->roles;
+
+        $result = '';
+
+        if(sizeof($roles) > 1) {
+            foreach($roles as $role) {
+                if($result == '')
+                    $result = '' . ucfirst($role->name);
+                else
+                    $result = $result . ', ' . ucfirst($role->name);
+            }
+
+            return $result;
+        }
+
+        return ucfirst($roles->first()->name);
     }
 
     public function getName()
