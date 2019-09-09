@@ -3,7 +3,7 @@
 @section('content')
     @include('users.partials.header', [
         'title' => 'Hello '. auth()->user()->getName() . '!',
-        'description' => 'loreeifa eijf aeiofjio aejfoiaejiof eoifjeaio jfeoia jfoisa jgoiasejg ioasjeg oias goiaes gioesjio gjeaio eoai gjoia gioea jiog',
+        'description' => 'Update your profile information using the form below.',
         'class' => 'col-lg-12'
     ])
 
