@@ -31,7 +31,7 @@ class SClassController extends Controller
             $selected_acad_term = $cur_acad_term;
         }
 
-        $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)->paginate(15);
+        $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)->paginate(10);
 
         return view('classes.index')
                 ->with('classes', $classes)
