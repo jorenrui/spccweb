@@ -20,11 +20,9 @@ class ClassTableSeeder extends Seeder
         $class->instructor_id = 'K-211';
         $class->course_code = 'ENG1';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
         $class->day = 'M';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -32,11 +30,9 @@ class ClassTableSeeder extends Seeder
         $class->instructor_id = 'K-212';
         $class->course_code = 'HUM1';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
         $class->day = 'M';
         $class->time_start = '13:00:00';
         $class->time_end = '15:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -44,11 +40,9 @@ class ClassTableSeeder extends Seeder
         $class->instructor_id = 'K-211';
         $class->course_code = 'MATH1';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
         $class->day = 'M';
         $class->time_start = '15:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'Finished';
         $class->save();
     }
 }

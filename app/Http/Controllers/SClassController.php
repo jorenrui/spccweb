@@ -82,7 +82,6 @@ class SClassController extends Controller
         $sclass->day = $request->input('day');
         $sclass->time_start = $request->input('time_start');
         $sclass->time_end = $request->input('time_end');
-        $sclass->status = 'On-going';
         $sclass->acad_term_id = $request->input('acad_term_id');
         $sclass->course_code = $request->input('course_code');
         $sclass->instructor_id = $request->input('instructor_id');
@@ -147,7 +146,6 @@ class SClassController extends Controller
         $sclass->day = $request->input('day');
         $sclass->time_start = $request->input('time_start');
         $sclass->time_end = $request->input('time_end');
-        $sclass->status = 'On-going';
         $sclass->acad_term_id = $request->input('acad_term_id');
         $sclass->course_code = $request->input('course_code');
         $sclass->instructor_id = $request->input('instructor_id');
