@@ -98,7 +98,13 @@ class SClassController extends Controller
      */
     public function show($id)
     {
-        //
+        $sclass = SClass::find($id);
+
+        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+
+        return view('classes.show')
+                ->with('sclass', $sclass)
+                ->with('degree', $degree);
     }
 
     /**
