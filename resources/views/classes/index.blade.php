@@ -66,11 +66,10 @@
                             <tr>
                                 <th scope="col"></th>
                                 <th scope="col" class="text-center">Course Code</th>
-                                <th scope="col" class="text-center">Description</th>
                                 <th scope="col" class="text-center">Section</th>
-                                <th scope="col" class="text-center">Credits</th>
                                 <th scope="col" class="text-center">Schedule</th>
                                 <th scope="col" class="text-center">Instructor</th>
+                                <th scope="col" class="text-center">Total Students</th>
                                 @role('admin')
                                 <th scope="col"></th>
                                 @endrole
@@ -85,11 +84,12 @@
                                   </a>
                               </td>
                               <td class="text-center">{{ $sclass->course->course_code }}</td>
-                              <td>{{ $sclass->course->description }}</td>
-                              <td class="text-center">{{ $sclass->section }}</td>
-                              <td class="text-center">{{ $sclass->course->units }}</td>
+                              <td class="text-center">
+                                {{ $sclass->section != null ? $sclass->section : '-' }}
+                              </td>
                               <td class="text-center">{{ $sclass->getSchedule() }}</td>
                               <td class="text-center">{{ $sclass->instructor->user->getNameWithTitle() }}</td>
+                              <td class="text-center">-</td>
                               @role('admin')
                               <td class="text-right">
                                 <div class="dropdown">
