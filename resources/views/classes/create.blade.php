@@ -106,15 +106,15 @@ $(document).ready(function() {
                             <label class="custom-control-label" for="day2">Tuesday</label>
                           </div>
                           <div class="custom-control custom-radio mb-3">
-                            <input name="day" class="custom-control-input" id="day3" type="radio" value="T">
+                            <input name="day" class="custom-control-input" id="day3" type="radio" value="W">
                             <label class="custom-control-label" for="day3">Wednesday</label>
                           </div>
                           <div class="custom-control custom-radio mb-3">
-                            <input name="day" class="custom-control-input" id="day4" type="radio" value="T">
+                            <input name="day" class="custom-control-input" id="day4" type="radio" value="TH">
                             <label class="custom-control-label" for="day4">Thursday</label>
                           </div>
                           <div class="custom-control custom-radio mb-3">
-                            <input name="day" class="custom-control-input" id="day5" type="radio" value="T">
+                            <input name="day" class="custom-control-input" id="day5" type="radio" value="F">
                             <label class="custom-control-label" for="day5">Friday</label>
                           </div>
 
