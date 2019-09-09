@@ -112,7 +112,7 @@
                     </a>
                 </li>
                 @endrole
-                @role('registrar|head registrar')
+                @role('admin|registrar|head registrar')
                 <li class="nav-item {{ $title == 'Grades Masterlist' ? 'active' : '' }}">
                     <a class="nav-link" href="#">
                         <i class="ni ni-chart-bar-32"></i> Grades Masterlist
@@ -140,7 +140,7 @@
                 @endrole
                 @role('admin')
                 <li class="nav-item {{ $title == 'Manage Faculty' ? 'active' : '' }}">
-                    <a class="nav-link" href="/acad_terms">
+                    <a class="nav-link" href="#">
                         <i class="ni ni-badge"></i> Manage Faculty
                     </a>
                 </li>
@@ -154,60 +154,9 @@
                 @endrole
                 @role('admin|registrar')
                 <li class="nav-item {{ $title == 'Manage Students' ? 'active' : '' }}">
-                    <a class="nav-link" href="#navbar-students" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-students">
-                        <i class="ni ni-single-02"></i>
-                        <span class="nav-link-text">Manage Students</span>
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-single-02"></i> Manage Students
                     </a>
-
-                    <div class="collapse" id="navbar-students">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Add Student
-                                </a>
-                            </li>
-                            @role('admin')
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Subject Creditation
-                                </a>
-                            </li>
-                            @endrole
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    View Enlistment
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Student Masterlist
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                @endrole
-                @role('admin')
-                <li class="nav-item {{ $title == 'Manage Grades' ? 'active' : '' }}">
-                    <a class="nav-link" href="#navbar-grades" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-grades">
-                        <i class="ni ni-chart-bar-32"></i>
-                        <span class="nav-link-text">Manage Grades</span>
-                    </a>
-
-                    <div class="collapse" id="navbar-grades">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Encode Grades
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Grades Masterlist
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 @endrole
                 @role('admin|registrar')
@@ -240,6 +189,12 @@
             <ul class="navbar-nav mb-md-3">
 
                 @role('admin')
+                <li class="nav-item {{ $title == 'User Management' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('user.index') }}">
+                        <i class="ni ni-circle-08"></i> User Management
+                    </a>
+                </li>
+
                 <li class="nav-item {{ $title == 'System Settings' ? 'active' : '' }}">
                     <a class="nav-link" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
                         <i class="ni ni-settings"></i>
@@ -260,12 +215,6 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-
-                <li class="nav-item {{ $title == 'User Management' ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('user.index') }}">
-                        <i class="ni ni-circle-08 text-pink"></i> User Management
-                    </a>
                 </li>
                 @endrole
 
