@@ -75,11 +75,11 @@ $(document).ready(function() {
                                   @foreach ($courses as $course)
                                     @if($sclass->course_code == $course->course_code)
                                       <option value="{{ $course->course_code }}" selected>
-                                        {{ $course->course_code }} {{ $course->description }} | {{ $course->units }} units
+                                        {{ $course->course_code }} {{ $course->description }} | {{ $course->getCredits() }}
                                       </option>
                                     @else
                                       <option value="{{ $course->course_code }}">
-                                        {{ $course->course_code }} {{ $course->description }} | {{ $course->units }} units
+                                        {{ $course->course_code }} {{ $course->description }} | {{ $course->getCredits() }}
                                       </option>
                                     @endif
                                   @endforeach

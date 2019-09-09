@@ -66,7 +66,7 @@ $(document).ready(function() {
                                 <label class="form-control-label" for="course_code">Course</label>
                                 <select id="course_code" name="course_code" class="select2 form-control m-b" required>
                                   @foreach ($courses as $course)
-                                  <option value="{{ $course->course_code }}">{{ $course->course_code }} {{ $course->description }} | {{ $course->units }} units</option>
+                                  <option value="{{ $course->course_code }}">{{ $course->course_code }} {{ $course->description }} | {{ $course->getCredits() }}</option>
                                   @endforeach
                                 </select>
                             </div>
