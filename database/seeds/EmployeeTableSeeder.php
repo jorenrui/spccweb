@@ -22,7 +22,7 @@ class EmployeeTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->user_id = 1;
+        $user->id = 1;
         $user->first_name = 'Aaron';
         $user->middle_name = 'Worsfold';
         $user->last_name = 'Berzons';
@@ -51,7 +51,7 @@ class EmployeeTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->user_id = 2;
+        $user->id = 2;
         $user->first_name = 'Stafford';
         $user->middle_name = 'De Michele';
         $user->last_name = 'Durrett';
@@ -80,7 +80,7 @@ class EmployeeTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->user_id = 3;
+        $user->id = 3;
         $user->first_name = 'Fanny';
         $user->middle_name = 'Jorgesen';
         $user->last_name = 'Clarycott';
@@ -109,7 +109,7 @@ class EmployeeTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->user_id = 4;
+        $user->id = 4;
         $user->first_name = 'Jonalyn';
         $user->middle_name = 'Clemen';
         $user->last_name = 'Villaflor';
@@ -137,7 +137,7 @@ class EmployeeTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->user_id = 5;
+        $user->id = 5;
         $user->first_name = 'Bethel';
         $user->middle_name = 'Mariano';
         $user->last_name = 'Fajardo';
@@ -165,7 +165,7 @@ class EmployeeTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->user_id = 6;
+        $user->id = 6;
         $user->first_name = 'Joel';
         $user->middle_name = 'Clemen';
         $user->last_name = 'Seredrica';
@@ -193,7 +193,7 @@ class EmployeeTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->user_id = 7;
+        $user->id = 7;
         $user->first_name = 'Oliver';
         $user->middle_name = 'Biboi';
         $user->last_name = 'Guinto';
@@ -221,7 +221,7 @@ class EmployeeTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->user_id = 8;
+        $user->id = 8;
         $user->first_name = 'Reigen';
         $user->middle_name = 'Watson';
         $user->last_name = 'Holmes';

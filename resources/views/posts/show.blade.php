@@ -34,7 +34,7 @@
                             <div class="col-4">
                                 <button type="button" class="btn btn-outline-primary" onclick="javascript:history.back()">Return</button>
                             </div>
-                            @if(Auth::user()->user_id == $post->user_id || Auth::user()->hasRole('admin'))
+                            @if(Auth::user()->id == $post->user_id || Auth::user()->hasRole('admin'))
                                 <div class="col-8 text-right">
                                     <a href="/posts/{{$post->post_id}}/edit" class="btn btn-outline-info">Edit</a>
                                     <form method="POST" action="{{ action('PostsController@destroy', $post->post_id) }}" style="display: inline;">

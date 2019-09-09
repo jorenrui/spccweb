@@ -30,7 +30,7 @@ class CreateStudentTable extends Migration
             $table->string('acad_term_admitted_id', 6);
             $table->foreign('acad_term_admitted_id')->references('acad_term_id')->on('acad_term')->onUpdate('cascade');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

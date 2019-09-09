@@ -19,7 +19,7 @@
                         <div class="button-group row">
                           <div class="col-8">
                             <a href="/posts/{{ $post->post_id }}" class="btn btn-outline-primary btn-sm">View</a>
-                            @if(Auth::user()->user_id == $post->user_id || Auth::user()->hasRole('admin'))
+                            @if(Auth::user()->id == $post->user_id || Auth::user()->hasRole('admin'))
                             <a href="/posts/{{$post->post_id}}/edit" class="btn btn-outline-info btn-sm">Edit</a>
                             @endif
                           </div>

@@ -12,7 +12,6 @@ class User extends Authenticatable
     use Notifiable, HasRoles;
 
     protected $table = 'users';
-    protected $primaryKey = 'user_id';
     protected $username = 'username';
 
     /**
@@ -105,17 +104,17 @@ class User extends Authenticatable
      */
 
     public function posts() {
-        return $this->hasMany('App\Models\Post', 'user_id', 'user_id');
+        return $this->hasMany('App\Models\Post', 'user_id', 'id');
     }
 
     public function student()
     {
-        return $this->hasOne('App\Models\Student', 'user_id', 'user_id');
+        return $this->hasOne('App\Models\Student', 'user_id', 'id');
     }
 
     public function employee()
     {
-        return $this->hasOne('App\Models\Employee', 'user_id', 'user_id');
+        return $this->hasOne('App\Models\Employee', 'user_id', 'id');
     }
 
 }

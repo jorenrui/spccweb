@@ -39,7 +39,7 @@
                                 @foreach ($users as $user)
                                     <tr>
                                         <td scope="row">
-                                            <a href="/users/{{ $user->user_id }}" class="btn btn-outline-primary btn-sm">
+                                            <a href="/users/{{ $user->id }}" class="btn btn-outline-primary btn-sm">
                                                 View
                                             </a>
                                         </td>

@@ -18,7 +18,7 @@ class Student extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'user_id', 'user_id');
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
 
     public function acadTerm()

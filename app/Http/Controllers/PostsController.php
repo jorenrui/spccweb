@@ -84,7 +84,7 @@ class PostsController extends Controller
             $post = new Post;
             $post->title = $request->input('title');
             $post->body = $request->input('body');
-            $post->user_id = auth()->user()->user_id;
+            $post->user_id = auth()->user()->id;
             $post->cover_image = $fileNameToStore;
             $post->status = $status;
             $post->save();
@@ -122,7 +122,7 @@ class PostsController extends Controller
 
         // Check for correct user
         if(!auth()->user()->hasPermissionTo('edit posts') &&
-            auth()->user()->user_id != $post->user_id) {
+            auth()->user()->id != $post->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 
@@ -198,7 +198,7 @@ class PostsController extends Controller
 
         // Check for correct user
         if(!auth()->user()->hasPermissionTo('delete posts') &&
-            auth()->user()->user_id != $post->user_id) {
+            auth()->user()->id != $post->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 

@@ -15,7 +15,7 @@ class StudentTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->where('user_id', '>', '8')->delete();
+        DB::table('users')->where('id', '>', '8')->delete();
         DB::table('student')->delete();
 
         /* Generate 50 Second Year Student Accounts - 2012 Curriculum */
@@ -59,7 +59,7 @@ class StudentTableSeeder extends Seeder
             $student->student_type = 'Regular';
             $student->curriculum_id = 2012;
             $student->acad_term_admitted_id = '171801';
-            $student->user_id = $user->user_id;
+            $student->user_id = $user->id;
             $student->save();
         }
 
@@ -104,7 +104,7 @@ class StudentTableSeeder extends Seeder
             $student->student_type = 'Regular';
             $student->curriculum_id = 2018;
             $student->acad_term_admitted_id = '181901';
-            $student->user_id = $user->user_id;
+            $student->user_id = $user->id;
             $student->save();
         }
     }
