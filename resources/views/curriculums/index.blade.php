@@ -27,8 +27,8 @@
                             <tr>
                                 <th scope="col"></th>
                                 <th scope="col" class="text-center">ID</th>
-                                <th scope="col" class="text-center">Total Units</th>
                                 <th scope="col" class="text-center">Effective S.Y.</th>
+                                <th scope="col" class="text-center">Total Units</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -52,8 +52,8 @@
                                     </form>
                                 </td>
                                 <td class="text-center">{{ $curriculum->curriculum_id }}</td>
-                                <td class="text-center">{{ $curriculum->getTotalUnits() }}</td>
                                 <td class="text-center">{{ $curriculum->effective_sy }}</td>
+                                <td class="text-center">{{ $curriculum->getTotalUnits() }}</td>
                                 <td class="text-left">
                                 @if($curCurriculum->curriculum_id == $curriculum->curriculum_id)
                                     <span class="badge badge-primary btn-sm">

@@ -24,6 +24,7 @@ class Curriculum extends Model
 
         return $sum;
     }
+
     /**
      * Eloquent Relationships
      */
