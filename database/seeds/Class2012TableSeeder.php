@@ -23,11 +23,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'ENG1';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'M';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -35,11 +34,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'HUM1';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'M';
         $class->time_start = '13:00:00';
         $class->time_end = '15:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -47,11 +45,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-101';
         $class->course_code = 'MATH1';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'M';
         $class->time_start = '15:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -59,11 +56,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'SOCSCI1';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'T';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -71,11 +67,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-100';
         $class->course_code = 'IT111';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'T';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -83,11 +78,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-101';
         $class->course_code = 'PE1';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'W';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -95,11 +89,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-103';
         $class->course_code = 'IT112';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'W';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -107,11 +100,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-104';
         $class->course_code = 'IT113';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'TH';
         $class->time_start = '13:00:00';
         $class->time_end = '15:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -119,11 +111,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'NSTP1';
         $class->acad_term_id = '171801';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'F';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         /* 2017-2018 2nd Semester */
@@ -132,11 +123,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'ENG2';
         $class->acad_term_id = '171802';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'M';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -144,11 +134,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'HUM2';
         $class->acad_term_id = '171802';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'M';
         $class->time_start = '13:00:00';
         $class->time_end = '15:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -156,11 +145,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-101';
         $class->course_code = 'MATH2';
         $class->acad_term_id = '171802';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'M';
         $class->time_start = '15:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -168,11 +156,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-101';
         $class->course_code = 'SOCSCI2';
         $class->acad_term_id = '171802';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'T';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -180,11 +167,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-100';
         $class->course_code = 'IT121';
         $class->acad_term_id = '171802';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'T';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -192,11 +178,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-101';
         $class->course_code = 'PE2';
         $class->acad_term_id = '171802';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'W';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -204,11 +189,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-103';
         $class->course_code = 'IT122';
         $class->acad_term_id = '171802';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'W';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -216,11 +200,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-104';
         $class->course_code = 'IT123';
         $class->acad_term_id = '171802';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'TH';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         $class = new SClass;
@@ -228,11 +211,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'NSTP2';
         $class->acad_term_id = '171802';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'F';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'Finished';
         $class->save();
 
         /* 2018-2019 1st Semester */
@@ -241,11 +223,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'ENG3';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'M';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -253,11 +234,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-101';
         $class->course_code = 'NATSCI1';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'M';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -265,11 +245,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'FIL1';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'T';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -277,11 +256,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-100';
         $class->course_code = 'IT211';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'T';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -289,11 +267,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-101';
         $class->course_code = 'MATH3';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'W';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -301,11 +278,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-103';
         $class->course_code = 'IT212';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'W';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -313,11 +289,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-101';
         $class->course_code = 'PE3';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'TH';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -325,11 +300,10 @@ class Class2012TableSeeder extends Seeder
         $class->instructor_id = 'I-104';
         $class->course_code = 'IT213';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'TH';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'On-going';
         $class->save();
     }
 }

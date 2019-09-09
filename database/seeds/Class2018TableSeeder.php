@@ -21,11 +21,10 @@ class Class2018TableSeeder extends Seeder
         $class->instructor_id = 'I-101';
         $class->course_code = 'Fil 1';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'M';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -33,11 +32,10 @@ class Class2018TableSeeder extends Seeder
         $class->instructor_id = 'I-100';
         $class->course_code = 'IntroComp';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'M';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -45,11 +43,10 @@ class Class2018TableSeeder extends Seeder
         $class->instructor_id = 'I-101';
         $class->course_code = 'Math 1';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'T';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -57,11 +54,10 @@ class Class2018TableSeeder extends Seeder
         $class->instructor_id = 'I-103';
         $class->course_code = 'ComPro 1';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'T';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -69,11 +65,10 @@ class Class2018TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'Art 1';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'W';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -81,11 +76,10 @@ class Class2018TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'Philit';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'W';
         $class->time_start = '13:00:00';
         $class->time_end = '15:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -93,11 +87,10 @@ class Class2018TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'PE1';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'TH';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -105,11 +98,10 @@ class Class2018TableSeeder extends Seeder
         $class->instructor_id = 'I-101';
         $class->course_code = 'Eng 1';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'TH';
         $class->time_start = '13:00:00';
         $class->time_end = '15:00:00';
-        $class->status = 'On-going';
         $class->save();
 
         $class = new SClass;
@@ -117,11 +109,10 @@ class Class2018TableSeeder extends Seeder
         $class->instructor_id = 'I-102';
         $class->course_code = 'NSTP1';
         $class->acad_term_id = '181901';
-        $class->section = 'N/A';
+        $class->section = null;
         $class->day = 'F';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
-        $class->status = 'On-going';
         $class->save();
     }
 }
