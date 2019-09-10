@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\SClass;
 use App\Models\Grade;
+use App\Models\Setting;
+use App\Models\AcadTerm;
 use App\Models\Curriculum;
 
 use Illuminate\Http\Request;
@@ -18,7 +20,26 @@ class GradeController extends Controller
      */
     public function index()
     {
-        //
+        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+
+        $acad_terms = AcadTerm::all();
+
+        if( request()->has('select_acad_term') ) {
+            $selected_acad_term = request('select_acad_term');
+        }
+        else {
+            $selected_acad_term = $cur_acad_term;
+        }
+
+        $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)->paginate(10);
+
+        return view('grades.index')
+                ->with('classes', $classes)
+                ->with('degree', $degree)
+                ->with('acad_terms', $acad_terms)
+                ->with('cur_acad_term', $cur_acad_term)
+                ->with('selected_acad_term', $selected_acad_term);
     }
 
     public function enrollStudent($id)
@@ -73,7 +94,15 @@ class GradeController extends Controller
      */
     public function show($id)
     {
-        //
+        $sclass = SClass::find($id);
+        $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
+
+        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+
+        return view('grades.show')
+                ->with('sclass', $sclass)
+                ->with('grades', $grades)
+                ->with('degree', $degree);
     }
 
     /**
