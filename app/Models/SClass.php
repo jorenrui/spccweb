@@ -69,6 +69,11 @@ class SClass extends Model
         return $day . ', ' . $lab_time;
     }
 
+    public function getTotalStudents()
+    {
+        return count($this->grades);
+    }
+
     /**
      * Eloquent Relationships
      */

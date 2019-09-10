@@ -88,8 +88,12 @@
                                 {{ $sclass->section != null ? $sclass->section : '-' }}
                               </td>
                               <td class="text-center">{{ $sclass->getSchedule() }}</td>
-                              <td class="text-center">{{ $sclass->instructor->user->getNameWithTitle() }}</td>
-                              <td class="text-center">-</td>
+                              <td class="text-center">
+                                {{ $sclass->instructor->user->getNameWithTitle() }}
+                              </td>
+                              <td class="text-center">
+                                  {{ $sclass->getTotalStudents() }}
+                              </td>
                               @role('admin')
                               <td class="text-right">
                                 <div class="dropdown">
