@@ -62,4 +62,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::resource('events','EventsController')->except('show');
 
 	Route::resource('classes','SClassController');
+	Route::resource('grades','GradeController')->except('create');
+	Route::get('classes/enroll_students/{class}','GradeController@enrollStudent');
 });
