@@ -113,9 +113,9 @@
                 </li>
                 @endrole
                 @role('admin|registrar|head registrar')
-                <li class="nav-item {{ $title == 'Grades Masterlist' ? 'active' : '' }}">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-chart-bar-32"></i> Grades Masterlist
+                <li class="nav-item {{ $title == 'Grade Report' ? 'active' : '' }}">
+                    <a class="nav-link" href="/grades">
+                        <i class="ni ni-chart-bar-32"></i> Grade Report
                     </a>
                 </li>
                 @endrole
