@@ -102,30 +102,34 @@
                             <th scope="col"></th>
                             <th scope="col" class="text-center">Student No.</th>
                             <th scope="col" class="text-center">Name</th>
-                            <th scope="col" class="text-center">Grade</th>
-                            <th scope="col" class="text-center">Re-exam</th>
+                            <th scope="col" class="text-center">Credited Curriculum</th>
                         </tr>
                     </thead>
                     <tbody>
+                      @foreach ($grades as $grade)
                         <tr>
                             <td class="text-left" scope="row">
-                                <form method="POST" action="#" style="display: inline;">
+                                <form method="POST" action="{{ action('GradeController@destroy', $grade->grade_id) }}" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
 
                                     <button type="submit" class="btn btn-outline-warning btn-sm">Drop</button>
                                 </form>
                             </td>
-                            <td class="text-center">2014-10928</td>
-                            <td>Joeylene Rivera</td>
-                            <td class="text-center">1.50</td>
-                            <td class="text-center">-</td>
+                            <td class="text-center">{{ $grade->student->student_no }}</td>
+                            <td>{{ $grade->student->user->getName() }}</td>
+                            <td class="text-center">
+                              <a href="/curriculums/{{ $grade->curriculumDetails->curriculum_id }}">
+                                {{ $grade->curriculumDetails->curriculum_id }} {{ $grade->curriculumDetails->course->course_code}}
+                              </a>
+                            </td>
                         </tr>
+                      @endforeach
                     </tbody>
                 </table>
             </div>
             <div class="card-footer">
-              <!-- TODO: Add grades pagination -->
+                {{ $grades->links() }}
             </div>
           </div>
         </div>

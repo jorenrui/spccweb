@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SClass;
 use App\Models\Course;
+use App\Models\Grade;
 use App\Models\User;
 use App\Models\AcadTerm;
 use App\Models\Setting;
@@ -99,11 +100,13 @@ class SClassController extends Controller
     public function show($id)
     {
         $sclass = SClass::find($id);
+        $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
 
         $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
 
         return view('classes.show')
                 ->with('sclass', $sclass)
+                ->with('grades', $grades)
                 ->with('degree', $degree);
     }
 
