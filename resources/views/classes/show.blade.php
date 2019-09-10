@@ -81,6 +81,7 @@
 
         <div class="col-12 col-lg-7 mb-5 mb-xl-0">
           <div class="card shadow">
+          @if(count($grades) > 0)
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
@@ -88,7 +89,7 @@
                     </div>
                     @role('admin')
                     <div class="col text-right">
-                        <a href="/grades/create/{{ $sclass->class_id }}" class="btn btn-sm btn-primary">
+                      <a href="/classes/enroll_students/{{ $sclass->class_id}}" class="btn btn-sm btn-primary">
                           Enroll Student
                         </a>
                     </div>
@@ -131,6 +132,21 @@
             <div class="card-footer">
                 {{ $grades->links() }}
             </div>
+          @else
+            <div class="row mt-3 mb-5">
+                <div class="col text-center">
+                    <p class="lead">No Enrolled Students</p>
+                    <br>
+                    @role('admin')
+                    <div class="col">
+                      <a href="/classes/enroll_students/{{ $sclass->class_id}}" class="btn btn-lg btn-primary">
+                          Enroll Student
+                        </a>
+                    </div>
+                    @endrole
+                </div>
+            </div>
+          @endif
           </div>
         </div>
       </div>
