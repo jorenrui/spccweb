@@ -91,4 +91,9 @@ class CurriculumDetails extends Model
     {
         return $this->hasMany('App\Models\Prerequisite', 'curriculum_details_id', 'curriculum_details_id');
     }
+
+    public function grades()
+    {
+        return $this->hasMany('App\Models\Grade', 'curriculum_details_id', 'curriculum_details_id');
+    }
 }
