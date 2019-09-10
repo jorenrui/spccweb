@@ -87,4 +87,10 @@ class SClass extends Model
     {
         return $this->belongsTo('App\Models\AcadTerm', 'acad_term_id', 'acad_term_id');
     }
+
+    public function grades()
+    {
+        return $this->hasMany('App\Models\Grade', 'class_id', 'class_id');
+    }
+
 }

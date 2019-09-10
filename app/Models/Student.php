@@ -30,4 +30,9 @@ class Student extends Model
     {
         return $this->belongsTo('App\Models\Curriculum', 'curriculum_id', 'curriculum_id');
     }
+
+    public function grades()
+    {
+        return $this->hasMany('App\Models\Grade', 'student_no', 'student_no');
+    }
 }
