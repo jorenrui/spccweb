@@ -152,7 +152,7 @@ class Course2012TableSeeder extends Seeder
 
         $course = new Course;
         $course->course_code = 'FIL1';
-        $course->description = 'Komunikasyon sa Akademikong Filipinno';
+        $course->description = 'Komunikasyon sa Akademikong Filipino';
         $course->units = 3;
         $course->lab_units = null;
         $course->save();
