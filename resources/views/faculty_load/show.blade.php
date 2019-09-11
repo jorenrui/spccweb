@@ -155,6 +155,18 @@
         <div class="col-xl-12 mb-5 mb-xl-0">
             <div class="card shadow">
               @if(count($grades) > 0)
+                <div class="card-header border-0">
+                  <div class="row align-items-center">
+                      <div class="col">
+                          <h3 class="mb-0">Students' Grades</h3>
+                      </div>
+                      @if($sclass->acad_term_id >= $cur_acad_term)
+                      <div class="col text-right">
+                        <a href="/faculty_load/encode_grades/{{ $sclass->class_id }}" class="btn btn-sm btn-primary">Encode Grades</a>
+                      </div>
+                      @endif
+                  </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
