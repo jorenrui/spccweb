@@ -72,3 +72,7 @@ Route::group(['middleware' => ['auth', 'role:faculty']], function () {
 	]);
 	Route::get('faculty_load/encode_grades/{class}','FacultyLoadController@encodeGrades');
 });
+
+Route::group(['middleware' => ['auth', 'role:student']], function () {
+	Route::get('enlistment', 'EnlistmentController@index');
+});
