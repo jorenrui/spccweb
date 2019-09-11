@@ -74,7 +74,7 @@ class CurriculumController extends Controller
         $curriculum = Curriculum::find($id);
 
         $curriculum_details = CurriculumDetails::where('curriculum_id', $curriculum->curriculum_id)
-                                ->orderBy('semester')->get()->groupBy('sy');
+                                ->orderBy('sy','asc')->orderBy('semester','asc')->get()->groupBy('sy');
 
         $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
 
