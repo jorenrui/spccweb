@@ -10,14 +10,27 @@ class Grade extends Model
     protected $primaryKey = 'grade_id';
     public $timestamps = false;
 
-    public function getGrade()
+    public function getAverage()
     {
         $average = $this->attributes['average'];
 
-        if(!is_numeric($average)) {
-            return null;
+        if($average == 'INC') {
+            $prelims = $this->attributes['prelims'];
+            $midterms = $this->attributes['midterms'];
+            $finals = $this->attributes['finals'];
+
+            if($finals == null)
+                return null;
+
+            $average = ($prelims + $midterms + $finals) / 3;
+            $average = round( $average );
         }
 
+        return $average;
+    }
+
+    public function getTransmutatedGrade($average)
+    {
         $average = round( $average );
 
         if ($average >= 96 && $average <= 100)
@@ -38,8 +51,55 @@ class Grade extends Model
             return '2.75';
         else if ($average >= 75 && $average <= 77)
             return '3.00';
-        else if ($average >= 74 && $average <= 65)
+        else if ($average <= 74)
             return '5.00';
+    }
+
+    public function getGrade()
+    {
+        $average = $this->attributes['average'];
+
+        if ($average == 'INC')
+            return 'INC';
+        else if ($average == null)
+            return null;
+
+        return $this->getTransmutatedGrade($average);
+    }
+
+    public function getReExam()
+    {
+        $prelims = $this->attributes['prelims'];
+        $midterms = $this->attributes['midterms'];
+        $finals = $this->attributes['finals'];
+        $average = $this->attributes['average'];
+
+        if($average != 'INC' || $finals == null)
+            return null;
+
+        $average = ($prelims + $midterms + $finals) / 3;
+
+        return $this->getTransmutatedGrade($average);
+
+    }
+
+    public function getRemarks()
+    {
+        $average = $this->attributes['average'];
+
+        if(!is_numeric($average)) {
+            if($average == 'INC')
+                return 'INCOMPLETE';
+        }
+
+        $grade = $this->getGrade();
+
+        if($grade == null)
+            return null;
+        else if($grade == 5)
+            return 'FAILED';
+        else
+            return 'PASSED';
     }
 
     /**

@@ -90,9 +90,27 @@ class FacultyLoadController extends Controller
             $grade->prelims = $request->prelims[$i];
             $grade->midterms = $request->midterms[$i];
             $grade->finals = $request->finals[$i];
-            if($request->is_incomplete[$i])
-                $grade->average = 'INC';
-            $grade->re_exam = $request->re_exam[$i];
+
+            if($grade->average == 'INC' && empty($request->is_incomplete[$i])) {
+                $grade->average = null;
+            }
+
+            if (!empty($request->is_incomplete[$i])) {
+                if($request->is_incomplete[$i] == 'on') {
+                    $grade->average = 'INC';
+                }
+            }
+            else if (($request->prelims[$i] != null) && ($request->midterms[$i] != null) &&
+                (       $request->finals[$i]) != null) {
+                $grade->average = ($request->prelims[$i] + $request->midterms[$i] +
+                                    $request->finals[$i]) / 3;
+            }
+
+            if($grade->average == 'INC')
+                $grade->re_exam = $request->re_exam[$i];
+            else if($request->re_exam[$i] != null)
+                $grade->re_exam = null;
+
             $grade->save();
         }
 

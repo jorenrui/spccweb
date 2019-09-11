@@ -189,23 +189,25 @@
                                         <td class="text-center">{{ $grade->prelims }}</td>
                                         <td class="text-center">{{ $grade->midterms }}</td>
                                         <td class="text-center">{{ $grade->finals }}</td>
-                                        <td class="text-center">{{ $grade->average }}</td>
+                                        <td class="text-center">{{ $grade->getAverage() }}</td>
+                                        <td class="text-center">{{ $grade->getGrade() }}</td>
+                                        <td class="text-center">{{ $grade->getReExam() }}</td>
                                         <td class="text-center">
-                                          {{ $grade->getGrade() }}
-                                        </td>
-                                        <td class="text-center">{{ $grade->re_exam }}</td>
-                                        <td class="text-center">
-                                        @if($grade->remarks == 'PASSED')
-                                          <span class="badge badge-dot mr-4">
-                                            <i class="bg-success"></i> {{ $grade->remarks}}
-                                          </span>
-                                        @elseif($grade->remarks == 'FAILED')
-                                          <span class="badge badge-dot mr-4">
-                                            <i class="bg-danger"></i> {{ $grade->remarks}}
-                                          </span>
-                                        @else
-                                          -
-                                        @endif
+                                          @if($grade->getRemarks() == 'PASSED')
+                                            <span class="badge badge-dot mr-4">
+                                              <i class="bg-success"></i> {{ $grade->getRemarks() }}
+                                            </span>
+                                          @elseif($grade->getRemarks() == 'INCOMPLETE')
+                                            <span class="badge badge-dot mr-4">
+                                              <i class="bg-warning"></i> {{ $grade->getRemarks() }}
+                                            </span>
+                                          @elseif($grade->getRemarks() == 'FAILED')
+                                            <span class="badge badge-dot mr-4">
+                                              <i class="bg-danger"></i> {{ $grade->getRemarks() }}
+                                            </span>
+                                          @else
+                                            -
+                                          @endif
                                         </td>
                                     </tr>
                                   @endforeach

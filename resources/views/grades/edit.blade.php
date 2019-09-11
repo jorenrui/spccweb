@@ -54,18 +54,17 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     <th scope="col" class="text-center">Prelims</th>
                                     <th scope="col" class="text-center">Midterms</th>
                                     <th scope="col" class="text-center">Finals</th>
-                                    <th scope="col" class="text-center">Is INC?</th>
-                                    <th scope="col" class="text-center">Re-exam</th>
+                                    <th scope="col" class="text-center">Is INCOMPLETE?</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              <?php $id = -1; ?>
+                              <?php $id = 0; ?>
                               @foreach ($grades as $grade)
                                 <input name="grade_id[]" type="text" value="{{ $grade->grade_id }}" style="display:none">
                                 <tr>
                                     <td class="text-center" scope="row">
                                       {{ $grade->student->student_no }}
-                                      <input name="id[]" type="text" value="{{ $id++ }}" style="display:none;">
+                                      <input name="id[]" type="text" value="{{ $id }}" style="display:none;">
                                     </td>
                                     <td>
                                       {{ $grade->student->user->last_name }},
@@ -97,19 +96,12 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     </td>
                                     <td class="text-center">
                                       <label class="custom-toggle">
-                                        <input name="is_incomplete[]" type="checkbox" {{ $grade->average == 'INC' ? 'checked' : '' }}>
+                                        <input name="is_incomplete[{{$id}}]" type="checkbox" {{ $grade->average == 'INC' ? 'checked' : '' }}>
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                       </label>
                                     </td>
-                                    <td class="text-center">
-                                        @if($grade->re_exam != null)
-                                          <input name="re_exam[]" type="number" value="{{ $grade->re_exam }}" style="display:none">
-                                          <input class="form-control mb-3" type="number" value="{{ $grade->re_exam }}" disabled>
-                                        @else
-                                          <input name="re_exam[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$">
-                                        @endif
-                                    </td>
                                 </tr>
+                                <?php $id++ ?>
                               @endforeach
                             </tbody>
                         </table>
