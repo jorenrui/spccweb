@@ -39,8 +39,9 @@ $(document).on('keydown', 'input[pattern]', function(e){
                       </div>
                     </div>
 
-                    <form id="form-post" method="POST" action="{{ action('FacultyLoadController@store') }}">
+                    <form id="form-post" method="POST" action="{{ action('FacultyLoadController@update', $sclass->class_id) }}">
                     @csrf
+                    @method('PUT')
 
                     <input name="class_id" type="text" value="{{ $sclass->class_id }}" style="display:none">
 

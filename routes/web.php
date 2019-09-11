@@ -67,6 +67,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:faculty']], function () {
-	Route::resource('faculty_load','FacultyLoadController');
+	Route::resource('faculty_load','FacultyLoadController')->except([
+		'create', 'store', 'edit', 'destroy'
+	]);
 	Route::get('faculty_load/encode_grades/{class}','FacultyLoadController@encodeGrades');
 });

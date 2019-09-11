@@ -45,43 +45,6 @@ class FacultyLoadController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'class_id' => 'required'
-        ]);
-
-        // Update Grade
-        foreach ($request->id as $i => $id) {
-            $grade = Grade::find($request->grade_id[$i]);
-            $grade->prelims = $request->prelims[$i];
-            $grade->midterms = $request->midterms[$i];
-            $grade->finals = $request->finals[$i];
-            if($request->is_incomplete[$i])
-                $grade->average = 'INC';
-            $grade->re_exam = $request->re_exam[$i];
-            $grade->save();
-        }
-
-        return redirect('/faculty_load/' . $request->input('class_id'))->with('success', 'Grades Encoded');
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -113,17 +76,6 @@ class FacultyLoadController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -132,17 +84,18 @@ class FacultyLoadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        // Update Grade
+        foreach ($request->id as $i => $id) {
+            $grade = Grade::find($request->grade_id[$i]);
+            $grade->prelims = $request->prelims[$i];
+            $grade->midterms = $request->midterms[$i];
+            $grade->finals = $request->finals[$i];
+            if($request->is_incomplete[$i])
+                $grade->average = 'INC';
+            $grade->re_exam = $request->re_exam[$i];
+            $grade->save();
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect('/faculty_load/' . $id)->with('success', 'Grades Encoded');
     }
 }
