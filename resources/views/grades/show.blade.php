@@ -93,7 +93,7 @@
                           Alteration of grades should only be done in case of emergency where the faculty is unable to alter the submitted grades. In these cases, the OIC or Admin may alter it.
                         </p>
 
-                        <a href="#" class="btn btn-outline-warning btn-md">
+                        <a href="/grades/{{ $sclass->class_id }}/edit" class="btn btn-outline-warning btn-md">
                             Alter Grades
                         </a>
 

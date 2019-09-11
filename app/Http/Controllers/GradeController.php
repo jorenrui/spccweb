@@ -113,7 +113,12 @@ class GradeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sclass = SClass::find($id);
+        $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->get();
+
+        return view('grades.edit')
+                ->with('sclass', $sclass)
+                ->with('grades', $grades);
     }
 
     /**
@@ -123,9 +128,21 @@ class GradeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $class_id)
     {
-        //
+        // Update Grade
+        foreach ($request->id as $i => $id) {
+            $grade = Grade::find($request->grade_id[$i]);
+            $grade->prelims = $request->prelims[$i];
+            $grade->midterms = $request->midterms[$i];
+            $grade->finals = $request->finals[$i];
+            if($request->is_incomplete[$i])
+                $grade->average = 'INC';
+            $grade->re_exam = $request->re_exam[$i];
+            $grade->save();
+        }
+
+        return redirect('/grades/' . $class_id)->with('success', 'Grades Altered');
     }
 
     /**
