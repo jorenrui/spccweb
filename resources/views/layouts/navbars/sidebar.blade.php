@@ -121,7 +121,7 @@
                 @endrole
                 @role('faculty')
                 <li class="nav-item {{ $title == 'View Faculty Load' ? 'active' : '' }}">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/faculty_load">
                         <i class="ni ni-bullet-list-67"></i> View Faculty Load
                     </a>
                 </li>
