@@ -22,7 +22,7 @@ class FacultyLoadController extends Controller
         $curAcadTerm = AcadTerm::find($cur_acad_term);
 
         $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
-        $acad_terms = AcadTerm::all();
+        $acad_terms = AcadTerm::where('acad_term_id', '<=', $cur_acad_term)->get();
 
         if( request()->has('select_acad_term') ) {
             $selected_acad_term = request('select_acad_term');
