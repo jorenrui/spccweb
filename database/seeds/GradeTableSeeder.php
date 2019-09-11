@@ -40,7 +40,6 @@ class GradeTableSeeder extends Seeder
                 $grade->midterms = number_format($midterms, 2);
                 $grade->finals = number_format($finals, 2);
                 $grade->average = number_format($average, 2);
-                $grade->remarks = 'PASSED';
                 $grade->save();
 
                 $grade_id++;
