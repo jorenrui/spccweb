@@ -62,7 +62,23 @@ class FacultyLoadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'class_id' => 'required'
+        ]);
+
+        // Update Grade
+        foreach ($request->id as $i => $id) {
+            $grade = Grade::find($request->grade_id[$i]);
+            $grade->prelims = $request->prelims[$i];
+            $grade->midterms = $request->midterms[$i];
+            $grade->finals = $request->finals[$i];
+            if($request->is_incomplete[$i])
+                $grade->average = 'INC';
+            $grade->re_exam = $request->re_exam[$i];
+            $grade->save();
+        }
+
+        return redirect('/faculty_load/' . $request->input('class_id'))->with('success', 'Grades Encoded');
     }
 
     /**
@@ -75,13 +91,25 @@ class FacultyLoadController extends Controller
     {
         $sclass = SClass::find($id);
         $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
 
         $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
 
         return view('faculty_load.show')
                 ->with('sclass', $sclass)
                 ->with('grades', $grades)
-                ->with('degree', $degree);
+                ->with('degree', $degree)
+                ->with('cur_acad_term', $cur_acad_term);
+    }
+
+    public function encodeGrades($id)
+    {
+        $sclass = SClass::find($id);
+        $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->get();
+
+        return view('faculty_load.encode')
+                ->with('sclass', $sclass)
+                ->with('grades', $grades);
     }
 
     /**

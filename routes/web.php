@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('classes/enroll_students/{class}','GradeController@enrollStudent');
 });
 
-Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
+Route::group(['middleware' => ['auth', 'role:faculty']], function () {
 	Route::resource('faculty_load','FacultyLoadController');
+	Route::get('faculty_load/encode_grades/{class}','FacultyLoadController@encodeGrades');
 });
