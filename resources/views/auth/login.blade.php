@@ -14,12 +14,7 @@
                         </div>
                         <div class="text-center text-muted mb-4">
                             <small>
-                                Sign in with these credentials:
-                            </small>
-                            <br>
-                            <small>
-                                Username <strong>admin</strong>
-                                Password <strong>secret</strong>
+                                Sign in to the Portal.
                             </small>
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
@@ -61,6 +56,27 @@
                                 <button type="submit" class="btn btn-primary my-4">Sign in</button>
                             </div>
                         </form>
+
+                        <div class="text-center text-muted mb-4">
+                            <small>
+                                User: <strong>Admin</strong>
+                                <br>
+                                Username: <strong>admin</strong>,
+                                Password: <strong>secret</strong>
+                            </small>
+                            <br><br>
+                            <small>
+                                User: <strong>Faculty</strong>
+                                <br>
+                                Username and Password: <strong>I-100 - I-104</strong>
+                            </small>
+                            <br><br>
+                            <small>
+                                User: <strong>Student</strong>
+                                <br>
+                                Username and Password: <strong>0417-30001- 0417-30050 / 0418-30001- 0418-30050</strong>
+                            </small>
+                        </div>
                     </div>
                 </div>
                 <div class="row mt-3">
