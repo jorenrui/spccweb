@@ -82,7 +82,7 @@ class FacultyLoadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $class_id)
     {
         // Update Grade
         foreach ($request->id as $i => $id) {
@@ -96,6 +96,6 @@ class FacultyLoadController extends Controller
             $grade->save();
         }
 
-        return redirect('/faculty_load/' . $id)->with('success', 'Grades Encoded');
+        return redirect('/faculty_load/' . $class_id)->with('success', 'Grades Encoded');
     }
 }
