@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Faculty Load'])
+@extends('layouts.app', ['title' => 'View Faculty Load'])
 
 @section('styles')
 <link href="{{ asset('vendor/select2-4.0.10/select2.min.css') }}" rel="stylesheet">

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Faculty Load'])
+@extends('layouts.app', ['title' => 'View Faculty Load'])
 
 @section('content')
     @include('layouts.headers.plain')
