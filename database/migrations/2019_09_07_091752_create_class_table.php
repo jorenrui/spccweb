@@ -20,11 +20,11 @@ class CreateClassTable extends Migration
             $table->time('time_start');
             $table->time('time_end');
             $table->string('acad_term_id', 6);
-            $table->foreign('acad_term_id')->references('acad_term_id')->on('acad_term')->onUpdate('cascade');
+            $table->foreign('acad_term_id')->references('acad_term_id')->on('acad_term')->onDelete('cascade');
             $table->string('course_code', 10);
-            $table->foreign('course_code')->references('course_code')->on('course')->onUpdate('cascade');
+            $table->foreign('course_code')->references('course_code')->on('course')->onDelete('cascade');
             $table->string('instructor_id', 5);
-            $table->foreign('instructor_id')->references('employee_no')->on('employee')->onUpdate('cascade');
+            $table->foreign('instructor_id')->references('employee_no')->on('employee')->onDelete('cascade');
         });
     }
 
