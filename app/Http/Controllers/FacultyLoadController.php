@@ -106,11 +106,6 @@ class FacultyLoadController extends Controller
                                     $request->finals[$i]) / 3;
             }
 
-            if($grade->average == 'INC')
-                $grade->re_exam = $request->re_exam[$i];
-            else if($request->re_exam[$i] != null)
-                $grade->re_exam = null;
-
             $grade->save();
         }
 
