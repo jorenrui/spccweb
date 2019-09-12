@@ -71,28 +71,13 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                       {{ $grade->student->user->first_name[0] }}.
                                     </td>
                                     <td class="text-center">
-                                      @if($grade->prelims != null)
-                                        <input name="prelims[]" type="number" value="{{ $grade->prelims }}" style="display:none">
-                                        <input class="form-control mb-3" type="number" value="{{ $grade->prelims }}" disabled>
-                                      @else
-                                        <input name="prelims[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$">
-                                      @endif
+                                      <input name="prelims[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" value="{{ $grade->prelims }}">
                                     </td>
                                     <td class="text-center">
-                                      @if($grade->midterms != null)
-                                        <input name="midterms[]" type="number" value="{{ $grade->midterms }}" style="display:none">
-                                        <input class="form-control mb-3" type="number" value="{{ $grade->midterms }}" disabled>
-                                      @else
-                                        <input name="midterms[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$">
-                                      @endif
+                                      <input name="midterms[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" value="{{ $grade->midterms }}">
                                     </td>
                                     <td class="text-center">
-                                        @if($grade->finals != null)
-                                          <input name="finals[]" type="number" value="{{ $grade->finals }}" style="display:none">
-                                          <input class="form-control mb-3" type="number" value="{{ $grade->finals }}" disabled>
-                                        @else
-                                          <input name="finals[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$">
-                                        @endif
+                                      <input name="finals[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" value="{{ $grade->finals }}">
                                     </td>
                                     <td class="text-center">
                                       <label class="custom-toggle">
