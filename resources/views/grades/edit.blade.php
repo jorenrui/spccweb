@@ -71,13 +71,13 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                       {{ $grade->student->user->first_name[0] }}.
                                     </td>
                                     <td class="text-center">
-                                      <input name="prelims[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" value="{{ $grade->prelims }}">
+                                      <input name="prelims[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" value="{{ $grade->prelims }}">
                                     </td>
                                     <td class="text-center">
-                                      <input name="midterms[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" value="{{ $grade->midterms }}">
+                                      <input name="midterms[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" value="{{ $grade->midterms }}">
                                     </td>
                                     <td class="text-center">
-                                      <input name="finals[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" value="{{ $grade->finals }}">
+                                      <input name="finals[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" value="{{ $grade->finals }}">
                                     </td>
                                     <td class="text-center">
                                       <label class="custom-toggle">

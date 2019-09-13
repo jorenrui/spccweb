@@ -75,7 +75,7 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                         <input name="prelims[]" type="number" value="{{ $grade->prelims }}" style="display:none">
                                         <input class="form-control mb-3" type="number" value="{{ $grade->prelims }}" disabled>
                                       @else
-                                        <input name="prelims[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$">
+                                        <input name="prelims[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" >
                                       @endif
                                     </td>
                                     <td class="text-center">
@@ -83,7 +83,7 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                         <input name="midterms[]" type="number" value="{{ $grade->midterms }}" style="display:none">
                                         <input class="form-control mb-3" type="number" value="{{ $grade->midterms }}" disabled>
                                       @else
-                                        <input name="midterms[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$">
+                                        <input name="midterms[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$">
                                       @endif
                                     </td>
                                     <td class="text-center">
@@ -91,7 +91,7 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                           <input name="finals[]" type="number" value="{{ $grade->finals }}" style="display:none">
                                           <input class="form-control mb-3" type="number" value="{{ $grade->finals }}" disabled>
                                         @else
-                                          <input name="finals[]" class="form-control mb-3" type="number" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$">
+                                          <input name="finals[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$">
                                         @endif
                                     </td>
                                     <td class="text-center">
