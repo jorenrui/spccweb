@@ -86,17 +86,19 @@ class Grade extends Model
     public function getRemarks()
     {
         $average = $this->attributes['average'];
+        $computed_average = $this->getAverage();
 
         if(!is_numeric($average)) {
-            if($average == 'INC')
+            if($average == 'INC' && $computed_average == null)
                 return 'INCOMPLETE';
         }
 
-        $grade = $this->getGrade();
-
-        if($grade == null)
+        if($average == null)
             return null;
-        else if($grade == 5)
+
+        $grade = $this->getTransmutatedGrade($computed_average);
+
+        if($grade == 5)
             return 'FAILED';
         else
             return 'PASSED';
