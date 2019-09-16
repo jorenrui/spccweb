@@ -31,8 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
-	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 	Route::get('posts/{post}', 'PostsController@show');
+	Route::get('events', 'EventsController@index');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|writer']], function () {
@@ -40,9 +41,9 @@ Route::group(['middleware' => ['auth', 'role:admin|writer']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|moderator']], function () {
-	Route::get('/posts/mod/published', 'PostsController@published');
-	Route::get('/posts/mod/{post}/publish', 'PostsController@publish');
-	Route::get('/posts/mod/approval', 'PostsController@approval');
+	Route::get('posts/mod/published', 'PostsController@published');
+	Route::get('posts/mod/{post}/publish', 'PostsController@publish');
+	Route::get('posts/mod/approval', 'PostsController@approval');
 });
 
 
@@ -60,7 +61,9 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
-	Route::resource('events','EventsController')->except('show');
+	Route::resource('events','EventsController')->except([
+		'show', 'index'
+	]);
 
 	Route::resource('classes','SClassController');
 	Route::resource('grades','GradeController')->except('create');

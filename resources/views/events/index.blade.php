@@ -15,16 +15,20 @@
                         <div class="col">
                             <h3 class="mb-0">Events</h3>
                         </div>
+                        @role('admin|registrar')
                         <div class="col text-right">
                             <a href="/events/create" class="btn btn-sm btn-primary">Add Event</a>
                         </div>
+                        @endrole
                     </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
+                                @role('admin|registrar')
                                 <th scope="col"></th>
+                                @endrole
                                 <th scope="col">Event Title</th>
                                 <th scope="col">Date</th>
                             </tr>
@@ -32,6 +36,7 @@
                         <tbody>
                           @foreach ($events as $event)
                             <tr>
+                                @role('admin|registrar')
                                 <td class="text-left" scope="row">
 
                                     <a href="/events/{{ $event->event_id }}/edit" class="btn btn-outline-info btn-sm">
@@ -46,6 +51,7 @@
                                     </form>
 
                                 </td>
+                                @endrole
                                 <td>{{ $event->title }}</td>
                                 <td>{{ $event->getDate() }}</td>
                             </tr>
@@ -54,7 +60,7 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    {{ $acadTerms->links() }}
+                    {{ $events->links() }}
                 </div>
               @else
                   <div class="row mt-3 mb-5">
