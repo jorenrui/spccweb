@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Setting;
+use App\Models\Grade;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -11,6 +14,27 @@ class Student extends Model
     protected $casts = ['student_no' => 'string'];
     public $timestamps = false;
     public $incrementing = false;
+
+    public function getStatus()
+    {
+        $student_no = $this->attributes['student_no'];
+
+        /* TODO: Add logic for checking if student has graduated */
+
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+
+        $totalEnlistment = 0;
+
+        foreach ($this->grades as $grade) {
+            if($grade->sclass->acad_term_id == $cur_acad_term)
+                $totalEnlistment++;
+        }
+
+        if($totalEnlistment > 0)
+            return 'Enrolled';
+
+        return null;
+    }
 
     /**
      * Eloquent Relationships
