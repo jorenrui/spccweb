@@ -67,7 +67,7 @@ class Grade extends Model
         return $this->getTransmutatedGrade($average);
     }
 
-    public function getReExam()
+    public function getCompletion()
     {
         $prelims = $this->attributes['prelims'];
         $midterms = $this->attributes['midterms'];

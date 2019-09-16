@@ -178,8 +178,9 @@
                                 <th scope="col" class="text-center">Finals</th>
                                 <th scope="col" class="text-center">Average</th>
                                 <th scope="col" class="text-center">Grade</th>
-                                <th scope="col" class="text-center">Re-exam</th>
+                                <th scope="col" class="text-center">Completion</th>
                                 <th scope="col" class="text-center">Remarks</th>
+                                <th scope="col" class="text-center">Note</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -197,7 +198,7 @@
                                 <td class="text-center">{{ $grade->finals }}</td>
                                 <td class="text-center">{{ $grade->getAverage() }}</td>
                                 <td class="text-center">{{ $grade->getGrade() }}</td>
-                                <td class="text-center">{{ $grade->getReExam() }}</td>
+                                <td class="text-center">{{ $grade->getCompletion() }}</td>
                                 <td class="text-center">
                                 @if($grade->getRemarks() == 'PASSED')
                                   <span class="badge badge-dot mr-4">
@@ -211,9 +212,10 @@
                                   <span class="badge badge-dot mr-4">
                                     <i class="bg-danger"></i> {{ $grade->getRemarks() }}
                                   </span>
-                                @else
-                                  -
                                 @endif
+                                </td>
+                                <td class="text-center">
+                                  {{ $grade->note }}
                                 </td>
                             </tr>
                           @endforeach

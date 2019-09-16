@@ -19,6 +19,7 @@ class CreateGradeTable extends Migration
             $table->decimal('midterms', 4, 2)->nullable();
             $table->decimal('finals', 4, 2)->nullable();
             $table->char('average', 5)->nullable();
+            $table->string('note', 20)->nullable();
             $table->integer('class_id')->unsigned();
             $table->foreign('class_id')->references('class_id')->on('class')->onDelete('cascade');
             $table->string('student_no', 10);
