@@ -32,10 +32,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+	Route::get('posts/{post}', 'PostsController@show');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|writer']], function () {
-	Route::resource('posts','PostsController');
+	Route::resource('posts','PostsController')->except('show');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|moderator']], function () {

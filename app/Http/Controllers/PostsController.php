@@ -107,6 +107,17 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
+        // Check for correct user
+        if($post->status == 'Pending') {
+
+            $hasPermission = auth()->user()->id == $post->user_id;
+            $isModerator = auth()->user()->hasRole('moderator') || auth()->user()->hasRole('admin');
+
+            if(!($hasPermission || $isModerator)) {
+                return redirect('/dashboard')->with('error', 'Unauthorized Page');
+            }
+        }
+
         return view('posts.show')->with('post', $post);
     }
 
