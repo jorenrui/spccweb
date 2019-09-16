@@ -1,7 +1,12 @@
 @extends('layouts.app', ['title' => 'Dashboard'])
 
 @section('content')
-    @include('layouts.headers.cards')
+    @role('admin|registrar')
+        @include('layouts.headers.cards')
+    @endrole
+    @role('student|head registrar|faculty')
+        @include('layouts.headers.plain')
+    @endrole
 
     <div class="container-fluid mt--7">
         <div class="row mt-5">
@@ -13,36 +18,29 @@
                                 <div class="col">
                                     <h3 class="mb-0">Lastest News</h3>
                                 </div>
+                                @role('admin|writer')
                                 <div class="col text-right">
                                     <a href="/posts" class="btn btn-sm btn-primary">See my posts</a>
                                 </div>
+                                @endrole
                             </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col"></th>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Description</th>
                                         <th scope="col">Author</th>
-                                        <th scope="col">Date Created</th>
+                                        <th scope="col">Date Written</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($posts as $post)
                                         <tr>
-                                            <td class="text-right">
-                                                <a href="/posts/{{ $post->post_id }}" class="btn btn-outline-primary btn-sm">
-                                                    <span class="btn-inner--icon"><i class="ni ni-folder-17"></i></span>
-                                                    <span class="btn-inner--text">View</span>
-                                                </a>
-                                            </td>
                                             <th scope="row">
-                                                {{ $post->title }}
-                                            </th>
-                                            <th>
-                                                {!! str_limit(strip_tags($post->body), 50) !!}
+                                                <a href="/posts/{{ $post->post_id }}">
+                                                    {{ $post->title }}
+                                                </a>
                                             </th>
                                             <td>{{ $post->user->getName() }}</td>
                                             <td>{{ $post->getDateCreated() }}</td>
