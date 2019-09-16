@@ -8,9 +8,9 @@
       SPCC - Caloocan is a private school founded in 1997. It is affiliated with Systems Plus Computer Foundation in Angeles, Pampanga. SPCC - Caloocan has a Basic Education Department and a College Department.
     </div>
     <div class="credited-logo">
-      <img src="{{ asset('spccweb/img/deped-logo.png') }}" alt="DepEd Logo" />
       <img src="{{ asset('spccweb/img/ched-logo.png') }}" alt="CHED Logo" />
       <img src="{{ asset('spccweb/img/tesda-logo.png') }}" alt="Tesda Logo" />
+      <img src="{{ asset('spccweb/img/deped-logo.png') }}" alt="DepEd Logo" />
     </div>
   </div>
 
