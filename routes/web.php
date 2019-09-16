@@ -58,6 +58,8 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::get('curriculum_details/create/{curriculum}','CurriculumDetailsController@create');
 	Route::resource('courses','CourseController')->except('show');
 	Route::put('settings/set_cur_curriculum/{setting}','SettingsController@setCurCurriculum');
+
+	Route::resource('students','StudentController');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {

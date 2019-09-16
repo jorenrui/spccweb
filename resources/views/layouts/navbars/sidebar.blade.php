@@ -149,7 +149,7 @@
                 </li>
                 @endrole
                 @role('admin')
-                <li class="nav-item {{ $title == 'Manage Faculty' ? 'active' : '' }}">
+                <li class="nav-item {{ $title == 'Faculty' ? 'active' : '' }}">
                     <a class="nav-link" href="#">
                         <i class="ni ni-badge"></i> Manage Faculty
                     </a>
@@ -163,8 +163,8 @@
                 </li>
                 @endrole
                 @role('admin|registrar')
-                <li class="nav-item {{ $title == 'Manage Students' ? 'active' : '' }}">
-                    <a class="nav-link" href="#">
+                <li class="nav-item {{ $title == 'Students' ? 'active' : '' }}">
+                    <a class="nav-link" href="/students">
                         <i class="ni ni-single-02"></i> Manage Students
                     </a>
                 </li>
