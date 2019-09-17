@@ -99,6 +99,18 @@ class User extends Authenticatable
         return 'Mx. ' . $last_name;
     }
 
+    public function getGender()
+    {
+        $gender = $this->attributes['gender'];
+
+        if ($gender == 'F')
+            return 'Female';
+        else if ($gender == 'M')
+            return 'Male';
+
+        return null;
+    }
+
     /**
      * Eloquent Relationships
      */
