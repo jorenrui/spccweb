@@ -41,3 +41,9 @@
 .badge-float.badge-warning {
   background: #fec9bd;
 }
+
+.footable-details tr th,
+.footable-details tr td {
+  padding: 3px;
+  border: none !important;
+}
