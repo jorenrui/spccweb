@@ -47,7 +47,7 @@ class Student extends Model
 
     public function acadTerm()
     {
-        return $this->belongsTo('App\Models\AcademicTerm', 'acad_term_admitted_id', 'acad_term_id');
+        return $this->belongsTo('App\Models\AcadTerm', 'acad_term_admitted_id', 'acad_term_id');
     }
 
     public function curriculum()
