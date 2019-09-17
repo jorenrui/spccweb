@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\SClass;
+use App\Models\Grade;
+use App\Models\Setting;
 
 use Illuminate\Http\Request;
 
@@ -41,6 +44,32 @@ class StudentController extends Controller
         //
     }
 
+    private function getEnlistment($student_no)
+    {
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+
+        $user = SClass::find($student_no);
+        $grades = Grade::where('student_no', 'LIKE', $student_no)->get();
+
+        $filtered_grades = [];
+
+        foreach ($grades as $grade) {
+            if($grade->sclass->acad_term_id == $cur_acad_term)
+                array_push($filtered_grades, $grade);
+        }
+
+        return $filtered_grades;
+    }
+
+    private function getClassesByDay($student_no, $day)
+    {
+        $grades = $this->getEnlistment($student_no);
+
+        return array_filter($grades, function ($grade) use ($day){
+            return $grade->sclass->day == $day;
+        });
+    }
+
     /**
      * Display the specified resource.
      *
@@ -49,7 +78,29 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+
+        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+
+        $student_no = $user->student->student_no;
+
+        $grades = $this->getEnlistment($student_no);
+
+        $m_grades = $this->getClassesByDay($student_no, 'M');
+        $t_grades = $this->getClassesByDay($student_no, 'T');
+        $w_grades = $this->getClassesByDay($student_no, 'W');
+        $th_grades = $this->getClassesByDay($student_no, 'TH');
+        $f_grades = $this->getClassesByDay($student_no, 'F');
+
+        return view('students.show')
+                ->with('user', $user)
+                ->with('grades', $grades)
+                ->with('m_grades', $m_grades)
+                ->with('t_grades', $t_grades)
+                ->with('w_grades', $w_grades)
+                ->with('th_grades', $th_grades)
+                ->with('f_grades', $f_grades)
+                ->with('degree', $degree);
     }
 
     /**
