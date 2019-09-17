@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Course;
+
 use Illuminate\Database\Eloquent\Model;
 
 class SClass extends Model
@@ -9,6 +11,15 @@ class SClass extends Model
     protected $table = 'class';
     protected $primaryKey = 'class_id';
     public $timestamps = false;
+
+    public function getCourse()
+    {
+        $course_code = $this->attributes['course_code'];
+
+        $description = Course::where('course_code', 'LIKE', $course_code)->get()[0]->description;
+
+        return $course_code . ' ' . $description;
+    }
 
     public function getTime()
     {
