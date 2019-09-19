@@ -33,7 +33,7 @@ class Student extends Model
         if($totalEnlistment > 0)
             return 'Enrolled';
 
-        return null;
+        return 'Inactive';
     }
 
     /**
