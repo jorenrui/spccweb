@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Setting;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
@@ -11,6 +13,27 @@ class Employee extends Model
     protected $casts = ['employee_no' => 'string'];
     public $timestamps = false;
     public $incrementing = false;
+
+    public function getStatus()
+    {
+        $employee_no = $this->attributes['employee_no'];
+
+        /* TODO: Add logic for checking if student has graduated */
+
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+
+        $totalLoad = 0;
+
+        foreach ($this->classes as $sclass) {
+            if($sclass->acad_term_id == $cur_acad_term)
+                $totalLoad++;
+        }
+
+        if($totalLoad > 0)
+            return 'Active';
+
+        return 'Inactive';
+    }
 
     /**
      * Eloquent Relationships
