@@ -150,7 +150,7 @@
                 @endrole
                 @role('admin')
                 <li class="nav-item {{ $title == 'Faculty' ? 'active' : '' }}">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/faculties">
                         <i class="ni ni-badge"></i> Manage Faculty
                     </a>
                 </li>

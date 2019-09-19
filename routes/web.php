@@ -70,6 +70,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::resource('classes','SClassController');
 	Route::resource('grades','GradeController')->except('create');
 	Route::get('classes/enroll_students/{class}','GradeController@enrollStudent');
+
+	Route::resource('faculties','FacultyController');
 });
 
 Route::group(['middleware' => ['auth', 'role:faculty']], function () {
