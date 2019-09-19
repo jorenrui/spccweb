@@ -215,7 +215,7 @@ class StudentController extends Controller
             'secondary_sy' => 'required'
         ]);
 
-        // Add Student
+        // Update Student
         // Default Credentials:
         // Username: Student No, Password: Birthdate
         $user = User::find($id);
@@ -234,7 +234,6 @@ class StudentController extends Controller
         $student_no = $user->student->student_no;
 
         $student = Student::find($student_no);
-        $student->student_no = $request->input('student_no');
         $student->primary = $request->input('primary');
         $student->primary_sy = $request->input('primary_sy');
         $student->intermediate = $request->input('intermediate');
@@ -245,7 +244,6 @@ class StudentController extends Controller
         $student->student_type = $request->input('student_type');
         $student->curriculum_id = $request->input('curriculum_id');
         $student->acad_term_admitted_id = $request->input('acad_term_admitted_id');
-        $student->user_id = $user->id;
         $student->save();
 
         return redirect('/students')->with('success', 'Student Updated');

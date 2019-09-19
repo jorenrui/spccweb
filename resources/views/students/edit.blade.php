@@ -32,7 +32,8 @@ $(document).ready(function() {
                           <div class="row">
                             <div class="col-12 col-lg-3 col-md-6">
                                 <label class="form-control-label" for="student_no">Student No.*</label>
-                                <input id="student_no" name="student_no" class="form-control mb-3" type="text" placeholder="e.g. 0417-30001" value="{{ $user->student->student_no }}" required>
+                                <input id="student_no" name="student_no" class="form-control mb-3" type="text" value="{{ $user->student->student_no }}" disabled>
+                                <input id="student_no" name="student_no" type="text" value="{{ $user->student->student_no }}" style="display:none">
                             </div>
                           </div>
 
