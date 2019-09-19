@@ -13,7 +13,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Students</h3>
+                            <h3 class="mb-0">Student Masterlist</h3>
                         </div>
                         <div class="col text-right">
                             <a href="/students/create" class="btn btn-sm btn-primary">Add Student</a>
@@ -51,6 +51,10 @@
                                 @elseif($student->student->getStatus() == 'Enrolled')
                                     <span class="badge badge-dot mr-4">
                                     <i class="bg-info"></i> Enrolled
+                                    </span>
+                                @else
+                                    <span class="badge badge-dot mr-4">
+                                    <i class="bg-default"></i> Inactive
                                     </span>
                                 @endif
                                 </td>
