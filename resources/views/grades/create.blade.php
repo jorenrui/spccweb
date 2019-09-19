@@ -25,7 +25,7 @@ $(document).ready(function() {
             <div class="card-body row align-items-center">
               <div class="col">
                 <h2 class="mb-0">
-                  {{ $sclass->course_code }} | {{ $sclass->course->description }}
+                  {{ $sclass->getCourse() }}
                 </h2>
 
                 <hr class="my-4" />
@@ -120,11 +120,11 @@ $(document).ready(function() {
                                       <!-- Set course in curriculum to selected if the same with course in class -->
                                       @if($sclass->course_code == $curriculum_details->course_code)
                                         <option value="{{ $curriculum_details->curriculum_details_id }}" selected>
-                                          {{ $curriculum_details->course_code }} | {{ $curriculum_details->course->description }}
+                                          {{ $curriculum_details->course->getCourse() }}
                                         </option>
                                       @else
                                         <option value="{{ $curriculum_details->curriculum_details_id }}">
-                                          {{ $curriculum_details->course_code }} | {{ $curriculum_details->course->description }}
+                                          {{ $curriculum_details->course->getCourse() }}
                                         </option>
                                       @endif
                                       @endforeach

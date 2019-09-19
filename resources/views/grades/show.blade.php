@@ -11,7 +11,7 @@
             <div class="card-body row align-items-center">
               <div class="col">
                 <h2 class="mb-0">
-                  {{ $sclass->course_code }} | {{ $sclass->course->description }}
+                  {{ $sclass->getCourse() }}
                 </h2>
                 <p class="text-muted text-sm">{{ $degree }}</p>
 

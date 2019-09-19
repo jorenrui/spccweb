@@ -63,7 +63,9 @@
                                 <label class="form-control-label" for="course_code">Course</label>
                                 <select id="course_code" name="course_code" class="select2 form-control m-b" required>
                                   @foreach ($courses as $course)
-                                    <option value="{{ $course->course_code }}" {{ $cur_detail->course_code == $course->course_code ? 'selected' : ''}}>{{ $course->course_code }} | {{ $course->description }}</option>
+                                    <option value="{{ $course->course_code }}" {{ $cur_detail->course_code == $course->course_code ? 'selected' : ''}}>
+                                      {{ $course->getCourse() }}
+                                    </option>
                                   @endforeach
                                 </select>
                             </div>

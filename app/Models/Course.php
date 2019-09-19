@@ -12,6 +12,14 @@ class Course extends Model
     public $timestamps = false;
     public $incrementing = false;
 
+    public function getCourse()
+    {
+        $course_code = $this->attributes['course_code'];
+        $description = $this->attributes['description'];
+
+        return $course_code . ' ' . $description;
+    }
+
     public function getCredits()
     {
         $credits = $this->attributes['units'];

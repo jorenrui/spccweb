@@ -30,7 +30,7 @@ $(document).on('keydown', 'input[pattern]', function(e){
                           <div class="col">
                               <h2>Alteration of Grades</h2>
                               <p class="text-muted text-sm">
-                                  {{ $sclass->course_code }} | {{ $sclass->course->description }}
+                                  {{ $sclass->getCourse() }}
                               </p>
                           </div>
                           <div class="col text-right">
