@@ -25,7 +25,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-3 order-lg-2">
                     <div class="card-profile-image">
-                        @if(auth()->user()->gender == 'F')
+                        @if($user->gender == 'F')
                             <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-female.png" class="rounded-circle">
                         @else
                             <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-male.png" class="rounded-circle">
@@ -42,11 +42,7 @@
                                 {{ $user->getName() }}
                             </h2>
                             <div class="h4 font-weight-300">
-                                @if($user->getRole() == 'Student')
-                                    Student No. {{ $user->student->student_no }}
-                                @else
-                                    Employee No. {{ $user->employee->employee_no }}
-                                @endif
+                                Student No. {{ $user->student->student_no }}
                             </div>
                             <div class="h4 font-weight-300 mt-3">
                                 {{ $user->email }}
@@ -133,6 +129,10 @@
 
                                         <div class="row">
                                             <div class="col text-center">
+                                                <a href="/students" class="btn btn-outline-secondary btn-sm">
+                                                    Return
+                                                </a>
+
                                                 <a href="/students/{{ $user->id }}/edit" class="btn btn-outline-info btn-sm">
                                                 Edit Student
                                                 </a>
@@ -245,12 +245,6 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="mb-0">Schedule</h3>
-                    </div>
-
-                    <div class="col text-right">
-                        <a href="/students" class="btn btn-outline-secondary btn-sm">
-                            Return
-                        </a>
                     </div>
                 </div>
             </div>
