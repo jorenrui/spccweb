@@ -77,7 +77,7 @@ class FacultyController extends Controller
         $faculty->user_id = $user->id;
         $faculty->save();
 
-        return redirect('/faculties')->with('success', 'Faculty Created');
+        return redirect('/faculties')->with('success', 'Faculty Created. Default username is the Employee No. while the default password is the user\'s birthdate.');
     }
 
     private function getClassesByDay($employee_no, $day)
