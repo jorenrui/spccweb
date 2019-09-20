@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Students'])
+@extends('layouts.app', ['title' => 'Faculty'])
 
 @section('styles')
 <link href="{{ asset('vendor/footable/footable.bootstrap.min.css') }}" rel="stylesheet">
@@ -113,11 +113,11 @@
                           </dd>
                         </dl>
 
+                        @role('admin')
                         <div class="row">
                             <div class="col text-center">
                                 <button type="button" class="btn btn-outline-secondary btn-sm" onclick="javascript:history.back()">Return</button>
 
-                                @role('admin')
                                 <a href="/faculties/{{ $user->id }}/edit" class="btn btn-outline-info btn-sm">
                                 Edit Faculty
                                 </a>
@@ -128,9 +128,9 @@
 
                                     <button type="submit" class="btn btn-outline-danger btn-sm">Delete Faculty</button>
                                 </form>
-                                @endrole
                             </div>
                         </div>
+                        @endrole
                     </div>
                 </div>
             </div>
