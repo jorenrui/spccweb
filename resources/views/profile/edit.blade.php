@@ -14,10 +14,11 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
-                                <a href="#">
-                                    <img src="https://res.cloudinary.com/spccweb/profile_pictures/default-female_yaj9vd.png" class="rounded-circle">
-                                </a>
-
+                                @if(auth()->user()->gender == 'F')
+                                    <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-female.png" class="rounded-circle">
+                                @else
+                                    <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-male.png" class="rounded-circle">
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -36,45 +37,141 @@
                                     <div>
                                         {{ auth()->user()->email }}
                                     </div>
-                                    <hr class="my-4" />
-                                    <dl class="row">
-                                        @if(auth()->user()->gender != null )
-                                        <dt class="col-sm-4">
-                                            Gender:
-                                        </dt>
-                                        <dd class="col-sm-8">
-                                            {{ auth()->user()->gender }}
-                                        </dd>
-                                        @endif
-
-                                        @if(auth()->user()->birthdate != null )
-                                        <dt class="col-sm-4">
-                                            Birthdate:
-                                        </dt>
-                                        <dd class="col-sm-8">
-                                            {{ auth()->user()->birthdate }}
-                                        </dd>
-                                        @endif
-
-                                        @if(auth()->user()->contact_no != null )
-                                        <dt class="col-sm-4">
-                                            Contact No:
-                                        </dt>
-                                        <dd class="col-sm-8">
-                                            {{ auth()->user()->contact_no }}
-                                        </dd>
-                                        @endif
-
-                                        @if(auth()->user()->address != null )
-                                        <dt class="col-sm-4">
-                                            Address:
-                                        </dt>
-                                        <dd class="col-sm-8">
-                                            {{ auth()->user()->address }}
-                                        </dd>
-                                        @endif
-                                    </dl>
                                 </div>
+
+                                <hr class="my-4" />
+
+                                <dl class="row text-sm">
+                                    <dt class="col-5 text-right">
+                                        Username:
+                                    </dt>
+                                    <dd class="col-7">
+                                        {{ auth()->user()->username }}
+                                    </dd>
+
+                                    @unlessrole('student')
+                                        <dt class="col-5 text-right">
+                                            Status:
+                                        </dt>
+                                        <dd class="col-7">
+                                            {{ auth()->user()->employee->getStatus() }}
+                                        </dd>
+
+                                        <dt class="col-5 text-right">
+                                            Date Employed:
+                                        </dt>
+                                        <dd class="col-7">
+                                            {{ auth()->user()->employee->date_employed }}
+                                        </dd>
+                                    @else
+                                        <dt class="col-5 text-right">
+                                            Student Type:
+                                        </dt>
+                                        <dd class="col-7">
+                                            {{ auth()->user()->student->student_type }}
+                                        </dd>
+
+                                        <dt class="col-5 text-right">
+                                            Curriculum:
+                                        </dt>
+                                        <dd class="col-7">
+                                            {{ auth()->user()->student->curriculum_id }}
+                                        </dd>
+
+                                        <dt class="col-5 text-right">
+                                            Status:
+                                        </dt>
+                                        <dd class="col-7">
+                                            {{ auth()->user()->student->getStatus() }}
+                                        </dd>
+
+                                        <dt class="col-5 text-right">
+                                            Date Admitted:
+                                        </dt>
+                                        <dd class="col-7">
+                                            {{ auth()->user()->student->date_admitted }}
+                                        </dd>
+
+                                        <dt class="col-5 text-right">
+                                            Academic Term Admitted:
+                                        </dt>
+                                        <dd class="col-7">
+                                            {{ auth()->user()->student->acadTerm->getAcadTerm() }}
+                                        </dd>
+
+                                        @if(auth()->user()->student->date_graduated != null)
+                                        <dt class="col-5 text-right">
+                                            Date Graduated:
+                                        </dt>
+                                        <dd class="col-7">
+                                            {{ auth()->user()->student->date_graduated }}
+                                        </dd>
+                                        @endif
+                                    @endunlessrole
+
+                                    <h6 class="col-12 heading-small text-muted mt-3">
+                                        Personal Information
+                                    </h6>
+
+                                    @if(auth()->user()->getGender() != null)
+                                    <dt class="col-5 text-right">
+                                        Gender:
+                                    </dt>
+                                    <dd class="col-7">
+                                        {{ auth()->user()->getGender() }}
+                                    </dd>
+                                    @endif
+
+                                    <dt class="col-5 text-right">
+                                        Birthdate:
+                                    </dt>
+                                    <dd class="col-7">
+                                        {{ auth()->user()->birthdate }}
+                                    </dd>
+
+                                    @if(auth()->user()->contact_no != null)
+                                    <dt class="col-5 text-right">
+                                        Contact No:
+                                    </dt>
+                                    <dd class="col-7">
+                                        {{ auth()->user()->contact_no }}
+                                    </dd>
+                                    @endif
+
+                                    <dt class="col-5 text-right">
+                                        Address:
+                                    </dt>
+                                    <dd class="col-7">
+                                        {{ auth()->user()->address }}
+                                    </dd>
+
+                                    @role('student')
+                                        <h6 class="col-12 heading-small text-muted text-left mt-2">
+                                            Educational Background
+                                        </h6>
+
+                                        <dt class="col-5 text-right">
+                                            Primary:
+                                        </dt>
+                                        <dd class="col-7">
+                                            {{ auth()->user()->student->primary }}, ({{ auth()->user()->student->primary_sy }})
+                                        </dd>
+
+                                        <dt class="col-5 text-right">
+                                            Intermediate:
+                                        </dt>
+                                        <dd class="col-7">
+                                            {{ auth()->user()->student->intermediate }}, ({{ auth()->user()->student->intermediate_sy }})
+                                        </dd>
+
+                                        <dt class="col-5 text-right">
+                                            Secondary:
+                                        </dt>
+                                        <dd class="col-7">
+                                            {{ auth()->user()->student->secondary }}, ({{ auth()->user()->student->secondary_sy }})
+                                        </dd>
+                                    @endrole
+                                </dl>
                             </div>
                         </div>
                     </div>
@@ -153,8 +250,8 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('birthdate') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="birthdate">Birthdate (optional)</label>
-                                    <input type="date" name="birthdate" id="birthdate" class="form-control form-control-alternative{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" placeholder="Birthdate" value="{{ old('birthdate', auth()->user()->birthdate) }}">
+                                    <label class="form-control-label" for="birthdate">Birthdate</label>
+                                    <input type="date" name="birthdate" id="birthdate" class="form-control form-control-alternative{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" placeholder="Birthdate" value="{{ old('birthdate', auth()->user()->birthdate) }}" required>
 
                                     @if ($errors->has('birthdate'))
                                         <span class="invalid-feedback" role="alert">
@@ -176,8 +273,8 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('address') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="address">Address (optional)</label>
-                                    <input type="text" name="address" id="address" class="form-control form-control-alternative{{ $errors->has('address') ? ' is-invalid' : '' }}" placeholder="Address" value="{{ old('address', auth()->user()->address) }}">
+                                    <label class="form-control-label" for="address">Address</label>
+                                    <input type="text" name="address" id="address" class="form-control form-control-alternative{{ $errors->has('address') ? ' is-invalid' : '' }}" placeholder="Address" value="{{ old('address', auth()->user()->address) }}" required>
 
                                     @if ($errors->has('address'))
                                         <span class="invalid-feedback" role="alert">
