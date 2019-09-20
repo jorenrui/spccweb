@@ -121,12 +121,12 @@
                 @endrole
                 @role('faculty')
                 <li class="nav-item {{ $title == 'Schedule' ? 'active' : '' }}">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/faculty">
                         <i class="ni ni-calendar-grid-58"></i> Schedule
                     </a>
                 </li>
                 <li class="nav-item {{ $title == 'View Faculty Load' ? 'active' : '' }}">
-                    <a class="nav-link" href="/faculty_load">
+                    <a class="nav-link" href="/faculty/load">
                         <i class="ni ni-bullet-list-67"></i> View Faculty Load
                     </a>
                 </li>

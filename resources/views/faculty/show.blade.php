@@ -53,7 +53,7 @@
 
                 <div class="row">
                   <div class="col">
-                    <a href="/faculty_load" class="btn btn-outline-secondary btn-sm">
+                    <a href="/faculty/load" class="btn btn-outline-secondary btn-sm">
                       Return
                     </a>
                   </div>
@@ -162,7 +162,7 @@
                       </div>
                       @if($sclass->acad_term_id >= $cur_acad_term)
                       <div class="col text-right">
-                        <a href="/faculty_load/encode_grades/{{ $sclass->class_id }}" class="btn btn-sm btn-primary">Encode Grades</a>
+                        <a href="/faculty/load/{{ $sclass->class_id }}/encode" class="btn btn-sm btn-primary">Encode Grades</a>
                       </div>
                       @endif
                   </div>

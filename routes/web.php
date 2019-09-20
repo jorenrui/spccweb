@@ -75,10 +75,13 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:faculty']], function () {
-	Route::resource('faculty_load','FacultyLoadController')->except([
-		'create', 'store', 'edit', 'destroy'
+	Route::resource('faculty','FacultyAccessController')->only([
+    'index', 'update'
 	]);
-	Route::get('faculty_load/encode_grades/{class}','FacultyLoadController@encodeGrades');
+
+	Route::get('faculty/load','FacultyAccessController@load');
+	Route::get('faculty/load/{class}','FacultyAccessController@show');
+	Route::get('faculty/load/{class}/encode','FacultyAccessController@encodeGrades');
 });
 
 Route::group(['middleware' => ['auth', 'role:student']], function () {

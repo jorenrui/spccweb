@@ -34,7 +34,7 @@
                     </div>
                     <div class="row">
                       <div class="col">
-                      <form action="/faculty_load?" method="GET" class="form-horizontal">
+                      <form action="/faculty/load?" method="GET" class="form-horizontal">
                         <label class="form-control-label" for="select_acad_term">Academic Term: </label>
                         <select class="col-12 col-md-4 select2 form-control m-b" name="select_acad_term" onchange="this.form.submit()">
                           @foreach ($acad_terms as $acad_term)
@@ -70,7 +70,7 @@
                           @foreach ($classes as $sclass)
                             <tr>
                               <td class="text-left" scope="row">
-                                  <a href="/faculty_load/{{ $sclass->class_id }}" class="btn btn-outline-info btn-sm">
+                                  <a href="/faculty/load/{{ $sclass->class_id }}" class="btn btn-outline-info btn-sm">
                                       View
                                   </a>
                               </td>
