@@ -19,6 +19,7 @@ class CreateClassTable extends Migration
             $table->char('day', 2);
             $table->time('time_start');
             $table->time('time_end');
+            $table->string('room', 20)->nullable();
             $table->string('acad_term_id', 6);
             $table->foreign('acad_term_id')->references('acad_term_id')->on('acad_term')->onDelete('cascade');
             $table->string('course_code', 10);

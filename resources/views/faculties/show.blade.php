@@ -166,7 +166,7 @@
                             <td scope="row">{{ $sclass->getTime() }}</td>
                             <td>{{ $sclass->getCourse() }}</td>
                             <td>{{ $sclass->course->getCredits() }}</td>
-                            <td>College Room</td>
+                            <td>{{ $sclass->room }}</td>
                             <td>{{ $sclass->getTotalStudents() }}</td>
                         </tr>
                       @endforeach
@@ -191,7 +191,7 @@
                             <td scope="row">{{ $sclass->getTime() }}</td>
                             <td>{{ $sclass->getCourse() }}</td>
                             <td>{{ $sclass->course->getCredits() }}</td>
-                            <td>College Room</td>
+                            <td>{{ $sclass->room }}</td>
                             <td>{{ $sclass->getTotalStudents() }}</td>
                         </tr>
                       @endforeach
@@ -216,7 +216,7 @@
                             <td scope="row">{{ $sclass->getTime() }}</td>
                             <td>{{ $sclass->getCourse() }}</td>
                             <td>{{ $sclass->course->getCredits() }}</td>
-                            <td>College Room</td>
+                            <td>{{ $sclass->room }}</td>
                             <td>{{ $sclass->getTotalStudents() }}</td>
                         </tr>
                       @endforeach
@@ -241,7 +241,7 @@
                             <td scope="row">{{ $sclass->getTime() }}</td>
                             <td>{{ $sclass->getCourse() }}</td>
                             <td>{{ $sclass->course->getCredits() }}</td>
-                            <td>College Room</td>
+                            <td>{{ $sclass->room }}</td>
                             <td>{{ $sclass->getTotalStudents() }}</td>
                         </tr>
                       @endforeach
@@ -266,7 +266,7 @@
                             <td scope="row">{{ $sclass->getTime() }}</td>
                             <td>{{ $sclass->getCourse() }}</td>
                             <td>{{ $sclass->course->getCredits() }}</td>
-                            <td>College Room</td>
+                            <td>{{ $sclass->room }}</td>
                             <td>{{ $sclass->getTotalStudents() }}</td>
                         </tr>
                       @endforeach

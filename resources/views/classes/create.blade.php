@@ -80,6 +80,13 @@ $(document).ready(function() {
                           </div>
 
                           <div class="row mt-3">
+                            <div class="col-12 col-lg-3 col-md-6">
+                                <label class="form-control-label" for="room">Room (optional)</label>
+                                <input id="room" name="room" class="form-control mb-3" type="text" placeholder="e.g. College Room">
+                            </div>
+                          </div>
+
+                          <div class="row mt-3">
                             <div class="col-12 col-md-6">
                                 <label class="form-control-label" for="instructor_id">Instructor</label>
                                 <select id="instructor_id" name="instructor_id" class="select2 form-control m-b" required>

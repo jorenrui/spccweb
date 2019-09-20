@@ -62,6 +62,7 @@
                                 <th scope="col" class="text-center">Course Code</th>
                                 <th scope="col">Description</th>
                                 <th scope="col" class="text-center">Section</th>
+                                <th scope="col" class="text-center">Room</th>
                                 <th scope="col" class="text-center">Schedule</th>
                                 <th scope="col" class="text-center">Total Students</th>
                             </tr>
@@ -78,6 +79,9 @@
                               <td>{{ $sclass->course->description }}</td>
                               <td class="text-center">
                                 {{ $sclass->section != null ? $sclass->section : '-' }}
+                              </td>
+                              <td class="text-center">
+                                {{ $sclass->room != null ? $sclass->room : '-' }}
                               </td>
                               <td class="text-center">
                                 {{ $sclass->getSchedule() }}

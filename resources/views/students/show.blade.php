@@ -254,7 +254,7 @@
                             <td scope="row">{{ $grade->sclass->getTime() }}</td>
                             <td>{{ $grade->sclass->getCourse() }}</td>
                             <td>{{ $grade->sclass->course->getCredits() }}</td>
-                            <td>College Room</td>
+                            <td>{{ $grade->sclass->room }}</td>
                             <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
                         </tr>
                       @endforeach
@@ -279,7 +279,7 @@
                             <td scope="row">{{ $grade->sclass->getTime() }}</td>
                             <td>{{ $grade->sclass->getCourse() }}</td>
                             <td>{{ $grade->sclass->course->getCredits() }}</td>
-                            <td>College Room</td>
+                            <td>{{ $grade->sclass->room }}</td>
                             <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
                         </tr>
                       @endforeach
@@ -304,7 +304,7 @@
                             <td scope="row">{{ $grade->sclass->getTime() }}</td>
                             <td>{{ $grade->sclass->getCourse() }}</td>
                             <td>{{ $grade->sclass->course->getCredits() }}</td>
-                            <td>College Room</td>
+                            <td>{{ $grade->sclass->room }}</td>
                             <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
                         </tr>
                       @endforeach
@@ -329,7 +329,7 @@
                             <td scope="row">{{ $grade->sclass->getTime() }}</td>
                             <td>{{ $grade->sclass->getCourse() }}</td>
                             <td>{{ $grade->sclass->course->getCredits() }}</td>
-                            <td>College Room</td>
+                            <td>{{ $grade->sclass->room }}</td>
                             <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
                         </tr>
                       @endforeach
@@ -354,7 +354,7 @@
                             <td scope="row">{{ $grade->sclass->getTime() }}</td>
                             <td>{{ $grade->sclass->getCourse() }}</td>
                             <td>{{ $grade->sclass->course->getCredits() }}</td>
-                            <td>College Room</td>
+                            <td>{{ $grade->sclass->room }}</td>
                             <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
                         </tr>
                       @endforeach

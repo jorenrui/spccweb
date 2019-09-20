@@ -27,6 +27,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'M';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -38,6 +39,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'M';
         $class->time_start = '13:00:00';
         $class->time_end = '15:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -49,6 +51,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'M';
         $class->time_start = '15:00:00';
         $class->time_end = '18:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -60,6 +63,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'T';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -71,6 +75,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'T';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -82,6 +87,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'W';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -93,6 +99,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'W';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -104,6 +111,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'TH';
         $class->time_start = '13:00:00';
         $class->time_end = '15:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -115,6 +123,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'F';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         /* 2017-2018 2nd Semester */
@@ -127,6 +136,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'M';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -138,6 +148,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'M';
         $class->time_start = '13:00:00';
         $class->time_end = '15:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -149,6 +160,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'M';
         $class->time_start = '15:00:00';
         $class->time_end = '18:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -160,6 +172,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'T';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -171,6 +184,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'T';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -182,6 +196,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'W';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -193,6 +208,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'W';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -204,6 +220,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'TH';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -215,6 +232,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'F';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         /* 2018-2019 1st Semester */
@@ -227,6 +245,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'M';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -238,6 +257,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'M';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -249,6 +269,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'T';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -260,6 +281,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'T';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -271,6 +293,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'W';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -282,6 +305,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'W';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -293,6 +317,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'TH';
         $class->time_start = '09:00:00';
         $class->time_end = '12:00:00';
+        $class->room = 'College Room';
         $class->save();
 
         $class = new SClass;
@@ -304,6 +329,7 @@ class Class2012TableSeeder extends Seeder
         $class->day = 'TH';
         $class->time_start = '13:00:00';
         $class->time_end = '18:00:00';
+        $class->room = 'College Room';
         $class->save();
     }
 }

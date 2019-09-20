@@ -83,6 +83,14 @@
                               {{ $sclass->getLabSchedule() }}
                           </dd>
                           @endif
+                          @if($sclass->room != null)
+                          <dt class="col-sm-5">
+                              Room:
+                          </dt>
+                          <dd class="col-sm-7">
+                              {{ $sclass->room }}
+                          </dd>
+                          @endif
                         </dl>
                         @role('admin')
 

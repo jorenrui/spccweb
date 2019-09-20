@@ -81,6 +81,7 @@ class SClassController extends Controller
         $sclass = new SClass;
         $sclass->section = $request->input('section');
         $sclass->day = $request->input('day');
+        $sclass->room = $request->input('room');
         $sclass->time_start = $request->input('time_start');
         $sclass->time_end = $request->input('time_end');
         $sclass->acad_term_id = $request->input('acad_term_id');
@@ -153,6 +154,7 @@ class SClassController extends Controller
         $sclass = SClass::find($id);
         $sclass->section = $request->input('section');
         $sclass->day = $request->input('day');
+        $sclass->room = $request->input('room');
         $sclass->time_start = $request->input('time_start');
         $sclass->time_end = $request->input('time_end');
         $sclass->acad_term_id = $request->input('acad_term_id');
