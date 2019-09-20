@@ -21,7 +21,7 @@ class GradeTableSeeder extends Seeder
         /* 2017-2018 */
         $grade_id = 1;
 
-        for($student_no = 1; $student_no <= 8; $student_no++) {
+        for($student_no = 1; $student_no <= 5; $student_no++) {
             for($class_id = 1; $class_id <= 18; $class_id++) {
 
                 $faker = Faker::create();
@@ -48,7 +48,7 @@ class GradeTableSeeder extends Seeder
 
         /* 2018-2019 */
 
-        for($student_no = 1; $student_no <= 8; $student_no++) {
+        for($student_no = 1; $student_no <= 5; $student_no++) {
             for($class_id = 19; $class_id <= 26; $class_id++) {
 
                 $grade = new Grade;
@@ -66,7 +66,7 @@ class GradeTableSeeder extends Seeder
 
         /* 2018-2019 */
 
-        for($student_no = 1; $student_no <= 11; $student_no++) {
+        for($student_no = 1; $student_no <= 8; $student_no++) {
             for($class_id = 27, $curriculum_details_id = 59; $class_id <= 35; $class_id++, $curriculum_details_id++) {
 
                 $grade = new Grade;

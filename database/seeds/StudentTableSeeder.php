@@ -18,8 +18,8 @@ class StudentTableSeeder extends Seeder
         DB::table('users')->where('id', '>', '8')->delete();
         DB::table('student')->delete();
 
-        /* Generate 8 Second Year Student Accounts - 2012 Curriculum */
-        for($i = 1; $i <= 8; $i++) {
+        /* Generate 5 Second Year Student Accounts - 2012 Curriculum */
+        for($i = 1; $i <= 5; $i++) {
 
             $faker = Faker::create();
 
@@ -63,8 +63,8 @@ class StudentTableSeeder extends Seeder
             $student->save();
         }
 
-        /* Generate 11 First Year Student Accounts - 2018 Curriculum */
-        for($i = 1; $i <= 11; $i++) {
+        /* Generate 8 First Year Student Accounts - 2018 Curriculum */
+        for($i = 1; $i <= 8; $i++) {
 
             $faker = Faker::create();
 
