@@ -30,9 +30,16 @@
                                     <h3>
                                         {{ auth()->user()->getName() }}
                                     </h3>
+                                    <div class="h4 font-weight-300">
+                                        @role('student')
+                                            Student No. {{ auth()->user()->student->student_no }}
+                                        @else
+                                            Employee No. {{ auth()->user()->employee->employee_no }}
+                                        @endrole
+                                    </div>
+
                                     <div class="h5 font-weight-300">
-                                        {{ auth()->user()->getRole() }},
-                                        {{ auth()->user()->username }}
+                                        Role: {{ auth()->user()->getRole() }}
                                     </div>
                                     <div>
                                         {{ auth()->user()->email }}
@@ -61,7 +68,7 @@
                                             Date Employed:
                                         </dt>
                                         <dd class="col-7">
-                                            {{ auth()->user()->employee->date_employed }}
+                                            {{ auth()->user()->employee->getDateEmployed() }}
                                         </dd>
                                     @else
                                         <dt class="col-5 text-right">
@@ -89,7 +96,7 @@
                                             Date Admitted:
                                         </dt>
                                         <dd class="col-7">
-                                            {{ auth()->user()->student->date_admitted }}
+                                            {{ auth()->user()->student->getDateAdmitted() }}
                                         </dd>
 
                                         <dt class="col-5 text-right">
@@ -104,7 +111,7 @@
                                             Date Graduated:
                                         </dt>
                                         <dd class="col-7">
-                                            {{ auth()->user()->student->date_graduated }}
+                                            {{ auth()->user()->student->getDateGraduated() }}
                                         </dd>
                                         @endif
                                     @endunlessrole
@@ -126,7 +133,7 @@
                                         Birthdate:
                                     </dt>
                                     <dd class="col-7">
-                                        {{ auth()->user()->birthdate }}
+                                        {{ auth()->user()->getBirthdate() }}
                                     </dd>
 
                                     @if(auth()->user()->contact_no != null)
