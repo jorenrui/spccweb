@@ -73,7 +73,7 @@
                               Date Employed:
                           </dt>
                           <dd class="col-7">
-                              {{ $user->employee->date_employed }}
+                              {{ $user->employee->getDateEmployed() }}
                           </dd>
 
                           <h6 class="col-12 heading-small text-muted mt-3">

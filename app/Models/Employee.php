@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Setting;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
@@ -33,6 +34,13 @@ class Employee extends Model
             return 'Active';
 
         return 'Inactive';
+    }
+
+    public function getDateEmployed()
+    {
+        $date_employed = $this->attributes['date_employed'];
+
+        return Carbon::parse($date_employed)->format('F j, Y');
     }
 
     /**

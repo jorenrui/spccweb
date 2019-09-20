@@ -41,7 +41,7 @@
                                 </td>
                                 <td>{{ $faculty->getName() }}</td>
                                 <td class="text-center">
-                                    {{ $faculty->employee->date_employed }}
+                                    {{ $faculty->employee->getDateEmployed() }}
                                 </td>
                                 <td>
                                 @if($faculty->employee->getStatus() == 'Active')

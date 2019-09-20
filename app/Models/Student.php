@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Setting;
 use App\Models\Grade;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -34,6 +35,20 @@ class Student extends Model
             return 'Enrolled';
 
         return 'Inactive';
+    }
+
+    public function getDateAdmitted()
+    {
+        $date_admitted = $this->attributes['date_admitted'];
+
+        return Carbon::parse($date_admitted)->format('F j, Y');
+    }
+
+    public function getDateGraduated()
+    {
+        $date_graduated = $this->attributes['date_graduated'];
+
+        return Carbon::parse($date_graduated)->format('F j, Y');
     }
 
     /**

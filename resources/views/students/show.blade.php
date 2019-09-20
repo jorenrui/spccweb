@@ -102,7 +102,7 @@
                                                 Date Admitted:
                                             </dt>
                                             <dd class="col-7">
-                                                {{ $user->student->date_admitted }}
+                                                {{ $user->student->getDateAdmitted() }}
                                             </dd>
 
                                             <dt class="col-5 text-right">
@@ -117,7 +117,7 @@
                                                 Date Graduated:
                                             </dt>
                                             <dd class="col-7">
-                                                {{ $user->student->date_graduated }}
+                                                {{ $user->student->getDateGraduated() }}
                                             </dd>
                                             @endif
 
@@ -129,6 +129,7 @@
                                                     Return
                                                 </a>
 
+                                                @role('admin|registrar')
                                                 <a href="/students/{{ $user->id }}/edit" class="btn btn-outline-info btn-sm">
                                                 Edit Student
                                                 </a>
@@ -139,6 +140,7 @@
 
                                                     <button type="submit" class="btn btn-outline-danger btn-sm">Delete Student</button>
                                                 </form>
+                                                @endrole
                                             </div>
                                         </div>
 
@@ -361,6 +363,7 @@
                 @endif
             </div>
 
+            @role('admin|registrar')
             <div class="card-footer text-center">
                 <div class="row">
                     <div class="col">
@@ -373,10 +376,10 @@
                         <a href="/students/{{ $user->id }}/credited_subjects" class="btn btn-outline-info btn-sm">
                         View Credited Subjects
                         </a>
-
                     </div>
                 </div>
             </div>
+            @endrole
 
           @else
             <div class="row mt-3 mb-5">

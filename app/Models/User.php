@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -109,6 +110,13 @@ class User extends Authenticatable
             return 'Male';
 
         return null;
+    }
+
+    public function getBirthdate()
+    {
+        $birthdate = $this->attributes['birthdate'];
+
+        return Carbon::parse($birthdate)->format('F j, Y');
     }
 
     /**
