@@ -120,7 +120,7 @@
                 </li>
                 @endrole
                 @role('faculty')
-                <li class="nav-item {{ $title == 'Schedule' ? 'active' : '' }}">
+                <li class="nav-item {{ $title == 'Faculty' ? 'active' : '' }}">
                     <a class="nav-link" href="/faculty">
                         <i class="ni ni-calendar-grid-58"></i> Schedule
                     </a>
