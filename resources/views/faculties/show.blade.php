@@ -89,14 +89,12 @@
                           </dd>
                           @endif
 
-                          @if($user->birthdate != null)
                           <dt class="col-5 text-right">
                               Birthdate:
                           </dt>
                           <dd class="col-7">
                               {{ $user->birthdate }}
                           </dd>
-                          @endif
 
                           @if($user->contact_no != null)
                           <dt class="col-5 text-right">
@@ -107,34 +105,32 @@
                           </dd>
                           @endif
 
-                          @if($user->address != null)
                           <dt class="col-5 text-right">
                               Address:
                           </dt>
                           <dd class="col-7">
                               {{ $user->address }}
                           </dd>
-                          @endif
-                      </dl>
+                        </dl>
 
-                      <div class="row">
-                          <div class="col text-center">
-                              <a href="/faculties" class="btn btn-outline-secondary btn-sm">
-                                  Return
-                              </a>
+                        <div class="row">
+                            <div class="col text-center">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="javascript:history.back()">Return</button>
 
-                              <a href="/faculties/{{ $user->id }}/edit" class="btn btn-outline-info btn-sm">
-                              Edit Faculty
-                              </a>
+                                @role('admin')
+                                <a href="/faculties/{{ $user->id }}/edit" class="btn btn-outline-info btn-sm">
+                                Edit Faculty
+                                </a>
 
-                              <form method="POST" action="{{ action('FacultyController@destroy', $user->id) }}" style="display: inline;">
-                                  @csrf
-                                  @method('DELETE')
+                                <form method="POST" action="{{ action('FacultyController@destroy', $user->id) }}" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
 
-                                  <button type="submit" class="btn btn-outline-danger btn-sm">Delete Faculty</button>
-                              </form>
-                          </div>
-                      </div>
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete Faculty</button>
+                                </form>
+                                @endrole
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -279,6 +275,7 @@
                 @endif
             </div>
 
+            @role('admin')
             <div class="card-footer text-center">
                 <div class="row">
                     <div class="col">
@@ -288,7 +285,7 @@
                     </div>
                 </div>
             </div>
-
+            @endrole
           @else
             <div class="row mt-3 mb-5">
                 <div class="col text-center">

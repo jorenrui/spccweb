@@ -84,14 +84,12 @@
                                                 {{ $user->student->student_type }}
                                             </dd>
 
-                                            @if($user->student->curriculum_id != null)
                                             <dt class="col-5 text-right">
                                                 Curriculum:
                                             </dt>
                                             <dd class="col-7">
                                                 {{ $user->student->curriculum_id }}
                                             </dd>
-                                            @endif
 
                                             <dt class="col-5 text-right">
                                                 Status:
@@ -100,14 +98,12 @@
                                                 {{ $user->student->getStatus() }}
                                             </dd>
 
-                                            @if($user->student->date_admitted != null)
                                             <dt class="col-5 text-right">
                                                 Date Admitted:
                                             </dt>
                                             <dd class="col-7">
                                                 {{ $user->student->date_admitted }}
                                             </dd>
-                                            @endif
 
                                             <dt class="col-5 text-right">
                                                 Academic Term Admitted:
@@ -166,14 +162,12 @@
                                             </dd>
                                             @endif
 
-                                            @if($user->birthdate != null)
                                             <dt class="col-5 text-right">
                                                 Birthdate:
                                             </dt>
                                             <dd class="col-7">
                                                 {{ $user->birthdate }}
                                             </dd>
-                                            @endif
 
                                             @if($user->contact_no != null)
                                             <dt class="col-5 text-right">
@@ -184,45 +178,37 @@
                                             </dd>
                                             @endif
 
-                                            @if($user->address != null)
                                             <dt class="col-5 text-right">
                                                 Address:
                                             </dt>
                                             <dd class="col-7">
                                                 {{ $user->address }}
                                             </dd>
-                                            @endif
 
                                             <h6 class="col-12 heading-small text-muted text-left mt-2">
                                                 Educational Background
                                             </h6>
 
-                                            @if($user->student->primary != null)
                                             <dt class="col-5 text-right">
                                                 Primary:
                                             </dt>
                                             <dd class="col-7">
                                                 {{ $user->student->primary }}, ({{ $user->student->primary_sy }})
                                             </dd>
-                                            @endif
 
-                                            @if($user->student->intermediate != null)
                                             <dt class="col-5 text-right">
                                                 Intermediate:
                                             </dt>
                                             <dd class="col-7">
                                                 {{ $user->student->intermediate }}, ({{ $user->student->intermediate_sy }})
                                             </dd>
-                                            @endif
 
-                                            @if($user->student->secondary != null)
                                             <dt class="col-5 text-right">
                                                 Secondary:
                                             </dt>
                                             <dd class="col-7">
                                                 {{ $user->student->secondary }}, ({{ $user->student->secondary_sy }})
                                             </dd>
-                                            @endif
                                         </dl>
 
                                     </div>
