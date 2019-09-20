@@ -61,9 +61,15 @@
 
                 <div class="row">
                   <div class="col">
-                    <a href="/faculty/load" class="btn btn-outline-secondary btn-sm">
-                      Return
-                    </a>
+                    @role('faculty')
+                      <a href="/faculty/load" class="btn btn-outline-secondary btn-sm">
+                        Return
+                      </a>
+                    @else
+                      <a href="/faculties/{{ $sclass->instructor->user->id }}/load" class="btn btn-outline-secondary btn-sm">
+                        Return
+                      </a>
+                    @endrole
                   </div>
                 </div>
 
@@ -170,7 +176,11 @@
                       </div>
                       @if($sclass->acad_term_id >= $cur_acad_term)
                       <div class="col text-right">
+                        @role('faculty')
                         <a href="/faculty/load/{{ $sclass->class_id }}/encode" class="btn btn-sm btn-primary">Encode Grades</a>
+                        @else
+                        <a href="/faculties/{{ $sclass->instructor->user->id }}/load/{{ $sclass->class_id }}/encode" class="btn btn-sm btn-primary">Encode Grades</a>
+                        @endrole
                       </div>
                       @endif
                   </div>

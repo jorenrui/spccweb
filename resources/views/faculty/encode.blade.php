@@ -34,7 +34,11 @@ $(document).on('keydown', 'input[pattern]', function(e){
                               </p>
                           </div>
                           <div class="col text-right">
+                            @role('faculty')
                               <a href="/faculty/load/{{ $sclass->class_id }}" class="btn btn-sm btn-secondary">Return</a>
+                            @else
+                              <a href="/faculties/{{ $sclass->instructor->user->id }}/load/{{ $sclass->class_id }}" class="btn btn-sm btn-secondary">Return</a>
+                            @endrole
                           </div>
                       </div>
                     </div>

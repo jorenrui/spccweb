@@ -27,10 +27,15 @@
                     <div class="row align-items-center">
                         <div class="col">
                           <h3 class="mb-0">
-                            Faculty Load | {{ auth()->user()->employee->employee_no }} {{ auth()->user()->getName()}}
+                            Faculty Load | {{ $user->employee->employee_no }} {{ $user->getName()}}
                           </h3>
                           <p class="text-muted text-sm">{{ $degree }}</p>
                         </div>
+                        @role('admin')
+                        <div class="col text-right">
+                          <a href="/faculties/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
+                        </div>
+                        @endrole
                     </div>
                     <div class="row">
                       <div class="col">
@@ -62,7 +67,6 @@
                                 <th scope="col" class="text-center">Course Code</th>
                                 <th scope="col">Description</th>
                                 <th scope="col" class="text-center">Section</th>
-                                <th scope="col" class="text-center">Room</th>
                                 <th scope="col" class="text-center">Schedule</th>
                                 <th scope="col" class="text-center">Total Students</th>
                             </tr>
@@ -71,17 +75,20 @@
                           @foreach ($classes as $sclass)
                             <tr>
                               <td class="text-left" scope="row">
+                                @role('faculty')
                                   <a href="/faculty/load/{{ $sclass->class_id }}" class="btn btn-outline-info btn-sm">
                                       View
                                   </a>
+                                @else
+                                  <a href="/faculties/{{ $sclass->instructor->user->id }}/load/{{ $sclass->class_id }}" class="btn btn-outline-info btn-sm">
+                                      View
+                                  </a>
+                                @endif
                               </td>
                               <td class="text-center">{{ $sclass->course_code }}</td>
                               <td>{{ $sclass->course->description }}</td>
                               <td class="text-center">
                                 {{ $sclass->section != null ? $sclass->section : '-' }}
-                              </td>
-                              <td class="text-center">
-                                {{ $sclass->room != null ? $sclass->room : '-' }}
                               </td>
                               <td class="text-center">
                                 {{ $sclass->getSchedule() }}

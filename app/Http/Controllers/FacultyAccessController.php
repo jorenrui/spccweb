@@ -59,6 +59,8 @@ class FacultyAccessController extends Controller
 
     public function load()
     {
+        $user = User::find(auth()->user()->id);
+
         $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
         $curAcadTerm = AcadTerm::find($cur_acad_term);
 
@@ -73,11 +75,12 @@ class FacultyAccessController extends Controller
         }
 
         $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)
-                            ->where('instructor_id', 'LIKE', auth()->user()->employee->employee_no)
+                            ->where('instructor_id', 'LIKE', $user->employee->employee_no)
                             ->paginate(10);
 
         return view('faculty.load')
             ->with('degree', $degree)
+            ->with('user', $user)
             ->with('classes', $classes)
             ->with('acad_terms', $acad_terms)
             ->with('curAcadTerm', $curAcadTerm)
@@ -150,6 +153,12 @@ class FacultyAccessController extends Controller
             }
 
             $grade->save();
+        }
+
+        if(auth()->user()->hasRole('admin')) {
+            $sclass = SClass::find($class_id);
+
+            return redirect('/faculties/' . $sclass->instructor->user->id . '/load/' . $class_id)->with('success', 'Grades Encoded');
         }
 
         return redirect('/faculty/load/' . $class_id)->with('success', 'Grades Encoded');

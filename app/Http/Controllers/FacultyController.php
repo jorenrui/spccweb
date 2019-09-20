@@ -7,6 +7,8 @@ use Hash;
 use App\Models\User;
 use App\Models\Employee;
 use App\Models\SClass;
+use App\Models\Grade;
+use App\Models\AcadTerm;
 use App\Models\Setting;
 
 use Illuminate\Http\Request;
@@ -124,6 +126,62 @@ class FacultyController extends Controller
                 ->with('th_class', $th_class)
                 ->with('f_class', $f_class)
                 ->with('degree', $degree);
+    }
+
+    public function load($id)
+    {
+        $user = User::find($id);
+
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $curAcadTerm = AcadTerm::find($cur_acad_term);
+
+        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $acad_terms = AcadTerm::where('acad_term_id', '<=', $cur_acad_term)->get();
+
+        if( request()->has('select_acad_term') ) {
+            $selected_acad_term = request('select_acad_term');
+        }
+        else {
+            $selected_acad_term = $cur_acad_term;
+        }
+
+        $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)
+                            ->where('instructor_id', 'LIKE', $user->employee->employee_no)
+                            ->paginate(10);
+
+        return view('faculty.load')
+            ->with('degree', $degree)
+            ->with('user', $user)
+            ->with('classes', $classes)
+            ->with('acad_terms', $acad_terms)
+            ->with('curAcadTerm', $curAcadTerm)
+            ->with('cur_acad_term', $cur_acad_term)
+            ->with('selected_acad_term', $selected_acad_term);
+    }
+
+    public function classGrades($id, $class_id)
+    {
+        $sclass = SClass::find($class_id);
+        $grades = Grade::where('class_id', 'LIKE', $class_id)->orderBy('student_no')->paginate(8);
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+
+        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+
+        return view('faculty.show')
+                ->with('sclass', $sclass)
+                ->with('grades', $grades)
+                ->with('degree', $degree)
+                ->with('cur_acad_term', $cur_acad_term);
+    }
+
+    public function encodeGrades($id, $class_id)
+    {
+        $sclass = SClass::find($class_id);
+        $grades = Grade::where('class_id', 'LIKE', $class_id)->orderBy('student_no')->get();
+
+        return view('faculty.encode')
+                ->with('sclass', $sclass)
+                ->with('grades', $grades);
     }
 
     /**
