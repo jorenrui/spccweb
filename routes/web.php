@@ -60,6 +60,12 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::put('settings/set_cur_curriculum/{setting}','SettingsController@setCurCurriculum');
 
 	Route::resource('students','StudentController');
+	Route::get('students/{student}/grades','StudentController@grades');
+	Route::get('students/{student}/enlistment','StudentController@enlistment');
+	Route::get('students/{student}/enlist','StudentController@enlist');
+	Route::delete('students/enlistment/{grade}/drop','StudentController@dropClass');
+	Route::post('students/enlist_class','StudentController@enlistClass');
+	Route::get('students/{student}/curriculum','StudentController@curriculum');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
@@ -89,6 +95,17 @@ Route::group(['middleware' => ['auth', 'role:faculty']], function () {
 	Route::get('faculty/load/{class}/encode','FacultyAccessController@encodeGrades');
 });
 
+Route::group(['middleware' => ['auth', 'role:faculty']], function () {
+	Route::resource('faculty','FacultyAccessController')->only('index');
+
+	Route::get('faculty/load','FacultyAccessController@load');
+	Route::get('faculty/load/{class}','FacultyAccessController@show');
+	Route::get('faculty/load/{class}/encode','FacultyAccessController@encodeGrades');
+});
+
 Route::group(['middleware' => ['auth', 'role:student']], function () {
-	Route::get('enlistment', 'EnlistmentController@index');
+	Route::resource('student', 'StudentAccessController')->only('index');
+
+	Route::get('student/enlistment','StudentAccessController@enlistment');
+	Route::get('student/curriculum','StudentAccessController@curriculum');
 });
