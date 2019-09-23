@@ -275,6 +275,14 @@
                 @endif
             </div>
 
+          @else
+            <div class="row mt-3 mb-5">
+                <div class="col text-center">
+                    <p class="lead">No Faculty Load at the moment.</p>
+                </div>
+            </div>
+          @endif
+
             @role('admin')
             <div class="card-footer text-center">
                 <div class="row">
@@ -286,13 +294,6 @@
                 </div>
             </div>
             @endrole
-          @else
-            <div class="row mt-3 mb-5">
-                <div class="col text-center">
-                    <p class="lead">No Faculty Load at the moment.</p>
-                </div>
-            </div>
-          @endif
           </div>
         </div>
       </div>

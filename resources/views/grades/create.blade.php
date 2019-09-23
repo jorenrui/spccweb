@@ -107,12 +107,12 @@ $(document).ready(function() {
                               @csrf
                               <tr>
                                   <td class="text-center" scope="row">
-                                        <input id="student_no" name="student_no" type="text" value="{{ $student->student->student_no }}" style="display:none;" required>
-                                        <input id="class_id" name="class_id" type="text" value="{{ $sclass->class_id }}" style="display:none;" required>
+                                    <input id="student_no" name="student_no" type="text" value="{{ $student->student->student_no }}" style="display:none;" required>
+                                    <input id="class_id" name="class_id" type="text" value="{{ $sclass->class_id }}" style="display:none;" required>
 
-                                        <button type="submit" class="btn btn-outline-primary btn-sm">
-                                          Enroll
-                                        </button>
+                                    <button type="submit" class="btn btn-outline-primary btn-sm">
+                                      Enroll
+                                    </button>
                                   </td>
                                   <td>
                                     <select name="curriculum_details_id" class="select2 form-control m-b" required>

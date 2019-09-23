@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'View Faculty Load'])
+@extends('layouts.app', ['title' => auth()->user()->hasRole('faculty') ? 'View Faculty Load' : 'Faculty'])
 
 @section('content')
     @include('layouts.headers.plain')

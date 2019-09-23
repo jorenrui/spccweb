@@ -123,13 +123,13 @@
 
                                         </dl>
 
+                                        @role('admin|registrar')
                                         <div class="row">
                                             <div class="col text-center">
                                                 <a href="/students" class="btn btn-outline-secondary btn-sm">
                                                     Return
                                                 </a>
 
-                                                @role('admin|registrar')
                                                 <a href="/students/{{ $user->id }}/edit" class="btn btn-outline-info btn-sm">
                                                 Edit Student
                                                 </a>
@@ -140,9 +140,9 @@
 
                                                     <button type="submit" class="btn btn-outline-danger btn-sm">Delete Student</button>
                                                 </form>
-                                                @endrole
                                             </div>
                                         </div>
+                                        @endrole
 
                                     </div>
                                     <!-- end Student Info Tab -->
@@ -363,24 +363,6 @@
                 @endif
             </div>
 
-            @role('admin|registrar')
-            <div class="card-footer text-center">
-                <div class="row">
-                    <div class="col">
-                        <a href="/students/{{ $user->id }}/enlistment" class="btn btn-outline-info btn-sm">
-                        View Enlistment
-                        </a>
-                        <a href="/students/{{ $user->id }}/grades" class="btn btn-outline-info btn-sm">
-                        View Grades
-                        </a>
-                        <a href="/students/{{ $user->id }}/credited_subjects" class="btn btn-outline-info btn-sm">
-                        View Credited Subjects
-                        </a>
-                    </div>
-                </div>
-            </div>
-            @endrole
-
           @else
             <div class="row mt-3 mb-5">
                 <div class="col text-center">
@@ -396,6 +378,29 @@
                 </div>
             </div>
           @endif
+
+            @role('admin|registrar')
+            <div class="card-footer text-center">
+                <div class="row">
+                    <div class="col">
+                        <a href="/students/{{ $user->id }}/enlistment" class="btn btn-outline-info btn-sm">
+                        View Enlistment
+                        </a>
+                        <a href="/students/{{ $user->id }}/grades" class="btn btn-outline-info btn-sm">
+                        View Grades
+                        </a>
+                        <a href="/students/{{ $user->id }}/curriculum" class="btn btn-outline-info btn-sm">
+                        View Curriculum
+                        </a>
+                        @if($user->student->student_type == 'Transferee')
+                        <a href="/students/{{ $user->id }}/credited_subjects" class="btn btn-outline-info btn-sm">
+                        View Credited Subjects
+                        </a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            @endrole
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'View Faculty Load'])
+@extends('layouts.app', ['title' => auth()->user()->hasRole('faculty') ? 'View Faculty Load' : 'Faculty'])
 
 @section('styles')
 <link href="{{ asset('vendor/select2-4.0.10/select2.min.css') }}" rel="stylesheet">
@@ -39,7 +39,11 @@
                     </div>
                     <div class="row">
                       <div class="col">
+                      @role('admin')
+                      <form action="/faculties/{{ $user->id }}/load?" method="GET" class="form-horizontal">
+                      @else
                       <form action="/faculty/load?" method="GET" class="form-horizontal">
+                      @endrole
                         <label class="form-control-label" for="select_acad_term">Academic Term: </label>
                         <select class="col-12 col-md-4 select2 form-control m-b" name="select_acad_term" onchange="this.form.submit()">
                           @foreach ($acad_terms as $acad_term)
