@@ -35,20 +35,20 @@
                           @foreach ($students as $student)
                             <tr>
                                 <td class="text-center" scope="row">
-                                    <a href="/students/{{ $student->id }}">
-                                        {{ $student->student->student_no }}
+                                    <a href="/students/{{ $student->user->id }}">
+                                        {{ $student->student_no }}
                                     </a>
                                 </td>
-                                <td>{{ $student->getName() }}</td>
+                                <td>{{ $student->user->getName() }}</td>
                                 <td class="text-center">
-                                    {{ $student->student->student_type }}
+                                    {{ $student->student_type }}
                                 </td>
                                 <td>
-                                @if($student->student->getStatus() == 'Graduate')
+                                @if($student->getStatus() == 'Graduate')
                                     <span class="badge badge-dot mr-4">
                                     <i class="bg-success"></i> Graduate
                                     </span>
-                                @elseif($student->student->getStatus() == 'Enrolled')
+                                @elseif($student->getStatus() == 'Enrolled')
                                     <span class="badge badge-dot mr-4">
                                     <i class="bg-info"></i> Enrolled
                                     </span>
@@ -64,11 +64,11 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a href="/students/{{ $student->id }}/edit" class="dropdown-item"">
+                                        <a href="/students/{{ $student->user->id }}/edit" class="dropdown-item"">
                                             Edit
                                         </a>
 
-                                        <form method="POST" action="{{ action('StudentController@destroy', $student->id) }}" style="display: inline;">
+                                        <form method="POST" action="{{ action('StudentController@destroy', $student->user->id) }}" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
 

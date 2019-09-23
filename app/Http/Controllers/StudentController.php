@@ -23,7 +23,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = User::whereHas("roles", function($q){ $q->where('name', 'student'); })->paginate(8);
+        $students = Student::paginate(8);
+        //$students = User::whereHas("roles", function($q){ $q->where('name', 'student'); })->paginate(8);
 
         return view('students.index')->with('students', $students);
     }
