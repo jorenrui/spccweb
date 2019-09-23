@@ -28,7 +28,9 @@
                         Instructor:
                     </dt>
                     <dd class="col-sm-7">
+                      <a href="/faculties/{{ $sclass->instructor->user->id }}">
                         {{ $sclass->instructor->user->getNameWithTitle() }}
+                      </a>
                     </dd>
                     <dt class="col-sm-5">
                         Credits:
@@ -125,7 +127,11 @@
                                     <button type="submit" class="btn btn-outline-warning btn-sm">Drop</button>
                                 </form>
                             </td>
-                            <td class="text-center">{{ $grade->student->student_no }}</td>
+                            <td class="text-center">
+                              <a href="/students/{{ $grade->student->user->id }}">
+                                {{ $grade->student->student_no }}
+                              </a>
+                            </td>
                             <td>{{ $grade->student->user->getName() }}</td>
                             <td class="text-center">
                               <a href="/curriculums/{{ $grade->curriculumDetails->curriculum_id }}">

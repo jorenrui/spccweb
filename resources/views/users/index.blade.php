@@ -13,10 +13,10 @@
                                 <h3 class="mb-0">Users Masterlist</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-outline-primary">
+                                <a href="/students/create" class="btn btn-sm btn-outline-primary">
                                     Add Student
                                 </a>
-                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-outline-primary">
+                                <a href="/employees/create" class="btn btn-sm btn-outline-primary">
                                     Add Employee
                                 </a>
                             </div>

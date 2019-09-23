@@ -87,7 +87,9 @@
                               </td>
                               <td class="text-center">{{ $sclass->getSchedule() }}</td>
                               <td class="text-center">
-                                {{ $sclass->instructor->user->getNameWithTitle() }}
+                                <a href="/faculties/{{ $sclass->instructor->user->id }}">
+                                  {{ $sclass->instructor->user->getNameWithTitle() }}
+                                </a>
                               </td>
                               <td class="text-center">
                                   {{ $sclass->getTotalStudents() }}

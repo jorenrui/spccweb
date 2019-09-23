@@ -130,7 +130,11 @@ $(document).ready(function() {
                                       @endforeach
                                     </select>
                                   </td>
-                                  <td>{{ $student->student->student_no }}</td>
+                                  <td>
+                                    <a href="/students/{{ $student->student->user->id }}">
+                                      {{ $student->student->student_no }}
+                                    </a>
+                                  </td>
                                   <td>{{ $student->getName() }}</td>
                                   <td class="text-center">{{ $student->student->curriculum_id }}</td>
                               </tr>
