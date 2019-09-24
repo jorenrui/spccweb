@@ -18,9 +18,12 @@
                         </div>
                         <div class="col text-right">
                             <a href="/students/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
+
+                            @role('admin')
                             <a href="/students/{{ $user->id }}/credited_courses/create" class="btn btn-sm btn-primary">
                               Add School
                             </a>
+                            @endrole
                         </div>
                     </div>
                 </div>
@@ -42,6 +45,7 @@
                                       View
                                     </a>
 
+                                    @role('admin')
                                     <a href="/students/{{ $user->id }}/credited_courses/{{ $school->credit_id }}/edit" class="btn btn-outline-info btn-sm">
                                         Edit
                                     </a>
@@ -52,6 +56,7 @@
 
                                         <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
                                     </form>
+                                    @endrole
                                 </td>
                                 <td class="text-center">{{ $school->school }}</td>
                                 <td class="text-center">{{ $school->getTotalUnits() }}</td>
@@ -68,7 +73,9 @@
                       <div class="col text-center">
                           <p class="lead">No Credited Courses found</p>
                           <br>
+                          @role('admin')
                           <a href="/students/{{ $user->id }}/credited_courses/create" class="btn btn-primary btn-lg">Add School</a>
+                          @endrole
                       </div>
                   </div>
               @endif
