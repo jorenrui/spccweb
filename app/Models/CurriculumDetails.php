@@ -96,4 +96,9 @@ class CurriculumDetails extends Model
     {
         return $this->hasMany('App\Models\Grade', 'curriculum_details_id', 'curriculum_details_id');
     }
+
+    public function creditedCourses()
+    {
+        return $this->hasMany('App\Models\CourseCreditationDetails', 'curriculum_details_id', 'curriculum_details_id');
+    }
 }

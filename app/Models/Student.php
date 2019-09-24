@@ -74,4 +74,9 @@ class Student extends Model
     {
         return $this->hasMany('App\Models\Grade', 'student_no', 'student_no');
     }
+
+    public function creditedCourses()
+    {
+        return $this->hasMany('App\Models\CourseCreditation', 'student_no', 'student_no');
+    }
 }
