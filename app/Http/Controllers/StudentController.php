@@ -108,7 +108,7 @@ class StudentController extends Controller
         $student->user_id = $user->id;
         $student->save();
 
-        return redirect('/students')->with('success', 'Student Created. Default username is the Student No. while the default password is the user\'s birthdate.');
+        return redirect('/students/' . $user->id)->with('success', 'Student Created. Default username is the Student No. while the default password is the user\'s birthdate.');
     }
 
     private function getEnlistment($student_no)
@@ -386,7 +386,7 @@ class StudentController extends Controller
         $student->acad_term_admitted_id = $request->input('acad_term_admitted_id');
         $student->save();
 
-        return redirect('/students')->with('success', 'Student Updated');
+        return redirect('/students/' . $user->id)->with('success', 'Student Updated');
     }
 
     /**
