@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('students/{student}/enlist','StudentController@enlist');
 	Route::delete('students/enlistment/{grade}/drop','StudentController@dropClass');
 	Route::post('students/enlist_class','StudentController@enlistClass');
+
+	Route::resource('students/{student}/credited_courses','CreditedCoursesController');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
