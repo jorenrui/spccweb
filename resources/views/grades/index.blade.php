@@ -34,7 +34,7 @@
                       <div class="col">
                       <form action="/grades?" method="GET" class="form-horizontal">
                         <label class="form-control-label" for="select_acad_term">Academic Term: </label>
-                        <select class="col-{{ $selected_acad_term >= $cur_acad_term ? '7' :'3'}} select2 form-control m-b" name="select_acad_term" onchange="this.form.submit()">
+                        <select class="col-{{ $selected_acad_term >= $cur_acad_term && auth()->user()->hasRole('admin') ? '7' : '4'}} select2 form-control m-b" name="select_acad_term" onchange="this.form.submit()">
                           @foreach ($acad_terms as $acad_term)
                             @if($selected_acad_term == $acad_term->acad_term_id)
                               <option value="{{ $acad_term->acad_term_id }}" selected>
@@ -50,7 +50,7 @@
                       </form>
                       </div>
 
-                      @if($selected_acad_term >= $cur_acad_term)
+                      @if($selected_acad_term >= $cur_acad_term && auth()->user()->hasRole('admin'))
                       <div class="col text-right">
                           <a href="/classes/create" class="btn btn-sm btn-primary">Add Class</a>
                       </div>
@@ -125,7 +125,7 @@
                   <div class="row border-1 mt-3 mb-5">
                       <div class="col text-center">
                           <p class="lead">No Class found</p>
-                          @if($selected_acad_term >= $cur_acad_term)
+                          @if($selected_acad_term >= $cur_acad_term && auth()->user()->hasRole('admin'))
                           <br>
                           <a href="/classes/create" class="btn btn-primary btn-lg">Add Class</a>
                           @endif

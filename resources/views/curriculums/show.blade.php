@@ -23,7 +23,7 @@
                     <a href="/curriculums" class="btn btn-outline-secondary btn-sm">
                       Return
                     </a>
-                    @role('admin')
+                    @role('admin|registrar')
                     <a href="/curriculums/{{ $curriculum->curriculum_id }}/edit" class="btn btn-outline-info btn-sm">
                       Edit Curriculum
                     </a>
@@ -37,7 +37,7 @@
                     @endrole
                   </div>
 
-                  @role('admin')
+                  @role('admin|registrar')
                   <div class="col text-right">
                       <a href="/curriculum_details/create/{{ $curriculum->curriculum_id }}" class="btn btn-sm btn-primary">Add Course to Curriculum</a>
                   </div>
@@ -95,7 +95,7 @@
                                     @endforeach
                                   </td>
                                   <td class="text-right">
-                                    @role('admin')
+                                    @role('admin|registrar')
                                     <div class="dropdown">
                                       <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                           <i class="fas fa-ellipsis-v"></i>

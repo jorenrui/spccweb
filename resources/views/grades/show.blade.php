@@ -105,7 +105,6 @@
                             Alter Grades
                         </a>
 
-                        @endrole
                         <hr class="my-4" />
 
                         <h3>Locking of Grades</h3>
@@ -163,6 +162,7 @@
                               </button>
                             </div>
                         </div>
+                        @endrole
 
                       </div>
                       <!-- end Class Information Tab -->

@@ -46,6 +46,26 @@ Route::group(['middleware' => ['auth', 'role:admin|moderator']], function () {
 	Route::get('posts/mod/approval', 'PostsController@approval');
 });
 
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
+	Route::resource('events','EventsController')->except([
+		'show', 'index'
+	]);
+
+	Route::resource('classes','SClassController');
+	Route::get('classes/enroll_students/{class}','GradeController@enrollStudent');
+	Route::resource('grades','GradeController')->except([
+		'create', 'index', 'show'
+	]);
+
+	Route::resource('faculties','FacultyController');
+	Route::get('faculties/{faculty}/load','FacultyController@load');
+	Route::get('faculties/{faculty}/load/{class}','FacultyController@classGrades');
+	Route::get('faculties/{faculty}/load/{class}/encode','FacultyController@encodeGrades');
+
+	Route::get('students/{student}/enlist','StudentController@enlist');
+	Route::delete('students/enlistment/{grade}/drop','StudentController@dropClass');
+	Route::post('students/enlist_class','StudentController@enlistClass');
+});
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::resource('acad_terms','AcadTermController')->except('show');
@@ -62,37 +82,17 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::resource('students','StudentController');
 	Route::get('students/{student}/grades','StudentController@grades');
 	Route::get('students/{student}/enlistment','StudentController@enlistment');
-	Route::get('students/{student}/enlist','StudentController@enlist');
-	Route::delete('students/enlistment/{grade}/drop','StudentController@dropClass');
-	Route::post('students/enlist_class','StudentController@enlistClass');
 	Route::get('students/{student}/curriculum','StudentController@curriculum');
 });
 
-Route::group(['middleware' => ['auth', 'role:admin']], function () {
-	Route::resource('events','EventsController')->except([
-		'show', 'index'
+Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar']], function () {
+	Route::resource('grades','GradeController')->only([
+		'index', 'show'
 	]);
-
-	Route::resource('classes','SClassController');
-	Route::resource('grades','GradeController')->except('create');
-	Route::get('classes/enroll_students/{class}','GradeController@enrollStudent');
-
-	Route::resource('faculties','FacultyController');
-	Route::get('faculties/{faculty}/load','FacultyController@load');
-	Route::get('faculties/{faculty}/load/{class}','FacultyController@classGrades');
-	Route::get('faculties/{faculty}/load/{class}/encode','FacultyController@encodeGrades');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
 	Route::resource('faculty','FacultyAccessController')->only('update');
-});
-
-Route::group(['middleware' => ['auth', 'role:faculty']], function () {
-	Route::resource('faculty','FacultyAccessController')->only('index');
-
-	Route::get('faculty/load','FacultyAccessController@load');
-	Route::get('faculty/load/{class}','FacultyAccessController@show');
-	Route::get('faculty/load/{class}/encode','FacultyAccessController@encodeGrades');
 });
 
 Route::group(['middleware' => ['auth', 'role:faculty']], function () {

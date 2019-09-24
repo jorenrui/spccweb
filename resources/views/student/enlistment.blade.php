@@ -35,7 +35,7 @@
                         <div class="col text-right">
                           <a href="/students/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
 
-                          @if($selected_acad_term >= $cur_acad_term)
+                          @if($selected_acad_term >= $cur_acad_term && auth()->user()->hasRole('admin'))
                           <a href="/students/{{ $user->id }}/enlist" class="btn btn-sm btn-outline-primary">
                             Enlist Course
                           </a>
@@ -68,7 +68,7 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                @if($selected_acad_term >= $cur_acad_term)
+                                @if($selected_acad_term >= $cur_acad_term && auth()->user()->hasRole('admin'))
                                 <th scope="col"></th>
                                 @endif
                                 <th scope="col" class="text-center">Course Code</th>
@@ -81,7 +81,7 @@
                         <tbody>
                           @foreach ($grades as $grade)
                             <tr>
-                              @if($selected_acad_term >= $cur_acad_term)
+                              @if($selected_acad_term >= $cur_acad_term && auth()->user()->hasRole('admin'))
                               <td scope="row">
                                   <form method="POST" action="{{ action('StudentController@dropClass', $grade->grade_id) }}" style="display: inline;">
                                       @csrf
@@ -118,9 +118,11 @@
                   <div class="row border-1 mt-3 mb-5">
                       <div class="col text-center">
                           <p class="lead">No Enlistment found</p>
+                          @role('admin')
                           <a href="/students/{{ $user->id }}/enlist" class="btn btn-primary">
                             Enlist Course
                           </a>
+                          @endrole
                       </div>
                   </div>
               @endif
