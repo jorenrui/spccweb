@@ -393,7 +393,7 @@
                         View Curriculum
                         </a>
                         @if($user->student->student_type == 'Transferee')
-                        <a href="/students/{{ $user->id }}/credited_subjects" class="btn btn-outline-info btn-sm">
+                        <a href="/students/{{ $user->id }}/credited_courses" class="btn btn-outline-info btn-sm">
                         View Credited Subjects
                         </a>
                         @endif
