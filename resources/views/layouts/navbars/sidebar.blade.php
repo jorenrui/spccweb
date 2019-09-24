@@ -157,7 +157,7 @@
                 @endrole
                 @role('head registrar')
                 <li class="nav-item {{ $title == 'Registrar Staff' ? 'active' : '' }}">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/registrars">
                         <i class="ni ni-badge"></i> Manage Registrar Staff
                     </a>
                 </li>

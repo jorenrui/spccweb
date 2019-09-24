@@ -11,10 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/news', 'PagesController@news');
@@ -89,6 +85,10 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar']], 
 	Route::resource('grades','GradeController')->only([
 		'index', 'show'
 	]);
+});
+
+Route::group(['middleware' => ['auth', 'role:admin|head registrar']], function () {
+	Route::resource('registrars','RegistrarController')->except('show');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {

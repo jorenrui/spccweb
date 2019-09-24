@@ -57,12 +57,14 @@
                                     </dd>
 
                                     @unlessrole('student')
+                                        @role('faculty')
                                         <dt class="col-5 text-right">
                                             Status:
                                         </dt>
                                         <dd class="col-7">
                                             {{ auth()->user()->employee->getStatus() }}
                                         </dd>
+                                        @endrole
 
                                         <dt class="col-5 text-right">
                                             Date Employed:
