@@ -21,6 +21,10 @@ Route::get('/team', 'PagesController@team');
 
 Auth::routes();
 
+Route::group(['middleware' => ['auth', 'role:admin|writer']], function () {
+	Route::resource('posts','PostsController')->except('show');
+});
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
@@ -30,10 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 	Route::get('posts/{post}', 'PostsController@show');
 	Route::get('events', 'EventsController@index');
-});
-
-Route::group(['middleware' => ['auth', 'role:admin|writer']], function () {
-	Route::resource('posts','PostsController')->except('show');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|moderator']], function () {
