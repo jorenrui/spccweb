@@ -51,10 +51,11 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                 <tr>
                                     <th scope="col" class="text-center">Student No.</th>
                                     <th scope="col" class="text-center">Name</th>
-                                    <th scope="col" class="text-center">Prelims</th>
-                                    <th scope="col" class="text-center">Midterms</th>
-                                    <th scope="col" class="text-center">Finals</th>
-                                    <th scope="col" class="text-center">Is INCOMPLETE?</th>
+                                    <th scope="col" class="text-center" style="min-width:125px">Prelims</th>
+                                    <th scope="col" class="text-center" style="min-width:125px">Midterms</th>
+                                    <th scope="col" class="text-center" style="min-width:125px">Finals</th>
+                                    <th scope="col" class="text-center">Is INC?</th>
+                                    <th scope="col" class="text-center" style="min-width:200px">Note</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -84,6 +85,13 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                         <input name="is_incomplete[{{$id}}]" type="checkbox" {{ $grade->average == 'INC' ? 'checked' : '' }}>
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                       </label>
+                                    </td>
+                                    <td>
+                                      @if($grade->average == 'INC')
+                                      <input name="note[]" class="form-control mb-3" type="text" placeholder="Enter note" value="{{ $grade->note }}">
+                                      @else
+                                        <input name="note[]" type="text" style="display:none">
+                                      @endif
                                     </td>
                                 </tr>
                                 <?php $id++ ?>

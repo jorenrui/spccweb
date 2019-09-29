@@ -136,9 +136,11 @@ class GradeController extends Controller
             $grade->prelims = $request->prelims[$i];
             $grade->midterms = $request->midterms[$i];
             $grade->finals = $request->finals[$i];
+            $grade->note = $request->note[$i];
 
             if($grade->average == 'INC' && empty($request->is_incomplete[$i])) {
                 $grade->average = null;
+                $grade->note = null;
             }
 
             if (!empty($request->is_incomplete[$i])) {
