@@ -100,6 +100,12 @@ Route::group(['middleware' => ['auth', 'role:admin|head registrar']], function (
 
 Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
 	Route::resource('faculty','FacultyAccessController')->only('update');
+
+	Route::get('summary_grades/{class}/{period}','FileSummaryOfGrades@index');
+	Route::put('summary_grades/{class}/{period}/store','FileSummaryOfGrades@store');
+	Route::get('summary_grades/{class}/{period}/download','FileSummaryOfGrades@download');
+	Route::get('summary_grades/{class}/{period}/view','FileSummaryOfGrades@view');
+	Route::get('summary_grades/{class}/{period}/remove','FileSummaryOfGrades@remove');
 });
 
 Route::group(['middleware' => ['auth', 'role:faculty']], function () {

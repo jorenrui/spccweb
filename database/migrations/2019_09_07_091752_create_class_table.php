@@ -20,6 +20,10 @@ class CreateClassTable extends Migration
             $table->time('time_start');
             $table->time('time_end');
             $table->string('room', 20)->nullable();
+            $table->string('sog_prelims')->nullable();
+            $table->string('sog_midterms')->nullable();
+            $table->string('sog_finals')->nullable();
+            $table->string('sog_average')->nullable();
             $table->string('acad_term_id', 6);
             $table->foreign('acad_term_id')->references('acad_term_id')->on('acad_term')->onDelete('cascade');
             $table->string('course_code', 10);

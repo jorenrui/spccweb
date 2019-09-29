@@ -85,6 +85,39 @@ class SClass extends Model
         return count($this->grades);
     }
 
+    private function getSOGFileName($filename)
+    {
+        return substr($filename, 18);
+    }
+
+    public function getSOGPrelims()
+    {
+        $filename = $this->attributes['sog_prelims'];
+
+        return $this->getSOGFileName($filename);
+    }
+
+    public function getSOGMidterms()
+    {
+        $filename = $this->attributes['sog_midterms'];
+
+        return $this->getSOGFileName($filename);
+    }
+
+    public function getSOGFinals()
+    {
+        $filename = $this->attributes['sog_finals'];
+
+        return $this->getSOGFileName($filename);
+    }
+
+    public function getSOGAverage()
+    {
+        $filename = $this->attributes['sog_average'];
+
+        return $this->getSOGFileName($filename);
+    }
+
     /**
      * Eloquent Relationships
      */

@@ -7,7 +7,7 @@
 
       <div class="row mt-5">
         <!-- Class Information -->
-        <div class="col-12 col-md-6 mb-5 mb-xl-0">
+        <div class="col-12 col-md-5 mb-5 mb-xl-0">
           <div class="card shadow">
             <div class="card-body row align-items-center">
               <div class="col">
@@ -80,7 +80,7 @@
         <!-- end Class Information -->
 
         <!-- Summary of Grades -->
-        <div class="col-12 col-md-6 mb-5 mb-xl-0">
+        <div class="col-12 col-md-7 mb-5 mb-xl-0">
             <div class="card shadow">
               <div class="card-body row align-items-center">
                 <div class="col">
@@ -94,70 +94,105 @@
                       </dt>
                       <dd class="col-8">
                         @role('admin|faculty')
-                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                        <a href="/summary_grades/{{ $sclass->class_id }}/prelims" class="btn btn-outline-secondary btn-sm">
                           Upload
                         </a>
                         @endrole
-                        <a href="#" class="btn btn-outline-primary btn-sm">
+                        @if($sclass->sog_prelims != null)
+                        <a href="/summary_grades/{{ $sclass->class_id }}/prelims/download" class="btn btn-outline-primary btn-sm">
                           Download
                         </a>
-                        <a href="#" class="btn btn-outline-info btn-sm">
-                          Print
+                        <a href="/summary_grades/{{ $sclass->class_id }}/prelims/view" class="btn btn-outline-info btn-sm">
+                          View & Print
                         </a>
+                        @role('admin|faculty')
+                        <a href="/summary_grades/{{ $sclass->class_id }}/prelims/remove" class="btn btn-outline-danger btn-sm">
+                          Remove
+                        </a>
+                        @endrole
+                        @else
+                          <span>N/A</span>
+                        @endif
                       </dd>
 
-                      <dt class="col-4">
+                      <dt class="col-4 mt-2">
                           Midterms Grades
                       </dt>
-                      <dd class="col-8">
+                      <dd class="col-8 mt-2">
                         @role('admin|faculty')
-                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                        <a href="/summary_grades/{{ $sclass->class_id }}/midterms" class="btn btn-outline-secondary btn-sm">
                           Upload
                         </a>
                         @endrole
-                        <a href="#" class="btn btn-outline-primary btn-sm">
+                        @if($sclass->sog_midterms != null)
+                        <a href="/summary_grades/{{ $sclass->class_id }}/midterms/download" class="btn btn-outline-primary btn-sm">
                           Download
                         </a>
-                        <a href="#" class="btn btn-outline-info btn-sm">
-                          Print
+                        <a href="/summary_grades/{{ $sclass->class_id }}/midterms/view" class="btn btn-outline-info btn-sm">
+                          View & Print
                         </a>
+                        @role('admin|faculty')
+                        <a href="/summary_grades/{{ $sclass->class_id }}/midterms/remove" class="btn btn-outline-danger btn-sm">
+                          Remove
+                        </a>
+                        @endrole
+                        @else
+                          <span>N/A</span>
+                        @endif
                       </dd>
 
-                      <dt class="col-4">
+                      <dt class="col-4 mt-2">
                           Finals Grades
                       </dt>
-                      <dd class="col-8">
+                      <dd class="col-8 mt-2">
                         @role('admin|faculty')
-                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                        <a href="/summary_grades/{{ $sclass->class_id }}/finals" class="btn btn-outline-secondary btn-sm">
                           Upload
                         </a>
                         @endrole
-                        <a href="#" class="btn btn-outline-primary btn-sm">
+                        @if($sclass->sog_finals != null)
+                        <a href="/summary_grades/{{ $sclass->class_id }}/finals/download" class="btn btn-outline-primary btn-sm">
                           Download
                         </a>
-                        <a href="#" class="btn btn-outline-info btn-sm">
-                          Print
+                        <a href="/summary_grades/{{ $sclass->class_id }}/finals/view" class="btn btn-outline-info btn-sm">
+                          View & Print
                         </a>
+                        @role('admin|faculty')
+                        <a href="/summary_grades/{{ $sclass->class_id }}/finals/remove" class="btn btn-outline-danger btn-sm">
+                          Remove
+                        </a>
+                        @endrole
+                        @else
+                          <span>N/A</span>
+                        @endif
                       </dd>
 
-                      <dt class="col-4">
+                      <dt class="col-4 mt-2">
                           Average Grades
                       </dt>
-                      <dd class="col-8">
+                      <dd class="col-8 mt-2">
                         @role('admin|faculty')
-                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                        <a href="/summary_grades/{{ $sclass->class_id }}/average" class="btn btn-outline-secondary btn-sm">
                           Upload
                         </a>
                         @endrole
-                        <a href="#" class="btn btn-outline-primary btn-sm">
+                        @if($sclass->sog_average != null)
+                        <a href="/summary_grades/{{ $sclass->class_id }}/average/download" class="btn btn-outline-primary btn-sm">
                           Download
                         </a>
-                        <a href="#" class="btn btn-outline-info btn-sm">
-                          Print
+                        <a href="/summary_grades/{{ $sclass->class_id }}/average/view" class="btn btn-outline-info btn-sm">
+                          View & Print
                         </a>
+                        @role('admin|faculty')
+                        <a href="/summary_grades/{{ $sclass->class_id }}/average/remove" class="btn btn-outline-danger btn-sm">
+                          Remove
+                        </a>
+                        @endrole
+                        @else
+                          <span>N/A</span>
+                        @endif
                       </dd>
                     </dl>
-
                   </div>
                 </div>
             </div>
