@@ -4,8 +4,8 @@
 <!-- Hero Section -->
 <section class="section hero">
   <div class="content">
-    <h1 class="headline">Excellence.</h1>
-    <p class="description">Committed to delivering quality education</p>
+    <h1 class="headline">SPCC Caloocan</h1>
+    <p class="description">Committed to Excellence.</p>
     <a href="/enroll" class="btn">be a spcnian</a>
   </div>
   <div class="image">
