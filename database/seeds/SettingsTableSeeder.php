@@ -27,7 +27,7 @@ class SettingsTableSeeder extends Seeder
 
         $setting = new Setting;
         $setting->name = 'Current Acad Term';
-        $setting->value = '181901';
+        $setting->value = '192001';
         $setting->save();
 
         $setting = new Setting;

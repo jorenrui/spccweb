@@ -21,13 +21,7 @@ class DatabaseSeeder extends Seeder
             CurriculumDetails2018TableSeeder::class,
             Prerequisite2012TableSeeder::class,
             Prerequisite2018TableSeeder::class,
-            EmployeeTableSeeder::class,
-            StudentTableSeeder::class,
-            PostsTableSeeder::class,
-            EventsTableSeeder::class,
-            Class2012TableSeeder::class,
-            Class2018TableSeeder::class,
-            GradeTableSeeder::class,
+            UsersTableSeeder::class,
             SettingsTableSeeder::class,
         ]);
     }
