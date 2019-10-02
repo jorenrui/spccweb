@@ -16,13 +16,12 @@ class CreateStudentTable extends Migration
         Schema::create('student', function (Blueprint $table) {
             $table->string('student_no', 10);
             $table->primary('student_no');
-            $table->string('primary', 150);
-            $table->string('primary_sy', 9);
-            $table->string('intermediate', 150);
-            $table->string('intermediate_sy', 9);
-            $table->string('secondary', 150);
-            $table->string('secondary_sy', 9 );
-            $table->date('date_admitted');
+            $table->string('primary', 150)->nullable();
+            $table->string('primary_sy', 9)->nullable();
+            $table->string('intermediate', 150)->nullable();
+            $table->string('intermediate_sy', 9)->nullable();
+            $table->string('secondary', 150)->nullable();
+            $table->string('secondary_sy', 9 )->nullable();
             $table->date('date_graduated')->nullable();
             $table->string('student_type', 10);
             $table->integer('curriculum_id')->unsigned();

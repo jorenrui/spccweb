@@ -58,7 +58,6 @@ class StudentController extends Controller
     {
         $this->validate($request, [
             'student_no' => 'required',
-            'date_admitted' => 'required',
             'acad_term_admitted_id' => 'required',
             'curriculum_id' => 'required',
             'student_type' => 'required',
@@ -101,7 +100,6 @@ class StudentController extends Controller
         $student->intermediate_sy = $request->input('intermediate_sy');
         $student->secondary = $request->input('secondary');
         $student->secondary_sy = $request->input('secondary_sy');
-        $student->date_admitted = $request->input('date_admitted');
         $student->student_type = $request->input('student_type');
         $student->curriculum_id = $request->input('curriculum_id');
         $student->acad_term_admitted_id = $request->input('acad_term_admitted_id');
@@ -338,7 +336,6 @@ class StudentController extends Controller
     {
         $this->validate($request, [
             'student_no' => 'required',
-            'date_admitted' => 'required',
             'acad_term_admitted_id' => 'required',
             'curriculum_id' => 'required',
             'student_type' => 'required',
@@ -380,7 +377,6 @@ class StudentController extends Controller
         $student->intermediate_sy = $request->input('intermediate_sy');
         $student->secondary = $request->input('secondary');
         $student->secondary_sy = $request->input('secondary_sy');
-        $student->date_admitted = $request->input('date_admitted');
         $student->student_type = $request->input('student_type');
         $student->curriculum_id = $request->input('curriculum_id');
         $student->acad_term_admitted_id = $request->input('acad_term_admitted_id');

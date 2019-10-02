@@ -36,13 +36,6 @@ $(document).ready(function() {
                           </div>
 
                           <div class="row">
-                            <div class="col-12 col-lg-3 col-md-6">
-                              <label class="form-control-label" for="date_admitted">Date Admitted*</label>
-                              <input id="date_admitted" name="date_admitted" class="form-control mb-3" type="date" value="{{ date('Y-m-d') }}" required>
-                            </div>
-                          </div>
-
-                          <div class="row">
                             <div class="col-12 col-lg-4 col-md-6">
                               <label class="form-control-label" for="acad_term_admitted_id">Academic Term Admitted*</label>
                               <select id="acad_term_admitted_id" name="acad_term_admitted_id" class="select2 form-control m-b" required>

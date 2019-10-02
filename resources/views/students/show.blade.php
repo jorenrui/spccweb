@@ -99,13 +99,6 @@
                                             </dd>
 
                                             <dt class="col-5 text-right">
-                                                Date Admitted:
-                                            </dt>
-                                            <dd class="col-7">
-                                                {{ $user->student->getDateAdmitted() }}
-                                            </dd>
-
-                                            <dt class="col-5 text-right">
                                                 Academic Term Admitted:
                                             </dt>
                                             <dd class="col-7">
@@ -168,7 +161,11 @@
                                                 Birthdate:
                                             </dt>
                                             <dd class="col-7">
-                                                {{ $user->birthdate }}
+                                                @if($user->birthdate != null)
+                                                    {{ $user->birthdate }}
+                                                @else
+                                                    -
+                                                @endif
                                             </dd>
 
                                             @if($user->contact_no != null)
@@ -184,7 +181,11 @@
                                                 Address:
                                             </dt>
                                             <dd class="col-7">
-                                                {{ $user->address }}
+                                                @if($user->address != null)
+                                                    {{ $user->address }}
+                                                @else
+                                                    -
+                                                @endif
                                             </dd>
 
                                             <h6 class="col-12 heading-small text-muted text-left mt-2">
@@ -195,21 +196,33 @@
                                                 Primary:
                                             </dt>
                                             <dd class="col-7">
-                                                {{ $user->student->primary }}, ({{ $user->student->primary_sy }})
+                                                @if($user->student->primary != null)
+                                                    {{ $user->student->primary }}, ({{ $user->student->primary_sy }})
+                                                @else
+                                                    -
+                                                @endif
                                             </dd>
 
                                             <dt class="col-5 text-right">
                                                 Intermediate:
                                             </dt>
                                             <dd class="col-7">
+                                                @if($user->student->intermediate != null)
                                                 {{ $user->student->intermediate }}, ({{ $user->student->intermediate_sy }})
+                                                @else
+                                                    -
+                                                @endif
                                             </dd>
 
                                             <dt class="col-5 text-right">
                                                 Secondary:
                                             </dt>
                                             <dd class="col-7">
+                                                @if($user->student->secondary != null)
                                                 {{ $user->student->secondary }}, ({{ $user->student->secondary_sy }})
+                                                @else
+                                                    -
+                                                @endif
                                             </dd>
                                         </dl>
 

@@ -37,13 +37,6 @@ class Student extends Model
         return 'Inactive';
     }
 
-    public function getDateAdmitted()
-    {
-        $date_admitted = $this->attributes['date_admitted'];
-
-        return Carbon::parse($date_admitted)->format('F j, Y');
-    }
-
     public function getDateGraduated()
     {
         $date_graduated = $this->attributes['date_graduated'];
