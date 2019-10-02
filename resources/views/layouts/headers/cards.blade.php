@@ -9,7 +9,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">New Students</h5>
-                                    <span class="h2 font-weight-bold mb-0">88</span>
+                                    <span class="h2 font-weight-bold mb-0">{{ $tot_students }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-nowrap">S.Y. {{ $curAcadTerm->sy }}</span>
+                                <span class="text-nowrap">{{ $curAcadTerm->getAcadTerm() }}</span>
                             </p>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Classes</h5>
-                                    <span class="h2 font-weight-bold mb-0">30</span>
+                                    <span class="h2 font-weight-bold mb-0">{{ $tot_classes }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -49,7 +49,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Instructors</h5>
-                                    <span class="h2 font-weight-bold mb-0">4</span>
+                                    <span class="h2 font-weight-bold mb-0">{{ $tot_instructors }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -68,17 +68,17 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">New Posts</h5>
-                                    <span class="h2 font-weight-bold mb-0">5</span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Users</h5>
+                                    <span class="h2 font-weight-bold mb-0">{{ $tot_users }}</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                        <i class="fas fa-pen"></i>
+                                        <i class="fas fa-user"></i>
                                     </div>
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-nowrap">{{ $curAcadTerm->getAcadTerm() }}</span>
+                                <span class="text-nowrap">Overall</span>
                             </p>
                         </div>
                     </div>
