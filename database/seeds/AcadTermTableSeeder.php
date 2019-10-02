@@ -18,12 +18,24 @@ class AcadTermTableSeeder extends Seeder
         $acadTerm->acad_term_id = '181901';
         $acadTerm->sy = '2018-2019';
         $acadTerm->semester = 1;
+        $acadTerm->prelims_start_date = null;
+        $acadTerm->prelims_end_date = null;
+        $acadTerm->midterms_start_date = null;
+        $acadTerm->midterms_end_date = null;
+        $acadTerm->finals_start_date = null;
+        $acadTerm->finals_end_date = null;
         $acadTerm->save();
 
         $acadTerm = new AcadTerm;
         $acadTerm->acad_term_id = '181902';
         $acadTerm->sy = '2018-2019';
         $acadTerm->semester = 2;
+        $acadTerm->prelims_start_date = null;
+        $acadTerm->prelims_end_date = null;
+        $acadTerm->midterms_start_date = null;
+        $acadTerm->midterms_end_date = null;
+        $acadTerm->finals_start_date = null;
+        $acadTerm->finals_end_date = null;
         $acadTerm->save();
 
         $acadTerm = new AcadTerm;
