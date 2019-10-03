@@ -53,8 +53,10 @@
                         <div class="row mt-3 mb-5">
                             <div class="col text-center">
                                 <p class="lead">No posts found</p>
+                                @role('admin|writer')
                                 <br>
                                 <a href="/posts/create" class="btn btn-primary btn-lg">Create Post</a>
+                                @endrole
                             </div>
                         </div>
                     @endif
@@ -97,8 +99,10 @@
                         <div class="row mt-3 mb-5">
                             <div class="col text-center">
                                 <p class="lead">No events found</p>
+                                @role('admin')
                                 <br>
                                 <a href="/events/create" class="btn btn-primary btn-lg">Create Event</a>
+                                @endrole
                             </div>
                         </div>
                     @endif

@@ -161,8 +161,8 @@
                                                 Birthdate:
                                             </dt>
                                             <dd class="col-7">
-                                                @if($user->birthdate != null)
-                                                    {{ $user->birthdate }}
+                                                @if($user->getBirthdate() != null)
+                                                    {{ $user->getBirthdate() }}
                                                 @else
                                                     -
                                                 @endif
@@ -407,7 +407,7 @@
                         </a>
                         @if($user->student->student_type == 'Transferee')
                         <a href="/students/{{ $user->id }}/credited_courses" class="btn btn-outline-info btn-sm">
-                        View Credited Subjects
+                        View Credited Courses
                         </a>
                         @endif
                     </div>

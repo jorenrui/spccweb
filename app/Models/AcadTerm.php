@@ -45,6 +45,9 @@ class AcadTerm extends Model
 			$start_date = strtotime($this->attributes['prelims_start_date']);
 			$end_date = strtotime($this->attributes['prelims_end_date']);
 
+			if($start_date == null)
+				return null;
+
 			return $this->getDate($start_date, $end_date);
 		}
 
@@ -52,12 +55,18 @@ class AcadTerm extends Model
 			$start_date = strtotime($this->attributes['midterms_start_date']);
 			$end_date = strtotime($this->attributes['midterms_end_date']);
 
+			if($start_date == null)
+				return null;
+
 			return $this->getDate($start_date, $end_date);
 		}
 
 		public function getFinalsDate() {
 			$start_date = strtotime($this->attributes['finals_start_date']);
 			$end_date = strtotime($this->attributes['finals_end_date']);
+
+			if($start_date == null)
+				return null;
 
 			return $this->getDate($start_date, $end_date);
 		}

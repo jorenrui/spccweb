@@ -40,9 +40,11 @@
         <li class="{{ $title == 'About' ? 'active' : '' }}">
           <a href="/about">about</a>
         </li>
+        @if($tot_posts > 0)
         <li class="{{ $title == 'News' ? 'active' : '' }}">
           <a href="/news">news</a>
         </li>
+        @endif
         <li class="{{ $title == 'Contact' ? 'active' : '' }}">
           <a href="/contact">contact</a>
         </li>

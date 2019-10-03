@@ -94,7 +94,7 @@
                               <td class="text-center">
                                 {{ $grade->sclass->course_code }}
                                 @if($grade->sclass->section != null)
-                                   {{ $grade->slcass->section }}
+                                   {{ $grade->sclass->section }}
                                 @endif
                               </td>
                               <td>{{ $grade->sclass->course->description }}</td>

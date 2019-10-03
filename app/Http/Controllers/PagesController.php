@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index() {
+        $tot_posts = count(Post::all());
+
         $posts = Post::where('status', 'LIKE', 'Published')
                         ->orderBy('created_at', 'desc')
                         ->limit(3)
@@ -17,16 +19,18 @@ class PagesController extends Controller
 
         $events = Event::limit(4)->get();
 
-        return view('pages.index')
-                    ->with('posts', $posts)
-                    ->with('events', $events);
+        return view('pages.index')->with(compact('posts', 'events', 'tot_posts'));
     }
 
     public function about() {
-        return view('pages.about');
+        $tot_posts = count(Post::all());
+
+        return view('pages.about')->with('tot_posts', $tot_posts);
     }
 
     public function news() {
+        $tot_posts = count(Post::all());
+
         $latest_post = Post::where('status', 'LIKE', 'Published')
                             ->orderBy('created_at', 'desc')
                             ->limit(1)
@@ -36,21 +40,27 @@ class PagesController extends Controller
                         ->orderBy('created_at', 'desc')
                         ->paginate(15);
 
-        return view('pages.news')->with(compact('latest_post', 'posts'));;
+        return view('pages.news')->with(compact('latest_post', 'posts', 'tot_posts'));
     }
 
     public function articles($id) {
+        $tot_posts = count(Post::all());
+
         $post = Post::find($id);
 
-        return view('pages.article')->with('post', $post);
+        return view('pages.article')->with(compact('post', 'tot_posts'));
     }
 
     public function contact() {
-        return view('pages.contact');
+        $tot_posts = count(Post::all());
+
+        return view('pages.contact')->with('tot_posts', $tot_posts);
     }
 
     public function admission() {
-        return view('pages.admission');
+        $tot_posts = count(Post::all());
+
+        return view('pages.admission')->with('tot_posts', $tot_posts);
     }
 
     public function team() {

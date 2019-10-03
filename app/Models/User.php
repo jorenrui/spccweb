@@ -116,6 +116,9 @@ class User extends Authenticatable
     {
         $birthdate = $this->attributes['birthdate'];
 
+        if($birthdate == null)
+            return null;
+
         return Carbon::parse($birthdate)->format('F j, Y');
     }
 

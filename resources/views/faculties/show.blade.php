@@ -93,7 +93,11 @@
                               Birthdate:
                           </dt>
                           <dd class="col-7">
-                              {{ $user->birthdate }}
+                            @if($user->getBirthdate() != null)
+                              {{ $user->getBirthdate() }}
+                            @else
+                                -
+                            @endif
                           </dd>
 
                           @if($user->contact_no != null)
@@ -109,7 +113,11 @@
                               Address:
                           </dt>
                           <dd class="col-7">
+                            @if($user->address != null)
                               {{ $user->address }}
+                            @else
+                                -
+                            @endif
                           </dd>
                         </dl>
 

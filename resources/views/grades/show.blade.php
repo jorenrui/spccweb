@@ -258,6 +258,8 @@
                               </a>
                               @endrole
                               <span>{{ $sclass->getSOGPrelims() }}</span>
+                              @else
+                                <span>N/A</span>
                               @endif
                             </dd>
 
@@ -283,6 +285,8 @@
                               </a>
                               @endrole
                               <span>{{ $sclass->getSOGMidterms() }}</span>
+                              @else
+                                <span>N/A</span>
                               @endif
                             </dd>
 
@@ -308,6 +312,8 @@
                               </a>
                               @endrole
                               <span>{{ $sclass->getSOGFinals() }}</span>
+                              @else
+                                <span>N/A</span>
                               @endif
                             </dd>
 
@@ -333,6 +339,8 @@
                               </a>
                               @endrole
                               <span>{{$sclass->getSOGAverage()}}</span>
+                              @else
+                                <span>N/A</span>
                               @endif
                             </dd>
                           </dl>

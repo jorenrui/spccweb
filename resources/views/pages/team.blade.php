@@ -43,7 +43,7 @@
       <div class="team-member">
         <img src="{{ asset('spccweb/img/team/avatar-bryan.png') }}" alt="avatar" class="avatar">
         <h3 class="name">Bryan Garcia</h3>
-        <p>System Analyst</p>
+        <p>System Analyst/QA</p>
         <p>
           <a href="{{ asset('spccweb/resume/bryan.pdf') }}" class="link">
             resume

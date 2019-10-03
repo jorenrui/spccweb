@@ -40,6 +40,9 @@ class Employee extends Model
     {
         $date_employed = $this->attributes['date_employed'];
 
+        if($date_employed == null)
+            return null;
+
         return Carbon::parse($date_employed)->format('F j, Y');
     }
 

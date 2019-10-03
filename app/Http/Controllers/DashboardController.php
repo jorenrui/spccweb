@@ -42,7 +42,7 @@ class DashboardController extends Controller
         $tot_classes = count(SClass::where('acad_term_id', 'LIKE', $cur_acad_term_id)->get());
         $tot_instructors = count(User::whereHas("roles",
                             function($q){ $q->where('name', 'faculty'); })->get());
-        $tot_users = count(User::all());
+        $tot_users = count(User::all()) - 1;
 
         return view('dashboard')
                     ->with('posts', $posts)
