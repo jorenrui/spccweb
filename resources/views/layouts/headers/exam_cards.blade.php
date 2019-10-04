@@ -19,7 +19,7 @@
                   <div class="card card-stats mb-4 mb-xl-0">
                       <div class="card-body">
                           <h5 class="card-title text-uppercase text-muted mb-0">Prelims Examination</h5>
-                          <span class="h2 font-weight-bold mb-0">{{ $curAcadTerm->getPrelimsDate() }}</span>
+                          <span class="h2 font-weight-bold mb-0">{{ $curAcadTerm->prelimsEvent->getDate() }}</span>
                           <p class="mt-3 mb-0 text-muted text-sm">
                               <span class="text-nowrap">{{ $curAcadTerm->getAcadTerm() }}</span>
                           </p>
@@ -30,7 +30,7 @@
                   <div class="card card-stats mb-4 mb-xl-0">
                       <div class="card-body">
                           <h5 class="card-title text-uppercase text-muted mb-0">Midterms Examination</h5>
-                          <span class="h2 font-weight-bold mb-0">{{ $curAcadTerm->getMidtermsDate() }}</span>
+                          <span class="h2 font-weight-bold mb-0">{{ $curAcadTerm->midtermsEvent->getDate() }}</span>
                           <p class="mt-3 mb-0 text-muted text-sm">
                               <span class="text-nowrap">{{ $curAcadTerm->getAcadTerm() }}</span>
                           </p>
@@ -41,7 +41,7 @@
                   <div class="card card-stats mb-4 mb-xl-0">
                       <div class="card-body">
                           <h5 class="card-title text-uppercase text-muted mb-0">Finals Examination</h5>
-                          <span class="h2 font-weight-bold mb-0">{{ $curAcadTerm->getFinalsDate() }}</span>
+                          <span class="h2 font-weight-bold mb-0">{{ $curAcadTerm->finalsEvent->getDate() }}</span>
                           <p class="mt-3 mb-0 text-muted text-sm">
                               <span class="text-nowrap">{{ $curAcadTerm->getAcadTerm() }}</span>
                           </p>
