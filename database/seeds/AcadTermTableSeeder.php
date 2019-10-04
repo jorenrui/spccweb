@@ -15,39 +15,72 @@ class AcadTermTableSeeder extends Seeder
         DB::table('acad_term')->delete();
 
         $acadTerm = new AcadTerm;
+        $acadTerm->acad_term_id = '141501';
+        $acadTerm->sy = '2014-2015';
+        $acadTerm->semester = 1;
+        $acadTerm->save();
+
+        $acadTerm = new AcadTerm;
+        $acadTerm->acad_term_id = '141502';
+        $acadTerm->sy = '2014-2015';
+        $acadTerm->semester = 2;
+        $acadTerm->save();
+
+        $acadTerm = new AcadTerm;
+        $acadTerm->acad_term_id = '151601';
+        $acadTerm->sy = '2015-2016';
+        $acadTerm->semester = 1;
+        $acadTerm->save();
+
+        $acadTerm = new AcadTerm;
+        $acadTerm->acad_term_id = '151602';
+        $acadTerm->sy = '2015-2016';
+        $acadTerm->semester = 2;
+        $acadTerm->save();
+
+        $acadTerm = new AcadTerm;
+        $acadTerm->acad_term_id = '161701';
+        $acadTerm->sy = '2016-2017';
+        $acadTerm->semester = 1;
+        $acadTerm->save();
+
+        $acadTerm = new AcadTerm;
+        $acadTerm->acad_term_id = '161702';
+        $acadTerm->sy = '2016-2017';
+        $acadTerm->semester = 2;
+        $acadTerm->save();
+
+        $acadTerm = new AcadTerm;
+        $acadTerm->acad_term_id = '171801';
+        $acadTerm->sy = '2017-2018';
+        $acadTerm->semester = 1;
+        $acadTerm->save();
+
+        $acadTerm = new AcadTerm;
+        $acadTerm->acad_term_id = '171802';
+        $acadTerm->sy = '2017-2018';
+        $acadTerm->semester = 2;
+        $acadTerm->save();
+
+        $acadTerm = new AcadTerm;
         $acadTerm->acad_term_id = '181901';
         $acadTerm->sy = '2018-2019';
         $acadTerm->semester = 1;
-        $acadTerm->prelims_start_date = null;
-        $acadTerm->prelims_end_date = null;
-        $acadTerm->midterms_start_date = null;
-        $acadTerm->midterms_end_date = null;
-        $acadTerm->finals_start_date = null;
-        $acadTerm->finals_end_date = null;
         $acadTerm->save();
 
         $acadTerm = new AcadTerm;
         $acadTerm->acad_term_id = '181902';
         $acadTerm->sy = '2018-2019';
         $acadTerm->semester = 2;
-        $acadTerm->prelims_start_date = null;
-        $acadTerm->prelims_end_date = null;
-        $acadTerm->midterms_start_date = null;
-        $acadTerm->midterms_end_date = null;
-        $acadTerm->finals_start_date = null;
-        $acadTerm->finals_end_date = null;
         $acadTerm->save();
 
         $acadTerm = new AcadTerm;
         $acadTerm->acad_term_id = '192001';
         $acadTerm->sy = '2019-2020';
         $acadTerm->semester = 1;
-        $acadTerm->prelims_start_date = '2019-07-29';
-        $acadTerm->prelims_end_date = '2019-08-02';
-        $acadTerm->midterms_start_date = '2019-09-09';
-        $acadTerm->midterms_end_date = '2019-09-13';
-        $acadTerm->finals_start_date = '2019-10-21';
-        $acadTerm->finals_end_date = '2019-10-25';
+        $acadTerm->prelims_id = 1;
+        $acadTerm->midterms_id = 2;
+        $acadTerm->finals_id = 3;
         $acadTerm->save();
     }
 }
