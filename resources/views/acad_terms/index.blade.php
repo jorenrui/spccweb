@@ -25,8 +25,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col" class="text-center">School Year</th>
-                                <th scope="col" class="text-center">Sem</th>
+                                <th scope="col" class="text-center">Academic Term</th>
                                 <th scope="col" class="text-center">Prelims</th>
                                 <th scope="col" class="text-center">Midterms</th>
                                 <th scope="col" class="text-center">Finals</th>
@@ -36,24 +35,7 @@
                         <tbody>
                           @foreach ($acadTerms as $acadTerm)
                             <tr>
-                                <td class="text-center" scope="row">
-                                    <a href="/acad_terms/{{ $acadTerm->acad_term_id }}/edit" class="btn btn-outline-info btn-sm">
-                                        Edit
-                                    </a>
-
-                                    <form method="POST" action="{{ action('AcadTermController@destroy', $acadTerm->acad_term_id) }}" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
-                                    </form>
-                                </td>
-                                <td class="text-center">{{ $acadTerm->sy }}</td>
-                                <td class="text-center">{{ $acadTerm->semester }}</td>
-                                <td class="text-center">{{ $acadTerm->getPrelimsDate() }}</td>
-                                <td class="text-center">{{ $acadTerm->getMidtermsDate() }}</td>
-                                <td class="text-center">{{ $acadTerm->getFinalsDate() }}</td>
-                                <td class="text-left">
+                                <td class="text-right" scope="row">
                                 @if($curAcadTerm->acad_term_id == $acadTerm->acad_term_id)
                                     <span class="badge badge-primary btn-sm">
                                         Current Acad Term
@@ -68,6 +50,44 @@
                                         </button>
                                     </form>
                                 @endif
+                                </td>
+                                <td class="text-center">
+                                    {{ $acadTerm->getAcadTerm() }}
+                                </td>
+                                <td class="text-center">
+                                    @if($acadTerm->prelims_id != null)
+                                        {{ $acadTerm->prelimsEvent->getDate() }}
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    @if($acadTerm->midterms_id != null)
+                                        {{ $acadTerm->midtermsEvent->getDate() }}
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    @if($acadTerm->finals_id != null)
+                                        {{ $acadTerm->finalsEvent->getDate() }}
+                                    @endif
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="/acad_terms/{{ $acadTerm->acad_term_id }}/edit">
+                                                Edit
+                                            </a>
+                                            <form action="{{ action('AcadTermController@destroy', $acadTerm->acad_term_id) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+
+                                                <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $acadTerm->getAcadTerm() }} academic term') ? this.parentElement.submit() : ''">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                           @endforeach

@@ -31,6 +31,7 @@
                                 @endrole
                                 <th scope="col">Event Title</th>
                                 <th scope="col">Date</th>
+                                <th scope="col">Academic Term</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,15 @@
                                 @endrole
                                 <td>{{ $event->title }}</td>
                                 <td>{{ $event->getDate() }}</td>
+                                <td>
+                                    @if($event->prelims != null)
+                                        {{ $event->prelims->getAcadTerm() }}
+                                    @elseif($event->midterms != null)
+                                        {{ $event->midterms->getAcadTerm() }}
+                                    @elseif($event->finals != null)
+                                        {{ $event->finals->getAcadTerm() }}
+                                    @endif
+                                </td>
                             </tr>
                           @endforeach
                         </tbody>

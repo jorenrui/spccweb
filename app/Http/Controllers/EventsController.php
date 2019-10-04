@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\AcadTerm;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::orderBy('start_date', 'desc')->paginate(15);
+        $events = Event::orderBy('start_date')->paginate(15);
 
         return view('events.index')->with('events', $events);
     }
@@ -102,6 +103,24 @@ class EventsController extends Controller
     public function destroy($id)
     {
         $event = Event::find($id);
+
+        if($event->prelims != null) {
+            $acadTerm = AcadTerm::find($event->prelims->acad_term_id);
+            $acadTerm->prelims_id = null;
+            $acadTerm->save();
+        }
+
+        if($event->midterms != null) {
+            $acadTerm = AcadTerm::find($event->midterms->acad_term_id);
+            $acadTerm->midterms_id = null;
+            $acadTerm->save();
+        }
+
+        if($event->finals != null) {
+            $acadTerm = AcadTerm::find($event->finals->acad_term_id);
+            $acadTerm->finals_id = null;
+            $acadTerm->save();
+        }
 
         $event->delete();
 

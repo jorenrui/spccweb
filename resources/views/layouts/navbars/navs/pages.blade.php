@@ -1,7 +1,7 @@
 <!-- Site Header -->
 <header class="site-header">
   <div class="logo">
-    <a href="index.html">
+    <a href="/">
       <img src="{{ asset('spccweb/img/logo.png') }}" alt="SPCC Logo" />
     </a>
   </div>
