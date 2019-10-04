@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RolesAndPermissionsSeeder::class,
+            EventsTableSeeder::class,
             AcadTermTableSeeder::class,
             Course2012TableSeeder::class,
             Course2018TableSeeder::class,
@@ -21,8 +22,8 @@ class DatabaseSeeder extends Seeder
             CurriculumDetails2018TableSeeder::class,
             Prerequisite2012TableSeeder::class,
             Prerequisite2018TableSeeder::class,
-            UsersTableSeeder::class,
             SettingsTableSeeder::class,
+            UsersTableSeeder::class,
         ]);
     }
 }

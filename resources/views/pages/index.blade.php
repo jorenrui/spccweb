@@ -18,25 +18,25 @@
 <!-- Upcoming Events Section -->
 @if(count($events) > 0)
 <section class="section upcoming-events">
-  <div class="content">
     <div class="title">
       <h2 class="headline">Upcoming Events</h2>
+      @if(count($events) > 4)
       <div class="pagination">
-        <a href="#">
+        <button class="btn btn-left">
           <i class="fa fa-3x fa-angle-left"></i>
-        </a>
-        <a href="#">
+        </button>
+        <button class="btn btn-right">
           <i class="fa fa-3x fa-angle-right"></i>
-        </a>
+        </button>
       </div>
+      @endif
     </div>
-    @foreach ($events as $event)
-      <div class="card">
-        <h3 class="date">{{ $event->getEventDate() }}</h3>
-        <p class="event">{{ $event->title }}</p>
-      </div>
-    @endforeach
-  </div>
+  @foreach ($events as $event)
+    <div class="card">
+      <h3 class="date">{{ $event->getEventDate() }}</h3>
+      <p class="event">{{ $event->title }}</p>
+    </div>
+  @endforeach
 </section>
 @endif
 <!-- end Upcoming Events Section -->

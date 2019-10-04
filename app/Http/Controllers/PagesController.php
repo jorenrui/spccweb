@@ -17,7 +17,7 @@ class PagesController extends Controller
                         ->limit(3)
                         ->get();
 
-        $events = Event::limit(4)->get();
+        $events = Event::where('start_date', '>=', date('Y-m-d'))->limit(4)->orderBy('start_date')->get();
 
         return view('pages.index')->with(compact('posts', 'events', 'tot_posts'));
     }

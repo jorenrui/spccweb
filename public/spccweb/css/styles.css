@@ -422,20 +422,13 @@ section.hero .particles-background {
  * ======================================= */
 
 section.upcoming-events {
-  margin-top: -80px;
-  grid-template-columns: 2fr;
-}
-
-section.upcoming-events .content {
-  position: relative;
-  justify-self: right;
+  margin-top: -100px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 section.upcoming-events .title {
-  position: absolute;
-  width: 220px;
-  top: 0;
-  left: -30%;
+  padding: 0 25px;
   color: #fff;
   text-align: right;
   display: inline-block;
@@ -450,20 +443,23 @@ section.upcoming-events .headline {
   margin: 0;
 }
 
-section.upcoming-events a {
+section.upcoming-events .btn {
   margin: 0 10px;
   color: #fff;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
-section.upcoming-events a:hover,
-section.upcoming-events a:active {
+section.upcoming-events .btn:hover,
+section.upcoming-events .btn:active {
   color: #f9ae17;
 }
 
 section.upcoming-events .card {
-  width: 170px;
+  width: 180px;
   height: 170px;
-  padding: 25px;
+  padding: 20px;
   margin: 0 15px;
   border-radius: 10px;
   color: #0f1c70;
@@ -490,6 +486,7 @@ section.upcoming-events .card .event {
   section.upcoming-events .title {
     width: 170px;
     font-size: 12px;
+    margin-bottom: 20px;
   }
 
   section.upcoming-events .card {
@@ -508,30 +505,15 @@ section.upcoming-events .card .event {
   }
 }
 
-@media only screen and (max-width: 768px) {
-  section.upcoming-events .content {
-    width: 100%;
-    display: grid;
-    grid-row-gap: 25px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr auto;
-    grid-template-areas: '. .''. .';
+@media only screen and (max-width: 680px) {
+  section.upcoming-events {
+    flex-wrap: wrap;
+    padding-right: 25px;
+    padding-left: 25px;
   }
 
-  section.upcoming-events .content div {
-    grid-column: span 1;
-    justify-self: center;
-  }
-
-  section.upcoming-events .content .title {
-    top: -70px;
-    left: 10px;
-  }
-}
-
-@media only screen and (max-width: 550px) {
-  section.upcoming-events .content div {
-    grid-column: span 2;
+  section.upcoming-events .card {
+    margin-bottom: 15px;
   }
 }
 
