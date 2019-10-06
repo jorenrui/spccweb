@@ -28,19 +28,23 @@
                       Edit Curriculum
                     </a>
 
-                    <form method="POST" action="{{ action('CurriculumController@destroy', $curriculum->curriculum_id) }}" style="display: inline;">
+                    <form action="{{ action('CurriculumController@destroy', $curriculum->curriculum_id) }}" method="post" style="display:inline">
                         @csrf
-                        @method('DELETE')
+                        @method('delete')
 
-                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete Curriculum</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="confirm('Are you sure you want to delete {{$curriculum->curriculum_id }} curriculum?') ? this.parentElement.submit() : ''">
+                            Delete Curriculum
+                        </button>
                     </form>
                     @endrole
                   </div>
 
                   @role('admin|registrar')
+                  @if(count($curriculum_details) > 0)
                   <div class="col text-right">
                       <a href="/curriculum_details/create/{{ $curriculum->curriculum_id }}" class="btn btn-sm btn-primary">Add Course to Curriculum</a>
                   </div>
+                  @endif
                   @endrole
                 </div>
 
@@ -105,11 +109,13 @@
                                             Edit
                                         </a>
 
-                                        <form method="POST" action="{{ action('CurriculumDetailsController@destroy', $cur_detail->curriculum_details_id) }}" style="display: inline;">
+                                        <form action="{{ action('CurriculumDetailsController@destroy', $cur_detail->curriculum_details_id) }}" method="post" style="display: inline">
                                             @csrf
-                                            @method('DELETE')
+                                            @method('delete')
 
-                                            <button type="submit"  class="dropdown-item">Delete</button>
+                                            <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $cur_detail->course_code }} in this curriculum?') ? this.parentElement.submit() : ''">
+                                                Delete
+                                            </button>
                                         </form>
                                       </div>
                                       @endrole

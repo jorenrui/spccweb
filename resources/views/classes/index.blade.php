@@ -34,7 +34,7 @@
                       <div class="col">
                       <form action="/classes?" method="GET" class="form-horizontal">
                         <label class="form-control-label" for="select_acad_term">Academic Term: </label>
-                        <select class="col-{{ $selected_acad_term >= $cur_acad_term ? '7' :'3'}} select2 form-control m-b" name="select_acad_term" onchange="this.form.submit()">
+                        <select class="col-{{ $selected_acad_term >= $cur_acad_term && count($classes) > 0 ? '7' :'3'}} select2 form-control m-b" name="select_acad_term" onchange="this.form.submit()">
                           @foreach ($acad_terms as $acad_term)
                             @if($selected_acad_term == $acad_term->acad_term_id)
                               <option value="{{ $acad_term->acad_term_id }}" selected>
@@ -50,7 +50,7 @@
                       </form>
                       </div>
 
-                      @if($selected_acad_term >= $cur_acad_term)
+                      @if($selected_acad_term >= $cur_acad_term && count($classes) > 0)
                       <div class="col text-right">
                           <a href="/classes/create" class="btn btn-sm btn-primary">Add Class</a>
                       </div>
@@ -77,7 +77,7 @@
                           @foreach ($classes as $sclass)
                             <tr>
                               <td class="text-left" scope="row">
-                                  <a href="/classes/{{ $sclass->class_id }}" class="btn btn-outline-info btn-sm">
+                                  <a href="/classes/{{ $sclass->class_id }}" class="btn btn-outline-primary btn-sm">
                                       View
                                   </a>
                               </td>
@@ -105,11 +105,13 @@
                                         Edit
                                     </a>
 
-                                    <form method="POST" action="{{ action('SClassController@destroy', $sclass->class_id) }}" style="display: inline;">
+                                    <form action="{{ action('SClassController@destroy', $sclass->class_id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
 
-                                        <button type="submit"  class="dropdown-item">Delete</button>
+                                        <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $sclass->course_code }} class?') ? this.parentElement.submit() : ''">
+                                            Delete
+                                        </button>
                                     </form>
                                   </div>
                                 </div>

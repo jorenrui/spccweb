@@ -74,11 +74,13 @@
                       Edit Class
                     </a>
 
-                    <form method="POST" action="{{ action('SClassController@destroy', $sclass->class_id) }}" style="display: inline;">
+                    <form action="{{ action('SClassController@destroy', $sclass->class_id) }}" method="post" style="display:inline">
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="btn btn-outline-danger btn-sm">Dissolve Class</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="confirm('Are you sure you want to dissolve the {{ $sclass->getCourse() }} class?') ? this.parentElement.submit() : ''">
+                            Dissolve Class
+                        </button>
                     </form>
                     @endrole
                   </div>
@@ -120,12 +122,15 @@
                       @foreach ($grades as $grade)
                         <tr>
                             <td class="text-left" scope="row">
-                                <form method="POST" action="{{ action('GradeController@destroy', $grade->grade_id) }}" style="display: inline;">
-                                    @csrf
-                                    @method('DELETE')
 
-                                    <button type="submit" class="btn btn-outline-warning btn-sm">Drop</button>
-                                </form>
+                              <form action="{{ action('GradeController@destroy', $grade->grade_id) }}" method="post" style="display:inline">
+                                  @csrf
+                                  @method('DELETE')
+
+                              <button type="button" class="btn btn-outline-warning btn-sm" onclick="confirm('Are you sure you want to drop {{ $grade->student->user->getName() }} in {{ $sclass->course_code }} class?') ? this.parentElement.submit() : ''">
+                                      Drop
+                                  </button>
+                              </form>
                             </td>
                             <td class="text-center">
                               <a href="/students/{{ $grade->student->user->id }}">

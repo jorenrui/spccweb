@@ -24,6 +24,7 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
+                                <th scope="col"></th>
                                 <th scope="col" class="text-center">Student No</th>
                                 <th scope="col">Name</th>
                                 <th scope="col" class="text-center">Student Type</th>
@@ -34,10 +35,13 @@
                         <tbody>
                           @foreach ($students as $student)
                             <tr>
-                                <td class="text-center" scope="row">
-                                    <a href="/students/{{ $student->user->id }}">
-                                        {{ $student->student_no }}
+                                <td class="text-right" scope="row">
+                                    <a href="/students/{{ $student->user->id }}" class="btn btn-outline-primary btn-sm">
+                                        View
                                     </a>
+                                </td>
+                                <td class="text-center">
+                                    {{ $student->student_no }}
                                 </td>
                                 <td>{{ $student->user->getName() }}</td>
                                 <td class="text-center">
@@ -64,16 +68,18 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a href="/students/{{ $student->user->id }}/edit" class="dropdown-item"">
-                                            Edit
-                                        </a>
+                                            <a href="/students/{{ $student->user->id }}/edit" class="dropdown-item"">
+                                                Edit
+                                            </a>
 
-                                        <form method="POST" action="{{ action('StudentController@destroy', $student->user->id) }}" style="display: inline;">
-                                            @csrf
-                                            @method('DELETE')
+                                            <form action="{{ action('StudentController@destroy', $student->user->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
 
-                                            <button type="submit"  class="dropdown-item">Delete</button>
-                                        </form>
+                                                <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $student->user->getName() }}?') ? this.parentElement.submit() : ''">
+                                                    Delete
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </td>

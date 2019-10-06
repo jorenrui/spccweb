@@ -25,32 +25,42 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col"></th>
                                 <th scope="col" class="text-center">Course Code</th>
                                 <th scope="col" class="text-center">Description</th>
                                 <th scope="col" class="text-center">Credits</th>
                                 <th scope="col" class="text-center">Lab Units</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                           @foreach ($courses as $course)
                             <tr>
-                                <td class="text-left" scope="row">
-                                    <a href="/courses/{{ $course->course_code }}/edit" class="btn btn-outline-info btn-sm">
-                                        Edit
-                                    </a>
-
-                                    <form method="POST" action="{{ action('CourseController@destroy', $course->course_code) }}" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
-                                    </form>
-                                </td>
-                                <td class="text-center">{{ $course->course_code }}</td>
+                                <td class="text-center" scope="row">{{ $course->course_code }}</td>
                                 <td>{{ $course->description }}</td>
                                 <td class="text-center">{{ $course->units }}</td>
-                                <td class="text-center">{{ $course->lab_units ? $course->lab_units : '-' }}</td>
+                                <td class="text-center">
+                                    {{ $course->lab_units ? $course->lab_units : '-' }}
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="/courses/{{ $course->course_code }}/edit">
+                                                Edit
+                                            </a>
+                                            <form action="{{ action('CourseController@destroy', $course->course_code) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+
+                                                <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $course->course_code }}?') ? this.parentElement.submit() : ''">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                           @endforeach
                         </tbody>

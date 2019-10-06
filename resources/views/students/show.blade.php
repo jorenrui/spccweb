@@ -15,7 +15,7 @@
 @endpush
 
 @section('content')
-    @include('layouts.headers.plain')
+    @include('layouts.headers.empty')
 
     <div class="container-fluid mt--7">
 
@@ -127,11 +127,13 @@
                                                 Edit Student
                                                 </a>
 
-                                                <form method="POST" action="{{ action('StudentController@destroy', $user->id) }}" style="display: inline;">
+                                                <form action="{{ action('StudentController@destroy', $user->id) }}" method="post" style="display: inline">
                                                     @csrf
                                                     @method('DELETE')
 
-                                                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete Student</button>
+                                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="confirm('Are you sure you want to delete {{ $user->getName() }}?') ? this.parentElement.submit() : ''">
+                                                        Delete Student
+                                                    </button>
                                                 </form>
                                             </div>
                                         </div>
@@ -240,6 +242,9 @@
         </div>
 
         <div class="col-12 col-xl-7 mb-5 mb-xl-0">
+
+          @include('layouts.headers.messages')
+
           <div class="card shadow">
           @if(count($grades) > 0)
             <div class="card-header border-0">
@@ -383,7 +388,7 @@
                     <br>
                     @role('admin')
                     <div class="col">
-                      <a href="/enlistment/enlist_course/{{ $user->id }}" class="btn btn-lg btn-primary">
+                      <a href="/students/{{ $user->id }}/enlist" class="btn btn-lg btn-primary">
                           Enlist Course
                         </a>
                     </div>

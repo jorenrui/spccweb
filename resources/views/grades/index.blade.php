@@ -50,7 +50,9 @@
                       </form>
                       </div>
 
-                      @if($selected_acad_term >= $cur_acad_term && auth()->user()->hasRole('admin'))
+                      @if($selected_acad_term >= $cur_acad_term &&
+                          auth()->user()->hasRole('admin') &&
+                          count($classes) > 0)
                       <div class="col text-right">
                           <a href="/classes/create" class="btn btn-sm btn-primary">Add Class</a>
                       </div>
@@ -77,7 +79,7 @@
                           @foreach ($classes as $sclass)
                             <tr>
                               <td class="text-left" scope="row">
-                                  <a href="/grades/{{ $sclass->class_id }}" class="btn btn-outline-info btn-sm">
+                                  <a href="/grades/{{ $sclass->class_id }}" class="btn btn-outline-primary btn-sm">
                                       View
                                   </a>
                               </td>
@@ -87,7 +89,9 @@
                                 {{ $sclass->section != null ? $sclass->section : '-' }}
                               </td>
                               <td class="text-center">
-                                {{ $sclass->instructor->user->getNameWithTitle() }}
+                                  <a href="/faculties/{{ $sclass->instructor->user->id }}">
+                                    {{ $sclass->instructor->user->getNameWithTitle() }}
+                                  </a>
                               </td>
                               <td class="text-center">
                                   {{ $sclass->getTotalStudents() }}
@@ -103,11 +107,13 @@
                                         Edit
                                     </a>
 
-                                    <form method="POST" action="{{ action('SClassController@destroy', $sclass->class_id) }}" style="display: inline;">
+                                    <form action="{{ action('SClassController@destroy', $sclass->class_id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
 
-                                        <button type="submit"  class="dropdown-item">Delete</button>
+                                        <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $sclass->course_code }} class') ? this.parentElement.submit() : ''">
+                                            Delete
+                                        </button>
                                     </form>
                                   </div>
                                 </div>

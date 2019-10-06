@@ -253,13 +253,6 @@
                     </a>
                 </li>
                 @endrole
-
-                <li class="nav-item">
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();" class="nav-link">
-                        <i class="ni ni-user-run"></i> Logout
-                    </a>
-                </li>
             </ul>
         </div>
     </div>

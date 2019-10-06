@@ -26,33 +26,19 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                @role('admin|registrar')
-                                <th scope="col"></th>
-                                @endrole
+                                <th scope="col" class="text-center">ID</th>
                                 <th scope="col">Event Title</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Academic Term</th>
+                                @role('admin|registrar')
+                                <th scope="col"></th>
+                                @endrole
                             </tr>
                         </thead>
                         <tbody>
                           @foreach ($events as $event)
                             <tr>
-                                @role('admin|registrar')
-                                <td class="text-left" scope="row">
-
-                                    <a href="/events/{{ $event->event_id }}/edit" class="btn btn-outline-info btn-sm">
-                                      Edit
-                                    </a>
-
-                                    <form method="POST" action="{{ action('EventsController@destroy', $event->event_id) }}" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
-                                    </form>
-
-                                </td>
-                                @endrole
+                                <td class="text-center">{{ $event->event_id }}</td>
                                 <td>{{ $event->title }}</td>
                                 <td>{{ $event->getDate() }}</td>
                                 <td>
@@ -64,6 +50,28 @@
                                         {{ $event->finals->getAcadTerm() }}
                                     @endif
                                 </td>
+                                @role('admin|registrar')
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="/events/{{ $event->event_id }}/edit">
+                                                Edit
+                                            </a>
+                                            <form action="{{ action('EventsController@destroy', $event->event_id) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+
+                                                <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $event->title }} event') ? this.parentElement.submit() : ''">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                                @endrole
                             </tr>
                           @endforeach
                         </tbody>

@@ -50,7 +50,6 @@ class FacultyController extends Controller
             'date_employed' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'gender' => 'required',
             'birthdate' => 'required',
             'address' => 'required'
         ]);
@@ -211,7 +210,6 @@ class FacultyController extends Controller
             'date_employed' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'gender' => 'required',
             'birthdate' => 'required',
             'address' => 'required'
         ]);

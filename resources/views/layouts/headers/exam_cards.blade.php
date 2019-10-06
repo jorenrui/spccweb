@@ -8,9 +8,9 @@
                   <div class="card card-stats mb-4 mb-xl-0">
                       <div class="card-body">
                           <h5 class="card-title text-uppercase text-muted mb-0">Current Academic Term</h5>
-                          <span class="h1 font-weight-bold mb-0">S.Y. {{ $curAcadTerm->sy }}</span>
-                          <p class="mt-1 mb-0 text-muted text-md">
-                              <span class="text-nowrap">{{ $curAcadTerm->semester == 1 ? '1st' : '2nd' }} Semester</span>
+                          <span class="h2 font-weight-bold mb-0">S.Y. {{ $curAcadTerm->sy }}</span>
+                          <p class="mt-3 mb-0 text-muted text-sm">
+                              <span class="text-nowrap">{{ $curAcadTerm->semester == 1 ? '1st' : '2nd' }} Semester, BSIT</span>
                           </p>
                       </div>
                   </div>

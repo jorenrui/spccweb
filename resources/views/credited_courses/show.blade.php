@@ -31,21 +31,25 @@
                       Edit School
                     </a>
 
-                    <form method="POST" action="{{ action('CreditedCoursesController@destroy', [$user->id, $school->credit_id]) }}" style="display: inline;">
+                    <form action="{{ action('CreditedCoursesController@destroy', [$user->id, $school->credit_id]) }}" method="post" style="display: inline;">
                         @csrf
-                        @method('DELETE')
+                        @method('delete')
 
-                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete Course Creditation</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="confirm('Are you sure you want to delete {{ $school->school }} Course Creditation?') ? this.parentElement.submit() : ''">
+                            Delete Course Creditation
+                        </button>
                     </form>
                     @endrole
                   </div>
 
                   @role('admin')
+                  @if(count($courses) > 0)
                   <div class="col text-right">
                       <a href="/students/{{ $user->id }}/{{ $school->credit_id }}/credit_course/create" class="btn btn-sm btn-primary">
                         Credit Course
                       </a>
                   </div>
+                  @endif
                   @endrole
                 </div>
 
@@ -121,11 +125,13 @@
                                           Edit
                                       </a>
 
-                                      <form method="POST" action="{{ action('CreditedCoursesDetailsController@destroy', [$user->id, $school->credit_id, $credit_course->credit_details_id]) }}" style="display: inline;">
+                                      <form action="{{ action('CreditedCoursesDetailsController@destroy', [$user->id, $school->credit_id, $credit_course->credit_details_id]) }}" method="post">
                                           @csrf
-                                          @method('DELETE')
+                                          @method('delete')
 
-                                          <button type="submit"  class="dropdown-item">Delete</button>
+                                          <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $credit_course->course_code }}?') ? this.parentElement.submit() : ''">
+                                              Delete
+                                          </button>
                                       </form>
                                     </div>
                                   </div>

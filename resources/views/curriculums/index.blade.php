@@ -30,26 +30,16 @@
                                 <th scope="col" class="text-center">Effective S.Y.</th>
                                 <th scope="col" class="text-center">Total Units</th>
                                 <th scope="col"></th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                           @foreach ($curriculums as $curriculum)
                             <tr>
-                                <td class="text-left" scope="row">
+                                <td class="text-right" scope="row">
                                     <a href="/curriculums/{{ $curriculum->curriculum_id }}" class="btn btn-outline-primary btn-sm">
                                       View
                                     </a>
-
-                                    <a href="/curriculums/{{ $curriculum->curriculum_id }}/edit" class="btn btn-outline-info btn-sm">
-                                        Edit
-                                    </a>
-
-                                    <form method="POST" action="{{ action('CurriculumController@destroy', $curriculum->curriculum_id) }}" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
-                                    </form>
                                 </td>
                                 <td class="text-center">{{ $curriculum->curriculum_id }}</td>
                                 <td class="text-center">{{ $curriculum->effective_sy }}</td>
@@ -69,6 +59,26 @@
                                         </button>
                                     </form>
                                 @endif
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="/curriculums/{{ $curriculum->curriculum_id }}/edit">
+                                                Edit
+                                            </a>
+                                            <form action="{{ action('CurriculumController@destroy', $curriculum->curriculum_id) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+
+                                                <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{$curriculum->curriculum_id }} curriculum?') ? this.parentElement.submit() : ''">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                           @endforeach

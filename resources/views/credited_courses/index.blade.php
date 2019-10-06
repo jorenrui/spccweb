@@ -20,9 +20,11 @@
                             <a href="/students/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
 
                             @role('admin')
+                            @if(count($schools) > 0)
                             <a href="/students/{{ $user->id }}/credited_courses/create" class="btn btn-sm btn-primary">
                               Add School
                             </a>
+                            @endif
                             @endrole
                         </div>
                     </div>
@@ -35,6 +37,9 @@
                                 <th scope="col"></th>
                                 <th scope="col" class="text-center">School</th>
                                 <th scope="col" class="text-center">Total Units Credited</th>
+                                @role('admin')
+                                <th scope="col"></th>
+                                @endrole
                             </tr>
                         </thead>
                         <tbody>
@@ -44,22 +49,31 @@
                                     <a href="/students/{{ $user->id }}/credited_courses/{{ $school->credit_id }}" class="btn btn-outline-primary btn-sm">
                                       View
                                     </a>
-
-                                    @role('admin')
-                                    <a href="/students/{{ $user->id }}/credited_courses/{{ $school->credit_id }}/edit" class="btn btn-outline-info btn-sm">
-                                        Edit
-                                    </a>
-
-                                    <form method="POST" action="{{ action('CreditedCoursesController@destroy', [$user->id, $school->credit_id]) }}" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
-                                    </form>
-                                    @endrole
                                 </td>
                                 <td class="text-center">{{ $school->school }}</td>
                                 <td class="text-center">{{ $school->getTotalUnits() }}</td>
+                                @role('admin')
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="/students/{{ $user->id }}/credited_courses/{{ $school->credit_id }}/edit">
+                                                Edit
+                                            </a>
+                                            <form action="{{ action('CreditedCoursesController@destroy', [$user->id, $school->credit_id]) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+
+                                                <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $school->school }}?') ? this.parentElement.submit() : ''">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                                @endrole
                             </tr>
                           @endforeach
                         </tbody>

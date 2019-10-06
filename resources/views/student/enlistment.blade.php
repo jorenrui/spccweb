@@ -35,7 +35,9 @@
                         <div class="col text-right">
                           <a href="/students/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
 
-                          @if($selected_acad_term >= $cur_acad_term && auth()->user()->hasRole('admin'))
+                          @if($selected_acad_term >= $cur_acad_term &&
+                              auth()->user()->hasRole('admin') &&
+                              count($grades) > 0)
                           <a href="/students/{{ $user->id }}/enlist" class="btn btn-sm btn-outline-primary">
                             Enlist Course
                           </a>
