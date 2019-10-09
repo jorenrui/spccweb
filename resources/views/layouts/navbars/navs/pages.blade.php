@@ -48,8 +48,8 @@
         <li class="{{ $title == 'Contact' ? 'active' : '' }}">
           <a href="/contact">contact</a>
         </li>
-        <li class="cat {{ $title == 'Admission' ? 'active' : '' }}">
-          <a href="/admission">Admission</a>
+        <li class="cat {{ $title == 'Admissions' ? 'active' : '' }}">
+          <a href="/admission">admissions</a>
         </li>
       </ul>
     </nav>
