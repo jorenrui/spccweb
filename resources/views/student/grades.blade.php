@@ -39,6 +39,7 @@
 
                         @role('admin|registrar')
                         <div class="col text-right">
+                          <a href="/students/{{ $user->id }}/grade_slip/{{ $selected_acad_term }}" class="btn btn-sm btn-outline-primary">View Grade Slip</a>
                           <a href="/students/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
                         </div>
                         @endrole

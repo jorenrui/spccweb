@@ -205,6 +205,34 @@ class StudentController extends Controller
             ->with('selected_acad_term', $selected_acad_term);
     }
 
+    public function showGradeSlip($id, $acad_term_id)
+    {
+        $user = User::find($id);
+        $head_registrar = User::whereHas("roles", function($q){ $q->where('name', 'head registrar'); })->get();
+
+        if($head_registrar != null)
+            $head_registrar = $head_registrar[0];
+
+        $acad_term = AcadTerm::find($acad_term_id);
+
+        // Filter Grades for the Acad Term
+        $grades = Grade::where('student_no', 'LIKE', $user->student->student_no)->get();
+
+        $filtered_grades = array();
+
+        foreach ($grades as $grade) {
+            if ($grade->sclass->acad_term_id == $acad_term_id) {
+                array_push($filtered_grades, $grade);
+            }
+        }
+
+        return view('reports.grade_slip')
+                ->with('user', $user)
+                ->with('acad_term', $acad_term)
+                ->with('grades', $filtered_grades)
+                ->with('head_registrar', $head_registrar);
+    }
+
     public function enlistment($id)
     {
         $user = User::find($id);

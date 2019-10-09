@@ -47,3 +47,21 @@
   padding: 3px;
   border: none !important;
 }
+
+table.table-grade {
+  width: 100%;
+}
+
+table.table-grade .description {
+  width: 50%;
+  font-size: 16px;
+}
+
+table.table-grade th {
+  padding: 5px;
+}
+
+table.table-grade td {
+  padding: 10px;
+  margin: 0 10px;
+}

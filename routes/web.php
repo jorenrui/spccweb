@@ -92,6 +92,8 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar']], 
 	Route::resource('grades','GradeController')->only([
 		'index', 'show'
 	]);
+
+	Route::get('students/{student}/grade_slip/{acad_term}','StudentController@showGradeSlip');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|head registrar']], function () {
