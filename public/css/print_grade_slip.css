@@ -3,6 +3,10 @@ table th {
   font-family: Arial, sans-serif !important;
 }
 
+footer.footer {
+  display: none !important;
+}
+
 h2 {
   font-size: 26px !important;
 }
