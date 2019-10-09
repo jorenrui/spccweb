@@ -28,7 +28,27 @@ class AcadTerm extends Model
     	}
 
     	return 'S.Y. ' . $sy . ' ' . $sem . ' Semester';
-		}
+	}
+
+    public function getAcadTerm2()
+    {
+    	$sy = $this->attributes['sy'];
+    	$sem = $this->attributes['semester'];
+
+    	switch ($sem) {
+    		case 1:
+    			$sem = '1st';
+    			break;
+    		case 2:
+    			$sem = '2nd';
+    			break;
+
+    		default:
+    			break;
+    	}
+
+    	return  $sem . ' Semester' . ' S.Y. ' . $sy;
+    }
 
     /**
      * Eloquent Relationships
