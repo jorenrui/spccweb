@@ -72,15 +72,18 @@ class AcadTermTableSeeder extends Seeder
         $acadTerm->acad_term_id = '181902';
         $acadTerm->sy = '2018-2019';
         $acadTerm->semester = 2;
+        $acadTerm->prelims_id = 2;
+        $acadTerm->midterms_id = 5;
+        $acadTerm->finals_id = 6;
         $acadTerm->save();
 
         $acadTerm = new AcadTerm;
         $acadTerm->acad_term_id = '192001';
         $acadTerm->sy = '2019-2020';
         $acadTerm->semester = 1;
-        $acadTerm->prelims_id = 1;
-        $acadTerm->midterms_id = 2;
-        $acadTerm->finals_id = 3;
+        $acadTerm->prelims_id = 7;
+        $acadTerm->midterms_id = 8;
+        $acadTerm->finals_id = 9;
         $acadTerm->save();
     }
 }
