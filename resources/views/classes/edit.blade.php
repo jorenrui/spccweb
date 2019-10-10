@@ -108,11 +108,11 @@ $(document).ready(function() {
                                   @foreach ($instructors as $instructor)
                                     @if($sclass->instructor_id == $instructor->employee->employee_no)
                                       <option value="{{ $instructor->employee->employee_no }}" selected>
-                                        {{ $instructor->employee->employee_no }} | {{ $instructor->getName() }}
+                                        {{ $instructor->employee->getEmployeeNo() }} | {{ $instructor->getName() }}
                                       </option>
                                     @else
                                     <option value="{{ $instructor->employee->employee_no }}">
-                                      {{ $instructor->employee->employee_no }} | {{ $instructor->getName() }}
+                                      {{ $instructor->employee->getEmployeeNo() }} | {{ $instructor->getName() }}
                                     </option>
                                     @endif
                                   @endforeach

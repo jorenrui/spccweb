@@ -132,7 +132,7 @@ $(document).ready(function() {
                                   </td>
                                   <td>
                                     <a href="/students/{{ $student->student->user->id }}">
-                                      {{ $student->student->student_no }}
+                                      {{ $student->student->getStudentNo() }}
                                     </a>
                                   </td>
                                   <td>{{ $student->getName() }}</td>

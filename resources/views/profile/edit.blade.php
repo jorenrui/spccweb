@@ -32,9 +32,9 @@
                                     </h3>
                                     <div class="h4 font-weight-300">
                                         @role('student')
-                                            Student No. {{ auth()->user()->student->student_no }}
+                                            Student No. {{ auth()->user()->student->getStudentNo() }}
                                         @else
-                                            Employee No. {{ auth()->user()->employee->employee_no }}
+                                            Employee No. {{ auth()->user()->employee->getEmployeeNo() }}
                                         @endrole
                                     </div>
 

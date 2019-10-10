@@ -15,6 +15,13 @@ class Employee extends Model
     public $timestamps = false;
     public $incrementing = false;
 
+    public function getEmployeeNo()
+    {
+        $employee_no = $this->attributes['employee_no'];
+
+        return $employee_no[0] . '-' . substr($employee_no, 1);
+    }
+
     public function getStatus()
     {
         $employee_no = $this->attributes['employee_no'];

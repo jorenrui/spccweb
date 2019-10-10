@@ -41,7 +41,7 @@
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    {{ $student->student_no }}
+                                    {{ $student->getStudentNo() }}
                                 </td>
                                 <td>{{ $student->user->getName() }}</td>
                                 <td class="text-center">

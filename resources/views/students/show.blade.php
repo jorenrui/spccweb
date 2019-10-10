@@ -42,7 +42,7 @@
                                 {{ $user->getName() }}
                             </h2>
                             <div class="h4 font-weight-300">
-                                Student No. {{ $user->student->student_no }}
+                                Student No. {{ $user->student->getStudentNo() }}
                             </div>
                             <div class="h4 font-weight-300 mt-3">
                                 {{ $user->email }}

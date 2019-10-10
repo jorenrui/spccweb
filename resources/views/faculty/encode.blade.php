@@ -68,13 +68,10 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                 <input name="grade_id[]" type="text" value="{{ $grade->grade_id }}" style="display:none">
                                 <tr>
                                     <td class="text-center" scope="row">
-                                      {{ $grade->student->student_no }}
+                                      {{ $grade->student->getStudentNo() }}
                                       <input name="id[]" type="text" value="{{ $id }}" style="display:none;">
                                     </td>
-                                    <td>
-                                      {{ $grade->student->user->last_name }},
-                                      {{ $grade->student->user->first_name[0] }}.
-                                    </td>
+                                    <td>{{ $grade->student->user->getName() }}</td>
                                     <td class="text-center">
                                       @if($grade->prelims != null)
                                         <input name="prelims[]" type="number" value="{{ $grade->prelims }}" style="display:none">

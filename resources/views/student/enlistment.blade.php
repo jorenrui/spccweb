@@ -27,7 +27,7 @@
                     <div class="row align-items-center">
                         <div class="col">
                           <h3 class="mb-0">
-                            Student's Enlistment | {{ $user->student->student_no }} {{ $user->getName()}}
+                            Student's Enlistment | {{ $user->student->getStudentNo() }} {{ $user->getName()}}
                           </h3>
                           <p class="text-muted text-sm">{{ $degree }}</p>
                         </div>

@@ -40,7 +40,7 @@
                           @foreach ($registrars as $registrar)
                             <tr>
                                 <td class="text-center" scope="row">
-                                  {{ $registrar->employee->employee_no }}
+                                  {{ $registrar->employee->getEmployeeNo() }}
                                 </td>
                                 <td>{{ $registrar->getName() }}</td>
                                 <td class="text-center">{{ $registrar->username }}</td>

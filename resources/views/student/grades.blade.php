@@ -32,7 +32,7 @@
                             @else
                               Student's Enlistment
                             @endrole
-                            | {{ $user->student->student_no }} {{ $user->getName()}}
+                            | {{ $user->student->getStudentNo() }} {{ $user->getName()}}
                           </h3>
                           <p class="text-muted text-sm">{{ $degree }}</p>
                         </div>

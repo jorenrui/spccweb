@@ -10,7 +10,7 @@
           <div class="card shadow">
             <div class="card-body row align-items-center">
               <div class="col">
-                <h2 class="mb-0">{{ $user->student->student_no }} {{ $user->getName()}}</h2>
+                <h2 class="mb-0">{{ $user->student->getStudentNo() }} {{ $user->getName()}}</h2>
                 <p class="text-muted text-sm">{{ $degree }}</p>
                 <p>
                   {{ $curriculum->curriculum_id }} Curriculum

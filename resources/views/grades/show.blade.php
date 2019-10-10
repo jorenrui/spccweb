@@ -192,12 +192,9 @@
                                     @foreach ($grades as $grade)
                                       <tr>
                                           <td class="text-center" scope="row">
-                                            {{ $grade->student->student_no }}
+                                            {{ $grade->student->getStudentNo() }}
                                           </td>
-                                          <td>
-                                            {{ $grade->student->user->last_name }},
-                                            {{ $grade->student->user->first_name[0] }}.
-                                          </td>
+                                          <td>{{ $grade->student->user->getName() }}</td>
                                           <td class="text-center">{{ $grade->prelims }}</td>
                                           <td class="text-center">{{ $grade->midterms }}</td>
                                           <td class="text-center">{{ $grade->finals }}</td>

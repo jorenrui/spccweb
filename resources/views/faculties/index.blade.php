@@ -41,7 +41,7 @@
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    {{ $faculty->employee->employee_no }}
+                                    {{ $faculty->employee->getEmployeeNo() }}
                                 </td>
                                 <td>{{ $faculty->getName() }}</td>
                                 <td class="text-center">

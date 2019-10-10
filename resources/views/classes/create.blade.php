@@ -92,7 +92,7 @@ $(document).ready(function() {
                                 <select id="instructor_id" name="instructor_id" class="select2 form-control m-b" required>
                                   @foreach ($instructors as $instructor)
                                     <option value="{{ $instructor->employee->employee_no }}">
-                                      {{ $instructor->employee->employee_no }} | {{ $instructor->getName() }}
+                                      {{ $instructor->employee->getEmployeeNo() }} | {{ $instructor->getName() }}
                                     </option>
                                   @endforeach
                                 </select>

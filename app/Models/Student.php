@@ -16,6 +16,15 @@ class Student extends Model
     public $timestamps = false;
     public $incrementing = false;
 
+    public function getStudentNo()
+    {
+        $student_no = $this->attributes['student_no'];
+
+        return substr($student_no, 0, 2) . '-' .
+               substr($student_no, 2, 2) . '-' .
+               substr($student_no, 4);
+    }
+
     public function getStatus()
     {
         $student_no = $this->attributes['student_no'];

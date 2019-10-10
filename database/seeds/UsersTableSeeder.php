@@ -38,7 +38,7 @@ class UsersTableSeeder extends Seeder
 
         // Employee Table
         $employee = new Employee;
-        $employee->employee_no = 'K-200';
+        $employee->employee_no = 'K200';
         $employee->user_id = 1;
         $employee->save();
 
@@ -60,7 +60,7 @@ class UsersTableSeeder extends Seeder
 
         // Employee Table
         $employee = new Employee;
-        $employee->employee_no = 'K-210';
+        $employee->employee_no = 'K210';
         $employee->user_id = 2;
         $employee->save();
 
@@ -74,8 +74,8 @@ class UsersTableSeeder extends Seeder
         $user->middle_name = 'Floresca';
         $user->last_name = 'Baga';
         $user->gender = 'F';
-        $user->username = 'K-001';
-        $user->password = Hash::make('K-001');
+        $user->username = 'K001';
+        $user->password = Hash::make('K001');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -84,7 +84,7 @@ class UsersTableSeeder extends Seeder
 
         // Employee Table
         $employee = new Employee;
-        $employee->employee_no = 'K-001';
+        $employee->employee_no = 'K001';
         $employee->user_id = 3;
         $employee->save();
 
@@ -98,8 +98,8 @@ class UsersTableSeeder extends Seeder
         $user->middle_name = 'Penetrante';
         $user->last_name = 'Mendiola';
         $user->gender = 'F';
-        $user->username = 'K-184';
-        $user->password = Hash::make('K-184');
+        $user->username = 'K184';
+        $user->password = Hash::make('K184');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -108,7 +108,7 @@ class UsersTableSeeder extends Seeder
 
         // Employee Table
         $employee = new Employee;
-        $employee->employee_no = 'K-184';
+        $employee->employee_no = 'K184';
         $employee->user_id = 4;
         $employee->save();
 
@@ -121,8 +121,8 @@ class UsersTableSeeder extends Seeder
         $user->middle_name = 'Langreo';
         $user->last_name = 'Santos';
         $user->gender = 'F';
-        $user->username = 'K-007';
-        $user->password = Hash::make('K-007');
+        $user->username = 'K007';
+        $user->password = Hash::make('K007');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -131,7 +131,7 @@ class UsersTableSeeder extends Seeder
 
         // Employee Table
         $employee = new Employee;
-        $employee->employee_no = 'K-007';
+        $employee->employee_no = 'K007';
         $employee->user_id = 5;
         $employee->save();
 
@@ -144,8 +144,8 @@ class UsersTableSeeder extends Seeder
         $user->first_name = 'Rechelle';
         $user->last_name = 'Teves';
         $user->gender = 'F';
-        $user->username = 'K-519';
-        $user->password = Hash::make('K-519');
+        $user->username = 'K519';
+        $user->password = Hash::make('K519');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -154,7 +154,7 @@ class UsersTableSeeder extends Seeder
 
         // Employee Table
         $employee = new Employee;
-        $employee->employee_no = 'K-519';
+        $employee->employee_no = 'K519';
         $employee->user_id = 6;
         $employee->save();
 
@@ -166,8 +166,8 @@ class UsersTableSeeder extends Seeder
         $user->first_name = 'Christian';
         $user->last_name = 'Rubiato';
         $user->gender = 'M';
-        $user->username = 'K-491';
-        $user->password = Hash::make('K-491');
+        $user->username = 'K491';
+        $user->password = Hash::make('K491');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -176,7 +176,7 @@ class UsersTableSeeder extends Seeder
 
         // Employee Table
         $employee = new Employee;
-        $employee->employee_no = 'K-491';
+        $employee->employee_no = 'K491';
         $employee->user_id = 7;
         $employee->save();
 
@@ -188,8 +188,8 @@ class UsersTableSeeder extends Seeder
         $user->first_name = 'Angelito';
         $user->last_name = 'De Rama';
         $user->gender = 'M';
-        $user->username = 'K-492';
-        $user->password = Hash::make('K-492');
+        $user->username = 'K492';
+        $user->password = Hash::make('K492');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -198,7 +198,7 @@ class UsersTableSeeder extends Seeder
 
         // Employee Table
         $employee = new Employee;
-        $employee->employee_no = 'K-492';
+        $employee->employee_no = 'K492';
         $employee->user_id = 8;
         $employee->save();
 
@@ -210,8 +210,8 @@ class UsersTableSeeder extends Seeder
         $user->first_name = 'Cristine Joy';
         $user->last_name = 'De Jesus';
         $user->gender = 'F';
-        $user->username = 'K-521';
-        $user->password = Hash::make('K-521');
+        $user->username = 'K521';
+        $user->password = Hash::make('K521');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -220,9 +220,86 @@ class UsersTableSeeder extends Seeder
 
         // Employee Table
         $employee = new Employee;
-        $employee->employee_no = 'K-521';
+        $employee->employee_no = 'K521';
         $employee->user_id = 9;
         $employee->save();
+
+
+        /* ========================= */
+
+        // Users Table
+        $user = new User;
+        $user->id = 10;
+        $user->first_name = 'Bryan';
+        $user->last_name = 'Garcia';
+        $user->gender = 'M';
+        $user->username = '041830903';
+        $user->password = Hash::make('041830903');
+        $user->created_at = now();
+        $user->updated_at = now();
+        $user->save();
+
+        $user->assignRole('student');
+
+        // Student Table
+        $student = new Student;
+        $student->student_no = '041830903';
+        $student->student_type = 'Transferee';
+        $student->curriculum_id = 2012;
+        $student->acad_term_admitted_id = '181902';
+        $student->user_id = 10;
+        $student->save();
+
+        /* ========================= */
+
+        // Users Table
+        $user = new User;
+        $user->id = 11;
+        $user->first_name = 'Joeylene';
+        $user->last_name = 'Rivera';
+        $user->gender = 'F';
+        $user->username = '041830904';
+        $user->password = Hash::make('041830904');
+        $user->created_at = now();
+        $user->updated_at = now();
+        $user->save();
+
+        $user->assignRole('student');
+
+        // Student Table
+        $student = new Student;
+        $student->student_no = '041830904';
+        $student->student_type = 'Transferee';
+        $student->curriculum_id = 2012;
+        $student->acad_term_admitted_id = '181902';
+        $student->user_id = 11;
+        $student->save();
+
+        /* ========================= */
+
+        // Users Table
+        $user = new User;
+        $user->id = 12;
+        $user->first_name = 'Geraldine Mae';
+        $user->last_name = 'Gonzales';
+        $user->gender = 'F';
+        $user->username = '041830905';
+        $user->password = Hash::make('041830905');
+        $user->created_at = now();
+        $user->updated_at = now();
+        $student->user_id = 12;
+        $user->save();
+
+        $user->assignRole('student');
+
+        // Student Table
+        $student = new Student;
+        $student->student_no = '041830905';
+        $student->student_type = 'Transferee';
+        $student->curriculum_id = 2012;
+        $student->acad_term_admitted_id = '181902';
+        $student->user_id = $user->id;
+        $student->save();
 
         /* Students
          * ========================= */
@@ -414,78 +491,6 @@ class UsersTableSeeder extends Seeder
         $student->student_type = 'Regular';
         $student->curriculum_id = 2018;
         $student->acad_term_admitted_id = '181901';
-        $student->user_id = $user->id;
-        $student->save();
-
-        /* ========================= */
-
-        // Users Table
-        $user = new User;
-        $user->first_name = 'Bryan';
-        $user->last_name = 'Garcia';
-        $user->gender = 'M';
-        $user->username = '041830903';
-        $user->password = Hash::make('041830903');
-        $user->created_at = now();
-        $user->updated_at = now();
-        $user->save();
-
-        $user->assignRole('student');
-
-        // Student Table
-        $student = new Student;
-        $student->student_no = '041830903';
-        $student->student_type = 'Transferee';
-        $student->curriculum_id = 2012;
-        $student->acad_term_admitted_id = '181902';
-        $student->user_id = $user->id;
-        $student->save();
-
-        /* ========================= */
-
-        // Users Table
-        $user = new User;
-        $user->first_name = 'Joeylene';
-        $user->last_name = 'Rivera';
-        $user->gender = 'F';
-        $user->username = '041830904';
-        $user->password = Hash::make('041830904');
-        $user->created_at = now();
-        $user->updated_at = now();
-        $user->save();
-
-        $user->assignRole('student');
-
-        // Student Table
-        $student = new Student;
-        $student->student_no = '041830904';
-        $student->student_type = 'Transferee';
-        $student->curriculum_id = 2012;
-        $student->acad_term_admitted_id = '181902';
-        $student->user_id = $user->id;
-        $student->save();
-
-        /* ========================= */
-
-        // Users Table
-        $user = new User;
-        $user->first_name = 'Geraldine Mae';
-        $user->last_name = 'Gonzales';
-        $user->gender = 'F';
-        $user->username = '041830905';
-        $user->password = Hash::make('041830905');
-        $user->created_at = now();
-        $user->updated_at = now();
-        $user->save();
-
-        $user->assignRole('student');
-
-        // Student Table
-        $student = new Student;
-        $student->student_no = '041830905';
-        $student->student_type = 'Transferee';
-        $student->curriculum_id = 2012;
-        $student->acad_term_admitted_id = '181902';
         $student->user_id = $user->id;
         $student->save();
 
