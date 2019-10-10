@@ -66,6 +66,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 					->except([ 'index', 'show' ]);
 	Route::resource('students/{student}/{credit}/credit_course',
 		'CreditedCoursesDetailsController')->except([ 'index', 'show' ]);
+
+	Route::get('settings', 'DashboardController@settings');
+	Route::post('settings', 'DashboardController@updateSettings');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {

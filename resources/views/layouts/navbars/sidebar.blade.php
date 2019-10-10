@@ -55,10 +55,6 @@
                         <i class="ni ni-calendar-grid-58"></i>
                         <span>Events</span>
                     </a>
-                    <a href="#" class="dropdown-item {{ $title == 'Settings' ? 'active' : '' }}">
-                        <i class="ni ni-settings-gear-65"></i>
-                        <span>Settings</span>
-                    </a>
                     @endrole
                     <a href="#" class="dropdown-item {{ $title == 'About' ? 'active' : '' }}">
                         <i class="ni ni-app"></i>
@@ -205,26 +201,10 @@
                     </a>
                 </li>
 
-                <li class="nav-item {{ $title == 'System Settings' ? 'active' : '' }}">
-                    <a class="nav-link" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
-                        <i class="ni ni-settings"></i>
-                        <span class="nav-link-text">Settings</span>
+                <li class="nav-item {{ $title == 'Settings' ? 'active' : '' }}">
+                    <a class="nav-link" href="/settings">
+                        <i class="ni ni-settings"></i> Settings
                     </a>
-
-                    <div class="collapse" id="navbar-settings">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    System Settings
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Backup Database
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 @endrole
 

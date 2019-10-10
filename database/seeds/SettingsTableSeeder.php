@@ -21,11 +21,6 @@ class SettingsTableSeeder extends Seeder
         $setting->save();
 
         $setting = new Setting;
-        $setting->name = 'Degree Acronym';
-        $setting->value = 'BSIT';
-        $setting->save();
-
-        $setting = new Setting;
         $setting->name = 'Current Acad Term';
         $setting->value = '192001';
         $setting->save();
