@@ -18,7 +18,7 @@ class CreateCourseCreditDetailsTable extends Migration
             $table->string('course_code', 10);
             $table->string('description', 100);
             $table->char('grade', 4);
-            $table->boolean('is_inc')->default(true);
+            $table->boolean('is_inc')->default(false);
             $table->integer('credit_id')->unsigned();
             $table->foreign('credit_id')->references('credit_id')->on('course_creditation')->onDelete('cascade');
             $table->integer('curriculum_details_id')->unsigned();

@@ -34,7 +34,7 @@
                       <div class="col">
                       <form action="/classes?" method="GET" class="form-horizontal">
                         <label class="form-control-label" for="select_acad_term">Academic Term: </label>
-                        <select class="col-{{ $selected_acad_term >= $cur_acad_term && count($classes) > 0 ? '7' :'3'}} select2 form-control m-b" name="select_acad_term" onchange="this.form.submit()">
+                        <select class="col-{{ $selected_acad_term >= $cur_acad_term && count($classes) > 0 ? '7' :'4'}} select2 form-control m-b" name="select_acad_term" onchange="this.form.submit()">
                           @foreach ($acad_terms as $acad_term)
                             @if($selected_acad_term == $acad_term->acad_term_id)
                               <option value="{{ $acad_term->acad_term_id }}" selected>
