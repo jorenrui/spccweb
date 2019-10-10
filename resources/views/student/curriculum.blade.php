@@ -90,9 +90,9 @@
 
                                       @if($grade->getGrade() == 'INC')
                                         <td class="text-center">
-                                          , {{ $grade->getCompletion() }}
+                                          {{ $grade->getCompletion() }}
                                         </td>
-                                        @else
+                                      @else
                                         <td></td>
                                       @endif
                                     @endif

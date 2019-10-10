@@ -101,13 +101,13 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     </td>
                                     <td class="text-center">
                                       <label class="custom-toggle">
-                                        <input name="is_incomplete[{{$id}}]" type="checkbox" {{ $grade->average == 'INC' ? 'checked' : '' }}>
+                                        <input name="is_inc[{{$id}}]" type="checkbox" {{ $grade->is_inc ? 'checked' : '' }}>
                                         <span class="custom-toggle-slider rounded-circle"></span>
                                       </label>
                                     </td>
                                     <td>
-                                      @if($grade->average == 'INC')
-                                      <input name="note[]" class="form-control mb-3" type="text" placeholder="Enter note" value="{{ $grade->note }}">
+                                      @if($grade->is_inc)
+                                        <input name="note[]" class="form-control mb-3" type="text" placeholder="Enter note" value="{{ $grade->note }}" required>
                                       @else
                                         <input name="note[]" type="text" style="display:none">
                                       @endif

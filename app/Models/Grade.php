@@ -12,25 +12,24 @@ class Grade extends Model
 
     public function getAverage()
     {
-        $average = $this->attributes['average'];
+        $prelims = $this->attributes['prelims'];
+        $midterms = $this->attributes['midterms'];
+        $finals = $this->attributes['finals'];
 
-        if($average == 'INC') {
-            $prelims = $this->attributes['prelims'];
-            $midterms = $this->attributes['midterms'];
-            $finals = $this->attributes['finals'];
+        if($finals == null)
+            return null;
 
-            if($finals == null)
-                return null;
-
-            $average = ($prelims + $midterms + $finals) / 3;
-            $average = round( $average );
-        }
+        $average = ($prelims + $midterms + $finals) / 3;
+        $average = round( $average );
 
         return $average;
     }
 
     public function getTransmutatedGrade($average)
     {
+        if ($average == null)
+            return null;
+
         $average = round( $average );
 
         if ($average >= 96 && $average <= 100)
@@ -57,46 +56,40 @@ class Grade extends Model
 
     public function getGrade()
     {
-        $average = $this->attributes['average'];
+        $is_inc = $this->attributes['is_inc'];
 
-        if ($average == 'INC')
+        if ($is_inc)
             return 'INC';
-        else if ($average == null)
-            return null;
+
+        $average = $this->getAverage();
 
         return $this->getTransmutatedGrade($average);
     }
 
     public function getCompletion()
     {
-        $prelims = $this->attributes['prelims'];
-        $midterms = $this->attributes['midterms'];
-        $finals = $this->attributes['finals'];
-        $average = $this->attributes['average'];
+        $is_inc = $this->attributes['is_inc'];
 
-        if($average != 'INC' || $finals == null)
+        if(!$is_inc)
             return null;
 
-        $average = ($prelims + $midterms + $finals) / 3;
+        $average = $this->getAverage();
 
         return $this->getTransmutatedGrade($average);
-
     }
 
     public function getRemarks()
     {
-        $average = $this->attributes['average'];
-        $computed_average = $this->getAverage();
+        $is_inc = $this->attributes['is_inc'];
+        $average = $this->getAverage();
 
-        if(!is_numeric($average)) {
-            if($average == 'INC' && $computed_average == null)
+        if($is_inc && $average == null)
                 return 'INCOMPLETE';
-        }
 
         if($average == null)
             return null;
 
-        $grade = $this->getTransmutatedGrade($computed_average);
+        $grade = $this->getTransmutatedGrade($average);
 
         if($grade == 5)
             return 'FAILED';
