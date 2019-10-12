@@ -22,10 +22,13 @@
 
                 <div class="row">
                   <div class="col">
+                    @role('admin|registrar')
                       <a href="/students/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
+                      <a href="/students/{{ $user->id }}/tor" class="btn btn-sm btn-outline-primary">View TOR</a>
+                    @endrole
+                    <a href="/students/{{ $user->id }}/curriculum_with_grades" class="btn btn-sm btn-outline-primary">View Curriculum with Grades</a>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -52,7 +55,7 @@
                                   <th scope="col" class="text-left">Course Title</th>
                                   <th scope="col" class="text-center">Units</th>
                                   <th scope="col" class="text-center">Lab Units</th>
-                                  <th scope="col" class="text-center">Pre-requisites</th>
+                                  <th scope="col" class="text-center">Pre-requisite(s)</th>
                                   <th scope="col" class="text-center">Grade</th>
                                   <th scope="col" class="text-center">COMP.</th>
                               </tr>
@@ -61,7 +64,9 @@
                             <!-- Curriculum Details per School Year -->
                             @foreach ($cur_details as $cur_detail)
                               <tr>
-                                  <td class="text-center" scope="row">{{ $cur_detail->course_code }}</td>
+                                  <td class="text-center" scope="row">
+                                    {{ $cur_detail->course_code }}
+                                  </td>
                                   <td class="text-left">{{ $cur_detail->course->description }}</td>
                                   <td class="text-center">{{ $cur_detail->course->units }}</td>
                                   <td class="text-center">{{ $cur_detail->course->lab_units }}</td>
