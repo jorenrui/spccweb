@@ -73,6 +73,60 @@ class CurriculumDetails extends Model
         return $sy . ' Year Standing';
     }
 
+    public function getSem($grades, $user)
+    {
+        foreach ($grades as $grade) {
+            if ($grade->curriculum_details_id == $this->curriculum_details_id) {
+                return $grade->sclass->acadTerm->semester;
+            }
+        }
+
+        if ($user->student->student_type != 'Transferee')
+            return null;
+
+        $cschools = $user->student->creditedCourses;
+
+        if (count($cschools) < 0)
+            return null;
+
+        foreach ($cschools as $cschool) {
+            foreach ($cschool->creditedCourses as $ccourse) {
+                if($ccourse->curriculum_details_id == $this->curriculum_details_id) {
+                    return $ccourse->acadTerm->semester;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public function getSy($grades, $user)
+    {
+        foreach ($grades as $grade) {
+            if ($grade->curriculum_details_id == $this->curriculum_details_id) {
+                return $grade->sclass->acadTerm->sy;
+            }
+        }
+
+        if ($user->student->student_type != 'Transferee')
+            return null;
+
+        $cschools = $user->student->creditedCourses;
+
+        if (count($cschools) < 0)
+            return null;
+
+        foreach ($cschools as $cschool) {
+            foreach ($cschool->creditedCourses as $ccourse) {
+                if($ccourse->curriculum_details_id == $this->curriculum_details_id) {
+                    return $ccourse->acadTerm->sy;
+                }
+            }
+        }
+
+        return null;
+    }
+
     public function getGrade($grades, $user)
     {
         foreach ($grades as $grade) {
