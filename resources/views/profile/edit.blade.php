@@ -95,13 +95,6 @@
                                         </dd>
 
                                         <dt class="col-5 text-right">
-                                            Date Admitted:
-                                        </dt>
-                                        <dd class="col-7">
-                                            {{ auth()->user()->student->getDateAdmitted() }}
-                                        </dd>
-
-                                        <dt class="col-5 text-right">
                                             Academic Term Admitted:
                                         </dt>
                                         <dd class="col-7">
@@ -135,7 +128,11 @@
                                         Birthdate:
                                     </dt>
                                     <dd class="col-7">
-                                        {{ auth()->user()->getBirthdate() }}
+                                        @if(auth()->user()->getBirthdate() != null)
+                                            {{ auth()->user()->getBirthdate() }}
+                                        @else
+                                            -
+                                        @endif
                                     </dd>
 
                                     @if(auth()->user()->contact_no != null)
@@ -151,7 +148,11 @@
                                         Address:
                                     </dt>
                                     <dd class="col-7">
-                                        {{ auth()->user()->address }}
+                                        @if(auth()->user()->address != null)
+                                            {{ auth()->user()->address }}
+                                        @else
+                                            -
+                                        @endif
                                     </dd>
 
                                     @role('student')
@@ -163,21 +164,36 @@
                                             Primary:
                                         </dt>
                                         <dd class="col-7">
-                                            {{ auth()->user()->student->primary }}, ({{ auth()->user()->student->primary_sy }})
+                                            @if(auth()->user()->student->primary != null)
+                                                {{ auth()->user()->student->primary }},
+                                                ({{ auth()->user()->student->primary_sy }})
+                                            @else
+                                                -
+                                            @endif
                                         </dd>
 
                                         <dt class="col-5 text-right">
                                             Intermediate:
                                         </dt>
                                         <dd class="col-7">
-                                            {{ auth()->user()->student->intermediate }}, ({{ auth()->user()->student->intermediate_sy }})
+                                            @if(auth()->user()->student->intermediate != null)
+                                                {{ auth()->user()->student->intermediate }},
+                                                ({{ auth()->user()->student->intermediate_sy }})
+                                            @else
+                                                -
+                                            @endif
                                         </dd>
 
                                         <dt class="col-5 text-right">
                                             Secondary:
                                         </dt>
                                         <dd class="col-7">
-                                            {{ auth()->user()->student->secondary }}, ({{ auth()->user()->student->secondary_sy }})
+                                            @if(auth()->user()->student->secondary != null)
+                                                {{ auth()->user()->student->secondary }},
+                                                ({{ auth()->user()->student->secondary_sy }})
+                                            @else
+                                                -
+                                            @endif
                                         </dd>
                                     @endrole
                                 </dl>

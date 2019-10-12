@@ -210,7 +210,7 @@
                                             </dt>
                                             <dd class="col-7">
                                                 @if($user->student->intermediate != null)
-                                                {{ $user->student->intermediate }}, ({{ $user->student->intermediate_sy }})
+                                                    {{ $user->student->intermediate }}, ({{ $user->student->intermediate_sy }})
                                                 @else
                                                     -
                                                 @endif
@@ -221,7 +221,7 @@
                                             </dt>
                                             <dd class="col-7">
                                                 @if($user->student->secondary != null)
-                                                {{ $user->student->secondary }}, ({{ $user->student->secondary_sy }})
+                                                    {{ $user->student->secondary }}, ({{ $user->student->secondary_sy }})
                                                 @else
                                                     -
                                                 @endif
@@ -272,7 +272,13 @@
                             <td scope="row">{{ $grade->sclass->getTime() }}</td>
                             <td>{{ $grade->sclass->getCourse() }}</td>
                             <td>{{ $grade->sclass->course->getCredits() }}</td>
-                            <td>{{ $grade->sclass->room }}</td>
+                            <td>
+                                @if($grade->sclass->room != null)
+                                    {{ $grade->sclass->room }}
+                                @else
+                                    -
+                                @endif
+                            </td>
                             <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
                         </tr>
                       @endforeach
