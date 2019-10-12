@@ -26,7 +26,7 @@ class CreateClassTable extends Migration
             $table->string('sog_average')->nullable();
             $table->string('acad_term_id', 6);
             $table->foreign('acad_term_id')->references('acad_term_id')->on('acad_term')->onDelete('cascade');
-            $table->string('course_code', 10);
+            $table->string('course_code', 20);
             $table->foreign('course_code')->references('course_code')->on('course')->onDelete('cascade');
             $table->string('instructor_id', 5);
             $table->foreign('instructor_id')->references('employee_no')->on('employee')->onDelete('cascade');

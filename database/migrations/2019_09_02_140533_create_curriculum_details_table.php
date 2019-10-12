@@ -20,7 +20,7 @@ class CreateCurriculumDetailsTable extends Migration
             $table->boolean('is_year_standing');
             $table->integer('curriculum_id')->unsigned();
             $table->foreign('curriculum_id')->references('curriculum_id')->on('curriculum')->onDelete('cascade');
-            $table->string('course_code', 10);
+            $table->string('course_code', 20);
             $table->foreign('course_code')->references('course_code')->on('course')->onDelete('cascade');
         });
     }

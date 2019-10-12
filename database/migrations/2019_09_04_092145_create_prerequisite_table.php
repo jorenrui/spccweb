@@ -17,7 +17,7 @@ class CreatePrerequisiteTable extends Migration
             $table->bigIncrements('prerequisite_id');
             $table->integer('curriculum_details_id')->unsigned();
             $table->foreign('curriculum_details_id')->references('curriculum_details_id')->on('curriculum_details')->onDelete('cascade');
-            $table->string('course_code', 10);
+            $table->string('course_code', 20);
             $table->foreign('course_code')->references('course_code')->on('course')->onDelete('cascade');
         });
     }

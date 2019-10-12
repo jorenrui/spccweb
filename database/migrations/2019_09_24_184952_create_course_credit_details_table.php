@@ -15,14 +15,13 @@ class CreateCourseCreditDetailsTable extends Migration
     {
         Schema::create('course_credit_details', function (Blueprint $table) {
             $table->increments('credit_details_id');
-            $table->string('course_code', 10);
+            $table->string('course_code', 20);
             $table->string('description', 100);
             $table->char('grade', 4);
             $table->boolean('is_inc')->default(false);
             $table->integer('credit_id')->unsigned();
             $table->foreign('credit_id')->references('credit_id')->on('course_creditation')->onDelete('cascade');
-            $table->integer('curriculum_details_id')->unsigned();
-            $table->foreign('curriculum_details_id')->references('curriculum_details_id')->on('curriculum_details')->onUpdate('cascade');
+            $table->integer('curriculum_details_id')->nullable();
             $table->string('acad_term_id', 6);
             $table->foreign('acad_term_id')->references('acad_term_id')->on('acad_term')->onDelete('cascade');
         });

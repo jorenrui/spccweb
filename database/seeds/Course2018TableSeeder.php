@@ -23,28 +23,28 @@ class Course2018TableSeeder extends Seeder
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'ComPro 1';
+        $course->course_code = 'ComPro1';
         $course->description = 'Computer Programming 1';
         $course->units = 3;
         $course->lab_units = 3;
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'Fil 1';
+        $course->course_code = 'Fil1';
         $course->description = 'Sining ng Komunikasyon';
         $course->units = 3;
         $course->lab_units = null;
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'Math 1';
+        $course->course_code = 'Math1';
         $course->description = 'Mathematics in the Modern World';
         $course->units = 3;
         $course->lab_units = null;
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'Art 1';
+        $course->course_code = 'Art1';
         $course->description = 'Art Appreciation';
         $course->units = 3;
         $course->lab_units = null;
@@ -58,7 +58,7 @@ class Course2018TableSeeder extends Seeder
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'Eng 1';
+        $course->course_code = 'Eng1';
         $course->description = 'Purposive Communication';
         $course->units = 3;
         $course->lab_units = null;
@@ -72,14 +72,14 @@ class Course2018TableSeeder extends Seeder
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'Fil 2';
+        $course->course_code = 'Fil2';
         $course->description = 'Filipino Panitikan';
         $course->units = 3;
         $course->lab_units = null;
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'ComPro 2';
+        $course->course_code = 'ComPro2';
         $course->description = 'Computer Programming 2';
         $course->units = 3;
         $course->lab_units = null;
@@ -163,14 +163,14 @@ class Course2018TableSeeder extends Seeder
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'Net 1';
+        $course->course_code = 'Net1';
         $course->description = 'Networking 1 (Fundamentals)';
         $course->units = 3;
         $course->lab_units = 3;
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'InTech 1';
+        $course->course_code = 'InTech1';
         $course->description = 'Integrative Programming and Technologies 1';
         $course->units = 3;
         $course->lab_units = 3;
@@ -205,21 +205,21 @@ class Course2018TableSeeder extends Seeder
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'Net 2';
+        $course->course_code = 'Net2';
         $course->description = 'Networking 2 (Routing Protocols)';
         $course->units = 3;
         $course->lab_units = 3;
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'SIA 1';
+        $course->course_code = 'SIA1';
         $course->description = 'Systems Integration and Architecture 1';
         $course->units = 3;
         $course->lab_units = 3;
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'Intech 2';
+        $course->course_code = 'Intech2';
         $course->description = 'Integrative Programming and Technologies 2';
         $course->units = 3;
         $course->lab_units = 3;
@@ -247,7 +247,7 @@ class Course2018TableSeeder extends Seeder
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'IAS 1';
+        $course->course_code = 'IAS1';
         $course->description = 'Information Assurance and Security';
         $course->units = 3;
         $course->lab_units = null;
@@ -289,14 +289,14 @@ class Course2018TableSeeder extends Seeder
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'IAS 2';
+        $course->course_code = 'IAS2';
         $course->description = 'Information Assurance and Security 2';
         $course->units = 3;
         $course->lab_units = null;
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'ITProj 1';
+        $course->course_code = 'ITProj1';
         $course->description = 'Capstone Project and Research 1';
         $course->units = 3;
         $course->lab_units = null;
@@ -317,21 +317,21 @@ class Course2018TableSeeder extends Seeder
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'ITProj 2';
+        $course->course_code = 'ITProj2';
         $course->description = 'Capstone Project and Research 2';
         $course->units = 3;
         $course->lab_units = 3;
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'Prac 1';
+        $course->course_code = 'Prac1';
         $course->description = 'Practicum';
         $course->units = 3;
         $course->lab_units = null;
         $course->save();
 
         $course = new Course;
-        $course->course_code = 'SIA 2';
+        $course->course_code = 'SIA2';
         $course->description = 'Systems Integration and Architecture 2';
         $course->units = 3;
         $course->lab_units = 3;

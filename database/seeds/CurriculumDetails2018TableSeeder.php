@@ -28,7 +28,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 60;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'ComPro 1';
+        $cur_details_2018->course_code = 'ComPro1';
         $cur_details_2018->sy = 1;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -37,7 +37,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 61;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'Fil 1';
+        $cur_details_2018->course_code = 'Fil1';
         $cur_details_2018->sy = 1;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -46,7 +46,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 62;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'Math 1';
+        $cur_details_2018->course_code = 'Math1';
         $cur_details_2018->sy = 1;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -55,7 +55,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 63;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'Art 1';
+        $cur_details_2018->course_code = 'Art1';
         $cur_details_2018->sy = 1;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -64,7 +64,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 64;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'PE1';
+        $cur_details_2018->course_code = 'PE 1';
         $cur_details_2018->sy = 1;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -73,7 +73,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 65;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'NSTP1';
+        $cur_details_2018->course_code = 'NSTP 1';
         $cur_details_2018->sy = 1;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -91,7 +91,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 67;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'Eng 1';
+        $cur_details_2018->course_code = 'Eng1';
         $cur_details_2018->sy = 1;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -110,7 +110,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 69;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'Fil 2';
+        $cur_details_2018->course_code = 'Fil2';
         $cur_details_2018->sy = 1;
         $cur_details_2018->semester = 2;
         $cur_details_2018->is_year_standing = false;
@@ -119,7 +119,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 70;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'ComPro 2';
+        $cur_details_2018->course_code = 'ComPro2';
         $cur_details_2018->sy = 1;
         $cur_details_2018->semester = 2;
         $cur_details_2018->is_year_standing = false;
@@ -146,7 +146,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 73;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'PE2';
+        $cur_details_2018->course_code = 'PE 2';
         $cur_details_2018->sy = 1;
         $cur_details_2018->semester = 2;
         $cur_details_2018->is_year_standing = false;
@@ -155,7 +155,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 74;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'NSTP2';
+        $cur_details_2018->course_code = 'NSTP 2';
         $cur_details_2018->sy = 1;
         $cur_details_2018->semester = 2;
         $cur_details_2018->is_year_standing = false;
@@ -219,7 +219,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 81;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'PE3';
+        $cur_details_2018->course_code = 'PE 3';
         $cur_details_2018->sy = 2;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -256,7 +256,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 85;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'Net 1';
+        $cur_details_2018->course_code = 'Net1';
         $cur_details_2018->sy = 2;
         $cur_details_2018->semester = 2;
         $cur_details_2018->is_year_standing = false;
@@ -265,7 +265,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 86;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'InTech 1';
+        $cur_details_2018->course_code = 'InTech1';
         $cur_details_2018->sy = 2;
         $cur_details_2018->semester = 2;
         $cur_details_2018->is_year_standing = false;
@@ -292,7 +292,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 89;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'PE4';
+        $cur_details_2018->course_code = 'PE 4';
         $cur_details_2018->sy = 2;
         $cur_details_2018->semester = 2;
         $cur_details_2018->is_year_standing = false;
@@ -320,7 +320,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 92;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'Net 2';
+        $cur_details_2018->course_code = 'Net2';
         $cur_details_2018->sy = 3;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -329,7 +329,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 93;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'SIA 1';
+        $cur_details_2018->course_code = 'SIA1';
         $cur_details_2018->sy = 3;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -338,7 +338,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 94;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'Intech 2';
+        $cur_details_2018->course_code = 'Intech2';
         $cur_details_2018->sy = 3;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -375,7 +375,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 98;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'IAS 1';
+        $cur_details_2018->course_code = 'IAS1';
         $cur_details_2018->sy = 3;
         $cur_details_2018->semester = 2;
         $cur_details_2018->is_year_standing = false;
@@ -430,7 +430,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 104;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'IAS 2';
+        $cur_details_2018->course_code = 'IAS2';
         $cur_details_2018->sy = 4;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = false;
@@ -439,7 +439,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 105;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'ITProj 1';
+        $cur_details_2018->course_code = 'ITProj1';
         $cur_details_2018->sy = 4;
         $cur_details_2018->semester = 1;
         $cur_details_2018->is_year_standing = true;
@@ -467,7 +467,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 108;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'ITProj 2';
+        $cur_details_2018->course_code = 'ITProj2';
         $cur_details_2018->sy = 4;
         $cur_details_2018->semester = 2;
         $cur_details_2018->is_year_standing = false;
@@ -476,7 +476,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 109;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'Prac 1';
+        $cur_details_2018->course_code = 'Prac1';
         $cur_details_2018->sy = 4;
         $cur_details_2018->semester = 2;
         $cur_details_2018->is_year_standing = true;
@@ -485,7 +485,7 @@ class CurriculumDetails2018TableSeeder extends Seeder
         $cur_details_2018 = new CurriculumDetails;
         $cur_details_2018->curriculum_details_id = 110;
         $cur_details_2018->curriculum_id = 2018;
-        $cur_details_2018->course_code = 'SIA 2';
+        $cur_details_2018->course_code = 'SIA2';
         $cur_details_2018->sy = 4;
         $cur_details_2018->semester = 2;
         $cur_details_2018->is_year_standing = false;
