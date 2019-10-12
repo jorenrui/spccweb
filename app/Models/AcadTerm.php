@@ -10,44 +10,47 @@ class AcadTerm extends Model
     protected $primaryKey = 'acad_term_id';
     public $timestamps = false;
 
-    public function getAcadTerm()
+    private function getSem()
     {
-    	$sy = $this->attributes['sy'];
-    	$sem = $this->attributes['semester'];
+        $sem = $this->attributes['semester'];
 
     	switch ($sem) {
     		case 1:
-    			$sem = '1st';
+    			$sem = '1st Semester';
     			break;
     		case 2:
-    			$sem = '2nd';
+    			$sem = '2nd Semester';
     			break;
+            case 3:
+                $sem = '3rd Semester';
+                break;
+            case 4:
+                $sem = '4th Semester';
+                break;
+            case 9:
+                $sem = 'Summer';
+                break;
 
     		default:
     			break;
-    	}
+        }
 
-    	return 'S.Y. ' . $sy . ' ' . $sem . ' Semester';
+        return $sem;
+    }
+    public function getAcadTerm()
+    {
+    	$sy = $this->attributes['sy'];
+        $sem = $this->getSem();
+
+    	return 'S.Y. ' . $sy . ' ' . $sem;
 	}
 
     public function getAcadTerm2()
     {
     	$sy = $this->attributes['sy'];
-    	$sem = $this->attributes['semester'];
+        $sem = $this->getSem();
 
-    	switch ($sem) {
-    		case 1:
-    			$sem = '1st';
-    			break;
-    		case 2:
-    			$sem = '2nd';
-    			break;
-
-    		default:
-    			break;
-    	}
-
-    	return  $sem . ' Semester' . ' S.Y. ' . $sy;
+    	return  $sem . ' S.Y. ' . $sy;
     }
 
     /**

@@ -54,6 +54,9 @@
                                 <select id="semester" name="semester" class="form-control m-b" required>
                                     <option value="1" {{ $cur_detail->semester == 1 ? 'selected' : ''}}>First Semester</option>
                                     <option value="2" {{ $cur_detail->semester == 2 ? 'selected' : ''}}>Second Semester</option>
+                                    <option value="3" {{ $cur_detail->semester == 3 ? 'selected' : ''}}>Third Semester</option>
+                                    <option value="4" {{ $cur_detail->semester == 4 ? 'selected' : ''}}>Fourth Semester</option>
+                                    <option value="9" {{ $cur_detail->semester == 9 ? 'selected' : ''}}>Summer</option>
                                 </select>
                             </div>
                           </div>

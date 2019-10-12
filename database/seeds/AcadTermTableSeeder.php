@@ -51,6 +51,12 @@ class AcadTermTableSeeder extends Seeder
         $acadTerm->save();
 
         $acadTerm = new AcadTerm;
+        $acadTerm->acad_term_id = '161709';
+        $acadTerm->sy = '2016-2017';
+        $acadTerm->semester = 9;
+        $acadTerm->save();
+
+        $acadTerm = new AcadTerm;
         $acadTerm->acad_term_id = '171801';
         $acadTerm->sy = '2017-2018';
         $acadTerm->semester = 1;

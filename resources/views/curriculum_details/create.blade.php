@@ -53,6 +53,9 @@
                                 <select id="semester" name="semester" class="form-control m-b" required>
                                     <option value="1" selected>First Semester</option>
                                     <option value="2">Second Semester</option>
+                                    <option value="3">Third Semester</option>
+                                    <option value="4">Fourth Semester</option>
+                                    <option value="9">Summer</option>
                                 </select>
                             </div>
                           </div>
