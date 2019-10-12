@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Grade Report'])
+@extends('layouts.app', ['title' => auth()->user()->hasRole('student') ? 'View Enlistment' : 'Grade Report'])
 
 @section('styles')
 <link href="{{ asset('css/print_grade_slip.css') }}" rel="stylesheet" media="print">
@@ -81,7 +81,11 @@
 
             <div class="col button-group text-right">
               <button class="btn btn-sm btn-outline-primary btn-print">Print</button>
-              <a href="/students/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
+              @role('student')
+                <a href="/student/enlistment" class="btn btn-sm btn-outline-secondary">Return</a>
+              @else
+                <a href="/students/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
+              @endrole
             </div>
 
           </div>
