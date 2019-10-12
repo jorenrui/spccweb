@@ -37,6 +37,13 @@ class CourseCreditationDetails extends Model
                $this->curriculumDetails->course_code;
     }
 
+    public function getGrade()
+    {
+        $grade = $this->attributes['grade'];
+
+        return number_format($grade, 2, '.', '');
+    }
+
     /**
      * Eloquent Relationships
      */

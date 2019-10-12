@@ -73,6 +73,60 @@ class CurriculumDetails extends Model
         return $sy . ' Year Standing';
     }
 
+    public function getGrade($grades, $user)
+    {
+        foreach ($grades as $grade) {
+            if ($grade->curriculum_details_id == $this->curriculum_details_id) {
+                return $grade->getGrade();
+            }
+        }
+
+        if ($user->student->student_type != 'Transferee')
+            return null;
+
+        $cschools = $user->student->creditedCourses;
+
+        if (count($cschools) < 0)
+            return null;
+
+        foreach ($cschools as $cschool) {
+            foreach ($cschool->creditedCourses as $ccourse) {
+                if($ccourse->curriculum_details_id == $this->curriculum_details_id) {
+                    return $ccourse->is_inc ? 'INC' : $ccourse->getGrade();
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public function getCompletion($grades, $user)
+    {
+        foreach ($grades as $grade) {
+            if ($grade->curriculum_details_id == $this->curriculum_details_id) {
+                return $grade->getCompletion();
+            }
+        }
+
+        if ($user->student->student_type != 'Transferee')
+            return null;
+
+        $cschools = $user->student->creditedCourses;
+
+        if (count($cschools) < 0)
+            return null;
+
+        foreach ($cschools as $cschool) {
+            foreach ($cschool->creditedCourses as $ccourse) {
+                if($ccourse->curriculum_details_id == $this->curriculum_details_id) {
+                    return $ccourse->is_inc ? $ccourse->getGrade() : null;
+                }
+            }
+        }
+
+        return null;
+    }
+
     /**
      * Eloquent Relationships
      */

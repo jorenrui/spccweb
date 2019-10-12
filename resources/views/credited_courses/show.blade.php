@@ -105,12 +105,12 @@
                                   @if($credit_course->is_inc)
                                     INC
                                   @else
-                                    {{ $credit_course->grade }}
+                                    {{ $credit_course->getGrade() }}
                                   @endif
                                 </td>
                                 <td class="text-center">
                                   @if($credit_course->is_inc)
-                                    {{ $credit_course->grade }}
+                                    {{ $credit_course->getGrade() }}
                                   @endif
                                 </td>
                                 @role('admin|registrar')

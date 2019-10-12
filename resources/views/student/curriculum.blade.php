@@ -77,31 +77,12 @@
                                       @endif
                                     @endforeach
                                   </td>
-                                  <?php $grade_found = false; ?>
-                                  @foreach ($grades as $grade)
-
-                                    @if($grade->curriculum_details_id == $cur_detail->curriculum_details_id)
-
-                                      <?php $grade_found = true; ?>
-
-                                      <td class="text-center">
-                                        {{ $grade->getGrade() }}
-                                      </td>
-
-                                      @if($grade->getGrade() == 'INC')
-                                        <td class="text-center">
-                                          {{ $grade->getCompletion() }}
-                                        </td>
-                                      @else
-                                        <td></td>
-                                      @endif
-                                    @endif
-                                  @endforeach
-
-                                  @if(!$grade_found)
-                                  <td></td>
-                                  <td></td>
-                                  @endif
+                                  <td class="text-center">
+                                    {{ $cur_detail->getGrade($grades, $user) }}
+                                  </td>
+                                  <td class="text-center">
+                                    {{ $cur_detail->getCompletion($grades, $user) }}
+                                  </td>
                               </tr>
                             @endforeach
                           </tbody>
