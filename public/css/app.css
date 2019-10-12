@@ -48,6 +48,8 @@
   border: none !important;
 }
 
+/* Grade Slip Table */
+
 table.table-grade {
   width: 100%;
 }
@@ -64,4 +66,55 @@ table.table-grade th {
 table.table-grade td {
   padding: 10px;
   margin: 0 10px;
+}
+
+/* Curriculum with Grades Table */
+table.table-curriculum {
+  width: 100%;
+  margin: 0 !important;
+}
+
+table.table-curriculum th {
+  font-size: 16px;
+}
+
+table.table-curriculum th.w-7 {
+  width: 7%;
+}
+
+table.table-curriculum th.w-8 {
+  width: 8%;
+}
+
+table.table-curriculum th.w-11 {
+  width: 11%;
+}
+
+table.table-curriculum th.w-12 {
+  width: 12%;
+}
+
+table.table-curriculum th.w-18 {
+  width: 18%;
+}
+
+table.table-curriculum .description {
+  width: 31%;
+  font-size: 16px;
+}
+
+table.table-curriculum th {
+  padding: 5px;
+  border: 1px solid #525f7f;
+}
+
+table.table-curriculum td {
+  padding: 10px;
+  margin: 0 10px;
+  border: 1px solid #525f7f;
+}
+
+table.table-curriculum tr th:last-child,
+table.table-curriculum tr td:last-child {
+  border: none;
 }

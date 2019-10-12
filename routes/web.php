@@ -88,12 +88,17 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 					'CreditedCoursesDetailsController')->except([ 'index', 'show' ]);
 });
 
-Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar']], function () {
+Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar|student']], function () {
 	Route::resource('grades','GradeController')->only([
 		'index', 'show'
 	]);
 
 	Route::get('students/{student}/grade_slip/{acad_term}','StudentController@showGradeSlip');
+});
+
+
+Route::group(['middleware' => ['auth', 'role:admin|registrar|student']], function () {
+	Route::get('students/{student}/curriculum_with_grades','StudentController@showCurriculumWithGrades');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|head registrar']], function () {

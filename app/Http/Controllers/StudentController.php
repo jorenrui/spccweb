@@ -233,6 +233,27 @@ class StudentController extends Controller
                 ->with('head_registrar', $head_registrar);
     }
 
+    public function showCurriculumWithGrades($id)
+    {
+        $user = User::find($id);
+        $head_registrar = User::whereHas("roles", function($q){ $q->where('name', 'head registrar'); })->get();
+
+        if($head_registrar != null)
+            $head_registrar = $head_registrar[0];
+
+        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+
+        $curriculum_details = CurriculumDetails::where('curriculum_id', $user->student->curriculum_id)
+                                ->orderBy('sy','asc')->orderBy('semester','asc')->get()->groupBy('sy');
+
+        return view('reports.curriculum')
+                ->with('user', $user)
+                ->with('grades', $user->student->grades)
+                ->with('curriculum_details', $curriculum_details)
+                ->with('degree', $degree)
+                ->with('head_registrar', $head_registrar);
+    }
+
     public function enlistment($id)
     {
         $user = User::find($id);
