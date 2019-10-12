@@ -84,6 +84,7 @@
                             </div>
                           </div>
 
+                          @role('admin')
                           <div class="row mt-3">
                             <div class="col-12 col-md-6">
                               <label class="form-control-label" for="curriculum_details_id">
@@ -98,6 +99,7 @@
                               </select>
                             </div>
                           </div>
+                          @endrole
 
                           <div class="row mt-5">
                               <div class="col-12 col-lg-12">

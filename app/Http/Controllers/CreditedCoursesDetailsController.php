@@ -43,8 +43,7 @@ class CreditedCoursesDetailsController extends Controller
             'course_code' => 'required',
             'description' => 'required',
             'units' => 'required',
-            'grade' => 'required',
-            'curriculum_details_id' => 'required'
+            'grade' => 'required'
         ]);
 
         // Credit Course
@@ -105,8 +104,7 @@ class CreditedCoursesDetailsController extends Controller
             'course_code' => 'required',
             'description' => 'required',
             'units' => 'required',
-            'grade' => 'required',
-            'curriculum_details_id' => 'required'
+            'grade' => 'required'
         ]);
 
         // Update Credited Course

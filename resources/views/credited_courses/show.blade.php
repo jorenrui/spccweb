@@ -15,7 +15,7 @@
                 </h2>
                 <p class="text-muted text-sm">{{ $degree }}</p>
                 <p>
-                  School: {{ $school->school }}
+                  School: {{ $school->description }}
                   <br>
                   Total Units: {{ $school->getTotalUnits() }}
                 </p>
@@ -26,7 +26,7 @@
                       Return
                     </a>
 
-                    @role('admin')
+                    @role('admin|registrar')
                     <a href="/students/{{ $user->id }}/credited_courses/{{ $school->credit_id }}/edit" class="btn btn-outline-info btn-sm">
                       Edit School
                     </a>
@@ -42,7 +42,7 @@
                     @endrole
                   </div>
 
-                  @role('admin')
+                  @role('admin|registrar')
                   @if(count($courses) > 0)
                   <div class="col text-right">
                       <a href="/students/{{ $user->id }}/{{ $school->credit_id }}/credit_course/create" class="btn btn-sm btn-primary">
@@ -80,7 +80,7 @@
                                 <th scope="col" class="text-center">Credits</th>
                                 <th scope="col" class="text-center">Grade</th>
                                 <th scope="col" class="text-center">COMP.</th>
-                                @role('admin')
+                                @role('admin|registrar')
                                 <th scope="col" class="text-right"></th>
                                 @endrole
                             </tr>
@@ -113,7 +113,7 @@
                                     {{ $credit_course->grade }}
                                   @endif
                                 </td>
-                                @role('admin')
+                                @role('admin|registrar')
                                 <td class="text-right">
                                   <div class="dropdown">
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -153,10 +153,12 @@
               <div class="card-body row mt-3 mb-5">
                   <div class="col text-center">
                       <p class="lead">Credited Courses is empty</p>
-                      <br>
-                      <a href="/students/{{ $user->id }}/{{ $school->credit_id }}/credit_course/create" class="btn btn-primary btn-lg">
-                        Credit Course
-                      </a>
+                      @role('admin|registrar')
+                        <br>
+                        <a href="/students/{{ $user->id }}/{{ $school->credit_id }}/credit_course/create" class="btn btn-primary btn-lg">
+                          Credit Course
+                        </a>
+                      @endrole
                   </div>
               </div>
             </div>

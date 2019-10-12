@@ -62,11 +62,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::delete('students/enlistment/{grade}/drop','StudentController@dropClass');
 	Route::post('students/enlist_class','StudentController@enlistClass');
 
-	Route::resource('students/{student}/credited_courses','CreditedCoursesController')
-					->except([ 'index', 'show' ]);
-	Route::resource('students/{student}/{credit}/credit_course',
-		'CreditedCoursesDetailsController')->except([ 'index', 'show' ]);
-
 	Route::get('settings', 'DashboardController@settings');
 	Route::post('settings', 'DashboardController@updateSettings');
 });
@@ -87,8 +82,10 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::get('students/{student}/grades','StudentController@grades');
 	Route::get('students/{student}/enlistment','StudentController@enlistment');
 	Route::get('students/{student}/curriculum','StudentController@curriculum');
-	Route::resource('students/{student}/credited_courses','CreditedCoursesController')
-					->only([ 'index', 'show' ]);
+
+	Route::resource('students/{student}/credited_courses','CreditedCoursesController');
+	Route::resource('students/{student}/{credit}/credit_course',
+					'CreditedCoursesDetailsController')->except([ 'index', 'show' ]);
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar']], function () {

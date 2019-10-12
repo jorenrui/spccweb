@@ -19,7 +19,7 @@
                         <div class="col text-right">
                             <a href="/students/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
 
-                            @role('admin')
+                            @role('admin|registrar')
                             @if(count($schools) > 0)
                             <a href="/students/{{ $user->id }}/credited_courses/create" class="btn btn-sm btn-primary">
                               Add School
@@ -37,7 +37,7 @@
                                 <th scope="col"></th>
                                 <th scope="col" class="text-center">School</th>
                                 <th scope="col" class="text-center">Total Units Credited</th>
-                                @role('admin')
+                                @role('admin|registrar')
                                 <th scope="col"></th>
                                 @endrole
                             </tr>
@@ -52,7 +52,7 @@
                                 </td>
                                 <td class="text-center">{{ $school->description }}</td>
                                 <td class="text-center">{{ $school->getTotalUnits() }}</td>
-                                @role('admin')
+                                @role('admin|registrar')
                                 <td class="text-right">
                                     <div class="dropdown">
                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,7 +87,7 @@
                       <div class="col text-center">
                           <p class="lead">No Credited Courses found</p>
                           <br>
-                          @role('admin')
+                          @role('admin|registrar')
                           <a href="/students/{{ $user->id }}/credited_courses/create" class="btn btn-primary btn-lg">Add School</a>
                           @endrole
                       </div>
