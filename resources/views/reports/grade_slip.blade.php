@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => auth()->user()->hasRole('student') ? 'View Enlistment' : 'Grade Report'])
 
 @section('styles')
-<link href="{{ asset('css/print_grade_slip.css') }}" rel="stylesheet" media="print">
+<link href="{{ asset('css/print/grade_slip.css') }}" rel="stylesheet" media="print">
 @endsection
 
 @push('js')
@@ -38,32 +38,34 @@
               TERM/SEMESTER: <u>{{ $acad_term->getAcadTerm2() }}</u>
             </p>
 
-            <table class="table-grade align-items-center my-4">
-                <thead>
-                    <tr>
-                        <th scope="col">COURSE CODE</th>
-                        <th scope="col" class="description">DESCRIPTIVE TITLE</th>
-                        <th scope="col" class="text-center">GRADE/S</th>
-                        <th scope="col" class="text-center"></th>
-                        <th scope="col" class="text-center">UNITS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  @foreach ($grades as $grade)
-                    <tr>
-                      <td scope="row">
-                        {{ $grade->sclass->course_code }}
-                      </td>
-                      <td class="text-wrap">{{ $grade->sclass->course->description }}</td>
-                      <td class="text-center">{{ $grade->getGrade() }}</td>
-                      <td class="text-center">{{ $grade->getCompletion() }}</td>
-                      <td class="text-center">
-                          {{ $grade->sclass->course->units }}
-                      </td>
-                    </tr>
-                  @endforeach
-                </tbody>
-            </table>
+            <div class="table-responsive">
+              <table class="table-grade align-items-center my-4">
+                  <thead>
+                      <tr>
+                          <th scope="col">COURSE CODE</th>
+                          <th scope="col" class="description">DESCRIPTIVE TITLE</th>
+                          <th scope="col" class="text-center">GRADE/S</th>
+                          <th scope="col" class="text-center"></th>
+                          <th scope="col" class="text-center">UNITS</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($grades as $grade)
+                      <tr>
+                        <td scope="row">
+                          {{ $grade->sclass->course_code }}
+                        </td>
+                        <td class="text-wrap">{{ $grade->sclass->course->description }}</td>
+                        <td class="text-center">{{ $grade->getGrade() }}</td>
+                        <td class="text-center">{{ $grade->getCompletion() }}</td>
+                        <td class="text-center">
+                            {{ $grade->sclass->course->units }}
+                        </td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+              </table>
+            </div>
 
             <p class="text-indent">
                 This certification is being issued upon the request of the above-named student for whatever legal purpose it may serve him.
