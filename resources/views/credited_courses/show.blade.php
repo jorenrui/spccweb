@@ -11,7 +11,7 @@
             <div class="card-body row align-items-center">
               <div class="col">
                 <h2 class="mb-0">
-                  Credited Courses | {{ $user->student->student_no }} {{ $user->getName() }}
+                  Credited Courses | {{ $user->student->getStudentNo() }} {{ $user->getName() }}
                 </h2>
                 <p class="text-muted text-sm">{{ $degree }}</p>
                 <p>
@@ -90,9 +90,8 @@
                           @foreach ($credit_courses as $credit_course)
                             <tr>
                                 <td class="text-center" scope="row">
-                                <a href="/curriculums/{{ $credit_course->curriculumDetails->curriculum_id }}">
-                                  {{ $credit_course->curriculumDetails->curriculum_id }}
-                                  {{ $credit_course->curriculumDetails->course_code }}
+                                <a href="/curriculums/{{ $credit_course->getCurriculumId() }}">
+                                  {{ $credit_course->getCreditedCourse() }}
                                 </a>
                                 </td>
                                 <td class="text-center">
@@ -100,7 +99,7 @@
                                 </td>
                                 <td class="text-left">{{ $credit_course->description }}</td>
                                 <td class="text-center">
-                                  {{ $credit_course->curriculumDetails->course->units }}
+                                  {{ $credit_course->units }}
                                 </td>
                                 <td class="text-center">
                                   @if($credit_course->is_inc)

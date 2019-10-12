@@ -10,15 +10,11 @@ class CourseCreditation extends Model
     protected $primaryKey = 'credit_id';
     public $timestamps = false;
 
-    public function getTotalUnits()
-    {
-    	$credit_id = $this->attributes['credit_id'];
-        $credit_details = CourseCreditationDetails::where('credit_id', $credit_id)->get();
-
+    public function getTotalUnits() {
         $sum = 0;
 
-        foreach($credit_details as $credit_detail) {
-            $sum += $credit_detail->curriculumDetails->course->units;
+        foreach($this->creditedCourses as $cur_detail) {
+            $sum += $cur_detail->units;
         }
 
         return $sum;
@@ -32,4 +28,10 @@ class CourseCreditation extends Model
     {
         return $this->belongsTo('App\Models\Student', 'student_no', 'student_no');
     }
+
+    public function creditedCourses()
+    {
+        return $this->hasMany('App\Models\CourseCreditationDetails', 'credit_id', 'credit_id');
+    }
+
 }

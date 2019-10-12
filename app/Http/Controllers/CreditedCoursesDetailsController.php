@@ -42,6 +42,7 @@ class CreditedCoursesDetailsController extends Controller
             'acad_term_id' => 'required',
             'course_code' => 'required',
             'description' => 'required',
+            'units' => 'required',
             'grade' => 'required',
             'curriculum_details_id' => 'required'
         ]);
@@ -52,6 +53,7 @@ class CreditedCoursesDetailsController extends Controller
         $course->acad_term_id = $request->input('acad_term_id');
         $course->course_code = $request->input('course_code');
         $course->description = $request->input('description');
+        $course->units = $request->input('units');
         $course->grade = $request->input('grade');
 
         if($request->input('is_inc') == 'on') {
@@ -102,6 +104,7 @@ class CreditedCoursesDetailsController extends Controller
             'acad_term_id' => 'required',
             'course_code' => 'required',
             'description' => 'required',
+            'units' => 'required',
             'grade' => 'required',
             'curriculum_details_id' => 'required'
         ]);
@@ -112,6 +115,7 @@ class CreditedCoursesDetailsController extends Controller
         $course->acad_term_id = $request->input('acad_term_id');
         $course->course_code = $request->input('course_code');
         $course->description = $request->input('description');
+        $course->units = $request->input('units');
         $course->grade = $request->input('grade');
 
         if($request->input('is_inc') == 'on') {

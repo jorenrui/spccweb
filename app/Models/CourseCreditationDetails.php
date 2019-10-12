@@ -10,6 +10,33 @@ class CourseCreditationDetails extends Model
     protected $primaryKey = 'credit_details_id';
     public $timestamps = false;
 
+    private function hasCreditedCourse()
+    {
+        $curriculum_details_id = $this->attributes['curriculum_details_id'];
+
+        if($curriculum_details_id == null)
+            return false;
+
+        return true;
+    }
+
+    public function getCurriculumId()
+    {
+        if(!$this->hasCreditedCourse())
+            return null;
+
+        return $this->curriculumDetails->curriculum_id;
+    }
+
+    public function getCreditedCourse()
+    {
+        if(!$this->hasCreditedCourse())
+            return null;
+
+        return $this->curriculumDetails->curriculum_id . ' ' .
+               $this->curriculumDetails->course_code;
+    }
+
     /**
      * Eloquent Relationships
      */

@@ -12,7 +12,7 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h3 class="mb-0">
-                            Credited Courses | {{ $user->student->student_no }} {{ $user->getName() }}
+                            Credited Courses | {{ $user->student->getStudentNo() }} {{ $user->getName() }}
                             </h3>
                             <p class="text-muted text-sm">{{ $degree }}</p>
                         </div>
@@ -50,7 +50,7 @@
                                       View
                                     </a>
                                 </td>
-                                <td class="text-center">{{ $school->school }}</td>
+                                <td class="text-center">{{ $school->description }}</td>
                                 <td class="text-center">{{ $school->getTotalUnits() }}</td>
                                 @role('admin')
                                 <td class="text-right">

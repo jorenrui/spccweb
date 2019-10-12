@@ -16,8 +16,8 @@
 
                           <div class="row">
                             <div class="col-12 col-md-6">
-                                <label class="form-control-label" for="school">School</label>
-                                <input id="school" name="school" class="form-control mb-3" type="text" placeholder="e.g. Technological Institute of the Philippines" required>
+                                <label class="form-control-label" for="description">School</label>
+                                <input id="description" name="description" class="form-control mb-3" type="text" placeholder="e.g. Technological Institute of the Philippines" required>
                             </div>
                           </div>
 

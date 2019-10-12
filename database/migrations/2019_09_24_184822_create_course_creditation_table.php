@@ -15,7 +15,7 @@ class CreateCourseCreditationTable extends Migration
     {
         Schema::create('course_creditation', function (Blueprint $table) {
             $table->increments('credit_id');
-            $table->string('school', 50);
+            $table->string('description', 50);
             $table->string('student_no', 10);
             $table->foreign('student_no')->references('student_no')->on('student')->onDelete('cascade');
         });

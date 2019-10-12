@@ -31,7 +31,7 @@
                           <div class="row">
                             <div class="col-12 col-md-6">
                                 <label class="form-control-label" for="credit_id">School</label>
-                                <input class="form-control mb-3" type="text" value="{{ $school->school }}" disabled>
+                                <input class="form-control mb-3" type="text" value="{{ $school->description }}" disabled>
                                 <input id="credit_id" name="credit_id" type="text" value="{{ $school->credit_id }}"  style="display: none">
                             </div>
                           </div>
@@ -60,6 +60,13 @@
                             <div class="col-12 col-md-6">
                                 <label class="form-control-label" for="description">Description</label>
                                 <input id="description" name="description" class="form-control mb-3" type="text" placeholder="e.g. Programming Fundamentals I" required>
+                            </div>
+                          </div>
+
+                          <div class="row mt-3">
+                            <div class="col-12 col-lg-2 col-md-6">
+                                <label class="form-control-label" for="units">Units</label>
+                                <input id="units" name="units" class="form-control mb-3" type="text" placeholder="e.g. 3" required>
                             </div>
                           </div>
 

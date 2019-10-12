@@ -19,7 +19,8 @@ class CreditedCoursesController extends Controller
     public function index($id)
     {
         $user = User::find($id);
-        $schools = CourseCreditation::orderBy('credit_id', 'desc')->paginate(8);
+        $schools = CourseCreditation::where('student_no', 'LIKE', $user->student->student_no)
+                    ->paginate(8);
 
         $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
 
@@ -48,14 +49,14 @@ class CreditedCoursesController extends Controller
     public function store(Request $request, $id)
     {
         $this->validate($request, [
-            'school' => 'required'
+            'description' => 'required'
         ]);
 
         $user = User::find($id);
 
         // Add School
         $school = new CourseCreditation;
-        $school->school = $request->input('school');
+        $school->description = $request->input('description');
         $school->student_no = $user->student->student_no;
         $school->save();
 
@@ -110,14 +111,14 @@ class CreditedCoursesController extends Controller
     public function update(Request $request, $id, $credit_id)
     {
         $this->validate($request, [
-            'school' => 'required'
+            'description' => 'required'
         ]);
 
         $user = User::find($id);
 
         // Update School
         $school = CourseCreditation::find($credit_id);
-        $school->school = $request->input('school');
+        $school->description = $request->input('description');
         $school->student_no = $user->student->student_no;
         $school->save();
 
