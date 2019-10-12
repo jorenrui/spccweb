@@ -25,11 +25,47 @@ class Student extends Model
                substr($student_no, 4);
     }
 
+    private function isGraduate()
+    {
+        foreach ($this->curriculum->curriculumDetails as $cur_detail) {
+            $isFound = false;
+
+            if($this->student_type == 'Transferee') {
+                foreach ($this->creditedCourses as $school) {
+                    foreach ($school->creditedCourses as $ccourse) {
+
+                        if ($ccourse->curriculum_details_id == $cur_detail->curriculum_details_id &&
+                            $ccourse->getGrade() != 5 && $ccourse->getGrade() != null) {
+                            $isFound = true;
+                        }
+
+                    }
+                }
+            }
+
+            if( $isFound )
+                continue;
+
+            foreach ($this->grades as $grade) {
+                if ($grade->curriculum_details_id == $cur_detail->curriculum_details_id &&
+                    $grade->getGrade() != 5 && $grade->getGrade() != null) {
+                        $isFound = true;
+                }
+            }
+
+            if( !$isFound )
+                return false;
+        }
+
+        return true;
+    }
+
     public function getStatus()
     {
         $student_no = $this->attributes['student_no'];
 
-        /* TODO: Add logic for checking if student has graduated */
+        if($this->isGraduate())
+            return 'Graduate';
 
         $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
 
