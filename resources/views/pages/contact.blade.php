@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Page Cover Section -->
-<section class="section page-cover contact-cover">
+<section class="section page-cover">
   <div class="page-title">
     <h1>Contact</h1>
   </div>

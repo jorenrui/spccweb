@@ -1111,48 +1111,14 @@ section.page-cover h1 {
   margin-top: 80px;
   margin-bottom: -50px;
   color: #f9ae17;
-  padding: 20px 25px;
+  padding: 20px 50px;
   font-size: 50px;
   font-weight: 400;
   background: #0f1c70;
   position: relative;
   text-transform: uppercase;
   font-family: 'Open Sans', sans-serif;
-}
-
-section.page-cover h1::before {
-  content: '';
-  width: 280px;
-  height: 100px;
-  position: absolute;
-  top: -20%;
-  left: -30%;
   border: 5px solid #f9ae17;
-}
-
-section.page-cover h1::after {
-  content: '';
-  width: 280px;
-  height: 100px;
-  position: absolute;
-  bottom: -20%;
-  right: -30%;
-  border: 5px solid #f9ae17;
-}
-
-section.contact-cover h1::before,
-section.contact-cover h1::after {
-  width: 350px;
-}
-
-section.enroll-cover h1::before,
-section.enroll-cover h1::after {
-  width: 400px;
-}
-
-section.news-cover h1::before,
-section.news-cover h1::after {
-  width: 250px;
 }
 
 section.page-cover .particles-background {
@@ -1170,30 +1136,6 @@ section.page-cover .particles-background {
   section.page-cover h1 {
     font-size: 30px;
     padding: 10px 15px;
-  }
-
-  section.page-cover h1::before {
-    width: 200px;
-    top: -20%;
-    left: -10%;
-    border: 3px solid #f9ae17;
-  }
-
-  section.page-cover h1::after {
-    width: 200px;
-    bottom: -20%;
-    right: -10%;
-    border: 3px solid #f9ae17;
-  }
-
-  section.contact-cover h1::before,
-  section.contact-cover h1::after {
-    width: 230px;
-  }
-
-  section.news-cover h1::before,
-  section.news-cover h1::after {
-    width: 180px;
   }
 }
 
