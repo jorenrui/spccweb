@@ -200,7 +200,9 @@
                         <i class="ni ni-circle-08"></i> User Management
                     </a>
                 </li>
+                @endrole
 
+                @role('admin|registrar')
                 <li class="nav-item {{ $title == 'Settings' ? 'active' : '' }}">
                     <a class="nav-link" href="/settings">
                         <i class="ni ni-settings"></i> Settings

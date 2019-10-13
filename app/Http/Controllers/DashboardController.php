@@ -47,6 +47,8 @@ class DashboardController extends Controller
                             function($q){ $q->where('name', 'faculty'); })->get());
         $tot_users = count(User::all()) - 1;
 
+        $annoucement = Setting::where('name', 'LIKE', 'Annoucement')->get()[0]->value;
+
         return view('dashboard')
                     ->with('posts', $posts)
                     ->with('events', $events)
@@ -54,7 +56,8 @@ class DashboardController extends Controller
                     ->with('tot_students', $tot_students)
                     ->with('tot_classes', $tot_classes)
                     ->with('tot_instructors', $tot_instructors)
-                    ->with('tot_users', $tot_users);
+                    ->with('tot_users', $tot_users)
+                    ->with('annoucement', $annoucement);
     }
 
     public function settings()
@@ -62,6 +65,7 @@ class DashboardController extends Controller
         $cur_acad_term_id = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
         $cur_curriculum_id = Setting::where('name', 'LIKE', 'Current Curriculum')->get()[0]->value;
         $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $annoucement = Setting::where('name', 'LIKE', 'Annoucement')->get()[0]->value;
 
         $acad_terms = AcadTerm::all();
         $curriculums = Curriculum::all();
@@ -70,6 +74,7 @@ class DashboardController extends Controller
                 ->with('cur_acad_term_id', $cur_acad_term_id)
                 ->with('cur_curriculum_id', $cur_curriculum_id)
                 ->with('degree', $degree)
+                ->with('annoucement', $annoucement)
                 ->with('acad_terms', $acad_terms)
                 ->with('curriculums', $curriculums);
 
@@ -78,10 +83,17 @@ class DashboardController extends Controller
     public function updateSettings(Request $request)
     {
         $this->validate($request, [
+            'annoucement' => 'required',
             'degree' => 'required',
             'acad_term_id' => 'required',
             'curriculum_id' => 'required'
         ]);
+
+        $setting_id = Setting::where('name', 'LIKE', 'Annoucement')->get()[0]->setting_id;
+
+        $setting = Setting::find($setting_id);
+        $setting->value = $request->input('annoucement');
+        $setting->save();
 
         $setting_id = Setting::where('name', 'LIKE', 'Degree')->get()[0]->setting_id;
 
@@ -102,5 +114,27 @@ class DashboardController extends Controller
         $setting->save();
 
         return redirect('/settings')->with('success', 'Settings Updated');
+    }
+
+    public function annoucement()
+    {
+        $annoucement = Setting::where('name', 'LIKE', 'Annoucement')->get()[0]->value;
+
+        return view('annoucement.edit')->with('annoucement', $annoucement);
+    }
+
+    public function updateAnnoucement(Request $request)
+    {
+        $this->validate($request, [
+            'annoucement' => 'required'
+        ]);
+
+        $setting_id = Setting::where('name', 'LIKE', 'Annoucement')->get()[0]->setting_id;
+
+        $setting = Setting::find($setting_id);
+        $setting->value = $request->input('annoucement');
+        $setting->save();
+
+        return redirect('/dashboard')->with('success', 'Annoucement Updated');
     }
 }

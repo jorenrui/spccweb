@@ -29,5 +29,10 @@ class SettingsTableSeeder extends Seeder
         $setting->name = 'Current Curriculum';
         $setting->value = '2018';
         $setting->save();
+
+        $setting = new Setting;
+        $setting->name = 'Annoucement';
+        $setting->value = 'For new enrollees on November, please go to the registrar\'s office at 1PM onwards.';
+        $setting->save();
     }
 }

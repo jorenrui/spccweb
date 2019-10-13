@@ -61,9 +61,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('students/{student}/enlist','StudentController@enlist');
 	Route::delete('students/enlistment/{grade}/drop','StudentController@dropClass');
 	Route::post('students/enlist_class','StudentController@enlistClass');
-
-	Route::get('settings', 'DashboardController@settings');
-	Route::post('settings', 'DashboardController@updateSettings');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
@@ -86,6 +83,11 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::resource('students/{student}/credited_courses','CreditedCoursesController');
 	Route::resource('students/{student}/{credit}/credit_course',
 					'CreditedCoursesDetailsController')->except([ 'index', 'show' ]);
+
+	Route::get('settings', 'DashboardController@settings');
+	Route::post('settings', 'DashboardController@updateSettings');
+	Route::get('annoucement', 'DashboardController@annoucement');
+	Route::post('annoucement', 'DashboardController@updateAnnoucement');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar|student']], function () {

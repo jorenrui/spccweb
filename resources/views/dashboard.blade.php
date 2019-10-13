@@ -5,7 +5,7 @@
         @include('layouts.headers.cards')
     @endrole
     @role('student|head registrar|faculty')
-        @include('layouts.headers.plain')
+        @include('layouts.headers.annoucement')
     @endrole
 
     <div class="container-fluid mt--7">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Event;
+use App\Models\Setting;
 
 use Illuminate\Http\Request;
 
@@ -19,7 +20,14 @@ class PagesController extends Controller
 
         $events = Event::where('start_date', '>=', date('Y-m-d'))->limit(4)->orderBy('start_date')->get();
 
-        return view('pages.index')->with(compact('posts', 'events', 'tot_posts'));
+        $annoucement = Setting::where('name', 'LIKE', 'Annoucement')->get();
+
+        if(count($annoucement) > 0)
+            $annoucement = $annoucement[0]->value;
+        else
+            $annoucement = null;
+
+        return view('pages.index')->with(compact('posts', 'events', 'tot_posts', 'annoucement'));
     }
 
     public function about() {

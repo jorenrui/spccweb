@@ -29,10 +29,17 @@ $(document).ready(function() {
                           @csrf
 
                           <div class="row">
+                            <div class="col-12 col-md-12">
+                              <label class="form-control-label" for="annoucement">Annoucement</label>
+                              <input id="annoucement" name="annoucement" class="form-control mb-3" type="text" placeholder="e.g. No classes on Oct. 12 due to the Typhoon" value="{{ $annoucement }}" required>
+                            </div>
+                          </div>
+
+                          <div class="row">
                             <div class="col-12 col-lg-6 col-md-12">
                               <label class="form-control-label" for="degree">Degree</label>
                               <input id="degree" name="degree" class="form-control mb-3" type="text" placeholder="e.g. Bachelor of Science in Information Technology" value="{{ $degree }}" required>
-                          </div>
+                            </div>
                           </div>
 
                           <div class="row mt-3">
@@ -83,6 +90,7 @@ $(document).ready(function() {
                           </div>
                       </form>
 
+                      @role('admin')
                       <hr>
 
                       <h3>Backup and Reset</h3>
@@ -102,6 +110,7 @@ $(document).ready(function() {
                       <a href="#" class="btn btn-outline-info btn-md">
                           Backup Database
                       </a>
+                      @endrole
                     </div>
                 </div>
             </div>

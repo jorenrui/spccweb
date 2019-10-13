@@ -15,6 +15,19 @@
 </section>
 <!-- end Hero Section -->
 
+<!-- Annoucement Section -->
+<section class="section annoucement">
+@if($annoucement != null)
+  <div class="content">
+    <h2 class="headline">Annoucement</h2>
+    <p>
+      {{ $annoucement }}
+    </p>
+  </div>
+@endif
+</section>
+<!-- end Annoucement Section -->
+
 <!-- Upcoming Events Section -->
 @if(count($events) > 0)
 <section class="section upcoming-events">

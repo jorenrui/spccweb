@@ -2,6 +2,7 @@
  * CONTENTS
  * - SITE HEADER
  * - HERO SECTION - HOMEPAGE
+ * - ANNOUCEMENT SECTION - HOMEPAGE
  * - UPCOMING EVENTS SECTION - HOMEPAGE
  * - ABOUT BRIEF SECTION - HOMEPAGE
  * - PROGRAMS SECTION - HOMEPAGE
@@ -266,7 +267,7 @@ ul.pagination .page-item.disabled {
 section.hero {
   color: #fff;
   background: #0f1c70;
-  padding: 80px 0 180px 0;
+  padding: 80px 0 300px 0;
 }
 
 section.hero .content {
@@ -418,11 +419,50 @@ section.hero .particles-background {
 }
 
 /* =======================================
+ * ANNOUCEMENT SECTION - HOMEPAGE
+ * ======================================= */
+section.annoucement {
+  margin-top: -225px;
+  margin-bottom: 25px;
+  padding: 0 50px;
+  color: #fff;
+  display: flex;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+section.annoucement .content {
+  width: 700px;
+}
+
+section.annoucement .content p {
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 768px) {
+  section.annoucement {
+    margin-top: -250px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  section.annoucement {
+    margin-top: -280px;
+  }
+
+  section.annoucement .content p {
+    font-size: 16px;
+  }
+}
+
+/* =======================================
  * UPCOMING EVENTS SECTION - HOMEPAGE
  * ======================================= */
 
 section.upcoming-events {
-  margin-top: -100px;
   display: flex;
   justify-content: flex-end;
 }
