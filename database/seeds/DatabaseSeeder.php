@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             SettingsTableSeeder::class,
             UsersTableSeeder::class,
             SClassTableSeeder::class,
+            GradeTableSeeder::class,
             CourseCreditationTableSeeder::class,
             CourseCreditDetailsTableSeeder::class,
         ]);
