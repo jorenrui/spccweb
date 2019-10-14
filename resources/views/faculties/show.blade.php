@@ -73,7 +73,11 @@
                               Date Employed:
                           </dt>
                           <dd class="col-7">
-                              {{ $user->employee->getDateEmployed() }}
+                              @if($user->employee->getDateEmployed() != null)
+                                {{ $user->employee->getDateEmployed() }}
+                              @elseif
+                                -
+                              @endif
                           </dd>
 
                           <h6 class="col-12 heading-small text-muted mt-3">
@@ -197,7 +201,7 @@
                 <table class="table footable align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
-                            <th>Monday</th>
+                            <th>Tuesday</th>
                             <th></th>
                             <th data-breakpoints="all" class="bg-white">Credits:</th>
                             <th data-breakpoints="all" class="bg-white">Room:</th>
@@ -222,7 +226,7 @@
                 <table class="table footable align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
-                            <th>Monday</th>
+                            <th>Wednesday</th>
                             <th></th>
                             <th data-breakpoints="all" class="bg-white">Credits:</th>
                             <th data-breakpoints="all" class="bg-white">Room:</th>
@@ -247,7 +251,7 @@
                 <table class="table footable align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
-                            <th>Monday</th>
+                            <th>Thursday</th>
                             <th></th>
                             <th data-breakpoints="all" class="bg-white">Credits:</th>
                             <th data-breakpoints="all" class="bg-white">Room:</th>
@@ -272,7 +276,7 @@
                 <table class="table footable align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
-                            <th>Monday</th>
+                            <th>Friday</th>
                             <th></th>
                             <th data-breakpoints="all" class="bg-white">Credits:</th>
                             <th data-breakpoints="all" class="bg-white">Room:</th>
