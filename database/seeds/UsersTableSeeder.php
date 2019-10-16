@@ -47,6 +47,7 @@ class UsersTableSeeder extends Seeder
         // Users Table
         $user = new User;
         $user->id = 2;
+        $user->profile_picture = 'K346.jpg';
         $user->first_name = 'Jhensen';
         $user->last_name = 'Foronda';
         $user->gender = 'M';
@@ -60,7 +61,7 @@ class UsersTableSeeder extends Seeder
 
         // Employee Table
         $employee = new Employee;
-        $employee->employee_no = 'K210';
+        $employee->employee_no = 'K346';
         $employee->user_id = 2;
         $employee->save();
 
@@ -70,6 +71,7 @@ class UsersTableSeeder extends Seeder
         // Users Table
         $user = new User;
         $user->id = 3;
+        $user->profile_picture = 'K001.jpg';
         $user->first_name = 'Rosario';
         $user->middle_name = 'Floresca';
         $user->last_name = 'Baga';
@@ -141,6 +143,7 @@ class UsersTableSeeder extends Seeder
         // Users Table
         $user = new User;
         $user->id = 6;
+        $user->profile_picture = 'K519.jpg';
         $user->first_name = 'Rechelle';
         $user->last_name = 'Teves';
         $user->gender = 'F';
@@ -163,6 +166,7 @@ class UsersTableSeeder extends Seeder
         // Users Table
         $user = new User;
         $user->id = 7;
+        $user->profile_picture = 'K491.jpg';
         $user->first_name = 'Christian';
         $user->last_name = 'Rubiato';
         $user->gender = 'M';
@@ -185,6 +189,7 @@ class UsersTableSeeder extends Seeder
         // Users Table
         $user = new User;
         $user->id = 8;
+        $user->profile_picture = 'K492.jpg';
         $user->first_name = 'Angelito';
         $user->last_name = 'De Rama';
         $user->gender = 'M';
@@ -207,6 +212,7 @@ class UsersTableSeeder extends Seeder
         // Users Table
         $user = new User;
         $user->id = 9;
+        $user->profile_picture = 'K521.jpg';
         $user->first_name = 'Cristine Joy';
         $user->last_name = 'De Jesus';
         $user->gender = 'F';
@@ -230,6 +236,7 @@ class UsersTableSeeder extends Seeder
         // Users Table
         $user = new User;
         $user->id = 10;
+        $user->profile_picture = '041830903.jpg';
         $user->first_name = 'Bryan';
         $user->middle_name = 'Rosario';
         $user->last_name = 'Garcia';
@@ -265,6 +272,7 @@ class UsersTableSeeder extends Seeder
         // Users Table
         $user = new User;
         $user->id = 11;
+        $user->profile_picture = '041830904.jpg';
         $user->first_name = 'Joeylene';
         $user->middle_name = 'Tanagon';
         $user->last_name = 'Rivera';
@@ -300,6 +308,7 @@ class UsersTableSeeder extends Seeder
         // Users Table
         $user = new User;
         $user->id = 12;
+        $user->profile_picture = '041830905.jpg';
         $user->first_name = 'Geraldine Mae';
         $user->middle_name = 'Obillo';
         $user->last_name = 'Gonzales';
@@ -336,6 +345,7 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
+        $user->profile_picture = '041830895.jpg';
         $user->first_name = 'Patrick';
         $user->last_name = 'Loyola';
         $user->gender = 'M';
@@ -360,6 +370,7 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
+        $user->profile_picture = '041830886.jpg';
         $user->first_name = 'Cathrine';
         $user->last_name = 'Andaca';
         $user->gender = 'F';
@@ -384,6 +395,7 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
+        $user->profile_picture = '041830899.jpg';
         $user->first_name = 'Kyla Abigaile';
         $user->last_name = 'Pineda';
         $user->gender = 'F';
@@ -408,6 +420,7 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
+        $user->profile_picture = '041830883.jpg';
         $user->first_name = 'Joyce Abigail';
         $user->last_name = 'Fernandez';
         $user->gender = 'F';
@@ -432,6 +445,7 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
+        $user->profile_picture = '041830896.jpg';
         $user->first_name = 'Rex';
         $user->last_name = 'Sanchez';
         $user->gender = 'M';
@@ -456,6 +470,7 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
+        $user->profile_picture = '041830896.jpg';
         $user->first_name = 'Shaina';
         $user->last_name = 'Jaba';
         $user->gender = 'F';
@@ -480,6 +495,7 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
+        $user->profile_picture = '041322078.jpg';
         $user->first_name = 'Miguel';
         $user->last_name = 'Villarama';
         $user->gender = 'M';
@@ -504,6 +520,7 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
+        $user->profile_picture = '041830884.jpg';
         $user->first_name = 'Gene Andrei';
         $user->last_name = 'Paulino';
         $user->gender = 'M';
