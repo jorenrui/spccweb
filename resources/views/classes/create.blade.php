@@ -95,6 +95,11 @@ $(document).ready(function() {
                                       {{ $instructor->employee->getEmployeeNo() }} | {{ $instructor->getName() }}
                                     </option>
                                   @endforeach
+                                  @foreach ($admins as $admin)
+                                    <option value="{{ $admin->employee->employee_no }}">
+                                      {{ $admin->employee->getEmployeeNo() }} | {{ $admin->getName() }}
+                                    </option>
+                                  @endforeach
                                 </select>
                             </div>
                           </div>

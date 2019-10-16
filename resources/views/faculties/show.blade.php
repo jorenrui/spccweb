@@ -73,7 +73,7 @@
                           <dd class="col-7">
                               @if($user->employee->getDateEmployed() != null)
                                 {{ $user->employee->getDateEmployed() }}
-                              @elseif
+                              @else
                                 -
                               @endif
                           </dd>

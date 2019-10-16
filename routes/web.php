@@ -109,21 +109,17 @@ Route::group(['middleware' => ['auth', 'role:admin|head registrar']], function (
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
-	Route::resource('faculty','FacultyAccessController')->only('update');
+	Route::resource('faculty','FacultyAccessController')->only(['index', 'update']);
+
+	Route::get('faculty/load','FacultyAccessController@load');
+	Route::get('faculty/load/{class}','FacultyAccessController@show');
+	Route::get('faculty/load/{class}/encode','FacultyAccessController@encodeGrades');
 
 	Route::get('summary_grades/{class}/{period}','FileSummaryOfGrades@index');
 	Route::put('summary_grades/{class}/{period}/store','FileSummaryOfGrades@store');
 	Route::get('summary_grades/{class}/{period}/download','FileSummaryOfGrades@download');
 	Route::get('summary_grades/{class}/{period}/view','FileSummaryOfGrades@view');
 	Route::get('summary_grades/{class}/{period}/remove','FileSummaryOfGrades@remove');
-});
-
-Route::group(['middleware' => ['auth', 'role:faculty']], function () {
-	Route::resource('faculty','FacultyAccessController')->only('index');
-
-	Route::get('faculty/load','FacultyAccessController@load');
-	Route::get('faculty/load/{class}','FacultyAccessController@show');
-	Route::get('faculty/load/{class}/encode','FacultyAccessController@encodeGrades');
 });
 
 Route::group(['middleware' => ['auth', 'role:student']], function () {

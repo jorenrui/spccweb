@@ -62,11 +62,13 @@
                                             Edit
                                         </a>
 
-                                        <form method="POST" action="{{ action('RegistrarController@destroy', $registrar->id) }}" style="display: inline;">
+                                        <form action="{{ action('RegistrarController@destroy', $registrar->id) }}" method="post" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="submit"  class="dropdown-item">Delete</button>
+                                            <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $registrar->getName() }}?') ? this.parentElement.submit() : ''">
+                                                Delete
+                                            </button>
                                         </form>
                                         </div>
                                     </div>

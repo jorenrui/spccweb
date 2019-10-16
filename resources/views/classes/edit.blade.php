@@ -116,6 +116,18 @@ $(document).ready(function() {
                                     </option>
                                     @endif
                                   @endforeach
+
+                                  @foreach ($admins as $admin)
+                                    @if($sclass->instructor_id == $admin->employee->employee_no)
+                                      <option value="{{ $admin->employee->employee_no }}" selected>
+                                        {{ $admin->employee->getEmployeeNo() }} | {{ $admin->getName() }}
+                                      </option>
+                                    @else
+                                    <option value="{{ $admin->employee->employee_no }}">
+                                      {{ $admin->employee->getEmployeeNo() }} | {{ $admin->getName() }}
+                                    </option>
+                                    @endif
+                                  @endforeach
                                 </select>
                             </div>
                           </div>

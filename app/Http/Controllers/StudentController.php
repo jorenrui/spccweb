@@ -15,6 +15,7 @@ use App\Models\Setting;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -58,6 +59,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'profile_picture' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 3000',
             'student_no' => 'required',
             'acad_term_admitted_id' => 'required',
             'curriculum_id' => 'required',
@@ -74,10 +76,24 @@ class StudentController extends Controller
             'secondary_sy' => 'required'
         ]);
 
+        // Handle File Upload
+        if ($request->hasFile('profile_picture')) {
+            // Get just ext
+            $extension = $request->file('profile_picture')->getClientOriginalExtension();
+
+            $filename = $request->input('student_no') . '.' . $extension;
+
+            $request->file('profile_picture')
+                        ->storeAs('/profile_pictures', $filename, "public");
+        } else {
+            $filename = 'default.png';
+        }
+
         // Add Student
         // Default Credentials:
         // Username: Student No, Password: Birthdate
         $user = new User;
+        $user->profile_picture = $filename;
         $user->first_name = $request->input('first_name');
         $user->middle_name = $request->input('middle_name');
         $user->last_name = $request->input('last_name');
@@ -407,6 +423,7 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'profile_picture' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 3000',
             'student_no' => 'required',
             'acad_term_admitted_id' => 'required',
             'curriculum_id' => 'required',
@@ -423,10 +440,22 @@ class StudentController extends Controller
             'secondary_sy' => 'required'
         ]);
 
+        // Handle File Upload
+        if ($request->hasFile('profile_picture')) {
+            // Get just ext
+            $extension = $request->file('profile_picture')->getClientOriginalExtension();
+
+            $filename = $request->input('student_no') . '.' . $extension;
+
+            $request->file('profile_picture')
+                        ->storeAs('/profile_pictures', $filename, "public");
+        }
+
         // Update Student
         // Default Credentials:
         // Username: Student No, Password: Birthdate
         $user = User::find($id);
+        $user->profile_picture = $filename;
         $user->first_name = $request->input('first_name');
         $user->middle_name = $request->input('middle_name');
         $user->last_name = $request->input('last_name');
@@ -465,6 +494,8 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+
+        Storage::disk('public')->delete('profile_pictures/'. $user->profile_picture);
 
         $user->delete();
 

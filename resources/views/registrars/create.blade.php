@@ -10,6 +10,15 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('.select2').select2();
+
+  let intervalFunc = function () {
+      let image_path = $('#profile_picture').val().split('\\');
+      $('#browse-image').html(image_path[image_path.length - 1]);
+  };
+
+  $('#profile_picture').on('click', function () {
+      setInterval(intervalFunc, 1);
+  });
 });
 </script>
 @endpush
@@ -25,8 +34,20 @@ $(document).ready(function() {
                     <div class="card-body">
                       <h2>Add Registrar</h2>
                       <hr>
-                      <form id="form-post" method="POST" action="{{ action('RegistrarController@store') }}">
-                          @csrf
+                      <form id="form-post" method="POST" action="{{ action('RegistrarController@store') }}" enctype="multipart/form-data">
+                        @csrf
+
+                          <div class="row">
+                            <div class="col-12 col-lg-5">
+                              <div class="form-control-label mb-2">
+                                Profile Picture
+                              </div>
+                              <div class="form-group">
+                                  <label id="browse-image" for="profile_picture" class="btn btn-outline-default">Choose Profile Picture</label>
+                                  <input type="file" id="profile_picture" name="profile_picture" style="display: none">
+                              </div>
+                            </div>
+                          </div>
 
                           <div class="row">
                             <div class="col-12 col-lg-3 col-md-6">

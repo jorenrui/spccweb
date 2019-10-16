@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => auth()->user()->hasRole('faculty') ? 'View Faculty Load' : 'Faculty'])
+@extends('layouts.app', ['title' => auth()->user()->hasRole('faculty') ? 'View Faculty Load' : 'Faculty Load'])
 
 @section('styles')
 <link href="{{ asset('vendor/select2-4.0.10/select2.min.css') }}" rel="stylesheet">

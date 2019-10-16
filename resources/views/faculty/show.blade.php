@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => auth()->user()->hasRole('faculty') ? 'View Faculty Load' : 'Faculty'])
+@extends('layouts.app', ['title' => auth()->user()->hasRole('faculty') ? 'View Faculty Load' : 'Faculty Load'])
 
 @section('content')
     @include('layouts.headers.plain')
@@ -211,7 +211,7 @@
                       </div>
                       @if($sclass->acad_term_id >= $cur_acad_term)
                       <div class="col text-right">
-                        @role('faculty')
+                        @role('faculty|admin')
                         <a href="/faculty/load/{{ $sclass->class_id }}/encode" class="btn btn-sm btn-primary">Encode Grades</a>
                         @else
                         <a href="/faculties/{{ $sclass->instructor->user->id }}/load/{{ $sclass->class_id }}/encode" class="btn btn-sm btn-primary">Encode Grades</a>

@@ -12,6 +12,7 @@ use App\Models\AcadTerm;
 use App\Models\Setting;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FacultyController extends Controller
 {
@@ -46,6 +47,7 @@ class FacultyController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'profile_picture' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 3000',
             'employee_no' => 'required',
             'date_employed' => 'required',
             'first_name' => 'required',
@@ -54,10 +56,24 @@ class FacultyController extends Controller
             'address' => 'required'
         ]);
 
+        // Handle File Upload
+        if ($request->hasFile('profile_picture')) {
+            // Get just ext
+            $extension = $request->file('profile_picture')->getClientOriginalExtension();
+
+            $filename = $request->input('employee_no') . '.' . $extension;
+
+            $request->file('profile_picture')
+                        ->storeAs('/profile_pictures', $filename, "public");
+        } else {
+            $filename = 'default.png';
+        }
+
         // Add Faculty
         // Default Credentials:
         // Username: Employee No, Password: Birthdate
         $user = new User;
+        $user->profile_picture = $filename;
         $user->first_name = $request->input('first_name');
         $user->middle_name = $request->input('middle_name');
         $user->last_name = $request->input('last_name');
@@ -206,6 +222,7 @@ class FacultyController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'profile_picture' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 3000',
             'employee_no' => 'required',
             'date_employed' => 'required',
             'first_name' => 'required',
@@ -214,10 +231,22 @@ class FacultyController extends Controller
             'address' => 'required'
         ]);
 
+        // Handle File Upload
+        if ($request->hasFile('profile_picture')) {
+            // Get just ext
+            $extension = $request->file('profile_picture')->getClientOriginalExtension();
+
+            $filename = $request->input('employee_no') . '.' . $extension;
+
+            $request->file('profile_picture')
+                        ->storeAs('/profile_pictures', $filename, "public");
+        }
+
         // Update Faculty
         // Default Credentials:
         // Username: Employee No, Password: Birthdate
         $user = User::find($id);
+        $user->profile_picture = $filename;
         $user->first_name = $request->input('first_name');
         $user->middle_name = $request->input('middle_name');
         $user->last_name = $request->input('last_name');
@@ -248,6 +277,8 @@ class FacultyController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+
+        Storage::disk('public')->delete('profile_pictures/'. $user->profile_picture);
 
         $user->delete();
 

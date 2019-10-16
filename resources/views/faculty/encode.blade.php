@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => auth()->user()->hasRole('faculty') ? 'View Faculty Load' : 'Faculty'])
+@extends('layouts.app', ['title' => auth()->user()->hasRole('faculty') ? 'View Faculty Load' : 'Encoding of Grades'])
 
 @push('js')
 <script>

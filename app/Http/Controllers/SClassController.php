@@ -52,12 +52,14 @@ class SClassController extends Controller
         $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
         $acad_terms = AcadTerm::where('acad_term_id', '>=', $cur_acad_term)->get();
         $instructors = User::whereHas("roles", function($q){ $q->where("name", "faculty"); })->get();
+        $admins = User::whereHas("roles", function($q){ $q->where("name", "super admin"); })->get();
         $courses = Course::all();
 
         return view('classes.create')
                 ->with('courses', $courses)
                 ->with('acad_terms', $acad_terms)
-                ->with('instructors', $instructors);
+                ->with('instructors', $instructors)
+                ->with('admins', $admins);
     }
 
     /**
@@ -122,6 +124,8 @@ class SClassController extends Controller
         $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
         $acad_terms = AcadTerm::where('acad_term_id', '>=', $cur_acad_term)->get();
         $instructors = User::whereHas("roles", function($q){ $q->where("name", "faculty"); })->get();
+        $admins = User::whereHas("roles", function($q){ $q->where("name", "super admin"); })->get();
+
         $courses = Course::all();
         $sclass = SClass::find($id);
 
@@ -129,6 +133,7 @@ class SClassController extends Controller
                 ->with('courses', $courses)
                 ->with('acad_terms', $acad_terms)
                 ->with('instructors', $instructors)
+                ->with('admins', $admins)
                 ->with('sclass', $sclass);
     }
 

@@ -62,8 +62,7 @@ class PostsController extends Controller
         $fileNameToStore = $filename . '.' . $extension;
 
         // Upload the Image
-        $path = $request->file('cover_image')
-                    ->storeAs('cover_images', $fileNameToStore, 'public');
+        $request->file('cover_image')->storeAs('cover_images', $fileNameToStore, 'public');
 
 
         if(auth()->user()->hasRole('moderator') || auth()->user()->hasRole('admin')) {
@@ -162,8 +161,7 @@ class PostsController extends Controller
             $fileNameToStore = $filename . '.' . $extension;
 
             // Upload the Image
-            $path = $request->file('cover_image')
-                        ->storeAs('cover_images', $fileNameToStore, 'public');
+            $request->file('cover_image')->storeAs('cover_images', $fileNameToStore, 'public');
         }
 
         // Update Post
@@ -173,9 +171,7 @@ class PostsController extends Controller
         $post->updated_at = now();
 
         if($request->hasFile('cover_image')) {
-            $filename = pathinfo($post->cover_image, PATHINFO_FILENAME);
-                Storage::disk('public')->delete('cover_images/'. $post->cover_image);
-
+            Storage::disk('public')->delete('cover_images/'. $post->cover_image);
             $post->cover_image = $fileNameToStore;
         }
 
