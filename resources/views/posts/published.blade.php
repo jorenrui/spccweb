@@ -24,11 +24,13 @@
                             @endif
                           </div>
                           <div class="col-4 text-right">
-                              <form method="POST" action="{{ action('PostsController@destroy', $post->post_id) }}" style="display: inline;">
+                              <form action="{{ action('PostsController@destroy', $post->post_id) }}" method="post" style="display: inline;">
                                   @csrf
-                                  @method('DELETE')
+                                  @method('delete')
 
-                                  <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                  <button type="button" class="btn btn-outline-danger btn-sm" onclick="confirm('Are you sure you want to delete this post?') ? this.parentElement.submit() : ''">
+                                      Delete
+                                  </button>
                               </form>
                           </div>
                         </div>

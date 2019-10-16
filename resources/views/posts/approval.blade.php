@@ -29,19 +29,20 @@
                                 <tbody>
                                     @foreach ($posts as $post)
                                         <tr>
-                                            <td class="text-right" scope="row">
+                                            <td scope="row">
 
                                                 <a href="/posts/mod/{{ $post->post_id }}/publish" class="btn btn-outline-primary btn-sm">
                                                   Publish
                                                 </a>
 
-                                                <form method="POST" action="{{ action('PostsController@destroy', $post->post_id) }}" style="display: inline;">
+                                                <form action="{{ action('PostsController@destroy', $post->post_id) }}" method="post" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @method('delete')
 
-                                                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="confirm('Are you sure you want to delete this post?') ? this.parentElement.submit() : ''">
+                                                        Delete
+                                                    </button>
                                                 </form>
-
                                             </td>
                                             <td>
                                               <a href="/posts/{{ $post->post_id }}">

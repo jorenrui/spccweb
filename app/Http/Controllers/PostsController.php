@@ -85,7 +85,7 @@ class PostsController extends Controller
             return redirect('/posts')->with('success', 'Post Published');
         }
 
-        return redirect('/posts' . '/' . $id)->with('success', 'Post Created');
+        return redirect('/posts/' . $post->id)->with('success', 'Post Created');
     }
 
     /**
@@ -143,26 +143,28 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000'
+            'cover_image' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 6000'
         ]);
 
         // Handle File Upload
-        $cover_image = $request->file('cover_image');
+        if ($request->hasFile('cover_image')) {
+            $cover_image = $request->file('cover_image');
 
-        // Get the filename with the extension
-        $filename = $cover_image->getClientOriginalName();
+            // Get the filename with the extension
+            $filename = $cover_image->getClientOriginalName();
 
-        // Get just filename
-        $filename = time() . '_' . pathinfo($filename, PATHINFO_FILENAME);
+            // Get just filename
+            $filename = time() . '_' . pathinfo($filename, PATHINFO_FILENAME);
 
-        // Get just ext
-        $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // Get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
 
-        $fileNameToStore = $filename . '.' . $extension;
+            $fileNameToStore = $filename . '.' . $extension;
 
-        // Upload the Image
-        $path = $request->file('cover_image')
-                    ->storeAs('cover_images', $fileNameToStore, 'public');
+            // Upload the Image
+            $path = $request->file('cover_image')
+                        ->storeAs('cover_images', $fileNameToStore, 'public');
+        }
 
         // Update Post
         $post = Post::find($id);
@@ -179,7 +181,7 @@ class PostsController extends Controller
 
         $post->save();
 
-        return redirect('/posts' . '/' . $id)->with('success', 'Post Updated');
+        return redirect('/posts/' . $post->id)->with('success', 'Post Updated');
     }
 
     /**
@@ -201,6 +203,10 @@ class PostsController extends Controller
         $post->delete();
 
         Storage::disk('public')->delete('cover_images/'. $post->cover_image);
+
+        if(auth()->user()->hasRole('moderator') || auth()->user()->hasRole('admin')) {
+            return redirect('/posts/mod/published')->with('success', 'Post Removed');
+        }
 
         return redirect('/posts')->with('success', 'Post Removed');
     }
