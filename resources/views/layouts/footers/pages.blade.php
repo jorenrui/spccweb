@@ -34,7 +34,8 @@
     <div class="item">
       <p class="field">social media.</p>
       <div class="content">
-        <a target="_blank" href="https://www.facebook.com/SPCCCaloocanOfficial">
+        <a target="_blank"
+           href="https://www.facebook.com/CollegeofInformationTechnology.SPCCCal/">
           <i class="fa fa-facebook-square"></i>
         </a>
       </div>
