@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             Prerequisite2018TableSeeder::class,
             SettingsTableSeeder::class,
             UsersTableSeeder::class,
+            PostsTableSeeder::class,
             SClassTableSeeder::class,
             GradeTableSeeder::class,
             CourseCreditationTableSeeder::class,

@@ -150,7 +150,7 @@ class UsersTableSeeder extends Seeder
         $user->updated_at = now();
         $user->save();
 
-        $user->assignRole('faculty');
+        $user->assignRole('faculty', 'moderator', 'writer');
 
         // Employee Table
         $employee = new Employee;
@@ -172,7 +172,7 @@ class UsersTableSeeder extends Seeder
         $user->updated_at = now();
         $user->save();
 
-        $user->assignRole('faculty');
+        $user->assignRole('faculty', 'writer');
 
         // Employee Table
         $employee = new Employee;
