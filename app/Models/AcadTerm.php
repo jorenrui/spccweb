@@ -53,6 +53,14 @@ class AcadTerm extends Model
     	return  $sem . ' S.Y. ' . $sy;
     }
 
+    public function getAcadTerm3()
+    {
+    	$sy = $this->attributes['sy'];
+        $sem = $this->getSem();
+
+    	return  $sem . ' ' . $sy;
+    }
+
     /**
      * Eloquent Relationships
      */

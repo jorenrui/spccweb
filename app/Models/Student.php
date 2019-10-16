@@ -27,6 +27,9 @@ class Student extends Model
 
     private function isGraduate()
     {
+        if($this->getDateGraduated() != null)
+            return true;
+
         foreach ($this->curriculum->curriculumDetails as $cur_detail) {
             $isFound = false;
 
@@ -85,6 +88,9 @@ class Student extends Model
     public function getDateGraduated()
     {
         $date_graduated = $this->attributes['date_graduated'];
+
+        if($date_graduated == null)
+            return null;
 
         return Carbon::parse($date_graduated)->format('F j, Y');
     }

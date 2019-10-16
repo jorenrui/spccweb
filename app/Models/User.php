@@ -100,6 +100,15 @@ class User extends Authenticatable
         return 'Mx. ' . $last_name;
     }
 
+    public function getFullName()
+    {
+    	$first_name = $this->attributes['first_name'];
+    	$middle_name = $this->attributes['middle_name'];
+    	$last_name = $this->attributes['last_name'];
+
+        return $first_name . ' ' . $middle_name . ' ' . $last_name;
+    }
+
     public function getGender()
     {
         $gender = $this->attributes['gender'];

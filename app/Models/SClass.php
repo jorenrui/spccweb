@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Course;
+use App\Models\Grade;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -129,6 +130,43 @@ class SClass extends Model
         }
 
         return false;
+    }
+
+    private function findGrade($student_no)
+    {
+        $class_id = $this->attributes['class_id'];
+        $grade = Grade::where('student_no', 'LIKE', $student_no)
+                        ->where('class_id', 'LIKE', $class_id)
+                        ->first();
+        return $grade;
+    }
+
+    public function getTORCourseCode($student_no)
+    {
+        $grade = $this->findGrade($student_no);
+
+        return $grade->curriculumDetails->course_code;
+    }
+
+    public function getTORDescription($student_no)
+    {
+        $grade = $this->findGrade($student_no);
+
+        return $grade->curriculumDetails->course->description;
+    }
+
+    public function getGrade($student_no)
+    {
+        $grade = $this->findGrade($student_no);
+
+        return $grade->getGrade();
+    }
+
+    public function getCompletion($student_no)
+    {
+        $grade = $this->findGrade($student_no);
+
+        return $grade->getCompletion();
     }
 
     /**

@@ -83,6 +83,10 @@ table.table-grade td {
   margin: 0 10px;
 }
 
+.card-grade h4.warning {
+  letter-spacing: 0.15em;
+}
+
 /* Curriculum with Grades Table */
 table.table-curriculum {
   width: 100%;
@@ -132,4 +136,70 @@ table.table-curriculum td {
 table.table-curriculum tr th:last-child,
 table.table-curriculum tr td:last-child {
   border: none;
+}
+
+/* TOR */
+
+.card-tor dd.underline {
+  border-bottom: 1px solid #525f7f;
+}
+
+.card-tor dt,
+.card-tor dd {
+  font-size: 15px;
+}
+
+.card-tor dd {
+  margin: 0;
+}
+
+.card-tor dt {
+  padding-right: 0;
+}
+
+.card-tor .table-tor tbody td {
+  border-top: none;
+  border-bottom: none;
+}
+
+.card-tor .table-tor ,
+.card-tor .table-tor thead tr {
+  border: 5px double #525f7f;
+}
+
+.card-tor td.text-bold {
+  font-weight: bold;
+}
+
+.card-tor .warning {
+  font-weight: bold;
+  letter-spacing: 0.15em;
+}
+
+.card-tor .note {
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 10px;
+}
+
+.card-tor .table-curriculum tr,
+.card-tor .table-curriculum td {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.card-tor .table-grading-system tr,
+.card-tor .table-grading-system td {
+  border: 1px solid #525f7f;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.card-tor .row-info {
+  margin-top: 25px;
+  height: 25px;
+}
+
+.input-tor {
+  height: 15px !important;
 }

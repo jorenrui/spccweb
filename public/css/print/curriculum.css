@@ -51,6 +51,7 @@ table td {
 }
 
 .card-curriculum {
+  margin-top: -100px;
   border: none;
 }
 
@@ -85,4 +86,8 @@ table tr td:last-child {
 
 .signature {
   margin-left: 60%;
+}
+
+.pagebreak {
+  page-break-before: always;
 }

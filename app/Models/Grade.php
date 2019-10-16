@@ -10,6 +10,16 @@ class Grade extends Model
     protected $primaryKey = 'grade_id';
     public $timestamps = false;
 
+    public function getCourseCode()
+    {
+        return $this->curriculumDetails->course_code;
+    }
+
+    public function getDescription()
+    {
+        return $this->curriculumDetails->course->description;
+    }
+
     public function getAverage()
     {
         $prelims = $this->attributes['prelims'];

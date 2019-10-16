@@ -83,6 +83,7 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::resource('students/{student}/credited_courses','CreditedCoursesController');
 	Route::resource('students/{student}/{credit}/credit_course',
 					'CreditedCoursesDetailsController')->except([ 'index', 'show' ]);
+	Route::get('students/{student}/tor','StudentController@showTOR');
 
 	Route::get('settings', 'DashboardController@settings');
 	Route::post('settings', 'DashboardController@updateSettings');

@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 body,
 table th {
   font-family: Arial, sans-serif !important;
@@ -7,18 +11,27 @@ footer.footer {
   display: none !important;
 }
 
-h2 {
-  font-size: 26px !important;
+h2, h3 {
+  font-size: 20px !important;
 }
 
+h4,
 p {
-  font-size: 22px !important;
+  font-size: 16px !important;
   color: #000 !important;
+}
+
+table {
+  width: 100% !important;
+}
+
+table th {
+  padding: 0 !important;
 }
 
 table th,
 table td {
-  font-size: 19px !important;
+  font-size: 16px !important;
   color: #000 !important;
   word-break: break-word !important;
 }
@@ -38,10 +51,10 @@ table td {
 
 .card-row {
   margin-top: 0 !important;
-  margin-bottom: 50px;
+  margin-bottom: 0;
 }
 
-.card-grade-slip {
+.card-tor {
   margin-top: -100px;
   border: none;
 }
@@ -58,24 +71,25 @@ h2 {
   letter-spacing: 5px;
 }
 
-.text-indent {
-  text-indent: 4em;
-  text-align: justify;
+.note,
+dt,
+dd {
+  color: #000;
 }
 
-table {
-  margin-left:-20px;
+.note,
+.table-grading-system th,
+.table-grading-system td {
+  font-size: 12px !important;
 }
 
-table th,
-table td {
-  border: none !important;
+.row-info {
+  margin-top: 15px;
 }
 
-.signature {
-  margin-left: 60%;
-}
-
-.seal {
-  margin-top: 300px;
+.input-tor {
+  margin-top: 2px;
+  padding-left: 0;
+  border: none;
+  color: #000;
 }

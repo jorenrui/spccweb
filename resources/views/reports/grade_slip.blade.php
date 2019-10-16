@@ -52,10 +52,8 @@
                   <tbody>
                     @foreach ($grades as $grade)
                       <tr>
-                        <td scope="row">
-                          {{ $grade->sclass->course_code }}
-                        </td>
-                        <td class="text-wrap">{{ $grade->sclass->course->description }}</td>
+                        <td scope="row">{{ $grade->getCourseCode() }}</td>
+                        <td>{{ $grade->getDescription() }}</td>
                         <td class="text-center">{{ $grade->getGrade() }}</td>
                         <td class="text-center">{{ $grade->getCompletion() }}</td>
                         <td class="text-center">
@@ -66,6 +64,7 @@
                   </tbody>
               </table>
             </div>
+            <h4 class="warning text-center">** ENTRY BELOW THIS LINE IS NOT VALID **</h4>
 
             <p class="text-indent">
                 This certification is being issued upon the request of the above-named student for whatever legal purpose it may serve him.

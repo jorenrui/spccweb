@@ -14,6 +14,7 @@ use App\Models\CurriculumDetails;
 use App\Models\Setting;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class StudentController extends Controller
 {
@@ -112,7 +113,6 @@ class StudentController extends Controller
     {
         $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
 
-        $user = SClass::find($student_no);
         $grades = Grade::where('student_no', 'LIKE', $student_no)->get();
 
         $filtered_grades = [];
@@ -250,6 +250,30 @@ class StudentController extends Controller
                 ->with('user', $user)
                 ->with('grades', $user->student->grades)
                 ->with('curriculum_details', $curriculum_details)
+                ->with('degree', $degree)
+                ->with('head_registrar', $head_registrar);
+    }
+
+    public function showTOR($id)
+    {
+        $user = User::find($id);
+        $head_registrar = User::whereHas("roles", function($q){ $q->where('name', 'head registrar'); })->get();
+
+        if($head_registrar != null)
+            $head_registrar = $head_registrar[0];
+
+        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+
+        $grades = Grade::where('student_no', 'LIKE', $user->student->student_no)->get();
+        $classes = collect();
+
+        foreach ($grades as $grade) {
+            $classes->push($grade->sclass);
+        }
+
+        return view('reports.tor')
+                ->with('user', $user)
+                ->with('classes', $classes)
                 ->with('degree', $degree)
                 ->with('head_registrar', $head_registrar);
     }
