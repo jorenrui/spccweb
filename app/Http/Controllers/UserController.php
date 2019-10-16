@@ -22,6 +22,60 @@ class UserController extends Controller
                         })->orderBy('created_at')->paginate(15)]);
     }
 
+    public function setAsWriter($id)
+    {
+        $user = User::find($id);
+
+        $user->assignRole('writer');
+
+        return redirect()->route('user.index')->withStatus('User successfully updated.');
+    }
+
+    public function unsetAsWriter($id)
+    {
+        $user = User::find($id);
+
+        $user->removeRole('writer');
+
+        return redirect()->route('user.index')->withStatus('User successfully updated.');
+    }
+
+    public function setAsModerator($id)
+    {
+        $user = User::find($id);
+
+        $user->assignRole('moderator');
+
+        return redirect()->route('user.index')->withStatus('User successfully updated.');
+    }
+
+    public function unsetAsModerator($id)
+    {
+        $user = User::find($id);
+
+        $user->removeRole('moderator');
+
+        return redirect()->route('user.index')->withStatus('User successfully updated.');
+    }
+
+    public function setAsAdmin($id)
+    {
+        $user = User::find($id);
+
+        $user->assignRole('admin');
+
+        return redirect()->route('user.index')->withStatus('User successfully updated.');
+    }
+
+    public function unsetAsAdmin($id)
+    {
+        $user = User::find($id);
+
+        $user->removeRole('admin');
+
+        return redirect()->route('user.index')->withStatus('User successfully updated.');
+    }
+
     /**
      * Show the form for creating a new user
      *

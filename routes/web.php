@@ -43,6 +43,13 @@ Route::group(['middleware' => ['auth', 'role:admin|moderator']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
+	Route::get('users/{user}/set_writer','UserController@setAsWriter');
+	Route::get('users/{user}/unset_writer','UserController@unsetAsWriter');
+	Route::get('users/{user}/set_moderator','UserController@setAsModerator');
+	Route::get('users/{user}/unset_moderator','UserController@unsetAsModerator');
+	Route::get('users/{user}/set_admin','UserController@setAsAdmin');
+	Route::get('users/{user}/unset_admin','UserController@unsetAsAdmin');
+
 	Route::resource('events','EventsController')->except([
 		'show', 'index'
 	]);

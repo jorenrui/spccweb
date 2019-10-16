@@ -60,11 +60,46 @@
 
                                                             <a class="dropdown-item" href="{{ route('user.edit', $user) }}">{{ __('Edit') }}</a>
                                                             <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
-                                                                {{ __('Delete') }}
+                                                                Delete
                                                             </button>
                                                         </form>
                                                     @else
-                                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Edit') }}</a>
+                                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">Edit</a>
+                                                    @endif
+
+                                                    @if(($user->hasRole('student') ||
+                                                         $user->hasRole('faculty')) &&            !$user->hasRole('writer'))
+                                                        <a class="dropdown-item" href="/users/{{ $user->id }}/set_writer">
+                                                            Set as Writer
+                                                        </a>
+                                                    @elseif(($user->hasRole('student') ||
+                                                             $user->hasRole('faculty')) &&
+                                                             $user->hasRole('writer'))
+                                                        <a class="dropdown-item" href="/users/{{ $user->id }}/unset_writer">
+                                                            Unset as Writer
+                                                        </a>
+                                                    @endif
+
+                                                    @if($user->hasRole('faculty') &&
+                                                        !$user->hasRole('moderator'))
+                                                        <a class="dropdown-item" href="/users/{{ $user->id }}/set_moderator">
+                                                            Set as Moderator</a>
+                                                    @elseif($user->hasRole('faculty') &&
+                                                            $user->hasRole('moderator'))
+                                                        <a class="dropdown-item" href="/users/{{ $user->id }}/unset_moderator">
+                                                            Unset as Moderator
+                                                        </a>
+                                                    @endif
+
+                                                    @if($user->hasRole('faculty') &&
+                                                        !$user->hasRole('admin'))
+                                                        <a class="dropdown-item" href="/users/{{ $user->id }}/set_admin">
+                                                            Set as Admin</a>
+                                                    @elseif($user->hasRole('faculty') &&
+                                                            $user->hasRole('admin'))
+                                                        <a class="dropdown-item" href="/users/{{ $user->id }}/unset_admin">
+                                                            Unset as Admin
+                                                        </a>
                                                     @endif
                                                 </div>
                                             </div>
