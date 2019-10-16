@@ -118,6 +118,19 @@ class SClass extends Model
         return $this->getSOGFileName($filename);
     }
 
+    public function isClassEnlisted($student)
+    {
+        $class_id = $this->attributes['class_id'];
+        $grades = $student->grades;
+
+        foreach ($grades as $grade) {
+            if($grade->sclass->class_id == $class_id)
+                return true;
+        }
+
+        return false;
+    }
+
     /**
      * Eloquent Relationships
      */
