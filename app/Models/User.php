@@ -53,6 +53,8 @@ class User extends Authenticatable
             foreach($roles as $role) {
                 if($result == '')
                     $result = '' . ucfirst($role->name);
+                else if($role->name == 'super admin' || $role->name == 'hidden super admin')
+                    continue;
                 else
                     $result = $result . ', ' . ucfirst($role->name);
             }

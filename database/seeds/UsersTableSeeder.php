@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
         $user->updated_at = now();
         $user->save();
 
-        $user->assignRole('admin');
+        $user->assignRole('admin', 'hidden super admin');
 
         // Employee Table
         $employee = new Employee;
@@ -57,7 +57,7 @@ class UsersTableSeeder extends Seeder
         $user->updated_at = now();
         $user->save();
 
-        $user->assignRole('admin');
+        $user->assignRole('admin', 'super admin');
 
         // Employee Table
         $employee = new Employee;

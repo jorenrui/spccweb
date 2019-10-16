@@ -17,8 +17,9 @@ class UserController extends Controller
     public function index(User $model)
     {
         return view('users.index', [
-            'users' => $model->where('username', '<>', 'spccadmin')
-                        ->orderBy('created_at')->paginate(15)]);
+            'users' => $model->whereDoesntHave("roles", function($q) {
+                            $q->where('name', 'hidden super admin');
+                        })->orderBy('created_at')->paginate(15)]);
     }
 
     /**
