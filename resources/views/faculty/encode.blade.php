@@ -1,7 +1,19 @@
 @extends('layouts.app', ['title' => auth()->user()->hasRole('faculty') ? 'View Faculty Load' : 'Encoding of Grades'])
 
+@section('styles')
+<link href="{{ asset('vendor/select2-4.0.10/select2.min.css') }}" rel="stylesheet">
+@endsection
+
 @push('js')
+<script src="{{ asset('vendor/select2-4.0.10/select2.full.min.js') }}"></script>
+
 <script>
+$(document).ready(function() {
+  $('.select2').select2({
+    tags: true
+  });
+});
+
 $(document).on('keydown', 'input[pattern]', function(e){
   var input = $(this);
   var oldVal = input.val();
@@ -104,7 +116,13 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     </td>
                                     <td>
                                       @if($grade->is_inc)
-                                        <input name="note[]" class="form-control mb-3" type="text" placeholder="Enter note" value="{{ $grade->note }}" required>
+                                        <select name="note[]" class="select2 form-control mb-3" value="{{ $grade->note }}" required>
+                                          @if($grade->note != 'Project' && $grade->note != 'Final Exam')
+                                            <option value="{{ $grade->note }}">{{ $grade->note }}</option>
+                                          @endif
+                                          <option value="Project">Project</option>
+                                          <option value="Final Exam">Final Exam</option>
+                                        </select>
                                       @else
                                         <input name="note[]" type="text" style="display:none">
                                       @endif
