@@ -48,6 +48,21 @@
   border: none !important;
 }
 
+/* POSTS */
+
+.card-img-top-post {
+  height: 200px;
+}
+
+.card-body-post {
+  height: 250px;
+}
+
+.card-text-post {
+  overflow: hidden;
+  height: 5em;
+}
+
 /* Grade Slip Table */
 
 table.table-grade {

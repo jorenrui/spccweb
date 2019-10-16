@@ -9,11 +9,11 @@
               @foreach ($posts as $post)
               <div class="col-xl-4 mt-5 mb-5 mb-xl-0">
                   <div class="card shadow">
-                      <img class="card-img-top" src="https://res.cloudinary.com/spccweb/cover_images/{{$post->cover_image}}" alt="Card image cap">
-                      <div class="card-body">
+                      <img class="card-img-top card-img-top-post" src="/storage/cover_images/{{$post->cover_image}}">
+                      <div class="card-body card-body-post">
                         <h3 class="card-title">{{ $post->title }}</h3>
-                        <p class="card-text">
-                          {!! str_limit(strip_tags($post->body), 135) !!}
+                        <p class="card-text card-text-post">
+                          {!! str_limit(strip_tags($post->body), 80) !!}
                         </p>
                         <p><small>Written by {{ $post->user->getName() }} | {{ $post->getDateCreated() }}</small></p>
                         <div class="button-group row">

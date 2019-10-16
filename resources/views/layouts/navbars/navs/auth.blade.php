@@ -9,11 +9,13 @@
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        @if(auth()->user()->gender == 'F')
-                            <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-female.png">
-                        @else
-                            <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-male.png">
-                        @endif
+                            @if(auth()->user()->gender == 'F')
+                                <img alt="Image placeholder" src="/storage/profile_pictures/default-female.png">
+                            @elseif(auth()->user()->gender == 'M')
+                                <img alt="Image placeholder" src="/storage/profile_pictures/default-male.png">
+                            @else
+                                <img alt="Image placeholder" src="/storage/profile_pictures/default.png">
+                            @endif
                         </span>
                         <div class="media-body ml-2 d-none d-lg-block">
                             <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->getName() }}</span>

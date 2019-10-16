@@ -1,4 +1,4 @@
-@extends('layouts.pages', ['title' => 'News', 'article' => $post->title])
+@extends('layouts.article_page', ['title' => 'News', 'article' => $post->title])
 
 @section('content')
 <!-- Article -->
@@ -16,7 +16,7 @@
         </span>
       </div>
     </div>
-    <img src="https://res.cloudinary.com/spccweb/cover_images/{{$post->cover_image}}">
+    <img src="/storage/cover_images/{{$post->cover_image}}">
     <div class="article-content">
       {!! $post->body !!}
     </div>

@@ -15,9 +15,11 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 @if(auth()->user()->gender == 'F')
-                                    <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-female.png" class="rounded-circle">
+                                    <img alt="Image placeholder" src="/storage/profile_pictures/default-female.png" class="">
+                                @elseif(auth()->user()->gender == 'M')
+                                    <img alt="Image placeholder" src="/storage/profile_pictures/default-male.png" class="rounded-circle">
                                 @else
-                                    <img alt="Image placeholder" src="https://res.cloudinary.com/spccweb/profile_pictures/default-male.png" class="rounded-circle">
+                                    <img alt="Image placeholder" src="/storage/profile_pictures/default.png" class="rounded-circle">
                                 @endif
                             </div>
                         </div>
