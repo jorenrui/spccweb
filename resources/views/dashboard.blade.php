@@ -3,8 +3,7 @@
 @section('content')
     @role('admin|registrar')
         @include('layouts.headers.cards')
-    @endrole
-    @role('student|head registrar|faculty')
+    @else
         @include('layouts.headers.annoucement')
     @endrole
 
