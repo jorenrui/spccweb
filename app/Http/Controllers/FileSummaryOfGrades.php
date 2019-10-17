@@ -51,7 +51,7 @@ class FileSummaryOfGrades extends Controller
 
         $filename = $sclass->acad_term_id . '_' . $sclass->course_code . '_SOG-' . $sclass->class_id . '_' . strtoupper($period) . '.pdf';
 
-        $request->file('sog_file')
+        $path = $request->file('sog_file')
                     ->storeAs('/summary_of_grades', $filename, "public");
 
         if($period == 'prelims')

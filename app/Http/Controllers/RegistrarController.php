@@ -142,7 +142,11 @@ class RegistrarController extends Controller
         // Default Credentials:
         // Username: Employee No, Password: Birthdate
         $user = User::find($id);
-        $user->profile_picture = $filename;
+
+        if ($request->hasFile('profile_picture')) {
+            $user->profile_picture = $filename;
+        }
+
         $user->first_name = $request->input('first_name');
         $user->middle_name = $request->input('middle_name');
         $user->last_name = $request->input('last_name');
