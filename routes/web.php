@@ -50,10 +50,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('users/{user}/set_admin','UserController@setAsAdmin');
 	Route::get('users/{user}/unset_admin','UserController@unsetAsAdmin');
 
-	Route::resource('events','EventsController')->except([
-		'show', 'index'
-	]);
-
 	Route::resource('classes','SClassController');
 	Route::get('classes/enroll_students/{class}','GradeController@enrollStudent');
 	Route::resource('grades','GradeController')->except([
@@ -71,6 +67,10 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
+	Route::resource('events','EventsController')->except([
+		'show', 'index'
+	]);
+
 	Route::resource('acad_terms','AcadTermController')->except('show');
 	Route::put('settings/set_cur_acad_term/{setting}','SettingsController@setCurAcadTerm');
 
