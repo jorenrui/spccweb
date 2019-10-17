@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-12 col-lg-3 col-md-6">
                               <label class="form-control-label" for="lab_units">Lab Units (optional)</label>
-                              <input id="lab_units" name="lab_units" class="form-control mb-3" type="number" min="1" placeholder="e.g. 3" value="{{ $course->units}}">
+                              <input id="lab_units" name="lab_units" class="form-control mb-3" type="number" min="1" placeholder="e.g. 3" value="{{ $course->lab_units }}">
                               <span class="text-muted text-sm">Note: Leave blank if none</span>
                             </div>
                           </div>
