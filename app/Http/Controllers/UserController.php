@@ -28,7 +28,7 @@ class UserController extends Controller
 
         $user->assignRole('writer');
 
-        return redirect()->route('user.index')->withStatus('User successfully updated.');
+        return redirect()->route('user.index')->with('success', $user->getName() . ' has been set as Writer');
     }
 
     public function unsetAsWriter($id)
@@ -37,7 +37,7 @@ class UserController extends Controller
 
         $user->removeRole('writer');
 
-        return redirect()->route('user.index')->withStatus('User successfully updated.');
+        return redirect()->route('user.index')->with('success', $user->getName() . ' has been unset as Writer');
     }
 
     public function setAsModerator($id)
@@ -46,7 +46,7 @@ class UserController extends Controller
 
         $user->assignRole('moderator');
 
-        return redirect()->route('user.index')->withStatus('User successfully updated.');
+        return redirect()->route('user.index')->with('success', $user->getName() . ' has been set as Moderator');
     }
 
     public function unsetAsModerator($id)
@@ -55,7 +55,7 @@ class UserController extends Controller
 
         $user->removeRole('moderator');
 
-        return redirect()->route('user.index')->withStatus('User successfully updated.');
+        return redirect()->route('user.index')->with('success', $user->getName() . ' has been unset as Moderator');
     }
 
     public function setAsAdmin($id)
@@ -64,7 +64,7 @@ class UserController extends Controller
 
         $user->assignRole('admin');
 
-        return redirect()->route('user.index')->withStatus('User successfully updated.');
+        return redirect()->route('user.index')->with('success', $user->getName() . ' has been set as Admin');
     }
 
     public function unsetAsAdmin($id)
@@ -73,7 +73,7 @@ class UserController extends Controller
 
         $user->removeRole('admin');
 
-        return redirect()->route('user.index')->withStatus('User successfully updated.');
+        return redirect()->route('user.index')->with('success', $user->getName() . ' has been unset as Admin');
     }
 
     /**
