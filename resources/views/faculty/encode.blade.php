@@ -62,16 +62,20 @@ $(document).on('keydown', 'input[pattern]', function(e){
                     <input name="class_id" type="text" value="{{ $sclass->class_id }}" style="display:none">
 
                     <div class="table-responsive">
-                        <table class="table align-items-center table-flush">
+                        <table class="table table-encode align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
                                   <th scope="col" class="text-center">Student No.</th>
                                   <th scope="col" class="text-center">Name</th>
-                                  <th scope="col" class="text-center" style="min-width:125px">Prelims</th>
-                                  <th scope="col" class="text-center" style="min-width:125px">Midterms</th>
-                                  <th scope="col" class="text-center" style="min-width:125px">Finals</th>
-                                  <th scope="col" class="text-center">Is INC?</th>
-                                  <th scope="col" class="text-center" style="min-width:200px">Note</th>
+                                  <th scope="col" class="text-center input-grade">Prelims</th>
+                                  @if(date('Y-m-d') >= $acad_term->midtermsEvent->start_date)
+                                    <th scope="col" class="text-center input-grade">Midterms</th>
+                                  @endif
+                                  @if(date('Y-m-d') >= $acad_term->finalsEvent->start_date)
+                                    <th scope="col" class="text-center input-grade">Finals</th>
+                                    <th scope="col" class="text-center">Is INC?</th>
+                                    <th scope="col" class="text-center input-note">Note</th>
+                                  @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,25 +90,28 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     <td>{{ $grade->student->user->getName() }}</td>
                                     <td class="text-center">
                                       @if($grade->prelims != null)
-                                        <input name="prelims[]" type="number" value="{{ $grade->prelims }}" style="display:none">
-                                        <input class="form-control mb-3" type="number" value="{{ $grade->prelims }}" disabled>
-                                      @else
+                                          <input name="prelims[]" type="number" value="{{ $grade->prelims }}" style="display:none">
+                                          <input class="form-control mb-3" type="number" value="{{ $grade->prelims }}" disabled>
+                                        @else
                                         <input name="prelims[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" >
                                       @endif
                                     </td>
+                                  @if(date('Y-m-d') >= $acad_term->midtermsEvent->start_date)
                                     <td class="text-center">
                                       @if($grade->midterms != null)
-                                        <input name="midterms[]" type="number" value="{{ $grade->midterms }}" style="display:none">
-                                        <input class="form-control mb-3" type="number" value="{{ $grade->midterms }}" disabled>
-                                      @else
+                                          <input name="midterms[]" type="number" value="{{ $grade->midterms }}" style="display:none">
+                                          <input class="form-control mb-3" type="number" value="{{ $grade->midterms }}" disabled>
+                                        @else
                                         <input name="midterms[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$">
                                       @endif
                                     </td>
+                                  @endif
+                                  @if(date('Y-m-d') >= $acad_term->finalsEvent->start_date)
                                     <td class="text-center">
                                         @if($grade->finals != null)
-                                          <input name="finals[]" type="number" value="{{ $grade->finals }}" style="display:none">
-                                          <input class="form-control mb-3" type="number" value="{{ $grade->finals }}" disabled>
-                                        @else
+                                            <input name="finals[]" type="number" value="{{ $grade->finals }}" style="display:none">
+                                            <input class="form-control mb-3" type="number" value="{{ $grade->finals }}" disabled>
+                                          @else
                                           <input name="finals[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$">
                                         @endif
                                     </td>
@@ -127,6 +134,7 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                         <input name="note[]" type="text" style="display:none">
                                       @endif
                                     </td>
+                                  @endif
                                 </tr>
                                 <?php $id++ ?>
                               @endforeach

@@ -63,11 +63,11 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                 <tr>
                                     <th scope="col" class="text-center">Student No.</th>
                                     <th scope="col" class="text-center">Name</th>
-                                    <th scope="col" class="text-center" style="min-width:125px">Prelims</th>
-                                    <th scope="col" class="text-center" style="min-width:125px">Midterms</th>
-                                    <th scope="col" class="text-center" style="min-width:125px">Finals</th>
+                                    <th scope="col" class="text-center input-grade">Prelims</th>
+                                    <th scope="col" class="text-center input-grade">Midterms</th>
+                                    <th scope="col" class="text-center input-grade">Finals</th>
                                     <th scope="col" class="text-center">Is INC?</th>
-                                    <th scope="col" class="text-center" style="min-width:200px">Note</th>
+                                    <th scope="col" class="text-center input-note">Note</th>
                                 </tr>
                             </thead>
                             <tbody>

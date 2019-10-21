@@ -14,7 +14,7 @@ class FacultyAccessController extends Controller
 {
     private function getClassesByDay($employee_no, $day)
     {
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
 
         $classes = SClass::where('acad_term_id', 'LIKE', $cur_acad_term)
                             ->where('instructor_id', 'LIKE', $employee_no)
@@ -33,7 +33,7 @@ class FacultyAccessController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         $employee_no = $user->employee->employee_no;
 
@@ -61,10 +61,10 @@ class FacultyAccessController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $curAcadTerm = AcadTerm::find($cur_acad_term);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
         $acad_terms = AcadTerm::where('acad_term_id', '<=', $cur_acad_term)->get();
 
         if( request()->has('select_acad_term') ) {
@@ -98,14 +98,15 @@ class FacultyAccessController extends Controller
     {
         $sclass = SClass::find($id);
         $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
-
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
+        $acad_term = $sclass->acadTerm;
 
         return view('faculty.show')
                 ->with('sclass', $sclass)
                 ->with('grades', $grades)
                 ->with('degree', $degree)
+                ->with('acad_term', $acad_term)
                 ->with('cur_acad_term', $cur_acad_term);
     }
 
@@ -116,7 +117,8 @@ class FacultyAccessController extends Controller
 
         return view('faculty.encode')
                 ->with('sclass', $sclass)
-                ->with('grades', $grades);
+                ->with('grades', $grades)
+                ->with('acad_term', $sclass->acadTerm);
     }
 
     /**
