@@ -91,8 +91,8 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     <td class="text-center">
                                       @if($grade->prelims != null)
                                         @if($sclass->is_prelims_lock)
-                                          <input name="prelims[]" type="number" value="{{ $grade->prelims }}" style="display:none">
-                                          <input class="form-control mb-3" type="number" value="{{ $grade->prelims }}" disabled>
+                                          <input name="prelims[]" type="text" value="{{ $grade->prelims }}" style="display:none">
+                                          <input class="form-control mb-3" type="text" value="{{ $grade->prelims }}" disabled>
                                         @else
                                           <input name="prelims[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" value="{{ $grade->prelims }}" pattern="^\d{0,2}(\.\d{0,2})?$" >
                                         @endif
@@ -104,8 +104,8 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     <td class="text-center">
                                       @if($grade->midterms != null)
                                         @if($sclass->is_midterms_lock)
-                                          <input name="midterms[]" type="number" value="{{ $grade->midterms }}" style="display:none">
-                                          <input class="form-control mb-3" type="number" value="{{ $grade->midterms }}" disabled>
+                                          <input name="midterms[]" type="text" value="{{ $grade->midterms }}" style="display:none">
+                                          <input class="form-control mb-3" type="text" value="{{ $grade->midterms }}" disabled>
                                         @else
                                           <input name="midterms[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" value="{{ $grade->midterms }}" pattern="^\d{0,2}(\.\d{0,2})?$">
                                         @endif
@@ -118,8 +118,8 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     <td class="text-center">
                                         @if($grade->finals != null)
                                           @if($sclass->is_finals_lock)
-                                            <input name="finals[]" type="number" value="{{ $grade->finals }}" style="display:none">
-                                            <input class="form-control mb-3" type="number" value="{{ $grade->finals }}" disabled>
+                                            <input name="finals[]" type="text" value="{{ $grade->finals }}" style="display:none">
+                                            <input class="form-control mb-3" type="text" value="{{ $grade->finals }}" disabled>
                                           @else
                                             <input name="finals[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" value="{{ $grade->finals }}"  pattern="^\d{0,2}(\.\d{0,2})?$">
                                           @endif
