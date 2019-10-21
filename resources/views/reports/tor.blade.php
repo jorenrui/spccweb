@@ -367,11 +367,9 @@
 
             <div class="col button-group text-right">
               <button class="btn btn-sm btn-outline-primary btn-print">Print</button>
-              @role('student')
-                <a href="/student/curriculum" class="btn btn-sm btn-outline-secondary">Return</a>
-              @else
-                <a href="/students/{{ $user->id }}/curriculum" class="btn btn-sm btn-outline-secondary">Return</a>
-              @endrole
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="javascript:history.back()">
+                Return
+              </button>
             </div>
 
           </div>
