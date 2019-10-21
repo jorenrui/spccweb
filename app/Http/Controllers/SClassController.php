@@ -91,7 +91,7 @@ class SClassController extends Controller
         $sclass->instructor_id = $request->input('instructor_id');
         $sclass->save();
 
-        return redirect('/classes')->with('success', 'Class Created');
+        return redirect('/classes/' . $sclass->class_id)->with('success', 'Class Created');
     }
 
     /**
@@ -111,6 +111,34 @@ class SClassController extends Controller
                 ->with('sclass', $sclass)
                 ->with('grades', $grades)
                 ->with('degree', $degree);
+    }
+
+    public function lockGrades(Request $request)
+    {
+        $this->validate($request, [
+            'class_id' => 'required'
+        ]);
+
+        $sclass = SClass::find($request->input('class_id'));
+
+        if ($request->input('is_prelims_lock') == 'on')
+            $sclass->is_prelims_lock = true;
+        else
+            $sclass->is_prelims_lock = false;
+
+        if ($request->input('is_midterms_lock') == 'on')
+            $sclass->is_midterms_lock = true;
+        else
+            $sclass->is_midterms_lock = false;
+
+        if ($request->input('is_finals_lock') == 'on')
+            $sclass->is_finals_lock = true;
+        else
+            $sclass->is_finals_lock = false;
+
+        $sclass->save();
+
+        return redirect('/grades/' . $sclass->class_id)->with('success', 'Locking of Grades Updated');
     }
 
     /**
@@ -167,7 +195,7 @@ class SClassController extends Controller
         $sclass->instructor_id = $request->input('instructor_id');
         $sclass->save();
 
-        return redirect('/classes')->with('success', 'Class Created');
+        return redirect('/classes/' . $sclass->class_id)->with('success', 'Class Updated');
     }
 
     /**

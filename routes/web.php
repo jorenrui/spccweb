@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('users/{user}/unset_admin','UserController@unsetAsAdmin');
 
 	Route::resource('classes','SClassController');
+	Route::post('classes/lock_grades','SClassController@lockGrades');
 	Route::get('classes/enroll_students/{class}','GradeController@enrollStudent');
 	Route::resource('grades','GradeController')->except([
 		'create', 'index', 'show'

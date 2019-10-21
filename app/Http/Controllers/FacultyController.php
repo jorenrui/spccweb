@@ -185,6 +185,7 @@ class FacultyController extends Controller
         return view('faculty.show')
                 ->with('sclass', $sclass)
                 ->with('grades', $grades)
+                ->with('acad_term', $sclass->acadTerm)
                 ->with('degree', $degree)
                 ->with('cur_acad_term', $cur_acad_term);
     }

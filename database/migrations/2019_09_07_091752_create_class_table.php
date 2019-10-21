@@ -24,6 +24,9 @@ class CreateClassTable extends Migration
             $table->string('sog_midterms')->nullable();
             $table->string('sog_finals')->nullable();
             $table->string('sog_average')->nullable();
+            $table->string('is_prelims_lock')->default(true);
+            $table->string('is_midterms_lock')->default(true);
+            $table->string('is_finals_lock')->default(true);
             $table->string('acad_term_id', 6);
             $table->foreign('acad_term_id')->references('acad_term_id')->on('acad_term')->onDelete('cascade');
             $table->string('course_code', 20);

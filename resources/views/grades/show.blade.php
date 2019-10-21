@@ -115,56 +115,62 @@
                             Locking of grades should be done upon the approval of the OIC in which he/she can unlock the grades temporarily for the faculty. By default, the succeeding period's grades are locked unless the current period's grades has been encoded. In short, if the prelims grades haven't been encoded yet, grades for midterms and finals are temporarily locked.
                           </p>
 
-                          <div class="row mt-3">
-                            <div class="col-3 col-md-2">
-                              <div class="form-control-label mb-3">
-                                  All Grades
+                          <form id="form-post" method="POST" action="{{ action('SClassController@lockGrades') }}" enctype="multipart/form-data">
+                            @csrf
+
+                            <input name="class_id" type="text" value="{{ $sclass->class_id }}" style="display:none;">
+
+                            <div class="row mt-3">
+
+                              <div class="col-3 col-md-2">
+                                <div class="form-control-label mb-3">
+                                    Prelims Grade
+                                </div>
+                                <label class="custom-toggle">
+                                  <input name="is_prelims_lock" type="checkbox"
+                                    {{ $sclass->is_prelims_lock ? 'checked ' : '' }}
+                                    {{ date('Y-m-d') < $sclass->acadTerm->prelimsEvent->start_date ?
+                                      'disabled' : '' }}>
+                                  <span class="custom-toggle-slider rounded-circle"></span>
+                                </label>
                               </div>
-                              <label class="custom-toggle">
-                                <input type="checkbox">
-                                <span class="custom-toggle-slider rounded-circle"></span>
-                              </label>
+
+                              <div class="col-3 col-md-2">
+                                <div class="form-control-label mb-3">
+                                    Midterms Grade
+                                </div>
+                                <label class="custom-toggle">
+                                  <input name="is_midterms_lock" type="checkbox"
+                                  {{ $sclass->is_midterms_lock ? 'checked ' : '' }}
+                                  {{ date('Y-m-d') < $sclass->acadTerm->midtermsEvent->start_date ?
+                                    'disabled' : '' }}>
+                                  <span class="custom-toggle-slider rounded-circle"></span>
+                                </label>
+                              </div>
+
+                              <div class="col-3 col-md-2">
+                                <div class="form-control-label mb-3">
+                                    Finals Grade
+                                </div>
+                                <label class="custom-toggle">
+                                  <input name="is_finals_lock" type="checkbox"
+                                    {{ $sclass->is_finals_lock ? 'checked ' : '' }}
+                                    {{ date('Y-m-d') < $sclass->acadTerm->finalsEvent->start_date ?
+                                      'disabled' : '' }}>
+                                  <span class="custom-toggle-slider rounded-circle"></span>
+                                </label>
+                              </div>
                             </div>
 
-                            <div class="col-3 col-md-2">
-                              <div class="form-control-label mb-3">
-                                  Prelims Grade
-                              </div>
-                              <label class="custom-toggle">
-                                <input type="checkbox">
-                                <span class="custom-toggle-slider rounded-circle"></span>
-                              </label>
+                            <div class="row mt-2">
+                                <div class="col-12 col-lg-12">
+                                  <button type="submit" class="btn btn-outline-warning">
+                                    <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
+                                    <span class="btn-inner--text">Save Changes</span>
+                                  </button>
+                                </div>
                             </div>
-
-                            <div class="col-3 col-md-2">
-                              <div class="form-control-label mb-3">
-                                  Midterms Grade
-                              </div>
-                              <label class="custom-toggle">
-                                <input type="checkbox" checked disabled>
-                                <span class="custom-toggle-slider rounded-circle"></span>
-                              </label>
-                            </div>
-
-                            <div class="col-3 col-md-2">
-                              <div class="form-control-label mb-3">
-                                  Finals Grade
-                              </div>
-                              <label class="custom-toggle">
-                                <input type="checkbox" checked disabled>
-                                <span class="custom-toggle-slider rounded-circle"></span>
-                              </label>
-                            </div>
-                          </div>
-
-                          <div class="row mt-2">
-                              <div class="col-12 col-lg-12">
-                                <button type="submit" class="btn btn-outline-warning">
-                                  <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
-                                  <span class="btn-inner--text">Save Changes</span>
-                                </button>
-                              </div>
-                          </div>
+                          </form>
                           @endrole
 
                         </div>
