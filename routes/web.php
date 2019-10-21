@@ -121,6 +121,7 @@ Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
 	Route::get('faculty/load','FacultyAccessController@load');
 	Route::get('faculty/load/{class}','FacultyAccessController@show');
 	Route::get('faculty/load/{class}/encode','FacultyAccessController@encodeGrades');
+	Route::get('faculty/load/{class}/students','FacultyAccessController@showStudentMasterlist');
 
 	Route::get('summary_grades/{class}/{period}','FileSummaryOfGrades@index');
 	Route::put('summary_grades/{class}/{period}/store','FileSummaryOfGrades@store');

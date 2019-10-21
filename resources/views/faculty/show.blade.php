@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => auth()->user()->hasRole('faculty') ? 'View Faculty Load' : 'Faculty Load'])
+@extends('layouts.app', ['title' => 'View Faculty Load'])
 
 @section('content')
     @include('layouts.headers.plain')
@@ -209,15 +209,17 @@
                       <div class="col">
                           <h3 class="mb-0">Students' Grades</h3>
                       </div>
-                      @if($sclass->acad_term_id >= $cur_acad_term)
                       <div class="col text-right">
-                        @role('faculty|admin')
-                        <a href="/faculty/load/{{ $sclass->class_id }}/encode" class="btn btn-sm btn-primary">Encode Grades</a>
-                        @else
-                        <a href="/faculties/{{ $sclass->instructor->user->id }}/load/{{ $sclass->class_id }}/encode" class="btn btn-sm btn-primary">Encode Grades</a>
-                        @endrole
+                        <a href="/faculty/load/{{ $sclass->class_id }}/students" class="btn btn-sm btn-outline-primary">View Student Masterlist</a>
+                        @if($sclass->acad_term_id >= $cur_acad_term &&
+                            date('Y-m-d') >= $acad_term->prelimsEvent->start_date)
+                          @role('faculty|admin')
+                            <a href="/faculty/load/{{ $sclass->class_id }}/encode" class="btn btn-sm btn-primary">Encode Grades</a>
+                          @else
+                            <a href="/faculties/{{ $sclass->instructor->user->id }}/load/{{ $sclass->class_id }}/encode" class="btn btn-sm btn-primary">Encode Grades</a>
+                          @endrole
+                        @endif
                       </div>
-                      @endif
                   </div>
                 </div>
                 <div class="table-responsive">

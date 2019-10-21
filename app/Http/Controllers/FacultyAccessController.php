@@ -158,4 +158,13 @@ class FacultyAccessController extends Controller
 
         return redirect('/faculty/load/' . $class_id)->with('success', 'Grades Encoded');
     }
+
+    public function showStudentMasterlist($id)
+    {
+        $sclass = SClass::find($id);
+
+        return view('reports.students')
+                ->with('sclass', $sclass)
+                ->with('grades', $sclass->grades);
+    }
 }

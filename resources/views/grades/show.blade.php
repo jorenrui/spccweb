@@ -172,6 +172,13 @@
 
                         <!-- Students' Grades Tab -->
                         <div class="tab-pane fade show active" id="tabs-grades" role="tabpanel" aria-labelledby="tabs-grades-tab">
+
+                          <div class="row mb-4">
+                            <div class="col text-right">
+                                <a href="/faculty/load/{{ $sclass->class_id }}/students" class="btn btn-sm btn-outline-primary">View Student Masterlist</a>
+                            </div>
+                          </div>
+
                           <div class="table-responsive row">
                               <table class="table align-items-center table-flush">
                                   <thead class="thead-light">

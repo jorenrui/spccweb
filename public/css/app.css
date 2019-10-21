@@ -203,3 +203,34 @@ table.table-curriculum tr td:last-child {
 .input-tor {
   height: 15px !important;
 }
+
+/* Students Table */
+
+table.table-students {
+  width: 100%;
+}
+
+table.table-students th {
+  font-size: 16px;
+}
+
+table.table-students th {
+  padding: 5px;
+  border: 1px solid #525f7f;
+}
+
+table.table-students td {
+  padding: 10px;
+  margin: 0 10px;
+  border: 1px solid #525f7f;
+}
+
+/* Encoding of Grades */
+table.table-encode .input-grade {
+  width: 150px;
+  min-width: 125px;
+}
+
+table.table-encode .input-note {
+  width: 200px;
+}
