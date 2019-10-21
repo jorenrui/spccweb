@@ -207,7 +207,7 @@ class AcadTermController extends Controller
             $event->end_date = $finals_end_date;
             $event->save();
 
-            $$acadTerm->finals_id = $event->event_id;
+            $acadTerm->finals_id = $event->event_id;
         }
         else if ($acadTerm->finals_id != null) {
             $event = Event::find($acadTerm->finals_id);
