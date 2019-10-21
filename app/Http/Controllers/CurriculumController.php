@@ -20,10 +20,10 @@ class CurriculumController extends Controller
     {
         $curriculums = Curriculum::orderBy('curriculum_id', 'desc')->paginate(15);
 
-        $cur_curriculum_id = Setting::where('name', 'LIKE', 'Current Curriculum')->get()[0]->value;
+        $cur_curriculum_id = Setting::where('name', 'LIKE', 'Current Curriculum')->first()->value;
         $curCurriculum = Curriculum::find($cur_curriculum_id);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         return view('curriculums.index')
                 ->with('curriculums', $curriculums)
@@ -76,7 +76,7 @@ class CurriculumController extends Controller
         $curriculum_details = CurriculumDetails::where('curriculum_id', $curriculum->curriculum_id)
                                 ->orderBy('sy','asc')->orderBy('semester','asc')->get()->groupBy('sy');
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         return view('curriculums.show')
                 ->with('curriculum', $curriculum)
@@ -130,7 +130,7 @@ class CurriculumController extends Controller
     {
         // Check if it is the current curriculum
         $setting_id = Setting::where('name', 'LIKE', 'Current Curriculum')
-                        ->get()[0]->setting_id;
+                        ->first()->setting_id;
         $setting = Setting::find($setting_id);
 
         if($setting->value == $id)

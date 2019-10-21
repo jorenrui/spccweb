@@ -20,8 +20,8 @@ class SClassController extends Controller
      */
     public function index()
     {
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
 
         $acad_terms = AcadTerm::all();
 
@@ -49,7 +49,7 @@ class SClassController extends Controller
      */
     public function create()
     {
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $acad_terms = AcadTerm::where('acad_term_id', '>=', $cur_acad_term)->get();
         $instructors = User::whereHas("roles", function($q){ $q->where("name", "faculty"); })->get();
         $admins = User::whereHas("roles", function($q){ $q->where("name", "super admin"); })->get();
@@ -105,7 +105,7 @@ class SClassController extends Controller
         $sclass = SClass::find($id);
         $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         return view('classes.show')
                 ->with('sclass', $sclass)
@@ -121,7 +121,7 @@ class SClassController extends Controller
      */
     public function edit($id)
     {
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $acad_terms = AcadTerm::where('acad_term_id', '>=', $cur_acad_term)->get();
         $instructors = User::whereHas("roles", function($q){ $q->where("name", "faculty"); })->get();
         $admins = User::whereHas("roles", function($q){ $q->where("name", "super admin"); })->get();

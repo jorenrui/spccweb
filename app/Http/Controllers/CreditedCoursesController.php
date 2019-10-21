@@ -22,7 +22,7 @@ class CreditedCoursesController extends Controller
         $schools = CourseCreditation::where('student_no', 'LIKE', $user->student->student_no)
                     ->paginate(8);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         return view('credited_courses.index')
                 ->with('user', $user)
@@ -77,7 +77,7 @@ class CreditedCoursesController extends Controller
         $courses = CourseCreditationDetails::where('credit_id', $credit_id)
                         ->orderBy('acad_term_id')->get();
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         return view('credited_courses.show')
                 ->with('user', $user)

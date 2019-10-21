@@ -99,7 +99,7 @@ class FacultyController extends Controller
 
     private function getClassesByDay($employee_no, $day)
     {
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
 
         $classes = SClass::where('acad_term_id', 'LIKE', $cur_acad_term)
                             ->where('instructor_id', 'LIKE', $employee_no)
@@ -119,7 +119,7 @@ class FacultyController extends Controller
     {
         $user = User::find($id);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         $employee_no = $user->employee->employee_no;
 
@@ -147,10 +147,10 @@ class FacultyController extends Controller
     {
         $user = User::find($id);
 
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $curAcadTerm = AcadTerm::find($cur_acad_term);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
         $acad_terms = AcadTerm::where('acad_term_id', '<=', $cur_acad_term)->get();
 
         if( request()->has('select_acad_term') ) {
@@ -178,9 +178,9 @@ class FacultyController extends Controller
     {
         $sclass = SClass::find($class_id);
         $grades = Grade::where('class_id', 'LIKE', $class_id)->orderBy('student_no')->paginate(8);
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         return view('faculty.show')
                 ->with('sclass', $sclass)

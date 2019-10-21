@@ -16,7 +16,7 @@ class StudentAccessController extends Controller
 {
     private function getEnlistment($student_no)
     {
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
 
         $user = SClass::find($student_no);
         $grades = Grade::where('student_no', 'LIKE', $student_no)->get();
@@ -49,7 +49,7 @@ class StudentAccessController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         $student_no = $user->student->student_no;
 
@@ -76,10 +76,10 @@ class StudentAccessController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $curAcadTerm = AcadTerm::find($cur_acad_term);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
         $acad_terms = AcadTerm::where('acad_term_id', '<=', $cur_acad_term)->get();
 
         if( request()->has('select_acad_term') ) {
@@ -119,7 +119,7 @@ class StudentAccessController extends Controller
         $curriculum_details = CurriculumDetails::where('curriculum_id', $user->student->curriculum_id)
                                 ->orderBy('sy','asc')->orderBy('semester','asc')->get()->groupBy('sy');
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         return view('student.curriculum')
                 ->with('user', $user)

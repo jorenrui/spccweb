@@ -40,8 +40,8 @@ class StudentController extends Controller
     {
         $curriculums = Curriculum::all();
         $acad_terms = AcadTerm::all();
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
-        $cur_curriculum_id = Setting::where('name', 'LIKE', 'Current Curriculum')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
+        $cur_curriculum_id = Setting::where('name', 'LIKE', 'Current Curriculum')->first()->value;
 
         return view('students.create')
                     ->with('curriculums', $curriculums)
@@ -127,7 +127,7 @@ class StudentController extends Controller
 
     private function getEnlistment($student_no)
     {
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
 
         $grades = Grade::where('student_no', 'LIKE', $student_no)->get();
 
@@ -160,7 +160,7 @@ class StudentController extends Controller
     {
         $user = User::find($id);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         $student_no = $user->student->student_no;
 
@@ -187,10 +187,10 @@ class StudentController extends Controller
     {
         $user = User::find($id);
 
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $curAcadTerm = AcadTerm::find($cur_acad_term);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
         $acad_terms = AcadTerm::where('acad_term_id', '<=', $cur_acad_term)->get();
 
         if( request()->has('select_acad_term') ) {
@@ -257,7 +257,7 @@ class StudentController extends Controller
         if($head_registrar != null)
             $head_registrar = $head_registrar[0];
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         $curriculum_details = CurriculumDetails::where('curriculum_id', $user->student->curriculum_id)
                                 ->orderBy('sy','asc')->orderBy('semester','asc')->get()->groupBy('sy');
@@ -278,7 +278,7 @@ class StudentController extends Controller
         if($head_registrar != null)
             $head_registrar = $head_registrar[0];
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         $grades = Grade::where('student_no', 'LIKE', $user->student->student_no)->get();
         $classes = collect();
@@ -298,10 +298,10 @@ class StudentController extends Controller
     {
         $user = User::find($id);
 
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $curAcadTerm = AcadTerm::find($cur_acad_term);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
         $acad_terms = AcadTerm::where('acad_term_id', '<=', $cur_acad_term)->get();
 
         if( request()->has('select_acad_term') ) {
@@ -336,7 +336,7 @@ class StudentController extends Controller
     {
         $user = User::find($id);
 
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
 
         $classes = SClass::where('acad_term_id', 'LIKE', $cur_acad_term)->paginate(10);
 
@@ -385,7 +385,7 @@ class StudentController extends Controller
         $curriculum_details = CurriculumDetails::where('curriculum_id', $user->student->curriculum_id)
                                 ->orderBy('sy','asc')->orderBy('semester','asc')->get()->groupBy('sy');
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         return view('student.curriculum')
                 ->with('user', $user)

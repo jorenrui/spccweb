@@ -18,7 +18,7 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::orderBy('course_code', 'asc')->paginate(15);
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         return view('courses.index')
                 ->with('courses', $courses)

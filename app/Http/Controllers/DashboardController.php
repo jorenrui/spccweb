@@ -37,7 +37,7 @@ class DashboardController extends Controller
 
         $events = Event::orderBy('start_date', 'desc')->limit(5)->get();
 
-        $cur_acad_term_id = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term_id = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $curAcadTerm = AcadTerm::find($cur_acad_term_id);
 
         // For Statistics
@@ -47,7 +47,7 @@ class DashboardController extends Controller
                             function($q){ $q->where('name', 'faculty'); })->get());
         $tot_users = count(User::all()) - 1;
 
-        $annoucement = Setting::where('name', 'LIKE', 'Annoucement')->get()[0]->value;
+        $annoucement = Setting::where('name', 'LIKE', 'Annoucement')->first()->value;
 
         return view('dashboard')
                     ->with('posts', $posts)
@@ -62,10 +62,10 @@ class DashboardController extends Controller
 
     public function settings()
     {
-        $cur_acad_term_id = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
-        $cur_curriculum_id = Setting::where('name', 'LIKE', 'Current Curriculum')->get()[0]->value;
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
-        $annoucement = Setting::where('name', 'LIKE', 'Annoucement')->get()[0]->value;
+        $cur_acad_term_id = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
+        $cur_curriculum_id = Setting::where('name', 'LIKE', 'Current Curriculum')->first()->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
+        $annoucement = Setting::where('name', 'LIKE', 'Annoucement')->first()->value;
 
         $acad_terms = AcadTerm::all();
         $curriculums = Curriculum::all();
@@ -89,25 +89,25 @@ class DashboardController extends Controller
             'curriculum_id' => 'required'
         ]);
 
-        $setting_id = Setting::where('name', 'LIKE', 'Annoucement')->get()[0]->setting_id;
+        $setting_id = Setting::where('name', 'LIKE', 'Annoucement')->first()->setting_id;
 
         $setting = Setting::find($setting_id);
         $setting->value = $request->input('annoucement');
         $setting->save();
 
-        $setting_id = Setting::where('name', 'LIKE', 'Degree')->get()[0]->setting_id;
+        $setting_id = Setting::where('name', 'LIKE', 'Degree')->first()->setting_id;
 
         $setting = Setting::find($setting_id);
         $setting->value = $request->input('degree');
         $setting->save();
 
-        $setting_id = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->setting_id;
+        $setting_id = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->setting_id;
 
         $setting = Setting::find($setting_id);
         $setting->value = $request->input('acad_term_id');
         $setting->save();
 
-        $setting_id = Setting::where('name', 'LIKE', 'Current Curriculum')->get()[0]->setting_id;
+        $setting_id = Setting::where('name', 'LIKE', 'Current Curriculum')->first()->setting_id;
 
         $setting = Setting::find($setting_id);
         $setting->value = $request->input('curriculum_id');
@@ -118,7 +118,7 @@ class DashboardController extends Controller
 
     public function annoucement()
     {
-        $annoucement = Setting::where('name', 'LIKE', 'Annoucement')->get()[0]->value;
+        $annoucement = Setting::where('name', 'LIKE', 'Annoucement')->first()->value;
 
         return view('annoucement.edit')->with('annoucement', $annoucement);
     }
@@ -129,7 +129,7 @@ class DashboardController extends Controller
             'annoucement' => 'required'
         ]);
 
-        $setting_id = Setting::where('name', 'LIKE', 'Annoucement')->get()[0]->setting_id;
+        $setting_id = Setting::where('name', 'LIKE', 'Annoucement')->first()->setting_id;
 
         $setting = Setting::find($setting_id);
         $setting->value = $request->input('annoucement');

@@ -20,7 +20,7 @@ class AcadTermController extends Controller
     {
         $acadTerms = AcadTerm::orderBy('acad_term_id', 'desc')->paginate(15);
 
-        $cur_acad_term_id = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $cur_acad_term_id = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $curAcadTerm = AcadTerm::find($cur_acad_term_id);
 
         return view('acad_terms.index')
@@ -231,7 +231,7 @@ class AcadTermController extends Controller
     {
         // Check if it is the current acad term
         $setting_id = Setting::where('name', 'LIKE', 'Current Acad Term')
-                        ->get()[0]->setting_id;
+                        ->first()->setting_id;
         $setting = Setting::find($setting_id);
 
         if($setting->value == $id)

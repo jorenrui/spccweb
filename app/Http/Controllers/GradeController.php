@@ -20,8 +20,8 @@ class GradeController extends Controller
      */
     public function index()
     {
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
-        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
+        $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
 
         $acad_terms = AcadTerm::all();
 
@@ -97,7 +97,7 @@ class GradeController extends Controller
         $sclass = SClass::find($id);
         $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
 
-        $degree = Setting::where('name', 'LIKE', 'Degree')->get()[0]->value;
+        $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
         return view('grades.show')
                 ->with('sclass', $sclass)

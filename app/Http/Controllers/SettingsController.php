@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class SettingsController extends Controller
 {
     public function setCurAcadTerm($acad_term_id) {
-        $id = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->setting_id;
+        $id = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->setting_id;
 
         $setting = Setting::find($id);
         $setting->value = $acad_term_id;
@@ -20,7 +20,7 @@ class SettingsController extends Controller
     }
 
     public function setCurCurriculum($curriculum_id) {
-        $id = Setting::where('name', 'LIKE', 'Current Curriculum')->get()[0]->setting_id;
+        $id = Setting::where('name', 'LIKE', 'Current Curriculum')->first()->setting_id;
 
         $setting = Setting::find($id);
         $setting->value = $curriculum_id;
