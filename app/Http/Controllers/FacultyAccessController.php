@@ -152,6 +152,20 @@ class FacultyAccessController extends Controller
             $grade->save();
         }
 
+        // Update Locking of Grades
+        $sclass = SClass::find($class_id);
+
+        if( !$sclass->is_prelims_lock )
+            $sclass->is_prelims_lock = true;
+
+        if( !$sclass->is_midterms_lock )
+            $sclass->is_midterms_lock = true;
+
+        if( !$sclass->is_finals_lock )
+            $sclass->is_finals_lock = true;
+
+        $sclass->save();
+
         if(auth()->user()->hasRole('admin')) {
             $sclass = SClass::find($class_id);
 
