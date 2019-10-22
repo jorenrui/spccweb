@@ -31,31 +31,57 @@
                         </div>
                     </div>
                     <div class="row">
-                      <div class="col">
-                      <form action="/classes?" method="GET" class="form-horizontal">
-                        <label class="form-control-label" for="select_acad_term">Academic Term: </label>
-                        <select class="col-{{ $selected_acad_term >= $cur_acad_term && count($classes) > 0 ? '7' :'4'}} select2 form-control m-b" name="select_acad_term" onchange="this.form.submit()">
-                          @foreach ($acad_terms as $acad_term)
-                            @if($selected_acad_term == $acad_term->acad_term_id)
-                              <option value="{{ $acad_term->acad_term_id }}" selected>
+                      <div class="col-12 col-lg-6">
+                        <form action="/classes?" method="GET" class="form-horizontal">
+                          <label class="form-control-label" for="select_acad_term">Academic Term: </label>
+                          <select class="col-7 select2 form-control m-b" name="select_acad_term" onchange="this.form.submit()">
+                            @foreach ($acad_terms as $acad_term)
+                              @if($selected_acad_term == $acad_term->acad_term_id)
+                                <option value="{{ $acad_term->acad_term_id }}" selected>
+                                  {{ $acad_term->getAcadTerm() }}
+                                </option>
+                              @else
+                              <option value="{{ $acad_term->acad_term_id }}">
                                 {{ $acad_term->getAcadTerm() }}
                               </option>
-                            @else
-                            <option value="{{ $acad_term->acad_term_id }}">
-                              {{ $acad_term->getAcadTerm() }}
-                            </option>
-                            @endif
-                          @endforeach
-                        </select>
-                      </form>
+                              @endif
+                            @endforeach
+                          </select>
+                        </form>
                       </div>
-
-                      @if($selected_acad_term >= $cur_acad_term && count($classes) > 0)
-                      <div class="col text-right">
-                          <a href="/classes/create" class="btn btn-sm btn-primary">Add Class</a>
-                      </div>
-                      @endif
                     </div>
+
+                    <div class="row mt-2">
+                        <div class="col col-lg-4 col-md-6">
+                            <form action="/classes?" method="get" class="form-horizontal">
+                                <input type="text" name="select_acad_term"
+                                    value="{{ $selected_acad_term }}" style="display:none;"/>
+                                <div class="form-group mb-0">
+                                    <div class="input-group input-group-sm pt-0">
+                                        <input name="search" class="form-control" placeholder="e.g. IT 401, 401-A or K200" type="text">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-default" type="submit">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        @if($search != null)
+                        <div class="col">
+                            <a href="/classes" class="btn btn-outline-secondary btn-sm">
+                                {{ $search }}
+                                <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+                            </a>
+                        </div>
+                        @endif
+
+                        @if($selected_acad_term >= $cur_acad_term && count($classes) > 0)
+                        <div class="col text-right">
+                            <a href="/classes/create" class="btn btn-sm btn-primary">Add Class</a>
+                        </div>
+                        @endif
+                    </div>
+
                 </div>
               @if(count($classes) > 0)
                 <div class="table-responsive">
@@ -86,8 +112,9 @@
                                 {{ $sclass->section != null ? $sclass->section : '-' }}
                               </td>
                               <td class="text-center">{{ $sclass->getSchedule() }}</td>
-                              <td class="text-center">
+                              <td>
                                 <a href="/faculties/{{ $sclass->instructor->user->id }}">
+                                  {{ $sclass->instructor->getEmployeeNo() }}
                                   {{ $sclass->instructor->user->getNameWithTitle() }}
                                 </a>
                               </td>

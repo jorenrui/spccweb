@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Student;
 use App\Models\SClass;
 use App\Models\Grade;
 use App\Models\Setting;
@@ -25,21 +25,37 @@ class GradeController extends Controller
 
         $acad_terms = AcadTerm::all();
 
-        if( request()->has('select_acad_term') ) {
+        if ( request()->has('select_acad_term') ) {
             $selected_acad_term = request('select_acad_term');
-        }
-        else {
+        } else {
             $selected_acad_term = $cur_acad_term;
         }
 
-        $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)->paginate(10);
+        $search = null;
+
+        if( request()->has('search')) {
+            $search = request('search');
+
+            $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)
+                        ->where(function($q) use ($search) {
+                            $q->where('class_id', 'like', '%'.$search.'%')
+                              ->orWhere('course_code', 'like', '%'.$search.'%')
+                              ->orWhere('section', 'like', '%'.$search.'%')
+                              ->orWhere('day', 'like', '%'.$search.'%')
+                              ->orWhere('instructor_id', 'like', '%'.$search.'%');
+                        })
+                        ->paginate(10);
+        } else {
+            $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)->paginate(10);
+        }
 
         return view('grades.index')
                 ->with('classes', $classes)
                 ->with('degree', $degree)
                 ->with('acad_terms', $acad_terms)
                 ->with('cur_acad_term', $cur_acad_term)
-                ->with('selected_acad_term', $selected_acad_term);
+                ->with('selected_acad_term', $selected_acad_term)
+                ->with('search', $search);
     }
 
     public function enrollStudent($id)
@@ -51,16 +67,24 @@ class GradeController extends Controller
         $except_grades = [];
 
         foreach($grades as $grade) {
-            array_push($except_grades, $grade->student->user->id);
+            array_push($except_grades, $grade->student->student_no);
         }
 
-        $students = User::whereHas("roles", function($q){ $q->where("name", "student"); })
-                        ->whereNotIn('id', $except_grades)->paginate(10);
+        $search = null;
+
+        if( request()->has('search')) {
+            $search = request('search');
+            $students = Student::where('student_no', 'like', '%'.$search.'%')
+                            ->whereNotIn('student_no', $except_grades)->paginate(10);
+        } else {
+            $students = Student::whereNotIn('student_no', $except_grades)->paginate(10);
+        }
 
         return view('grades.create')
                 ->with('grades', $grades)
                 ->with('sclass', $sclass)
-                ->with('students', $students);
+                ->with('students', $students)
+                ->with('search', $search);
     }
 
     /**

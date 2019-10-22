@@ -17,9 +17,23 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::orderBy('start_date')->paginate(15);
+        $search = null;
 
-        return view('events.index')->with('events', $events);
+        if( request()->has('search')) {
+            $search = request('search');
+            $events = Event::where('event_id', 'like', '%'.$search.'%')
+                        ->orWhere('title', 'like', '%'.$search.'%')
+                        ->orWhere('start_date', 'like', '%'.date('Y-m-d', strtotime($search)).'%')
+                        ->orWhere('end_date', 'like', '%'.date('Y-m-d', strtotime($search)).'%')
+                        ->orderBy('start_date', 'desc')
+                        ->paginate(15);
+        } else {
+            $events = Event::orderBy('start_date')->paginate(15);
+        }
+
+        return view('events.index')
+                ->with('events', $events)
+                ->with('search', $search);
     }
 
     /**

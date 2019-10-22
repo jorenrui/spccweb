@@ -25,21 +25,37 @@ class SClassController extends Controller
 
         $acad_terms = AcadTerm::all();
 
-        if( request()->has('select_acad_term') ) {
+        if ( request()->has('select_acad_term') ) {
             $selected_acad_term = request('select_acad_term');
-        }
-        else {
+        } else {
             $selected_acad_term = $cur_acad_term;
         }
 
-        $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)->paginate(10);
+        $search = null;
+
+        if( request()->has('search')) {
+            $search = request('search');
+
+            $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)
+                        ->where(function($q) use ($search) {
+                            $q->where('class_id', 'like', '%'.$search.'%')
+                              ->orWhere('course_code', 'like', '%'.$search.'%')
+                              ->orWhere('section', 'like', '%'.$search.'%')
+                              ->orWhere('day', 'like', '%'.$search.'%')
+                              ->orWhere('instructor_id', 'like', '%'.$search.'%');
+                        })
+                        ->paginate(10);
+        } else {
+            $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)->paginate(10);
+        }
 
         return view('classes.index')
                 ->with('classes', $classes)
                 ->with('degree', $degree)
                 ->with('acad_terms', $acad_terms)
                 ->with('cur_acad_term', $cur_acad_term)
-                ->with('selected_acad_term', $selected_acad_term);
+                ->with('selected_acad_term', $selected_acad_term)
+                ->with('search', $search);
     }
 
     /**
@@ -103,14 +119,25 @@ class SClassController extends Controller
     public function show($id)
     {
         $sclass = SClass::find($id);
-        $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
-
         $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
+
+        $search = null;
+
+        if( request()->has('search')) {
+            $search = request('search');
+            $grades = Grade::where('student_no', 'like', '%'.$search.'%')
+                        ->where('class_id', 'like', $sclass->class_id)
+                        ->orderBy('student_no')
+                        ->paginate(8);
+        } else {
+            $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
+        }
 
         return view('classes.show')
                 ->with('sclass', $sclass)
                 ->with('grades', $grades)
-                ->with('degree', $degree);
+                ->with('degree', $degree)
+                ->with('search', $search);
     }
 
     public function lockGrades(Request $request)

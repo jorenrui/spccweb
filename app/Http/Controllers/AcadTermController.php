@@ -18,14 +18,25 @@ class AcadTermController extends Controller
      */
     public function index()
     {
-        $acadTerms = AcadTerm::orderBy('acad_term_id', 'desc')->paginate(15);
+        $search = null;
+
+        if( request()->has('search')) {
+            $search = request('search');
+            $acadTerms = AcadTerm::where('sy', 'like', '%'.$search.'%')
+                        ->orWhere('semester', 'like', '%'.$search.'%')
+                        ->orderBy('acad_term_id', 'desc')
+                        ->paginate(15);
+        } else {
+            $acadTerms = AcadTerm::orderBy('acad_term_id', 'desc')->paginate(15);
+        }
 
         $cur_acad_term_id = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $curAcadTerm = AcadTerm::find($cur_acad_term_id);
 
         return view('acad_terms.index')
                 ->with('acadTerms', $acadTerms)
-                ->with('curAcadTerm', $curAcadTerm);
+                ->with('curAcadTerm', $curAcadTerm)
+                ->with('search', $search);
     }
 
     /**

@@ -93,12 +93,35 @@
 
         <div class="col-12 col-lg-7 mb-5 mb-xl-0">
           <div class="card shadow">
-          @if(count($grades) > 0)
+          @if(count($grades) > 0 || $search != null)
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="mb-0">Students Enrolled</h3>
                     </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-8 col-md-6">
+                        <form action="/classes/{{ $sclass->class_id }}?" method="get" class="form-horizontal">
+                          <div class="form-group mb-0">
+                            <div class="input-group input-group-sm pt-0">
+                              <input name="search" class="form-control" placeholder="e.g. 041830914" type="text">
+                              <div class="input-group-append">
+                                <button class="btn btn-outline-default" type="submit">Search</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                    @if($search != null)
+                    <div class="col">
+                        <a href="/classes/{{ $sclass->class_id }}" class="btn btn-outline-secondary btn-sm">
+                            {{ $search }}
+                            <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+                        </a>
+                    </div>
+                    @endif
+
                     @role('admin')
                     <div class="col text-right">
                       <a href="/classes/enroll_students/{{ $sclass->class_id}}" class="btn btn-sm btn-primary">
@@ -108,49 +131,60 @@
                     @endrole
                 </div>
             </div>
-            <div class="table-responsive">
-                <table class="table align-items-center table-flush">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col" class="text-center">Student No.</th>
-                            <th scope="col" class="text-center">Name</th>
-                            <th scope="col" class="text-center">Credited Curriculum</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      @foreach ($grades as $grade)
-                        <tr>
-                            <td class="text-left" scope="row">
 
-                              <form action="{{ action('GradeController@destroy', $grade->grade_id) }}" method="post" style="display:inline">
-                                  @csrf
-                                  @method('DELETE')
+            @if($search != null && count($grades) == 0)
+              <div class="row mt-3 mb-5">
+                <div class="col text-center">
+                    <p class="lead">Student not found</p>
+                </div>
+              </div>
+            @endif
 
-                              <button type="button" class="btn btn-outline-warning btn-sm" onclick="confirm('Are you sure you want to drop {{ $grade->student->user->getName() }} in {{ $sclass->course_code }} class?') ? this.parentElement.submit() : ''">
-                                      Drop
-                                  </button>
-                              </form>
-                            </td>
-                            <td class="text-center">
-                              <a href="/students/{{ $grade->student->user->id }}">
-                                {{ $grade->student->student_no }}
-                              </a>
-                            </td>
-                            <td>{{ $grade->student->user->getName() }}</td>
-                            <td class="text-center">
-                              <a href="/curriculums/{{ $grade->curriculumDetails->curriculum_id }}">
-                                {{ $grade->curriculumDetails->curriculum_id }} {{ $grade->curriculumDetails->course->course_code}}
-                              </a>
-                            </td>
-                        </tr>
-                      @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-footer">
-                {{ $grades->links() }}
-            </div>
+            @if(count($grades) > 0)
+              <div class="table-responsive">
+                  <table class="table align-items-center table-flush">
+                      <thead class="thead-light">
+                          <tr>
+                              <th scope="col"></th>
+                              <th scope="col" class="text-center">Student No</th>
+                              <th scope="col" class="text-center">Name</th>
+                              <th scope="col" class="text-center">Credited Course</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($grades as $grade)
+                          <tr>
+                              <td class="text-left" scope="row">
+
+                                <form action="{{ action('GradeController@destroy', $grade->grade_id) }}" method="post" style="display:inline">
+                                    @csrf
+                                    @method('DELETE')
+
+                                <button type="button" class="btn btn-outline-warning btn-sm" onclick="confirm('Are you sure you want to drop {{ $grade->student->user->getName() }} in {{ $sclass->course_code }} class?') ? this.parentElement.submit() : ''">
+                                        Drop
+                                    </button>
+                                </form>
+                              </td>
+                              <td class="text-center">
+                                <a href="/students/{{ $grade->student->user->id }}">
+                                  {{ $grade->student->getStudentNo() }}
+                                </a>
+                              </td>
+                              <td>{{ $grade->student->user->getName() }}</td>
+                              <td class="text-center">
+                                <a href="/curriculums/{{ $grade->curriculumDetails->curriculum_id }}">
+                                  {{ $grade->curriculumDetails->curriculum_id }} {{ $grade->curriculumDetails->course->course_code}}
+                                </a>
+                              </td>
+                          </tr>
+                        @endforeach
+                      </tbody>
+                  </table>
+              </div>
+              <div class="card-footer">
+                  {{ $grades->links() }}
+              </div>
+            @endif
           @else
             <div class="row mt-3 mb-5">
                 <div class="col text-center">
