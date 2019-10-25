@@ -53,7 +53,7 @@
 
                     <div class="row mt-2">
                         <div class="col col-lg-4 col-md-6">
-                            <form action="/classes?" method="get" class="form-horizontal">
+                            <form action="/grades?" method="get" class="form-horizontal">
                                 <input type="text" name="select_acad_term"
                                     value="{{ $selected_acad_term }}" style="display:none;"/>
                                 <div class="form-group mb-0">
@@ -68,13 +68,12 @@
                         </div>
                         @if($search != null)
                         <div class="col">
-                            <a href="/classes" class="btn btn-outline-secondary btn-sm">
-                                {{ $search }}
+                            <a href="/grades" class="btn btn-outline-secondary btn-sm">
+                                {{ str_limit($search, 20) }}
                                 <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                             </a>
                         </div>
                         @endif
-
 
                         @if($selected_acad_term >= $cur_acad_term &&
                             auth()->user()->hasRole('admin') &&
@@ -93,7 +92,6 @@
                                 <th scope="col"></th>
                                 <th scope="col" class="text-center">Course Code</th>
                                 <th scope="col">Description</th>
-                                <th scope="col" class="text-center">Section</th>
                                 <th scope="col" class="text-center">Instructor</th>
                                 <th scope="col" class="text-center">Total Students</th>
                                 @role('admin')
@@ -109,13 +107,14 @@
                                       View
                                   </a>
                               </td>
-                              <td class="text-center">{{ $sclass->course_code }}</td>
-                              <td>{{ $sclass->course->description }}</td>
                               <td class="text-center">
+                                {{ $sclass->course_code }}
                                 {{ $sclass->section != null ? $sclass->section : '-' }}
                               </td>
-                              <td class="text-center">
+                              <td>{{ $sclass->course->description }}</td>
+                              <td>
                                   <a href="/faculties/{{ $sclass->instructor->user->id }}">
+                                    {{ $sclass->instructor->getEmployeeNo() }}
                                     {{ $sclass->instructor->user->getNameWithTitle() }}
                                   </a>
                               </td>

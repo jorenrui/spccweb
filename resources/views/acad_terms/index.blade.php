@@ -12,14 +12,14 @@
               @if(count($acadTerms) > 0 || $search != null)
                 <div class="card-header border-0">
                     <div class="row align-items-center">
-                        <div class="col">
+                        <div class="col col-lg-3">
                             <h3 class="mb-0">Academic Term Masterlist</h3>
                         </div>
-                        <div class="col">
+                        <div class="col col-lg-4">
                             <form action="/acad_terms?" method="get" class="form-horizontal">
                                 <div class="form-group mb-0">
                                     <div class="input-group input-group-sm pt-0">
-                                        <input name="search" class="form-control" placeholder="e.g. S.Y. 2019-2020" type="text">
+                                        <input name="search" class="form-control" placeholder="e.g. 2019-2020" type="text">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-default" type="submit">Search</button>
                                         </div>
@@ -30,7 +30,7 @@
                         @if($search != null)
                         <div class="col">
                             <a href="/acad_terms" class="btn btn-outline-secondary btn-sm">
-                                {{ $search }}
+                                {{ str_limit($search, 20) }}
                                 <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                             </a>
                         </div>

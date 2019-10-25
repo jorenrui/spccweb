@@ -69,7 +69,7 @@
                         @if($search != null)
                         <div class="col">
                             <a href="/classes" class="btn btn-outline-secondary btn-sm">
-                                {{ $search }}
+                                {{ str_limit($search, 20) }}
                                 <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                             </a>
                         </div>
@@ -90,7 +90,6 @@
                             <tr>
                                 <th scope="col"></th>
                                 <th scope="col" class="text-center">Course Code</th>
-                                <th scope="col" class="text-center">Section</th>
                                 <th scope="col" class="text-center">Schedule</th>
                                 <th scope="col" class="text-center">Instructor</th>
                                 <th scope="col" class="text-center">Total Students</th>
@@ -107,9 +106,9 @@
                                       View
                                   </a>
                               </td>
-                              <td class="text-center">{{ $sclass->course->course_code }}</td>
                               <td class="text-center">
-                                {{ $sclass->section != null ? $sclass->section : '-' }}
+                                {{ $sclass->course->course_code }}
+                                {{ $sclass->section }}
                               </td>
                               <td class="text-center">{{ $sclass->getSchedule() }}</td>
                               <td>

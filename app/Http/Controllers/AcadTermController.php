@@ -23,7 +23,6 @@ class AcadTermController extends Controller
         if( request()->has('search')) {
             $search = request('search');
             $acadTerms = AcadTerm::where('sy', 'like', '%'.$search.'%')
-                        ->orWhere('semester', 'like', '%'.$search.'%')
                         ->orderBy('acad_term_id', 'desc')
                         ->paginate(15);
         } else {

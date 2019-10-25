@@ -32,6 +32,14 @@
                         {{ $sclass->instructor->user->getNameWithTitle() }}
                       </a>
                     </dd>
+                    @if($sclass->section != null)
+                    <dt class="col-sm-5">
+                        Section:
+                    </dt>
+                    <dd class="col-sm-7">
+                        {{ $sclass->section }}
+                    </dd>
+                    @endif
                     <dt class="col-sm-5">
                         Credits:
                     </dt>
@@ -105,7 +113,7 @@
                         <form action="/classes/{{ $sclass->class_id }}?" method="get" class="form-horizontal">
                           <div class="form-group mb-0">
                             <div class="input-group input-group-sm pt-0">
-                              <input name="search" class="form-control" placeholder="e.g. 041830914" type="text">
+                              <input name="search" class="form-control" placeholder="e.g. 041830914 or Juan" type="text">
                               <div class="input-group-append">
                                 <button class="btn btn-outline-default" type="submit">Search</button>
                               </div>
@@ -116,7 +124,7 @@
                     @if($search != null)
                     <div class="col">
                         <a href="/classes/{{ $sclass->class_id }}" class="btn btn-outline-secondary btn-sm">
-                            {{ $search }}
+                            {{ str_limit($search, 10) }}
                             <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                         </a>
                     </div>
@@ -146,8 +154,7 @@
                       <thead class="thead-light">
                           <tr>
                               <th scope="col"></th>
-                              <th scope="col" class="text-center">Student No</th>
-                              <th scope="col" class="text-center">Name</th>
+                              <th scope="col" class="text-center">Student</th>
                               <th scope="col" class="text-center">Credited Course</th>
                           </tr>
                       </thead>
@@ -165,12 +172,12 @@
                                     </button>
                                 </form>
                               </td>
-                              <td class="text-center">
+                              <td>
                                 <a href="/students/{{ $grade->student->user->id }}">
                                   {{ $grade->student->getStudentNo() }}
-                                </a>
+                                </a> |
+                                {{ $grade->student->user->getName() }}
                               </td>
-                              <td>{{ $grade->student->user->getName() }}</td>
                               <td class="text-center">
                                 <a href="/curriculums/{{ $grade->curriculumDetails->curriculum_id }}">
                                   {{ $grade->curriculumDetails->curriculum_id }} {{ $grade->curriculumDetails->course->course_code}}
