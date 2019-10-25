@@ -73,12 +73,12 @@ class AcadTerm extends Model
     public function classes()
     {
         return $this->hasMany('App\Models\SClass', 'acad_term_id', 'acad_term_id');
-		}
+	}
 
     public function creditedCourses()
     {
         return $this->hasMany('App\Models\CourseCreditationDetails', 'acad_term_id', 'acad_term_id');
-		}
+	}
 
     public function prelimsEvent()
     {
