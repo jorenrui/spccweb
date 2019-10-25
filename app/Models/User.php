@@ -137,10 +137,6 @@ class User extends Authenticatable
      * Eloquent Relationships
      */
 
-    public function posts() {
-        return $this->hasMany('App\Models\Post', 'user_id', 'id');
-    }
-
     public function student()
     {
         return $this->hasOne('App\Models\Student', 'user_id', 'id');
@@ -149,6 +145,14 @@ class User extends Authenticatable
     public function employee()
     {
         return $this->hasOne('App\Models\Employee', 'user_id', 'id');
+    }
+
+    public function posts() {
+        return $this->hasMany('App\Models\Post', 'user_id', 'id');
+    }
+
+    public function activities() {
+        return $this->hasMany('App\Models\Activity', 'user_id', 'id');
     }
 
 }
