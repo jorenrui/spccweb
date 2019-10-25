@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
 	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+	Route::get('app/about', 'DashboardController@about');
 	Route::get('posts/{post}', 'PostsController@show');
 	Route::get('events', 'EventsController@index');
 });

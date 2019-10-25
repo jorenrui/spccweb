@@ -51,7 +51,7 @@
                         <span>Events</span>
                     </a>
                     @endrole
-                    <a href="#" class="dropdown-item {{ $title == 'About' ? 'active' : '' }}">
+                    <a href="/app/about" class="dropdown-item {{ $title == 'About' ? 'active' : '' }}">
                         <i class="ni ni-app"></i>
                         <span>About</span>
                     </a>

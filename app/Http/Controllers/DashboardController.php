@@ -60,6 +60,11 @@ class DashboardController extends Controller
                     ->with('annoucement', $annoucement);
     }
 
+    public function about()
+    {
+        return view('about');
+    }
+
     public function settings()
     {
         $cur_acad_term_id = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
