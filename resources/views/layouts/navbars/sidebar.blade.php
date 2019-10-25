@@ -192,14 +192,35 @@
             <ul class="navbar-nav mb-md-3">
 
                 @role('admin')
-                <li class="nav-item {{ $title == 'User Management' ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('user.index') }}">
-                        <i class="ni ni-circle-08"></i> User Management
+                <li class="nav-item {{ $title == 'Manage Curriculum' ? 'active' : '' }}">
+                    <a class="nav-link" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
+                        <i class="ni ni-settings"></i>
+                        <span class="nav-link-text">System Management</span>
                     </a>
+
+                    <div class="collapse" id="navbar-settings">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user.index') }}">
+                                    User Management
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/log">
+                                    User Activity Log
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/settings">
+                                    System Settings
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 @endrole
 
-                @role('admin|registrar')
+                @role('registrar')
                 <li class="nav-item {{ $title == 'Settings' ? 'active' : '' }}">
                     <a class="nav-link" href="/settings">
                         <i class="ni ni-settings"></i> Settings

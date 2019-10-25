@@ -7,6 +7,7 @@ use App\Models\AcadTerm;
 use App\Models\SClass;
 use App\Models\Grade;
 use App\Models\Setting;
+use App\Models\Activity;
 
 use Illuminate\Http\Request;
 
@@ -165,6 +166,13 @@ class FacultyAccessController extends Controller
             $sclass->is_finals_lock = true;
 
         $sclass->save();
+
+        // Add Activity
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+        $activity->description = 'has encoded the grades for ' . $grade->sclass->course_code . ' class.';
+        $activity->timestamp = now();
+        $activity->save();
 
         if(auth()->user()->hasRole('admin')) {
             $sclass = SClass::find($class_id);

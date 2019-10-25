@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SClass;
+use App\Models\Activity;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -64,6 +65,13 @@ class FileSummaryOfGrades extends Controller
             $sclass->sog_average = $path;
 
         $sclass->save();
+
+        // Add Activity
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+        $activity->description = 'has uploaded the ' . $period . ' summary of grades for ' . $sclass->course_code . ' class.';
+        $activity->timestamp = now();
+        $activity->save();
 
         if(auth()->user()->hasRole('admin'))
             return redirect('/grades/' . $sclass->class_id)->with('success', ucfirst($period) . ' Summary of Grades Uploaded');
@@ -137,6 +145,13 @@ class FileSummaryOfGrades extends Controller
         }
 
         $sclass->save();
+
+        // Add Activity
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+        $activity->description = 'has removed the ' . $period . ' summary of grades for ' . $sclass->course_code . ' class.';
+        $activity->timestamp = now();
+        $activity->save();
 
         if(auth()->user()->hasRole('admin'))
             return redirect('/grades/' . $sclass->class_id)->with('success', ucfirst($period) . ' Summary of Grades Removed');

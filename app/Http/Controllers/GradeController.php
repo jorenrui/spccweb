@@ -8,6 +8,7 @@ use App\Models\Grade;
 use App\Models\Setting;
 use App\Models\AcadTerm;
 use App\Models\Curriculum;
+use App\Models\Activity;
 
 use Illuminate\Http\Request;
 
@@ -107,6 +108,13 @@ class GradeController extends Controller
         $grade->curriculum_details_id = $request->input('curriculum_details_id');
         $grade->save();
 
+        // Add Activity
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+        $activity->description = ' has enrolled student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . '.';
+        $activity->timestamp = now();
+        $activity->save();
+
         return redirect('/classes/' . $request->input('class_id'))->with('success', 'Student Enrolled');
     }
 
@@ -194,6 +202,15 @@ class GradeController extends Controller
             $grade->save();
         }
 
+        $sclass = SClass::find($class_id);
+
+        // Add Activity
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+        $activity->description = 'has altered the grades for ' . $sclass->course_code . ' class.';
+        $activity->timestamp = now();
+        $activity->save();
+
         return redirect('/grades/' . $class_id)->with('success', 'Grades Altered');
     }
 
@@ -209,6 +226,13 @@ class GradeController extends Controller
         $class_id = $grade->class_id;
 
         $grade->delete();
+
+        // Add Activity
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+        $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' class.';
+        $activity->timestamp = now();
+        $activity->save();
 
         return redirect('/classes/' . $class_id)->with('success', 'Student Dropped');
     }

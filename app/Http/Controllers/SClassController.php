@@ -8,6 +8,7 @@ use App\Models\Grade;
 use App\Models\User;
 use App\Models\AcadTerm;
 use App\Models\Setting;
+use App\Models\Activity;
 
 use Illuminate\Http\Request;
 
@@ -171,6 +172,13 @@ class SClassController extends Controller
             $sclass->is_finals_lock = false;
 
         $sclass->save();
+
+        // Add Activity
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+        $activity->description = 'has updated the locking of grades for ' . $sclass->getCourse() . ' class.';
+        $activity->timestamp = now();
+        $activity->save();
 
         return redirect('/grades/' . $sclass->class_id)->with('success', 'Locking of Grades Updated');
     }

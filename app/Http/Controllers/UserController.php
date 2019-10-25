@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Activity;
+
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,7 +20,7 @@ class UserController extends Controller
     {
         $search = null;
 
-        if( request()->has('search')) {
+        if( request()->has('search') ) {
             $search = request('search');
             $users = User::whereDoesntHave("roles", function($q) {
                             $q->where('name', 'hidden super admin');
@@ -97,6 +99,29 @@ class UserController extends Controller
         $user->removeRole('admin');
 
         return redirect()->route('user.index')->with('success', $user->getName() . ' has been unset as Admin');
+    }
+
+    public function log()
+    {
+        $search = null;
+
+        if( request()->has('search') ) {
+            $search = request('search');
+            $activities = Activity::join('users', 'users.id', '=', 'activity.user_id')
+                        ->where('users.username', 'like', '%'.$search.'%')
+                        ->orWhere('users.first_name', 'like', '%'.$search.'%')
+                        ->orWhere('users.middle_name', 'like', '%'.$search.'%')
+                        ->orWhere('users.last_name', 'like', '%'.$search.'%')
+                        ->orWhere('activity.description', 'like', '%'.$search.'%')
+                        ->orderBy('timestamp', 'desc')
+                        ->paginate(15);
+        } else {
+            $activities = Activity::orderBy('timestamp', 'desc')->paginate(15);
+        }
+
+        return view('users.log')
+                ->with('activities', $activities)
+                ->with('search', $search);
     }
 
     /**

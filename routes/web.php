@@ -26,7 +26,6 @@ Route::group(['middleware' => ['auth', 'role:admin|writer']], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
@@ -43,6 +42,9 @@ Route::group(['middleware' => ['auth', 'role:admin|moderator']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
+	Route::resource('user', 'UserController', ['except' => ['show']]);
+	Route::get('user/log','UserController@log');
+
 	Route::get('users/{user}/set_writer','UserController@setAsWriter');
 	Route::get('users/{user}/unset_writer','UserController@unsetAsWriter');
 	Route::get('users/{user}/set_moderator','UserController@setAsModerator');
