@@ -23,9 +23,32 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = User::whereHas("roles", function($q){ $q->where('name', 'faculty'); })->paginate(8);
+        $search = null;
 
-        return view('faculties.index')->with('faculties', $faculties);
+        if( request()->has('search')) {
+            $search = request('search');
+            $faculties = User::join('employee', 'users.id', '=', 'employee.user_id')
+                        ->whereHas("roles", function($q){
+                            $q->where('name', 'faculty');
+                        })
+                        ->where('employee_no', 'like', '%'.$search.'%')
+                        ->orWhere('first_name', 'like', '%'.$search.'%')
+                        ->orWhere('middle_name', 'like', '%'.$search.'%')
+                        ->orWhere('last_name', 'like', '%'.$search.'%')
+                        ->orderBy('employee_no', 'desc')
+                        ->paginate(15);
+        } else {
+            $faculties = User::join('employee', 'users.id', '=', 'employee.user_id')
+                        ->whereHas("roles", function($q){
+                            $q->where('name', 'faculty');
+                        })
+                        ->orderBy('employee_no', 'desc')
+                        ->paginate(8);
+        }
+
+        return view('faculties.index')
+                ->with('faculties', $faculties)
+                ->with('search', $search);
     }
 
     /**

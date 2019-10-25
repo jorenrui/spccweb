@@ -119,14 +119,32 @@ class GradeController extends Controller
     public function show($id)
     {
         $sclass = SClass::find($id);
-        $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
-
         $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
+
+        $search = null;
+
+        if( request()->has('search')) {
+            $search = request('search');
+            $grades = Grade::join('student', 'grade.student_no', '=', 'student.student_no')
+                        ->join('users', 'users.id', '=', 'student.user_id')
+                        ->where('grade.class_id', 'like', $sclass->class_id)
+                        ->where(function($q) use ($search) {
+                            $q->where('grade.student_no', 'like', '%'.$search.'%')
+                              ->orWhere('users.first_name', 'like', '%'.$search.'%')
+                              ->orWhere('users.middle_name', 'like', '%'.$search.'%')
+                              ->orWhere('users.last_name', 'like', '%'.$search.'%');
+                        })
+                        ->orderBy('grade.student_no')
+                        ->paginate(8);
+        } else {
+            $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
+        }
 
         return view('grades.show')
                 ->with('sclass', $sclass)
                 ->with('grades', $grades)
-                ->with('degree', $degree);
+                ->with('degree', $degree)
+                ->with('search', $search);
     }
 
     /**

@@ -26,9 +26,24 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::paginate(8);
+        $search = null;
 
-        return view('students.index')->with('students', $students);
+        if( request()->has('search')) {
+            $search = request('search');
+            $students = Student::join('users', 'users.id', '=', 'student.user_id')
+                        ->where('student_no', 'like', '%'.$search.'%')
+                        ->orWhere('first_name', 'like', '%'.$search.'%')
+                        ->orWhere('middle_name', 'like', '%'.$search.'%')
+                        ->orWhere('last_name', 'like', '%'.$search.'%')
+                        ->orderBy('student_no')
+                        ->paginate(8);
+        } else {
+            $students = Student::orderBy('student_no')->paginate(8);
+        }
+
+        return view('students.index')
+                ->with('students', $students)
+                ->with('search', $search);
     }
 
     /**

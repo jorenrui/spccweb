@@ -18,17 +18,28 @@ class CurriculumController extends Controller
      */
     public function index()
     {
-        $curriculums = Curriculum::orderBy('curriculum_id', 'desc')->paginate(15);
-
         $cur_curriculum_id = Setting::where('name', 'LIKE', 'Current Curriculum')->first()->value;
         $curCurriculum = Curriculum::find($cur_curriculum_id);
 
         $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
 
+        $search = null;
+
+        if( request()->has('search')) {
+            $search = request('search');
+            $curriculums = Curriculum::where('curriculum_id', 'like', '%'.$search.'%')
+                        ->orWhere('effective_sy', 'like', '%'.$search.'%')
+                        ->orderBy('curriculum_id', 'desc')
+                        ->paginate(15);
+        } else {
+            $curriculums = Curriculum::orderBy('curriculum_id', 'desc')->paginate(15);
+        }
+
         return view('curriculums.index')
                 ->with('curriculums', $curriculums)
                 ->with('curCurriculum', $curCurriculum)
-                ->with('degree', $degree);
+                ->with('degree', $degree)
+                ->with('search', $search);
     }
 
     /**

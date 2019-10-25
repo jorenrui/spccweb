@@ -17,12 +17,24 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy('course_code', 'asc')->paginate(15);
         $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
+
+        $search = null;
+
+        if( request()->has('search')) {
+            $search = request('search');
+            $courses = Course::where('course_code', 'like', '%'.$search.'%')
+                        ->orWhere('description', 'like', '%'.$search.'%')
+                        ->orderBy('course_code')
+                        ->paginate(15);
+        } else {
+            $courses = Course::orderBy('course_code')->paginate(15);
+        }
 
         return view('courses.index')
                 ->with('courses', $courses)
-                ->with('degree', $degree);
+                ->with('degree', $degree)
+                ->with('search', $search);
     }
 
     /**

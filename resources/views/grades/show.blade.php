@@ -33,7 +33,7 @@
 
       <div class="row">
         <div class="col-12">
-          @if(count($grades) > 0)
+          @if(count($grades) > 0 || $search != null)
             <div class="nav-wrapper">
               <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
                   <li class="nav-item">
@@ -66,6 +66,14 @@
                             <dd class="col-sm-7">
                                 {{ $sclass->instructor->user->getNameWithTitle() }}
                             </dd>
+                            @if($sclass->section != null)
+                            <dt class="col-sm-5">
+                                Section:
+                            </dt>
+                            <dd class="col-sm-7">
+                                {{ $sclass->section }}
+                            </dd>
+                            @endif
                             <dt class="col-sm-5">
                                 Credits:
                             </dt>
@@ -180,69 +188,101 @@
                         <div class="tab-pane fade show active" id="tabs-grades" role="tabpanel" aria-labelledby="tabs-grades-tab">
 
                           <div class="row mb-4">
+                            <div class="col col-lg-4 col-md-6">
+                                <form action="/grades/{{ $sclass->class_id }}?" method="get" class="form-horizontal">
+                                    <div class="form-group mb-0">
+                                        <div class="input-group input-group-sm pt-0">
+                                            <input name="search" class="form-control" placeholder="e.g. 041830903 or Juan" type="text">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-default" type="submit">Search</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            @if($search != null)
+                            <div class="col">
+                              <a href="/grades/{{ $sclass->class_id }}" class="btn btn-outline-secondary btn-sm">
+                                    {{ str_limit($search, 20) }}
+                                    <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+                                </a>
+                            </div>
+                            @endif
+
                             <div class="col text-right">
                                 <a href="/faculty/load/{{ $sclass->class_id }}/students" class="btn btn-sm btn-outline-primary">View Student Masterlist</a>
                             </div>
                           </div>
 
-                          <div class="table-responsive row">
-                              <table class="table align-items-center table-flush">
-                                  <thead class="thead-light">
-                                      <tr>
-                                          <th scope="col" class="text-center">Student No.</th>
-                                          <th scope="col" class="text-center">Name</th>
-                                          <th scope="col" class="text-center">Prelims</th>
-                                          <th scope="col" class="text-center">Midterms</th>
-                                          <th scope="col" class="text-center">Finals</th>
-                                          <th scope="col" class="text-center">Average</th>
-                                          <th scope="col" class="text-center">Grade</th>
-                                          <th scope="col" class="text-center">Completion</th>
-                                          <th scope="col" class="text-center">Remarks</th>
-                                          <th scope="col" class="text-center">Note</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                    @foreach ($grades as $grade)
-                                      <tr>
-                                          <td class="text-center" scope="row">
-                                            {{ $grade->student->getStudentNo() }}
-                                          </td>
-                                          <td>{{ $grade->student->user->getName() }}</td>
-                                          <td class="text-center">{{ $grade->prelims }}</td>
-                                          <td class="text-center">{{ $grade->midterms }}</td>
-                                          <td class="text-center">{{ $grade->finals }}</td>
-                                          <td class="text-center">{{ $grade->getAverage() }}</td>
-                                          <td class="text-center">{{ $grade->getGrade() }}</td>
-                                          <td class="text-center">{{ $grade->getCompletion() }}</td>
-                                          <td class="text-center">
-                                            @if($grade->getRemarks() == 'PASSED')
-                                              <span class="badge badge-dot mr-4">
-                                                <i class="bg-success"></i> {{ $grade->getRemarks() }}
-                                              </span>
-                                            @elseif($grade->getRemarks() == 'INCOMPLETE')
-                                              <span class="badge badge-dot mr-4">
-                                                <i class="bg-warning"></i> {{ $grade->getRemarks() }}
-                                              </span>
-                                            @elseif($grade->getRemarks() == 'FAILED')
-                                              <span class="badge badge-dot mr-4">
-                                                <i class="bg-danger"></i> {{ $grade->getRemarks() }}
-                                              </span>
-                                            @endif
-                                          </td>
-                                          <td class="text-center">
-                                            {{ $grade->note }}
-                                          </td>
-                                      </tr>
-                                    @endforeach
-                                  </tbody>
-                              </table>
-                          </div>
 
-                          <div class="row mt-4">
-                            <div class="col-12">
-                                {{ $grades->links() }}
+                          @if($search != null && count($grades) == 0)
+                            <div class="row mt-3 mb-5">
+                                <div class="col text-center">
+                                    <p class="lead">Student not found</p>
+                                </div>
                             </div>
-                          </div>
+                          @endif
+
+                          @if(count($grades) > 0)
+                            <div class="table-responsive row">
+                                <table class="table align-items-center table-flush">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col" class="text-center">Student No.</th>
+                                            <th scope="col" class="text-center">Name</th>
+                                            <th scope="col" class="text-center">Prelims</th>
+                                            <th scope="col" class="text-center">Midterms</th>
+                                            <th scope="col" class="text-center">Finals</th>
+                                            <th scope="col" class="text-center">Average</th>
+                                            <th scope="col" class="text-center">Grade</th>
+                                            <th scope="col" class="text-center">Completion</th>
+                                            <th scope="col" class="text-center">Remarks</th>
+                                            <th scope="col" class="text-center">Note</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      @foreach ($grades as $grade)
+                                        <tr>
+                                            <td class="text-center" scope="row">
+                                              {{ $grade->student->getStudentNo() }}
+                                            </td>
+                                            <td>{{ $grade->student->user->getName() }}</td>
+                                            <td class="text-center">{{ $grade->prelims }}</td>
+                                            <td class="text-center">{{ $grade->midterms }}</td>
+                                            <td class="text-center">{{ $grade->finals }}</td>
+                                            <td class="text-center">{{ $grade->getAverage() }}</td>
+                                            <td class="text-center">{{ $grade->getGrade() }}</td>
+                                            <td class="text-center">{{ $grade->getCompletion() }}</td>
+                                            <td class="text-center">
+                                              @if($grade->getRemarks() == 'PASSED')
+                                                <span class="badge badge-dot mr-4">
+                                                  <i class="bg-success"></i> {{ $grade->getRemarks() }}
+                                                </span>
+                                              @elseif($grade->getRemarks() == 'INCOMPLETE')
+                                                <span class="badge badge-dot mr-4">
+                                                  <i class="bg-warning"></i> {{ $grade->getRemarks() }}
+                                                </span>
+                                              @elseif($grade->getRemarks() == 'FAILED')
+                                                <span class="badge badge-dot mr-4">
+                                                  <i class="bg-danger"></i> {{ $grade->getRemarks() }}
+                                                </span>
+                                              @endif
+                                            </td>
+                                            <td class="text-center">
+                                              {{ $grade->note }}
+                                            </td>
+                                        </tr>
+                                      @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row mt-4">
+                              <div class="col-12">
+                                  {{ $grades->links() }}
+                              </div>
+                            </div>
+                          @endif
+
                         </div>
                         <!-- end Students' Grades Tab -->
 

@@ -14,12 +14,35 @@ class UserController extends Controller
      * @param  \App\User  $model
      * @return \Illuminate\View\View
      */
-    public function index(User $model)
+    public function index()
     {
-        return view('users.index', [
-            'users' => $model->whereDoesntHave("roles", function($q) {
+        $search = null;
+
+        if( request()->has('search')) {
+            $search = request('search');
+            $users = User::whereDoesntHave("roles", function($q) {
                             $q->where('name', 'hidden super admin');
-                        })->orderBy('created_at')->paginate(15)]);
+                        })
+                        ->where(function($q) use ($search) {
+                            $q->Where('username', 'like', '%'.$search.'%')
+                              ->orWhere('first_name', 'like', '%'.$search.'%')
+                              ->orWhere('middle_name', 'like', '%'.$search.'%')
+                              ->orWhere('last_name', 'like', '%'.$search.'%')
+                              ->orWhereHas("roles", function($q) use ($search) {
+                                $q->where('name', strtolower($search));
+                              });
+                        })
+                        ->orderBy('created_at')
+                        ->paginate(15);
+        } else {
+            $users = User::whereDoesntHave("roles", function($q) {
+                            $q->where('name', 'hidden super admin');
+                        })->orderBy('created_at')->paginate(15);
+        }
+
+        return view('users.index')
+                ->with('users', $users)
+                ->with('search', $search);
     }
 
     public function setAsWriter($id)
