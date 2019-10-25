@@ -19,9 +19,32 @@ class RegistrarController extends Controller
      */
     public function index()
     {
-        $registrars = User::whereHas("roles", function($q){ $q->where('name', 'registrar'); })->paginate(8);
+        $search = null;
 
-        return view('registrars.index')->with('registrars', $registrars);
+        if( request()->has('search')) {
+            $search = request('search');
+            $registrars = User::join('employee', 'users.id', '=', 'employee.user_id')
+                        ->whereHas("roles", function($q){
+                            $q->where('name', 'registrar');
+                        })
+                        ->where('employee_no', 'like', '%'.$search.'%')
+                        ->orWhere('first_name', 'like', '%'.$search.'%')
+                        ->orWhere('middle_name', 'like', '%'.$search.'%')
+                        ->orWhere('last_name', 'like', '%'.$search.'%')
+                        ->orderBy('employee_no', 'desc')
+                        ->paginate(15);
+        } else {
+            $registrars = User::join('employee', 'users.id', '=', 'employee.user_id')
+                        ->whereHas("roles", function($q){
+                            $q->where('name', 'registrar');
+                        })
+                        ->orderBy('employee_no', 'desc')
+                        ->paginate(8);
+        }
+
+        return view('registrars.index')
+                ->with('registrars', $registrars)
+                ->with('search', $search);
     }
 
     /**
