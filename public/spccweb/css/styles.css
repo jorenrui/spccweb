@@ -2,8 +2,8 @@
  * CONTENTS
  * - SITE HEADER
  * - HERO SECTION - HOMEPAGE
- * - ANNOUCEMENT SECTION - HOMEPAGE
  * - UPCOMING EVENTS SECTION - HOMEPAGE
+ * - ANNOUCEMENT SECTION - HOMEPAGE
  * - ABOUT BRIEF SECTION - HOMEPAGE
  * - PROGRAMS SECTION - HOMEPAGE
  * - LATEST NEWS SECTION - HOMEPAGE
@@ -267,7 +267,7 @@ ul.pagination .page-item.disabled {
 section.hero {
   color: #fff;
   background: #0f1c70;
-  padding: 80px 0 300px 0;
+  padding: 80px 0 200px 0;
 }
 
 section.hero .content {
@@ -366,7 +366,7 @@ section.hero .particles-background {
 
 @media only screen and (max-width: 768px) {
   section.hero {
-    padding: 80px 0 350px 0;
+    padding: 80px 0 200px 0;
   }
 
   section.hero .content {
@@ -419,50 +419,10 @@ section.hero .particles-background {
 }
 
 /* =======================================
- * ANNOUCEMENT SECTION - HOMEPAGE
- * ======================================= */
-section.annoucement {
-  margin-top: -225px;
-  margin-bottom: 25px;
-  padding: 0 50px;
-  color: #fff;
-  display: flex;
-  text-align: right;
-  justify-content: flex-end;
-}
-
-section.annoucement .content {
-  width: 700px;
-}
-
-section.annoucement .content p {
-  font-size: 18px;
-  line-height: 1.5em;
-}
-
-/* Responsiveness */
-
-@media screen and (max-width: 768px) {
-  section.annoucement {
-    margin-top: -250px;
-  }
-}
-
-@media only screen and (max-width: 550px) {
-  section.annoucement {
-    margin-top: -280px;
-  }
-
-  section.annoucement .content p {
-    font-size: 16px;
-  }
-}
-
-/* =======================================
  * UPCOMING EVENTS SECTION - HOMEPAGE
  * ======================================= */
-
 section.upcoming-events {
+  margin-top: -100px;
   display: flex;
   justify-content: flex-end;
 }
@@ -554,6 +514,66 @@ section.upcoming-events .card .event {
 
   section.upcoming-events .card {
     margin-bottom: 15px;
+  }
+}
+
+/* =======================================
+ * ANNOUCEMENT SECTION - HOMEPAGE
+ * ======================================= */
+section.annoucement .content {
+  max-width: 1200px;
+  width: 85vw;
+  margin: 0 auto;
+  margin-top: 200px;
+  padding: 100px;
+  color: #0f1c70;
+  border: 5px solid #0f1c70;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+section.annoucement .headline {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+}
+
+section.annoucement p {
+  margin-top: 10px;
+  font-size: 50px;
+  line-height: 1.5em;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 768px) {
+  section.annoucement .content {
+    margin-top: 100px;
+    padding: 75px;
+  }
+
+  section.annoucement .headline {
+    font-size: 16px;
+  }
+
+  section.annoucement p {
+    font-size: 35px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  section.annoucement .content {
+    margin: 100px 25px 0 25px;
+    padding: 50px;
+  }
+
+  section.annoucement .headline {
+    font-size: 14px;
+  }
+
+  section.annoucement p {
+    font-size: 22px;
   }
 }
 
@@ -899,12 +919,9 @@ section.latest-news .bg .circle-pattern-small {
 /* Responsiveness */
 
 @media screen and (max-width: 1200px) {
-  section.latest-news article {
-    max-width: 350px;
-  }
-
+  section.latest-news article,
   section.latest-news article > img {
-    max-width: 350px;
+    max-width: 300px;
   }
 }
 
