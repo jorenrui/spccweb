@@ -20,7 +20,7 @@
                             <form action="/faculties?" method="get" class="form-horizontal">
                                 <div class="form-group mb-0">
                                     <div class="input-group input-group-sm pt-0">
-                                        <input name="search" class="form-control" placeholder="e.g. K-519 or Juan" type="text">
+                                        <input name="search" class="form-control" placeholder="e.g. K519 or Juan" type="text">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-default" type="submit">Search</button>
                                         </div>
