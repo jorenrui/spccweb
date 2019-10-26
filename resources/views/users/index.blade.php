@@ -35,10 +35,10 @@
                             @endif
 
                             <div class="col text-right">
-                                <a href="/students/create" class="btn btn-sm btn-outline-primary">
+                                <a href="/user/create/student" class="btn btn-sm btn-outline-primary">
                                     Add Student
                                 </a>
-                                <a href="/employees/create" class="btn btn-sm btn-outline-primary">
+                                <a href="/user/create/employee" class="btn btn-sm btn-outline-primary">
                                     Add Employee
                                 </a>
                             </div>

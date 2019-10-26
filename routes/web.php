@@ -43,7 +43,11 @@ Route::group(['middleware' => ['auth', 'role:admin|moderator']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
-	Route::resource('user', 'UserController', ['except' => ['show']]);
+	Route::resource('user', 'UserController', ['except' => ['show', 'create', 'store']]);
+	Route::get('user/create/employee','UserController@createEmployee');
+	Route::get('user/create/student','UserController@createStudent');
+	Route::post('user/store/employee','UserController@storeEmployee');
+	Route::post('user/store/student','UserController@storeStudent');
 	Route::get('user/log','UserController@log');
 
 	Route::get('users/{user}/set_writer','UserController@setAsWriter');
