@@ -43,11 +43,15 @@ Route::group(['middleware' => ['auth', 'role:admin|moderator']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
-	Route::resource('user', 'UserController', ['except' => ['show', 'create', 'store']]);
+	Route::resource('user', 'UserController', ['only' => ['index', 'destroy']]);
 	Route::get('user/create/employee','UserController@createEmployee');
 	Route::get('user/create/student','UserController@createStudent');
 	Route::post('user/store/employee','UserController@storeEmployee');
 	Route::post('user/store/student','UserController@storeStudent');
+	Route::get('user/edit/employees/{employee}','UserController@editEmployee');
+	Route::get('user/edit/students/{student}','UserController@editStudent');
+	Route::put('user/update/employees/{employee}','UserController@updateEmployee');
+	Route::put('user/update/students/{student}','UserController@updateStudent');
 	Route::get('user/log','UserController@log');
 
 	Route::get('users/{user}/set_writer','UserController@setAsWriter');
