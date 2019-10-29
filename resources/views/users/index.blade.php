@@ -85,11 +85,20 @@
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                         @if ($user->id != auth()->id())
-                                                            <form action="{{ route('user.destroy', $user) }}" method="post">
+                                                            @if($user->hasRole('student'))
+                                                                <a class="dropdown-item" href="/user/edit/students/{{ $user->id }}">
+                                                                    Edit
+                                                                </a>
+                                                            @else
+                                                                <a class="dropdown-item" href="/user/edit/employees/{{ $user->id }}">
+                                                                    Edit
+                                                                </a>
+                                                            @endif
+
+                                                            <form action="{{ route('user.destroy', $user->id) }}" method="post">
                                                                 @csrf
                                                                 @method('delete')
 
-                                                                <a class="dropdown-item" href="{{ route('user.edit', $user) }}">{{ __('Edit') }}</a>
                                                                 <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
                                                                     Delete
                                                                 </button>
@@ -99,7 +108,8 @@
                                                         @endif
 
                                                         @if(($user->hasRole('student') ||
-                                                            $user->hasRole('faculty')) &&            !$user->hasRole('writer'))
+                                                            $user->hasRole('faculty')) &&
+                                                            !$user->hasRole('writer'))
                                                             <a class="dropdown-item" href="/users/{{ $user->id }}/set_writer">
                                                                 Set as Writer
                                                             </a>
