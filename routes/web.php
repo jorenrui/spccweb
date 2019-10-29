@@ -48,6 +48,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('user/create/student','UserController@createStudent');
 	Route::post('user/store/employee','UserController@storeEmployee');
 	Route::post('user/store/student','UserController@storeStudent');
+	Route::get('user/show/employees/{employee}','UserController@showEmployee');
+	Route::get('user/show/students/{student}','UserController@showStudent');
 	Route::get('user/edit/employees/{employee}','UserController@editEmployee');
 	Route::get('user/edit/students/{student}','UserController@editStudent');
 	Route::put('user/update/employees/{employee}','UserController@updateEmployee');

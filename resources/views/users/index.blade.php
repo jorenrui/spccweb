@@ -70,9 +70,15 @@
                                     @foreach ($users as $user)
                                         <tr>
                                             <td scope="row">
-                                                <a href="/users/{{ $user->id }}" class="btn btn-outline-primary btn-sm">
-                                                    View
-                                                </a>
+                                                @if($user->hasRole('student'))
+                                                    <a href="/user/show/students/{{ $user->id }}" class="btn btn-outline-primary btn-sm">
+                                                        View
+                                                    </a>
+                                                @else
+                                                    <a href="/user/show/employees/{{ $user->id }}" class="btn btn-outline-primary btn-sm">
+                                                        View
+                                                    </a>
+                                                @endif
                                             </td>
                                             <td class="text-center">{{ $user->username }}</td>
                                             <td>{{ $user->getRole() }}</td>

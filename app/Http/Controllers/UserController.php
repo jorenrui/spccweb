@@ -305,6 +305,25 @@ class UserController extends Controller
                 ->with('success', 'Student ' . $student->getStudentNo() . ' Created. Default username is the Student No. with no dashes');
     }
 
+    public function showEmployee($id)
+    {
+        $user = User::find($id);
+
+        return view('users.employee.show')->with('user', $user);
+    }
+
+    public function showStudent($id)
+    {
+        $user = User::find($id);
+        $curriculums = Curriculum::all();
+        $acad_terms = AcadTerm::all();
+
+        return view('users.student.show')
+                    ->with('user', $user)
+                    ->with('curriculums', $curriculums)
+                    ->with('acad_terms', $acad_terms);
+    }
+
     /**
      * Show the form for editing the specified user
      *
