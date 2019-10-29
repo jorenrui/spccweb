@@ -111,7 +111,12 @@ class GradeController extends Controller
         // Add Activity
         $activity = new Activity;
         $activity->user_id = auth()->user()->id;
-        $activity->description = ' has enrolled student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . '.';
+
+        if ($grade->sclass->section != null)
+            $activity->description = ' has enrolled student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . '-' . $grade->sclass->section. '.';
+        else
+            $activity->description = ' has enrolled student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . '.';
+
         $activity->timestamp = now();
         $activity->save();
 
@@ -207,7 +212,12 @@ class GradeController extends Controller
         // Add Activity
         $activity = new Activity;
         $activity->user_id = auth()->user()->id;
-        $activity->description = 'has altered the grades for ' . $sclass->course_code . ' class.';
+
+        if ($grade->sclass->section != null)
+            $activity->description = 'has altered the grades for ' . $sclass->course_code . '-' . $sclass->section . ' class.';
+        else
+            $activity->description = 'has altered the grades for ' . $sclass->course_code . ' class.';
+
         $activity->timestamp = now();
         $activity->save();
 
@@ -230,7 +240,12 @@ class GradeController extends Controller
         // Add Activity
         $activity = new Activity;
         $activity->user_id = auth()->user()->id;
-        $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' class.';
+
+        if ($grade->sclass->section != null)
+            $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->getCourse() . '-' . $sclass->getSection() . ' class.';
+        else
+            $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' class.';
+
         $activity->timestamp = now();
         $activity->save();
 

@@ -176,7 +176,12 @@ class SClassController extends Controller
         // Add Activity
         $activity = new Activity;
         $activity->user_id = auth()->user()->id;
-        $activity->description = 'has updated the locking of grades for ' . $sclass->getCourse() . ' class.';
+
+        if ($sclass->section != null)
+            $activity->description = 'has updated the locking of grades for ' . $sclass->getCourse() . '-' . $sclass->getSection() . ' class.';
+        else
+            $activity->description = 'has updated the locking of grades for ' . $sclass->getCourse() . ' class.';
+
         $activity->timestamp = now();
         $activity->save();
 
