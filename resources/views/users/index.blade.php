@@ -55,7 +55,7 @@
 
                     @if(count($users) > 0)
                         <div class="table-responsive">
-                            <table class="table align-items-center table-flush">
+                            <table class="table align-items-center table-flush {{ count($users) < 5 ? 'mb-6' : ''}}">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col"></th>
