@@ -191,7 +191,7 @@ class UserController extends Controller
         $user->address = $request->input('address');
         $user->username = $request->input('employee_no');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = Hash::make($request->input('password'));
         $user->save();
 
         $user->assignRole($request->input('employee_type'));
@@ -283,7 +283,7 @@ class UserController extends Controller
         $user->address = $request->input('address');
         $user->username = $request->input('student_no');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = Hash::make($request->input('password'));
         $user->save();
 
         $user->assignRole('student');
@@ -391,7 +391,7 @@ class UserController extends Controller
         $user->email = $request->input('email');
 
         if($request->input('password') != null) {
-            $user->password = $request->input('password');
+            $user->password = Hash::make($request->input('password'));
         }
 
         $user->save();
@@ -401,7 +401,6 @@ class UserController extends Controller
         $employee = Employee::find($employee_no);
         $employee->employee_no = $request->input('employee_no');
         $employee->date_employed = $request->input('date_employed');
-        $employee->user_id = $user->id;
         $employee->save();
 
         return redirect()->route('user.index')
@@ -487,7 +486,7 @@ class UserController extends Controller
         $user->email = $request->input('email');
 
         if($request->input('password') != null) {
-            $user->password = $request->input('password');
+            $user->password = Hash::make($request->input('password'));
         }
 
         $user->save();
