@@ -228,11 +228,12 @@ $(document).ready(function() {
                                 </div>
                             </div>
 
-                            <div class="pl-lg-4 row">
+                            <div class="pl-lg-4 row mt-4">
                                 <div class="col">
-                                    <button id="btnSubmit" type="submit" class="btn btn-success mt-4">
+                                    <button id="btnSubmit" type="submit" class="btn btn-success">
                                         Add Employee
                                     </button>
+                                    <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Cancel</button>
                                 </div>
                             </div>
                         </form>
