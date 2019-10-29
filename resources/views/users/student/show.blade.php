@@ -29,7 +29,7 @@ $(document).ready(function() {
 @endpush
 
 @section('content')
-    @include('users.partials.header', ['title' => 'Show Student'])
+    @include('layouts.headers.header', ['title' => 'Show Student'])
 
     <div class="container-fluid mt--7">
         <div class="row">

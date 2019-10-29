@@ -22,7 +22,7 @@ $(document).ready(function() {
 @endpush
 
 @section('content')
-    @include('users.partials.header', ['title' => 'Show Employee'])
+    @include('layouts.headers.header', ['title' => 'Show Employee'])
 
     <div class="container-fluid mt--7">
         <div class="row">
