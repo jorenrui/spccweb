@@ -350,7 +350,6 @@ class UserController extends Controller
         $this->validate($request, [
             'profile_picture' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 3000',
             'employee_no' => 'required|min:4|max:5',
-            'employee_type' => 'required',
             'date_employed' => 'required|date',
             'first_name' => 'required|min:3|max:50',
             'middle_name' => 'nullable|min:3|max:50',

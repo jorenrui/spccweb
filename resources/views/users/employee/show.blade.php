@@ -195,19 +195,6 @@ $(document).ready(function() {
                                     @endif
                                 </div>
                             </div>
-                            <div class="pl-lg-4 row">
-                                <div class="col-12 col-lg-6">
-                                  <label class="form-control-label" for="employee_type">
-                                      Employee Type
-                                  </label>
-                                  <select id="employee_type" name="employee_type" class="form-control form-control-alternative m-b" required>
-                                    <option value="faculty" {{ old('employee_type', $user->employee->employee_type) == null ? 'selected' : '' }}>Faculty</option>
-                                    <option value="registrar" {{ old('employee_type', $user->employee->employee_type) == 'registrar' ? 'selected' : '' }}>Registrar</option>
-                                    <option value="head registrar" {{ old('employee_type', $user->employee->employee_type) == 'head registrar' ? 'selected' : '' }}>Head Registrar</option>
-                                    <option value="admin" {{ old('employee_type', $user->employee->employee_type) == 'admin' ? 'selected' : '' }}>Admin</option>
-                                  </select>
-                                </div>
-                            </div>
                             <h6 class="heading-small text-muted mb-4 mt-3">
                                 Personal information
                             </h6>
