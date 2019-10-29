@@ -126,7 +126,7 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar|student']], functio
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|head registrar']], function () {
-	Route::resource('registrars','RegistrarController')->except('show');
+	Route::resource('registrars','RegistrarController');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {

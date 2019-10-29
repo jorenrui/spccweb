@@ -56,14 +56,9 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
+                                    <th scope="col"></th>
                                     <th scope="col" class="text-center">Employee No</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col" class="text-center">Username</th>
-                                    <th scope="col" class="text-center">Email</th>
-                                    <th scope="col" class="text-center">Address</th>
-                                    <th scope="col" class="text-center">Contact No</th>
-                                    <th scope="col" class="text-center">Gender</th>
-                                    <th scope="col" class="text-center">Birthdate</th>
                                     <th scope="col" class="text-center">Date Employed</th>
                                     <th scope="col"></th>
                                 </tr>
@@ -71,16 +66,15 @@
                             <tbody>
                             @foreach ($registrars as $registrar)
                                 <tr>
-                                    <td class="text-center" scope="row">
+                                    <td scope="row">
+                                        <a href="/registrars/{{ $registrar->id }}" class="btn btn-outline-primary btn-sm">
+                                            View
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
                                     {{ $registrar->employee->getEmployeeNo() }}
                                     </td>
                                     <td>{{ $registrar->getName() }}</td>
-                                    <td class="text-center">{{ $registrar->username }}</td>
-                                    <td>{{ $registrar->email }}</td>
-                                    <td>{{ $registrar->address }}</td>
-                                    <td class="text-center">{{ $registrar->contact_no }}</td>
-                                    <td>{{ $registrar->getGender() }}</td>
-                                    <td class="text-center">{{ $registrar->getBirthdate() }}</td>
                                     <td class="text-center">
                                         {{ $registrar->employee->getDateEmployed() }}
                                     </td>

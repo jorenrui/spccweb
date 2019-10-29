@@ -75,20 +75,22 @@ class StudentController extends Controller
     {
         $this->validate($request, [
             'profile_picture' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 3000',
-            'student_no' => 'required',
-            'acad_term_admitted_id' => 'required',
-            'curriculum_id' => 'required',
+            'student_no' => 'required|unique:student|min:9|max:10',
+            'acad_term_admitted_id' => 'required|exists:acad_term,acad_term_id',
+            'curriculum_id' => 'required|exists:curriculum',
             'student_type' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'birthdate' => 'required',
-            'address' => 'required',
-            'primary' => 'required',
-            'primary_sy' => 'required',
-            'intermediate' => 'required',
-            'intermediate_sy' => 'required',
-            'secondary' => 'required',
-            'secondary_sy' => 'required'
+            'first_name' => 'required|min:3|max:50',
+            'middle_name' => 'nullable|min:3|max:50',
+            'last_name' => 'required|min:3|max:50',
+            'birthdate' => 'required|date',
+            'contact_no' => 'nullable|min:6|max:11',
+            'address' => 'nullable|min:6|max:100',
+            'primary' => 'required|min:6|max:100',
+            'primary_sy' => 'required|min:9|max:9',
+            'intermediate' => 'required|min:6|max:100',
+            'intermediate_sy' => 'required|min:9|max:9',
+            'secondary' => 'required|min:6|max:100',
+            'secondary_sy' => 'required|min:9|max:9',
         ]);
 
         // Handle File Upload
@@ -137,7 +139,8 @@ class StudentController extends Controller
         $student->user_id = $user->id;
         $student->save();
 
-        return redirect('/students/' . $user->id)->with('success', 'Student Created. Default username is the Student No. while the default password is the user\'s birthdate.');
+        return redirect('/students/' . $user->id)
+                ->with('success', 'Student ' . $student->getStudentNo() . ' Created. Default username is the Student No. with no dashes while the default password is the user\'s birthdate');;
     }
 
     private function getEnlistment($student_no)
@@ -439,20 +442,25 @@ class StudentController extends Controller
     {
         $this->validate($request, [
             'profile_picture' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 3000',
-            'student_no' => 'required',
-            'acad_term_admitted_id' => 'required',
-            'curriculum_id' => 'required',
+            'student_no' => 'required|min:9|max:10',
+            'acad_term_admitted_id' => 'required|exists:acad_term,acad_term_id',
+            'curriculum_id' => 'required|exists:curriculum',
             'student_type' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'birthdate' => 'required',
-            'address' => 'required',
-            'primary' => 'required',
-            'primary_sy' => 'required',
-            'intermediate' => 'required',
-            'intermediate_sy' => 'required',
-            'secondary' => 'required',
-            'secondary_sy' => 'required'
+            'first_name' => 'required|min:3|max:50',
+            'middle_name' => 'nullable|min:3|max:50',
+            'last_name' => 'required|min:3|max:50',
+            'birthdate' => 'required|date',
+            'contact_no' => 'nullable|min:6|max:11',
+            'address' => 'nullable|min:6|max:100',
+            'primary' => 'required|min:6|max:100',
+            'primary_sy' => 'required|min:9|max:9',
+            'intermediate' => 'required|min:6|max:100',
+            'intermediate_sy' => 'required|min:9|max:9',
+            'secondary' => 'required|min:6|max:100',
+            'secondary_sy' => 'required|min:9|max:9',
+            'date_graduated' => 'nullable|date',
+            'email' => 'nullable',
+            'password' => 'nullable|confirmed|min:5',
         ]);
 
         // Handle File Upload
@@ -467,8 +475,6 @@ class StudentController extends Controller
         }
 
         // Update Student
-        // Default Credentials:
-        // Username: Student No, Password: Birthdate
         $user = User::find($id);
 
         if ($request->hasFile('profile_picture')) {
@@ -482,14 +488,19 @@ class StudentController extends Controller
         $user->birthdate = $request->input('birthdate');
         $user->contact_no = $request->input('contact_no');
         $user->address = $request->input('address');
-        $user->username = $request->input('student_no');
+        $user->username = $request->input('username');
         $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('birthdate'));
+
+        if($request->input('password') != null) {
+            $user->password = Hash::make($request->input('password'));
+        }
+
         $user->save();
 
         $student_no = $user->student->student_no;
 
         $student = Student::find($student_no);
+        $student->student_no = $request->input('student_no');
         $student->primary = $request->input('primary');
         $student->primary_sy = $request->input('primary_sy');
         $student->intermediate = $request->input('intermediate');
@@ -497,11 +508,13 @@ class StudentController extends Controller
         $student->secondary = $request->input('secondary');
         $student->secondary_sy = $request->input('secondary_sy');
         $student->student_type = $request->input('student_type');
+        $student->date_graduated = $request->input('date_graduated');
         $student->curriculum_id = $request->input('curriculum_id');
         $student->acad_term_admitted_id = $request->input('acad_term_admitted_id');
         $student->save();
 
-        return redirect('/students/' . $user->id)->with('success', 'Student Updated');
+        return redirect('/students/' . $user->id)
+                ->with('success', 'Student ' . $student->getStudentNo() . ' Updated.');;
     }
 
     /**
@@ -516,8 +529,10 @@ class StudentController extends Controller
 
         Storage::disk('public')->delete('profile_pictures/'. $user->profile_picture);
 
+        $student_no =  $user->student->getStudentNo();
+
         $user->delete();
 
-        return redirect('/students')->with('success', 'Student Deleted');
+        return redirect('/students')->with('success', 'Student ' . $student_no .' Deleted');
     }
 }

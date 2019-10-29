@@ -71,12 +71,15 @@ class FacultyController extends Controller
     {
         $this->validate($request, [
             'profile_picture' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 3000',
-            'employee_no' => 'required',
-            'date_employed' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'birthdate' => 'required',
-            'address' => 'required'
+            'employee_no' => 'required|unique:employee|min:4|max:5',
+            'date_employed' => 'required|date',
+            'first_name' => 'required|min:3|max:50',
+            'middle_name' => 'nullable|min:3|max:50',
+            'last_name' => 'required|min:3|max:50',
+            'birthdate' => 'required|date',
+            'contact_no' => 'nullable|min:6|max:11',
+            'address' => 'nullable|min:6|max:100',
+            'email' => 'nullable|unique:users',
         ]);
 
         // Handle File Upload
@@ -92,7 +95,7 @@ class FacultyController extends Controller
             $filename = 'default.png';
         }
 
-        // Add Faculty
+        // Add Employee
         // Default Credentials:
         // Username: Employee No, Password: Birthdate
         $user = new User;
@@ -111,13 +114,14 @@ class FacultyController extends Controller
 
         $user->assignRole('faculty');
 
-        $faculty = new Employee;
-        $faculty->employee_no = $request->input('employee_no');
-        $faculty->date_employed = $request->input('date_employed');
-        $faculty->user_id = $user->id;
-        $faculty->save();
+        $employee = new Employee;
+        $employee->employee_no = $request->input('employee_no');
+        $employee->date_employed = $request->input('date_employed');
+        $employee->user_id = $user->id;
+        $employee->save();
 
-        return redirect('/faculties/' . $user->id)->with('success', 'Faculty Created. Default username is the Employee No. while the default password is the user\'s birthdate.');
+        return redirect('/faculties/' . $user->id)
+                ->with('success', 'Employee ' . $employee->getEmployeeNo() . ' Created. Default username is the Employee No. with no dashes while the default password is the user\'s birthdate.');
     }
 
     private function getClassesByDay($employee_no, $day)
@@ -247,12 +251,16 @@ class FacultyController extends Controller
     {
         $this->validate($request, [
             'profile_picture' => 'nullable|mimes:jpeg,bmp,jpg,png|between:1, 3000',
-            'employee_no' => 'required',
-            'date_employed' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'birthdate' => 'required',
-            'address' => 'required'
+            'employee_no' => 'required|min:4|max:5',
+            'date_employed' => 'required|date',
+            'first_name' => 'required|min:3|max:50',
+            'middle_name' => 'nullable|min:3|max:50',
+            'last_name' => 'required|min:3|max:50',
+            'birthdate' => 'required|date',
+            'contact_no' => 'nullable|min:6|max:11',
+            'address' => 'nullable|min:6|max:100',
+            'email' => 'nullable',
+            'password' => 'nullable|confirmed|min:5',
         ]);
 
         // Handle File Upload
@@ -260,15 +268,13 @@ class FacultyController extends Controller
             // Get just ext
             $extension = $request->file('profile_picture')->getClientOriginalExtension();
 
-            $filename = $request->input('employee_no') . '.' . $extension;
+            $filename = $request->input('student_no') . '.' . $extension;
 
             $request->file('profile_picture')
                         ->storeAs('/profile_pictures', $filename, "public");
         }
 
-        // Update Faculty
-        // Default Credentials:
-        // Username: Employee No, Password: Birthdate
+        // Update Employee
         $user = User::find($id);
 
         if ($request->hasFile('profile_picture')) {
@@ -283,17 +289,24 @@ class FacultyController extends Controller
         $user->contact_no = $request->input('contact_no');
         $user->address = $request->input('address');
         $user->username = $request->input('employee_no');
+        $user->username = $request->input('username');
         $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('birthdate'));
+
+        if($request->input('password') != null) {
+            $user->password = Hash::make($request->input('password'));
+        }
+
         $user->save();
 
         $employee_no = $user->employee->employee_no;
 
-        $faculty = Employee::find($employee_no);
-        $faculty->date_employed = $request->input('date_employed');
-        $faculty->save();
+        $employee = Employee::find($employee_no);
+        $employee->employee_no = $request->input('employee_no');
+        $employee->date_employed = $request->input('date_employed');
+        $employee->save();
 
-        return redirect('/faculties/' . $user->id)->with('success', 'Faculty Updated');
+        return redirect('/faculties/' . $user->id)
+                ->with('success', 'Employee ' . $employee->getEmployeeNo() . ' Updated.');
     }
 
     /**
@@ -308,8 +321,10 @@ class FacultyController extends Controller
 
         Storage::disk('public')->delete('profile_pictures/'. $user->profile_picture);
 
+        $employee_no =  $user->employee->getEmployeeNo();
+
         $user->delete();
 
-        return redirect('/faculties')->with('success', 'Faculty Deleted');
+        return redirect('/faculties')->with('success', 'Employee' . $employee_no . ' Deleted');
     }
 }

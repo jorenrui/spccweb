@@ -1,16 +1,10 @@
 @extends('layouts.app', ['title' => 'Registrar Staff'])
 
-@section('styles')
-<link href="{{ asset('vendor/select2-4.0.10/select2.min.css') }}" rel="stylesheet">
-@endsection
-
 @push('js')
-<script src="{{ asset('vendor/select2-4.0.10/select2.full.min.js') }}"></script>
+<script src="{{ asset('vendor/jquery-mask-plugin-1.14.16/jquery.mask.min.js') }}"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $('.select2').select2();
-
   let intervalFunc = function () {
       let image_path = $('#profile_picture').val().split('\\');
       $('#browse-image').html(image_path[image_path.length - 1]);
@@ -19,136 +13,204 @@ $(document).ready(function() {
   $('#profile_picture').on('click', function () {
       setInterval(intervalFunc, 1);
   });
+
+  $("#btnSubmit").click(function(){
+      $('.input-mask').unmask();
+  });
 });
 </script>
 @endpush
 
 @section('content')
-    @include('layouts.headers.plain')
+    @include('layouts.headers.header', ['title' => 'Add Registrar Staff'])
 
     <div class="container-fluid mt--7">
-
-        <div class="row mt-5">
-            <div class="col-xl-12 mb-5 mb-xl-0">
-                <div class="card shadow">
+        <div class="row">
+            <div class="col-xl-12 order-xl-1">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white border-0">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0">Registrar Staff</h3>
+                            </div>
+                            <div class="col-4 text-right">
+                                <a href="/registrars" class="btn btn-sm btn-outline-secondary">
+                                    Back to list
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-body">
-                      <h2>Add Registrar</h2>
-                      <hr>
-                      <form id="form-post" method="POST" action="{{ action('RegistrarController@store') }}" enctype="multipart/form-data">
-                        @csrf
+                        <form id="form-post" method="POST" action="{{ action('RegistrarController@store') }}" enctype="multipart/form-data" autocomplete="off">
+                            @csrf
 
-                          <div class="row">
-                            <div class="col-12 col-lg-5">
-                              <div class="form-control-label mb-2">
+                            <h6 class="heading-small text-muted mb-4">
                                 Profile Picture
-                              </div>
-                              <div class="form-group">
-                                  <label id="browse-image" for="profile_picture" class="btn btn-outline-default">Choose Profile Picture</label>
-                                  <input type="file" id="profile_picture" name="profile_picture" style="display: none">
-                              </div>
-                            </div>
-                          </div>
+                            </h6>
+                            <div class="pl-lg-4 row">
+                                <div class="col-12 col-lg-5">
+                                  <div class="form-group{{ $errors->has('profile_picture') ? ' has-danger' : '' }}">
+                                        <label id="browse-image" for="profile_picture" class="btn btn-outline-default">Choose Profile Picture</label>
+                                        <input type="file" id="profile_picture" name="profile_picture" style="display: none">
 
-                          <div class="row">
-                            <div class="col-12 col-lg-3 col-md-6">
-                                <label class="form-control-label" for="employee_no">Employee No.*</label>
-                                <input id="employee_no" name="employee_no" class="form-control mb-3" type="text" placeholder="e.g. R-200" required>
+                                        @if ($errors->has('profile_picture'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('profile_picture') }}</strong>
+                                            </span>
+                                        @endif
+                                  </div>
+                                </div>
                             </div>
-                          </div>
 
-                          <div class="row">
-                            <div class="col-12 col-lg-3 col-md-6">
-                              <label class="form-control-label" for="date_employed">Date Employed*</label>
-                              <input id="date_employed" name="date_employed" class="form-control mb-3" type="date" value="{{ date('Y-m-d') }}" required>
-                            </div>
-                          </div>
+                            <h6 class="heading-small text-muted mb-4">
+                                Employee information
+                            </h6>
+                            <div class="pl-lg-4 row">
+                                <div class="form-group{{ $errors->has('employee_no') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="employee_no">Employee No.</label>
+                                    <input type="text" name="employee_no" id="employee_no" class="input-mask form-control form-control-alternative{{ $errors->has('employee_no') ? ' is-invalid' : '' }}" placeholder="e.g. K-200" value="{{ old('employee_no') }}" data-mask="S-000"  data-mask-clearifnotmatch="true" required autofocus>
 
-                          <h3 class="mt-5">Personal Details</h3>
+                                    @if ($errors->has('employee_no'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('employee_no') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group{{ $errors->has('date_employed') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="date_employed">Date Employed</label>
+                                    <input type="date" name="date_employed" id="date_employed" class="form-control form-control-alternative{{ $errors->has('date_employed') ? ' is-invalid' : '' }}" value="{{ old('date_employed') == null ? date('Y-m-d') : old('date_employed')}}" required>
 
-                          <div class="row">
-                            <div class="col-12 col-lg-6 col-md-12">
-                              <label class="form-control-label" for="first_name">First Name*</label>
-                              <input id="first_name" name="first_name" class="form-control mb-3" type="text" placeholder="e.g. Juan" required>
+                                    @if ($errors->has('date_employed'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('date_employed') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
-                          </div>
+                            <h6 class="heading-small text-muted mb-4 mt-3">
+                                Personal information
+                            </h6>
+                            <div class="pl-lg-4 row">
+                                <div class="form-group{{ $errors->has('first_name') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="first_name">First Name</label>
+                                    <input type="text" name="first_name" id="first_name" class="form-control form-control-alternative{{ $errors->has('first_name') ? ' is-invalid' : '' }}" placeholder="e.g. Juan" value="{{ old('first_name') }}" required>
 
-                          <div class="row">
-                            <div class="col-12 col-lg-6 col-md-12">
-                              <label class="form-control-label" for="middle_name">Middle Name</label>
-                              <input id="middle_name" name="middle_name" class="form-control mb-3" type="text" placeholder="e.g. Floresta">
-                            </div>
-                          </div>
+                                    @if ($errors->has('first_name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('first_name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group{{ $errors->has('middle_name') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="middle_name">Middle Name (optional)</label>
+                                    <input type="text" name="middle_name" id="middle_name" class="form-control form-control-alternative{{ $errors->has('middle_name') ? ' is-invalid' : '' }}" placeholder="e.g. Floresta" value="{{ old('middle_name') }}">
 
-                          <div class="row">
-                            <div class="col-12 col-lg-6 col-md-12">
-                              <label class="form-control-label" for="last_name">Last Name*</label>
-                              <input id="last_name" name="last_name" class="form-control mb-3" type="text" placeholder="e.g. Dela Cruz" required>
-                            </div>
-                          </div>
+                                    @if ($errors->has('middle_name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('middle_name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group{{ $errors->has('last_name') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="last_name">Last Name</label>
+                                    <input type="text" name="last_name" id="last_name" class="form-control form-control-alternative{{ $errors->has('last_name') ? ' is-invalid' : '' }}" placeholder="e.g. Dela Cruz" value="{{ old('last_name') }}" required>
 
-                          <div class="row mt-3 pl-3">
-                            <div class="form-control-label pt-1">
-                              Gender*
+                                    @if ($errors->has('last_name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('last_name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="ml-3 custom-control custom-radio mb-3">
-                              <input name="gender" class="custom-control-input" id="gender1" type="radio" value="M">
-                              <label class="custom-control-label" for="gender1">Male</label>
-                            </div>
-                            <div class="ml-3 custom-control custom-radio mb-3">
-                              <input name="gender" class="custom-control-input" id="gender2" type="radio" value="F">
-                              <label class="custom-control-label" for="gender2">Female</label>
-                            </div>
-                            <div class="ml-3 custom-control custom-radio mb-3">
-                              <input name="gender" class="custom-control-input" id="gender3" type="radio" value="" checked>
-                              <label class="custom-control-label" for="gender3">Prefer not to say</label>
-                            </div>
-                          </div>
+                            <div class="pl-lg-4 row">
+                                <div class="form-group{{ $errors->has('birthdate') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="birthdate">Birthdate</label>
+                                    <input type="date" name="birthdate" id="birthdate" class="form-control form-control-alternative{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" value="{{ old('birthdate') }}" required>
 
-                          <div class="row">
-                            <div class="col-12 col-lg-3 col-md-6">
-                                <label class="form-control-label" for="birthdate">Birthdate*</label>
-                                <input id="birthdate" name="birthdate" class="form-control mb-3" type="date" required>
+                                    @if ($errors->has('birthdate'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('birthdate') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group{{ $errors->has('contact_no') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="contact_no">Contact No (optional)</label>
+                                    <input type="text" name="contact_no" id="contact_no" class="input-mask form-control form-control-alternative{{ $errors->has('contact_no') ? ' is-invalid' : '' }}" placeholder="e.g. 09XX XXX XXXX" value="{{ old('contact_no') }}" data-mask="0000-000-0000"  data-mask-clearifnotmatch="true" >
+
+                                    @if ($errors->has('contact_no'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('contact_no') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
-                          </div>
+                            <div class="pl-lg-4 row">
+                                <div class="form-group col row">
+                                    <div class="form-control-label pl-3">
+                                        Gender
+                                    </div>
+                                    <div class="ml-3 custom-control custom-radio mb-3">
+                                        <input name="gender" class="custom-control-input" id="gender1" type="radio" value="M" {{ old('gender') == 'M' ? 'checked' : '' }}>
+                                        <label class="custom-control-label" for="gender1">Male</label>
+                                    </div>
+                                    <div class="ml-3 custom-control custom-radio mb-3">
+                                        <input name="gender" class="custom-control-input" id="gender2" type="radio" value="F" {{ old('gender') == 'F' ? 'checked' : '' }}>
+                                        <label class="custom-control-label" for="gender2">Female</label>
+                                    </div>
+                                    <div class="ml-3 custom-control custom-radio mb-3">
+                                        <input name="gender" class="custom-control-input" id="gender3" type="radio" value="" {{ old('gender') == null ? 'checked' : '' }}>
+                                        <label class="custom-control-label" for="gender3">Prefer not to say</label>
+                                    </div>
 
-                          <h3 class="mt-5">Contact Details</h3>
-
-                          <div class="row">
-                            <div class="col-12 col-lg-6 col-md-12">
-                              <label class="form-control-label" for="address">Address*</label>
-                              <input id="address" name="address" class="form-control mb-3" type="text" placeholder="e.g. 10th Ave, Caloocan City" required>
+                                    @if ($errors->has('gender'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('gender') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
-                          </div>
+                            <div class="pl-lg-4 row">
+                                <div class="form-group{{ $errors->has('address') ? ' has-danger' : '' }} col">
+                                    <label class="form-control-label" for="address">Address (optional)</label>
+                                    <input type="text" name="address" id="address" class="form-control form-control-alternative{{ $errors->has('address') ? ' is-invalid' : '' }}" placeholder="e.g. 10th Avenue, Caloocan" value="{{ old('address') }}">
 
-                          <div class="row">
-                            <div class="col-12 col-lg-6 col-md-12">
-                              <label class="form-control-label" for="email">Email</label>
-                              <input id="email" name="email" class="form-control mb-3" type="email" placeholder="e.g. juandelacruz@gmail.com">
+                                    @if ($errors->has('address'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('address') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
-                          </div>
+                            <h6 class="heading-small text-muted mb-4 mt-3">
+                                Account information
+                            </h6>
+                            <div class="pl-lg-4 row">
+                                <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} col col-lg-6">
+                                    <label class="form-control-label" for="input-email">Email (optional)</label>
+                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="e.g. juandelacruz@gmail.com" value="{{ old('email') }}">
 
-                          <div class="row">
-                            <div class="col-12 col-lg-6 col-md-12">
-                              <label class="form-control-label" for="contact_no">Contact No.</label>
-                              <input id="contact_no" name="contact_no" class="form-control mb-3" type="text" placeholder="e.g. 09XXXXXXXXX">
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
-                          </div>
 
-                          <div class="row mt-5">
-                              <div class="col-12 col-lg-12">
-                                <button type="submit" class="btn btn-outline-info">
-                                  <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
-                                  <span class="btn-inner--text">Add Registrar</span>
-                                </button>
-                                <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Cancel</button>
-                              </div>
-                          </div>
-                      </form>
+                            <div class="pl-lg-4 row mt-4">
+                                <div class="col">
+                                    <button id="btnSubmit" type="submit" class="btn btn-success">
+                                        Add Registrar Staff
+                                    </button>
+                                    <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
-      @include('layouts.footers.auth')
+        @include('layouts.footers.auth')
     </div>
 @endsection
