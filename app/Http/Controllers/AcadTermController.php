@@ -57,7 +57,7 @@ class AcadTermController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'sy' => 'required',
+            'sy' => 'required|min:9|max:9',
             'semester' => 'required'
         ]);
 
@@ -116,7 +116,8 @@ class AcadTermController extends Controller
         $acadTerm->finals_id = $finals_id;
         $acadTerm->save();
 
-        return redirect('/acad_terms')->with('success', $acadTerm->getAcadTerm() . ' Academic Term Created');
+        return redirect('/acad_terms')
+                ->with('success', $acadTerm->getAcadTerm() . ' Academic Term Created');
     }
 
     /**
@@ -142,7 +143,7 @@ class AcadTermController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'sy' => 'required',
+            'sy' => 'required|min:9|max:9',
             'semester' => 'required'
         ]);
 
@@ -228,7 +229,8 @@ class AcadTermController extends Controller
 
         $acadTerm->save();
 
-        return redirect('/acad_terms')->with('success', $acadTerm->getAcadTerm() . ' Academic Term Updated');
+        return redirect('/acad_terms')
+                ->with('success', $acadTerm->getAcadTerm() . ' Academic Term Updated');
     }
 
     /**

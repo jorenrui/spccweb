@@ -1,147 +1,171 @@
 @extends('layouts.app', ['title' => 'Examination Period'])
 
 @push('js')
-  <script src="{{ asset('argon/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('argon/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('vendor/jquery-mask-plugin-1.14.16/jquery.mask.min.js') }}"></script>
 @endpush
 
 @section('content')
-    @include('layouts.headers.plain')
+    @include('layouts.headers.header', ['title' => 'Add Academic Term'])
 
     <div class="container-fluid mt--7">
-
-        <div class="row mt-5">
-            <div class="col-xl-12 mb-5 mb-xl-0">
-                <div class="card shadow">
+        <div class="row">
+            <div class="col-xl-12 order-xl-1">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white border-0">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0">Academic Term</h3>
+                            </div>
+                            <div class="col-4 text-right">
+                                <a href="/acad_terms" class="btn btn-sm btn-outline-secondary">
+                                    Back to list
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-body">
-                      <h2>Add Academic Term</h2>
-                      <hr>
-                      <form id="form-post" method="POST" action="{{ action('AcadTermController@store') }}">
-                          @csrf
+                        <form id="form-post" method="POST" action="{{ action('AcadTermController@store') }}" autocomplete="off">
+                            @csrf
 
-                          <div class="row">
-                            <div class="col-12 col-lg-3 col-md-6">
-                                <label class="form-control-label" for="sy">School Year*</label>
-                                <input id="sy" name="sy" class="form-control mb-3" type="text" placeholder="e.g. 2019-2020" required>
-                            </div>
-                            <div class="col-12 col-lg-3 col-md-6">
-                                <label class="form-control-label" for="semester">Semester*</label>
-                                <select id="semester" name="semester" class="form-control m-b" required>
-                                    <option value="01" selected>First Semester</option>
-                                    <option value="02">Second Semester</option>
-                                </select>
-                            </div>
-                          </div>
+                            <div class="pl-lg-4 row">
+                                <div class="form-group{{ $errors->has('sy') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="sy">School Year</label>
+                                    <input type="text" name="sy" id="sy" class="form-control form-control-alternative{{ $errors->has('sy') ? ' is-invalid' : '' }}" placeholder="e.g. 2019-2020" value="{{ old('sy') }}" data-mask="0000-0000"  data-mask-clearifnotmatch="true" required autofocus>
 
-                          <h3 class="mt-5">Examination Period</h3>
-
-                          <!-- Prelims Examination -->
-                          <div class="row mt-4">
-                            <div class="col-12">
-                              <h4>Prelims Examination</h4>
-                            </div>
-
-                            <div class="row col-lg-7 col-md-10 col-sm-12 input-daterange datepicker align-items-center">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="input-group ">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                            </div>
-                                            <input id="prelims_start_date" name="prelims_start_date" class="form-control" type="text" placeholder="Start Date">
-                                        </div>
-                                    </div>
+                                    @if ($errors->has('sy'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('sy') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                            </div>
-                                            <input id="prelims_end_date" name="prelims_end_date" class="form-control" type="text" placeholder="End Date">
-                                        </div>
-                                    </div>
+                                <div class="col col-lg-4">
+                                    <label class="form-control-label" for="semester">
+                                        Semester
+                                    </label>
+                                    <select id="semester" name="semester" class="form-control form-control-alternative m-b" required>
+                                        <option value="01" {{ old('semester') == 1 ? 'selected' : '' }}>First Semester</option>
+                                        <option value="02" {{ old('semester') == 2 ? 'selected' : '' }}>Second Semester</option>
+                                    </select>
                                 </div>
                             </div>
-                          </div>
-                          <!-- end Prelims Examination -->
-
-                          <!-- Midterms Examination -->
-                          <div class="row">
-                            <div class="col-12">
-                              <h4>Midterms Examination</h4>
-                            </div>
-
-                            <div class="row col-lg-7 col-md-10 col-sm-12 input-daterange datepicker align-items-center">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="input-group ">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                            </div>
-                                            <input id="midterms_start_date" name="midterms_start_date" class="form-control" type="text" placeholder="Start Date">
+                            <h6 class="heading-small text-muted mb-4 mt-3">
+                                Examination Period
+                            </h6>
+                            <div class="pl-lg-4 row input-daterange datepicker">
+                                <div class="form-group{{ $errors->has('prelims_start_date') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="prelims_start_date">
+                                        Prelims Examination
+                                    </label>
+                                    <div class="input-group ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                         </div>
+                                        <input type="text" name="prelims_start_date" id="prelims_start_date" class="form-control form-control{{ $errors->has('prelims_start_date') ? ' is-invalid' : '' }}" placeholder="Start Date" value="{{ old('prelims_start_date') }}">
                                     </div>
+
+                                    @if ($errors->has('prelims_start_date'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('prelims_start_date') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                            </div>
-                                            <input id="midterms_end_date" name="midterms_end_date" class="form-control" type="text" placeholder="End Date">
+                                <div class="form-group{{ $errors->has('prelims_end_date') ? ' has-danger' : '' }} col-lg-4 mt-4 pt-2">
+                                    <div class="input-group ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                         </div>
+                                        <input type="text" name="prelims_end_date" id="prelims_end_date" class="form-control form-control{{ $errors->has('prelims_end_date') ? ' is-invalid' : '' }}" placeholder="End Date" value="{{ old('prelims_end_date') }}">
                                     </div>
-                                </div>
-                            </div>
-                          </div>
-                          <!-- end Midterms Examination -->
 
-                          <!-- Finals Examination -->
-                          <div class="row">
-                            <div class="col-12">
-                              <h4>Finals Examination</h4>
-                            </div>
-
-                            <div class="row col-lg-7 col-md-10 col-sm-12 input-daterange datepicker align-items-center">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="input-group ">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                            </div>
-                                            <input id="finals_start_date" name="finals_start_date" class="form-control" type="text" placeholder="Start Date">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                            </div>
-                                            <input id="finals_end_date" name="finals_end_date" class="form-control" type="text" placeholder="End Date">
-                                        </div>
-                                    </div>
+                                    @if ($errors->has('prelims_end_date'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('prelims_end_date') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
-                          </div>
-                          <!-- end Finals Examination -->
+                            <div class="pl-lg-4 row input-daterange datepicker">
+                                <div class="form-group{{ $errors->has('midterms_start_date') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="midterms_start_date">
+                                        Midterms Examination
+                                    </label>
+                                    <div class="input-group ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input type="text" name="midterms_start_date" id="midterms_start_date" class="form-control form-control{{ $errors->has('midterms_start_date') ? ' is-invalid' : '' }}" placeholder="Start Date" value="{{ old('midterms_start_date') }}">
+                                    </div>
 
-                          <div class="row mt-5">
-                              <div class="col-12 col-lg-12">
-                                <button type="submit" class="btn btn-outline-info">
-                                  <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
-                                  <span class="btn-inner--text">Add Academic Term</span>
-                                </button>
-                                <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Cancel</button>
-                              </div>
-                          </div>
-                      </form>
+                                    @if ($errors->has('midterms_start_date'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('midterms_start_date') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group{{ $errors->has('midterms_end_date') ? ' has-danger' : '' }} col-lg-4 mt-4 pt-2">
+                                    <div class="input-group ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input type="text" name="midterms_end_date" id="midterms_end_date" class="form-control form-control{{ $errors->has('midterms_end_date') ? ' is-invalid' : '' }}" placeholder="End Date" value="{{ old('midterms_end_date') }}">
+                                    </div>
+
+                                    @if ($errors->has('midterms_end_date'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('midterms_end_date') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="pl-lg-4 row input-daterange datepicker">
+                                <div class="form-group{{ $errors->has('finals_start_date') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="finals_start_date">
+                                        Finals Examination
+                                    </label>
+                                    <div class="input-group ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input type="text" name="finals_start_date" id="finals_start_date" class="form-control form-control{{ $errors->has('finals_start_date') ? ' is-invalid' : '' }}" placeholder="Start Date" value="{{ old('finals_start_date') }}">
+                                    </div>
+
+                                    @if ($errors->has('finals_start_date'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('finals_start_date') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group{{ $errors->has('finals_end_date') ? ' has-danger' : '' }} col-lg-4 mt-4 pt-2">
+                                    <div class="input-group ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                        <input type="text" name="finals_end_date" id="finals_end_date" class="form-control form-control{{ $errors->has('finals_end_date') ? ' is-invalid' : '' }}" placeholder="End Date" value="{{ old('finals_end_date') }}">
+                                    </div>
+
+                                    @if ($errors->has('finals_end_date'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('finals_end_date') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="pl-lg-4 row mt-4">
+                                <div class="col">
+                                    <button id="btnSubmit" type="submit" class="btn btn-success">
+                                        Add Academic Term
+                                    </button>
+                                    <button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
-      @include('layouts.footers.auth')
+        @include('layouts.footers.auth')
     </div>
 @endsection
