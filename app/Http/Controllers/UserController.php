@@ -12,6 +12,7 @@ use App\Models\Setting;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -506,7 +507,6 @@ class UserController extends Controller
         $student->date_graduated = $request->input('date_graduated');
         $student->curriculum_id = $request->input('curriculum_id');
         $student->acad_term_admitted_id = $request->input('acad_term_admitted_id');
-        $student->user_id = $user->id;
         $student->save();
 
         return redirect()->route('user.index')

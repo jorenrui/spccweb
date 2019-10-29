@@ -59,7 +59,7 @@ $(document).ready(function() {
                                 <div class="col-12 col-lg-5">
                                   <div class="form-group{{ $errors->has('profile_picture') ? ' has-danger' : '' }}">
                                         <label id="browse-image" for="profile_picture" class="btn btn-outline-default">Choose Profile Picture</label>
-                                        <input type="file" id="profile_picture" name="profile_picture" style="display: none" value="{{ old('profile_picture', $user->profile_picture) }}">
+                                        <input type="file" id="profile_picture" name="profile_picture" style="display: none">
 
                                         @if ($errors->has('profile_picture'))
                                             <span class="invalid-feedback" role="alert">
@@ -133,7 +133,7 @@ $(document).ready(function() {
                                   <label class="custom-control-label" for="student_type2">Transferee</label>
                                 </div>
                                 <div class="ml-3 custom-control custom-radio mb-3">
-                                  <input name="student_type" class="custom-control-input" id="student_type2" type="radio" value="Irregular" {{ old('student_type', $user->student->student_type) == 'Irregular' ? 'checked' : '' }}>
+                                  <input name="student_type" class="custom-control-input" id="student_type3" type="radio" value="Irregular" {{ old('student_type', $user->student->student_type) == 'Irregular' ? 'checked' : '' }}>
                                   <label class="custom-control-label" for="student_type2">Irregular</label>
                                 </div>
                               </div>

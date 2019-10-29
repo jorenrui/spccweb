@@ -45,7 +45,7 @@ $(document).ready(function() {
                               </div>
                               <div class="form-group">
                                   <label id="browse-image" for="profile_picture" class="btn btn-outline-default">Choose Profile Picture</label>
-                                  <input type="file" id="profile_picture" name="profile_picture" style="display: none" value="{{ $user->profile_picture }}">
+                                  <input type="file" id="profile_picture" name="profile_picture" style="display: none">
                               </div>
                             </div>
                           </div>

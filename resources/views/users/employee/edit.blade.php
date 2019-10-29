@@ -52,7 +52,7 @@ $(document).ready(function() {
                                 <div class="col-12 col-lg-5">
                                   <div class="form-group{{ $errors->has('profile_picture') ? ' has-danger' : '' }}">
                                         <label id="browse-image" for="profile_picture" class="btn btn-outline-default">Choose Profile Picture</label>
-                                        <input type="file" id="profile_picture" name="profile_picture" style="display: none" value="{{ old('profile_picture', $user->profile_picture) }}">
+                                        <input type="file" id="profile_picture" name="profile_picture" style="display: none">
 
                                         @if ($errors->has('profile_picture'))
                                             <span class="invalid-feedback" role="alert">
