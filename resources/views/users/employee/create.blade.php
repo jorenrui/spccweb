@@ -1,16 +1,10 @@
 @extends('layouts.app', ['title' => 'User Management'])
 
-@section('styles')
-<link href="{{ asset('vendor/select2-4.0.10/select2.min.css') }}" rel="stylesheet">
-@endsection
-
 @push('js')
-<script src="{{ asset('vendor/select2-4.0.10/select2.full.min.js') }}"></script>
+<script src="{{ asset('vendor/jquery-mask-plugin-1.14.16/jquery.mask.min.js') }}"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $('.select2').select2();
-
   let intervalFunc = function () {
       let image_path = $('#profile_picture').val().split('\\');
       $('#browse-image').html(image_path[image_path.length - 1]);
@@ -19,12 +13,16 @@ $(document).ready(function() {
   $('#profile_picture').on('click', function () {
       setInterval(intervalFunc, 1);
   });
+
+  $("#btnSubmit").click(function(){
+      $('.input-mask').unmask();
+  });
 });
 </script>
 @endpush
 
 @section('content')
-    @include('users.partials.header', ['title' => 'Add Student'])
+    @include('users.partials.header', ['title' => 'Add Employee'])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -43,7 +41,7 @@ $(document).ready(function() {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="form-post" method="POST" action="{{ action('UserController@storeStudent') }}" enctype="multipart/form-data" autocomplete="off">
+                        <form id="form-post" method="POST" action="{{ action('UserController@storeEmployee') }}" enctype="multipart/form-data" autocomplete="off">
                             @csrf
 
                             <h6 class="heading-small text-muted mb-4">
@@ -65,70 +63,43 @@ $(document).ready(function() {
                             </div>
 
                             <h6 class="heading-small text-muted mb-4">
-                                Student information
+                                Employee information
                             </h6>
                             <div class="pl-lg-4 row">
-                                <div class="form-group{{ $errors->has('student_no') ? ' has-danger' : '' }} col-lg-4">
-                                    <label class="form-control-label" for="student_no">Student No.</label>
-                                    <input type="text" name="student_no" id="student_no" class="form-control form-control-alternative{{ $errors->has('student_no') ? ' is-invalid' : '' }}" placeholder="e.g. 041730001" value="{{ old('student_no') }}" required autofocus>
+                                <div class="form-group{{ $errors->has('employee_no') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="employee_no">Employee No.</label>
+                                    <input type="text" name="employee_no" id="employee_no" class="input-mask form-control form-control-alternative{{ $errors->has('employee_no') ? ' is-invalid' : '' }}" placeholder="e.g. K-200" value="{{ old('employee_no') }}" data-mask="S-000"  data-mask-clearifnotmatch="true" required autofocus>
 
-                                    @if ($errors->has('student_no'))
+                                    @if ($errors->has('employee_no'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('student_no') }}</strong>
+                                            <strong>{{ $errors->first('employee_no') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group{{ $errors->has('date_employed') ? ' has-danger' : '' }} col-lg-4">
+                                    <label class="form-control-label" for="date_employed">Date Employed</label>
+                                    <input type="date" name="date_employed" id="date_employed" class="form-control form-control-alternative{{ $errors->has('date_employed') ? ' is-invalid' : '' }}" value="{{ old('date_employed') == null ? date('Y-m-d') : old('date_employed')}}" required>
+
+                                    @if ($errors->has('date_employed'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('date_employed') }}</strong>
                                         </span>
                                     @endif
                                 </div>
                             </div>
                             <div class="pl-lg-4 row">
-                                <div class="col-12 col-lg-4 col-md-6">
-                                  <label class="form-control-label" for="acad_term_admitted_id">Academic Term Admitted</label>
-                                  <select id="acad_term_admitted_id" name="acad_term_admitted_id" class="select2 form-control m-b" required>
-                                    @foreach ($acad_terms as $acad_term)
-                                      @if($acad_term->acad_term_id == $cur_acad_term)
-                                        <option value="{{ $acad_term->acad_term_id }}" selected>
-                                          {{ $acad_term->getAcadTerm() }}
-                                        </option>
-                                      @else
-                                        <option value="{{ $acad_term->acad_term_id }}">
-                                          {{ $acad_term->getAcadTerm() }}
-                                        </option>
-                                      @endif
-                                    @endforeach
-                                  </select>
-                                </div>
-                                <div class="col-12 col-lg-3 col-md-6">
-                                  <label class="form-control-label" for="curriculum_id">Curriculum</label>
-                                  <select id="curriculum_id" name="curriculum_id" class="select2 form-control m-b" required>
-                                    @foreach ($curriculums as $curriculum)
-                                      @if($curriculum->curriculum_id == $cur_curriculum_id)
-                                        <option value="{{ $curriculum->curriculum_id }}" selected>
-                                          {{ $curriculum->curriculum_id }}
-                                        </option>
-                                      @else
-                                        <option value="{{ $curriculum->curriculum_id }}">
-                                          {{ $curriculum->curriculum_id }}
-                                        </option>
-                                      @endif
-                                    @endforeach
+                                <div class="col-12 col-lg-4">
+                                  <label class="form-control-label" for="employee_type">
+                                      Employee Type
+                                  </label>
+                                  <select id="employee_type" name="employee_type" class="form-control form-control-alternative m-b" required>
+                                    <option value="faculty" {{ old('employee_type') == null ? 'selected' : '' }}>Faculty</option>
+                                    <option value="registrar" {{ old('employee_type') == 'registrar' ? 'selected' : '' }}>Registrar</option>
+                                    <option value="head registrar" {{ old('employee_type') == 'head registrar' ? 'selected' : '' }}>Head Registrar</option>
+                                    <option value="admin" {{ old('employee_type') == 'admin' ? 'selected' : '' }}>Admin</option>
                                   </select>
                                 </div>
                             </div>
-                            <div class="pl-lg-4 row mt-4">
-                              <div class="form-group col row">
-                                <div class="ml-3 form-control-label pt-1">
-                                  Student Type
-                                </div>
-                                <div class="ml-3 custom-control custom-radio mb-3">
-                                  <input name="student_type" class="custom-control-input" id="student_type1" type="radio" value="Regular" checked>
-                                  <label class="custom-control-label" for="student_type1">Regular</label>
-                                </div>
-                                <div class="ml-3 custom-control custom-radio mb-3">
-                                  <input name="student_type" class="custom-control-input" id="student_type2" type="radio" value="Transferee">
-                                  <label class="custom-control-label" for="student_type2">Transferee</label>
-                                </div>
-                              </div>
-                            </div>
-
                             <h6 class="heading-small text-muted mb-4 mt-3">
                                 Personal information
                             </h6>
@@ -167,7 +138,7 @@ $(document).ready(function() {
                             <div class="pl-lg-4 row">
                                 <div class="form-group{{ $errors->has('birthdate') ? ' has-danger' : '' }} col-lg-4">
                                     <label class="form-control-label" for="birthdate">Birthdate</label>
-                                    <input type="date" name="birthdate" id="birthdate" class="form-control form-control-alternative{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" placeholder="e.g. K200" value="{{ old('birthdate') }}" required>
+                                    <input type="date" name="birthdate" id="birthdate" class="form-control form-control-alternative{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" value="{{ old('birthdate') }}" required>
 
                                     @if ($errors->has('birthdate'))
                                         <span class="invalid-feedback" role="alert">
@@ -177,7 +148,7 @@ $(document).ready(function() {
                                 </div>
                                 <div class="form-group{{ $errors->has('contact_no') ? ' has-danger' : '' }} col-lg-4">
                                     <label class="form-control-label" for="contact_no">Contact No (optional)</label>
-                                    <input type="text" name="contact_no" id="contact_no" class="form-control form-control-alternative{{ $errors->has('contact_no') ? ' is-invalid' : '' }}" placeholder="e.g. 09XXXXXXXXX" value="{{ old('contact_no') }}">
+                                    <input type="text" name="contact_no" id="contact_no" class="input-mask form-control form-control-alternative{{ $errors->has('contact_no') ? ' is-invalid' : '' }}" placeholder="e.g. 09XX XXX XXXX" value="{{ old('contact_no') }}" data-mask="0000-000-0000"  data-mask-clearifnotmatch="true" >
 
                                     @if ($errors->has('contact_no'))
                                         <span class="invalid-feedback" role="alert">
@@ -192,15 +163,15 @@ $(document).ready(function() {
                                         Gender
                                     </div>
                                     <div class="ml-3 custom-control custom-radio mb-3">
-                                        <input name="gender" class="custom-control-input" id="gender1" type="radio" value="M">
+                                        <input name="gender" class="custom-control-input" id="gender1" type="radio" value="M" {{ old('gender') == 'M' ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="gender1">Male</label>
                                     </div>
                                     <div class="ml-3 custom-control custom-radio mb-3">
-                                        <input name="gender" class="custom-control-input" id="gender2" type="radio" value="F">
+                                        <input name="gender" class="custom-control-input" id="gender2" type="radio" value="F" {{ old('gender') == 'F' ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="gender2">Female</label>
                                     </div>
                                     <div class="ml-3 custom-control custom-radio mb-3">
-                                        <input name="gender" class="custom-control-input" id="gender3" type="radio" value="" checked>
+                                        <input name="gender" class="custom-control-input" id="gender3" type="radio" value="" {{ old('gender') == null ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="gender3">Prefer not to say</label>
                                     </div>
 
@@ -219,75 +190,6 @@ $(document).ready(function() {
                                     @if ($errors->has('address'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('address') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <h6 class="heading-small text-muted mb-4 mt-3">
-                                Educational Background
-                            </h6>
-                            <div class="pl-lg-4 row">
-                                <div class="form-group{{ $errors->has('primary') ? ' has-danger' : '' }} col col-md-8">
-                                    <label class="form-control-label" for="primary">Primary</label>
-                                    <input type="text" name="primary" id="primary" class="form-control form-control-alternative{{ $errors->has('primary') ? ' is-invalid' : '' }}" placeholder="e.g. Antipolo Elementary School" value="{{ old('primary') }}" required>
-
-                                    @if ($errors->has('primary'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('primary') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('primary_sy') ? ' has-danger' : '' }} col col-md-4">
-                                    <label class="form-control-label" for="primary_sy">School Year</label>
-                                    <input type="text" name="primary_sy" id="primary_sy" class="form-control form-control-alternative{{ $errors->has('primary_sy') ? ' is-invalid' : '' }}" placeholder="e.g. 2000-2004" value="{{ old('primary_sy') }}" required>
-
-                                    @if ($errors->has('primary_sy'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('primary_sy') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="pl-lg-4 row">
-                                <div class="form-group{{ $errors->has('intermediate') ? ' has-danger' : '' }} col col-md-8">
-                                    <label class="form-control-label" for="intermediate">Intermediate</label>
-                                    <input type="text" name="intermediate" id="intermediate" class="form-control form-control-alternative{{ $errors->has('intermediate') ? ' is-invalid' : '' }}" placeholder="e.g. Antipolo Elementary School" value="{{ old('intermediate') }}" required>
-
-                                    @if ($errors->has('intermediate'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('intermediate') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('intermediate_sy') ? ' has-danger' : '' }} col col-md-4">
-                                    <label class="form-control-label" for="intermediate_sy">School Year</label>
-                                    <input type="text" name="intermediate_sy" id="intermediate_sy" class="form-control form-control-alternative{{ $errors->has('intermediate_sy') ? ' is-invalid' : '' }}" placeholder="e.g. 2004-2006" value="{{ old('intermediate_sy') }}" required>
-
-                                    @if ($errors->has('intermediate_sy'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('intermediate_sy') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="pl-lg-4 row">
-                                <div class="form-group{{ $errors->has('secondary') ? ' has-danger' : '' }} col col-md-8">
-                                    <label class="form-control-label" for="secondary">Secondary</label>
-                                    <input type="text" name="secondary" id="secondary" class="form-control form-control-alternative{{ $errors->has('secondary') ? ' is-invalid' : '' }}" placeholder="e.g. Lakandula High School" value="{{ old('intermediate') }}" required>
-
-                                    @if ($errors->has('secondary'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('secondary') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group{{ $errors->has('secondary_sy') ? ' has-danger' : '' }} col col-md-4">
-                                    <label class="form-control-label" for="secondary_sy">School Year</label>
-                                    <input type="text" name="secondary_sy" id="secondary_sy" class="form-control form-control-alternative{{ $errors->has('secondary_sy') ? ' is-invalid' : '' }}" placeholder="e.g. 2006-2010" value="{{ old('secondary_sy') }}" required>
-
-                                    @if ($errors->has('secondary_sy'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('secondary_sy') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -328,8 +230,8 @@ $(document).ready(function() {
 
                             <div class="pl-lg-4 row">
                                 <div class="col">
-                                    <button type="submit" class="btn btn-success mt-4">
-                                        Add Student
+                                    <button id="btnSubmit" type="submit" class="btn btn-success mt-4">
+                                        Add Employee
                                     </button>
                                 </div>
                             </div>
