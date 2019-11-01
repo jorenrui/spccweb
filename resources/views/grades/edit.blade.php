@@ -71,8 +71,20 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                 </tr>
                             </thead>
                             <tbody>
-                              <?php $id = 0; ?>
-                              @foreach ($grades as $grade)
+                            <?php $id = 0; ?>
+                            @foreach ($grades as $grade)
+
+                              @if($grade->status == 'DRP' || $grade->status == 'UD')
+                                <tr>
+                                    <td class="text-center" scope="row">
+                                      {{ $grade->student->getStudentNo() }}
+                                    </td>
+                                    <td colspan="6">
+                                      {{ $grade->student->user->getName() }}
+                                      <span class="badge badge-primary ml-3">{{ $grade->getStatus() }}</span>
+                                    </td>
+                                </tr>
+                              @else
                                 <input name="grade_id[]" type="text" value="{{ $grade->grade_id }}" style="display:none">
                                 <tr>
                                     <td class="text-center" scope="row">
@@ -110,7 +122,9 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     </td>
                                 </tr>
                                 <?php $id++ ?>
-                              @endforeach
+                              @endif
+
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

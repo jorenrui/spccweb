@@ -245,6 +245,21 @@ class SClassController extends Controller
         return redirect('/classes/' . $sclass->class_id)->with('success', 'Class Updated');
     }
 
+    public function dropStudent($id, $grade_id)
+    {
+        $grade = Grade::find($grade_id);
+        $grade->prelims = null;
+        $grade->midterms = null;
+        $grade->finals = null;
+        $grade->status = 'DRP';
+        $grade->save();
+
+        if($grade->sclass->section == null)
+            return redirect('/classes/' . $id)->with('success', $grade->student->getStudentNo() . ' ' . $grade->student->user->getName() . ' has been dropped to ' . $grade->sclass->course_code . ' class.');
+
+        return redirect('/classes/' . $id)->with('success', $grade->student->getStudentNo() . ' ' . $grade->student->user->getName() . ' has been dropped to ' . $grade->sclass->course_code . ' ' . $grade->sclass->section . ' class.');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

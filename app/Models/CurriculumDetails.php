@@ -127,11 +127,14 @@ class CurriculumDetails extends Model
         return null;
     }
 
-    public function getGrade($grades, $user)
+    public function getGrade($grades, $user, $isNoDropped = false)
     {
         foreach ($grades as $grade) {
             if ($grade->curriculum_details_id == $this->curriculum_details_id) {
-                return $grade->getGrade();
+                if( $isNoDropped && $grade->getGrade() != 'DRP' && $grade->getGrade() != 'UD' )
+                    return $grade->getGrade();
+                else if ( !$isNoDropped )
+                    return $grade->getGrade();
             }
         }
 
@@ -146,7 +149,10 @@ class CurriculumDetails extends Model
         foreach ($cschools as $cschool) {
             foreach ($cschool->creditedCourses as $ccourse) {
                 if($ccourse->curriculum_details_id == $this->curriculum_details_id) {
-                    return $ccourse->is_inc ? 'INC' : $ccourse->getGrade();
+                    if($isNoDropped && $ccourse->getGrade() != 'DRP' && $ccourse->getGrade() != 'UD')
+                        return $ccourse->getGrade();
+                    else if ( !$isNoDropped )
+                        return $ccourse->getGrade();
                 }
             }
         }

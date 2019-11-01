@@ -25,7 +25,7 @@
 
                 <div class="card-header border-0">
                     <div class="row align-items-center">
-                        <div class="col">
+                        <div class="col col-md-8">
                           <h3 class="mb-0">
                             @role('admin|registrar')
                               Student's Grades
@@ -115,18 +115,18 @@
                               <td class="text-center">{{ $grade->getGrade() }}</td>
                               <td class="text-center">{{ $grade->getCompletion() }}</td>
                               <td class="text-center">{{ $grade->note }}</td>
-                              <td class="text-center">
+                              <td>
                                 @if($grade->getRemarks() == 'PASSED')
                                   <span class="badge badge-dot mr-4">
                                     <i class="bg-success"></i> {{ $grade->getRemarks() }}
                                   </span>
-                                @elseif($grade->getRemarks() == 'INCOMPLETE')
-                                  <span class="badge badge-dot mr-4">
-                                    <i class="bg-warning"></i> {{ $grade->getRemarks() }}
-                                  </span>
                                 @elseif($grade->getRemarks() == 'FAILED')
                                   <span class="badge badge-dot mr-4">
                                     <i class="bg-danger"></i> {{ $grade->getRemarks() }}
+                                  </span>
+                                @else
+                                  <span class="badge badge-dot mr-4">
+                                    <i class="bg-warning"></i> {{ $grade->getRemarks() }}
                                   </span>
                                 @endif
                               </td>

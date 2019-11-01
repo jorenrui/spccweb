@@ -89,6 +89,26 @@ class FacultyAccessController extends Controller
             ->with('selected_acad_term', $selected_acad_term);
     }
 
+    public function unofficialDropStudent($id)
+    {
+        $grade = Grade::find($id);
+        $grade->prelims = null;
+        $grade->midterms = null;
+        $grade->finals = null;
+        $grade->status = 'UD';
+        $grade->save();
+
+        if($grade->sclass->section == null)
+            $message = $grade->student->getStudentNo() . ' ' . $grade->student->user->getName() . ' has been unoffically dropped to ' . $grade->sclass->course_code . ' class.';
+        else
+            $message = $grade->student->getStudentNo() . ' ' . $grade->student->user->getName() . ' has been unoffically dropped to ' . $grade->sclass->course_code . ' ' . $grade->sclass->section . ' class.';
+
+        if(auth()->user()->hasRole('faculty'))
+            return redirect('/faculty/load/' . $grade->sclass->class_id)->with('success', $message);
+
+        return redirect('/faculties/' . $grade->sclass->instructor->user->id . '/load/' . $grade->sclass->class_id)->with('success', $message);
+    }
+
     /**
      * Display the specified resource.
      *

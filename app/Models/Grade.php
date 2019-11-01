@@ -64,11 +64,29 @@ class Grade extends Model
             return '5.00';
     }
 
+    public function getStatus()
+    {
+        $status = $this->attributes['status'];
+        $is_inc = $this->attributes['is_inc'];
+
+        if ($status == 'DRP')
+            return 'Dropped';
+        else if ($status == 'UD')
+            return 'Unofficially Dropped';
+        else if ($is_inc)
+            return 'Incomplete';
+
+        return 'Active';
+    }
+
     public function getGrade()
     {
         $is_inc = $this->attributes['is_inc'];
+        $note = $this->attributes['note'];
 
-        if ($is_inc)
+        if ($is_inc && $note == 'Final Exam')
+            return 'NFE';
+        else if ($is_inc)
             return 'INC';
 
         $average = $this->getAverage();
@@ -79,8 +97,9 @@ class Grade extends Model
     public function getCompletion()
     {
         $is_inc = $this->attributes['is_inc'];
+        $status = $this->attributes['status'];
 
-        if(!$is_inc)
+        if( !$is_inc )
             return null;
 
         $average = $this->getAverage();
@@ -90,11 +109,15 @@ class Grade extends Model
 
     public function getRemarks()
     {
+        $status = $this->attributes['status'];
         $is_inc = $this->attributes['is_inc'];
         $average = $this->getAverage();
 
+        if($status == 'DRP' || $status == 'UD')
+            return strtoupper($this->getStatus());
+
         if($is_inc && $average == null)
-                return 'INCOMPLETE';
+            return 'INCOMPLETE';
 
         if($average == null)
             return null;

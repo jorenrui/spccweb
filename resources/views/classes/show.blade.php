@@ -153,35 +153,49 @@
                   <table class="table align-items-center table-flush">
                       <thead class="thead-light">
                           <tr>
-                              <th scope="col"></th>
-                              <th scope="col" class="text-center">Student</th>
+                              <th scope="col">Student</th>
                               <th scope="col" class="text-center">Credited Course</th>
+                              <th scope="col"></th>
                           </tr>
                       </thead>
                       <tbody>
                         @foreach ($grades as $grade)
                           <tr>
-                              <td class="text-left" scope="row">
-
-                                <form action="{{ action('GradeController@destroy', $grade->grade_id) }}" method="post" style="display:inline">
-                                    @csrf
-                                    @method('DELETE')
-
-                                <button type="button" class="btn btn-outline-warning btn-sm" onclick="confirm('Are you sure you want to drop {{ $grade->student->user->getName() }} in {{ $sclass->course_code }} class?') ? this.parentElement.submit() : ''">
-                                        Drop
-                                    </button>
-                                </form>
-                              </td>
-                              <td>
+                              <td scope="row">
                                 <a href="/students/{{ $grade->student->user->id }}">
                                   {{ $grade->student->getStudentNo() }}
-                                </a> |
+                                </a>
                                 {{ $grade->student->user->getName() }}
                               </td>
                               <td class="text-center">
                                 <a href="/curriculums/{{ $grade->curriculumDetails->curriculum_id }}">
                                   {{ $grade->curriculumDetails->curriculum_id }} {{ $grade->curriculumDetails->course->course_code}}
                                 </a>
+                              </td>
+                              <td class="text-right">
+                              @if($grade->status != 'Active')
+                                <span class="badge badge-primary">{{ $grade->getStatus() }}</span>
+                              @else
+                                <div class="dropdown">
+                                  <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <i class="fas fa-ellipsis-v"></i>
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a href="/classes/{{ $sclass->class_id }}/drop/{{ $grade->grade_id }}" class="dropdown-item" onclick="return confirm('Are you sure you want to drop {{ $grade->student->user->getName() }} in {{ $sclass->course_code }} class?')">
+                                        Drop
+                                    </a>
+
+                                    <form action="{{ action('GradeController@destroy', $grade->grade_id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to remove {{ $grade->student->user->getName() }} in {{ $sclass->course_code }} class?') ? this.parentElement.submit() : ''">
+                                            Remove
+                                        </button>
+                                    </form>
+                                  </div>
+                                </div>
+                              @endif
                               </td>
                           </tr>
                         @endforeach

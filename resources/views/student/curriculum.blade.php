@@ -9,7 +9,7 @@
         <div class="col-xl-12 mb-5 mb-xl-0">
           <div class="card shadow">
             <div class="card-body row align-items-center">
-              <div class="col">
+              <div class="col col-md-8">
                 <h2 class="mb-0">{{ $user->student->getStudentNo() }} {{ $user->getName()}}</h2>
                 <p class="text-muted text-sm">{{ $degree }}</p>
                 <p>
@@ -83,7 +83,7 @@
                                     @endforeach
                                   </td>
                                   <td class="text-center">
-                                    {{ $cur_detail->getGrade($grades, $user) }}
+                                    {{ $cur_detail->getGrade($grades, $user, true) }}
                                   </td>
                                   <td class="text-center">
                                     {{ $cur_detail->getCompletion($grades, $user) }}

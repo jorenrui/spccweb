@@ -236,6 +236,9 @@
                                 <th scope="col" class="text-center">Completion</th>
                                 <th scope="col" class="text-center">Remarks</th>
                                 <th scope="col" class="text-center">Note</th>
+                                @if($sclass->acad_term_id >= $cur_acad_term)
+                                <th scope="col"></th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -251,24 +254,41 @@
                                 <td class="text-center">{{ $grade->getAverage() }}</td>
                                 <td class="text-center">{{ $grade->getGrade() }}</td>
                                 <td class="text-center">{{ $grade->getCompletion() }}</td>
-                                <td class="text-center">
+                                <td>
                                 @if($grade->getRemarks() == 'PASSED')
                                   <span class="badge badge-dot mr-4">
                                     <i class="bg-success"></i> {{ $grade->getRemarks() }}
                                   </span>
-                                @elseif($grade->getRemarks() == 'INCOMPLETE')
-                                  <span class="badge badge-dot mr-4">
-                                    <i class="bg-warning"></i> {{ $grade->getRemarks() }}
-                                  </span>
                                 @elseif($grade->getRemarks() == 'FAILED')
                                   <span class="badge badge-dot mr-4">
                                     <i class="bg-danger"></i> {{ $grade->getRemarks() }}
+                                  </span>
+                                @else
+                                  <span class="badge badge-dot mr-4">
+                                    <i class="bg-warning"></i> {{ $grade->getRemarks() }}
                                   </span>
                                 @endif
                                 </td>
                                 <td class="text-center">
                                   {{ $grade->note }}
                                 </td>
+
+                                @if($sclass->acad_term_id >= $cur_acad_term)
+                                <td class="text-right">
+                                  @if($grade->status == 'Active')
+                                    <div class="dropdown">
+                                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <i class="fas fa-ellipsis-v"></i>
+                                      </a>
+                                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a href="/faculty/load/unofficial_drop/{{ $grade->grade_id }}" class="dropdown-item" onclick="return confirm('Are you sure you want to unoffically drop {{ $grade->student->user->getName() }} in {{ $sclass->course_code }} class?')">
+                                            Unoffically Drop
+                                        </a>
+                                      </div>
+                                    </div>
+                                  @endif
+                                </td>
+                                @endif
                             </tr>
                           @endforeach
                         </tbody>

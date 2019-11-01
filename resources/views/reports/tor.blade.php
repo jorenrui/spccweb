@@ -220,8 +220,8 @@
                       <tr>
                         <td>{{ $sclass->getTORCourseCode($user->student_no) }}</td>
                         <td>{{ $sclass->getTORDescription($user->student_no) }}</td>
-                        <td class="text-center">{{ $sclass->getGrade($user->student_no) }}</td>
-                        <td class="text-center">{{ $sclass->getCompletion($user->student_no) }}</td>
+                        <td class="text-center">{{ $sclass->getGrade($user->student->student_no) }}</td>
+                        <td class="text-center">{{ $sclass->getCompletion($user->student->student_no) }}</td>
                         <td class="text-center">{{ $sclass->course->units }}</td>
                       </tr>
                       @endforeach

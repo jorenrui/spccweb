@@ -81,7 +81,7 @@
                               {{ $cur_detail->getSy($grades, $user) }}
                             </td>
                             <td class="text-center">
-                              {{ $cur_detail->getGrade($grades, $user) }}
+                              {{ $cur_detail->getGrade($grades, $user, true) }}
                             </td>
                             <td class="text-center">
                               {{ $cur_detail->getCompletion($grades, $user) }}

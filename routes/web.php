@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('users/{user}/unset_admin','UserController@unsetAsAdmin');
 
 	Route::resource('classes','SClassController');
+	Route::get('classes/{class}/drop/{grade}','SClassController@dropStudent');
 	Route::post('classes/lock_grades','SClassController@lockGrades');
 	Route::get('classes/enroll_students/{class}','GradeController@enrollStudent');
 	Route::resource('grades','GradeController')->except([
@@ -138,6 +139,7 @@ Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
 	Route::resource('faculty','FacultyAccessController')->only(['index', 'update']);
 
 	Route::get('faculty/load','FacultyAccessController@load');
+	Route::get('faculty/load/unofficial_drop/{grade}','FacultyAccessController@unofficialDropStudent');
 	Route::get('faculty/load/{class}','FacultyAccessController@show');
 	Route::get('faculty/load/{class}/encode','FacultyAccessController@encodeGrades');
 	Route::get('faculty/load/{class}/students','FacultyAccessController@showStudentMasterlist');

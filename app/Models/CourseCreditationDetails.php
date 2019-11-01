@@ -41,7 +41,10 @@ class CourseCreditationDetails extends Model
     {
         $grade = $this->attributes['grade'];
 
-        return number_format($grade, 2, '.', '');
+        if( is_numeric($grade) )
+            return number_format($grade, 2, '.', '');
+        else
+            return $grade;
     }
 
     /**
