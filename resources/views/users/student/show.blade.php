@@ -75,7 +75,7 @@ $(document).ready(function() {
                                         Student Type:
                                     </dt>
                                     <dd class="col-7">
-                                        {{ $user->student->student_type }}
+                                        {{ $user->student->getStudentType() }}
                                     </dd>
 
                                     <dt class="col-5 text-right">
@@ -291,16 +291,16 @@ $(document).ready(function() {
                                   Student Type
                                 </div>
                                 <div class="ml-3 custom-control custom-radio mb-3">
-                                  <input name="student_type" class="custom-control-input" id="student_type1" type="radio" value="Regular" {{ old('student_type', $user->student->student_type) == 'Regular' ? 'checked' : '' }}>
+                                  <input name="student_type" class="custom-control-input" id="student_type1" type="radio" value="Regular" {{ old('student_type', $user->student->getStudentType()) == 'Regular' ? 'checked' : '' }}>
                                   <label class="custom-control-label" for="student_type1">Regular</label>
                                 </div>
                                 <div class="ml-3 custom-control custom-radio mb-3">
-                                  <input name="student_type" class="custom-control-input" id="student_type2" type="radio" value="Transferee" {{ old('student_type', $user->student->student_type) == 'Transferee' ? 'checked' : '' }}>
+                                  <input name="student_type" class="custom-control-input" id="student_type2" type="radio" value="Transferee" {{ old('student_type', $user->student->getStudentType()) == 'Transferee' ? 'checked' : '' }}>
                                   <label class="custom-control-label" for="student_type2">Transferee</label>
                                 </div>
                                 <div class="ml-3 custom-control custom-radio mb-3">
-                                  <input name="student_type" class="custom-control-input" id="student_type2" type="radio" value="Irregular" {{ old('student_type', $user->student->student_type) == 'Irregular' ? 'checked' : '' }}>
-                                  <label class="custom-control-label" for="student_type2">Irregular</label>
+                                  <input name="student_type" class="custom-control-input" id="student_type3" type="radio" value="Irregular" {{ old('student_type', $user->student->getStudentType()) == 'Irregular' ? 'checked' : '' }}>
+                                  <label class="custom-control-label" for="student_type3">Irregular</label>
                                 </div>
                               </div>
                             </div>

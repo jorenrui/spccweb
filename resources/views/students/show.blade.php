@@ -79,7 +79,7 @@
                                                 Student Type:
                                             </dt>
                                             <dd class="col-7">
-                                                {{ $user->student->student_type }}
+                                                {{ $user->student->getStudentType() }}
                                             </dd>
 
                                             <dt class="col-5 text-right">
@@ -414,7 +414,7 @@
                         <a href="/students/{{ $user->id }}/curriculum" class="btn btn-outline-info btn-sm">
                         View Curriculum
                         </a>
-                        @if($user->student->student_type == 'Transferee')
+                        @if($user->student->getStudentType() == 'Transferee')
                         <a href="/students/{{ $user->id }}/credited_courses" class="btn btn-outline-info btn-sm">
                         View Credited Courses
                         </a>

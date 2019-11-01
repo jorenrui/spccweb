@@ -134,7 +134,7 @@ $(document).ready(function() {
                                 </div>
                                 <div class="ml-3 custom-control custom-radio mb-3">
                                   <input name="student_type" class="custom-control-input" id="student_type3" type="radio" value="Irregular" {{ old('student_type', $user->student->student_type) == 'Irregular' ? 'checked' : '' }}>
-                                  <label class="custom-control-label" for="student_type2">Irregular</label>
+                                  <label class="custom-control-label" for="student_type3">Irregular</label>
                                 </div>
                               </div>
                             </div>

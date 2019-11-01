@@ -77,7 +77,7 @@
                                     </td>
                                     <td>{{ $student->user->getName() }}</td>
                                     <td class="text-center">
-                                        {{ $student->student_type }}
+                                        {{ $student->getStudentType() }}
                                     </td>
                                     <td>
                                     @if($student->getStatus() == 'Graduate')

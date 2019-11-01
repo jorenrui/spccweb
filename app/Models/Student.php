@@ -63,6 +63,41 @@ class Student extends Model
         return true;
     }
 
+    private function isIrregular()
+    {
+        $student_type = $this->attributes['student_type'];
+
+        if($student_type == 'Irregular')
+            return true;
+        else if($this->getDateGraduated() != null)
+            return false;
+
+        foreach($this->grades as $grade) {
+            if($grade->getGrade() == 5)
+                return true;
+        }
+
+        return false;
+    }
+
+    public function getStudentType()
+    {
+        $student_no = $this->attributes['student_no'];
+        $student_type = $this->attributes['student_type'];
+
+        if($this->isGraduate() || $student_type == 'Transferee') {
+            return $student_type;
+        }
+
+        if ($this->isIrregular()) {
+            $student = Student::find($student_no);
+            $student->student_type = 'Irregular';
+            $student->save();
+        }
+
+        return $student_type;
+    }
+
     public function getStatus()
     {
         $student_no = $this->attributes['student_no'];
