@@ -141,8 +141,8 @@
                                     </form>
                                   </div>
                                 </div>
-                                @endrole
                               </td>
+                              @endrole
                             </tr>
                           @endforeach
                         </tbody>

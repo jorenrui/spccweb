@@ -25,7 +25,7 @@
 
                 <div class="card-header border-0">
                     <div class="row align-items-center">
-                        <div class="col">
+                        <div class="col col-md-8">
                           <h3 class="mb-0">
                             Student's Enlistment | {{ $user->student->getStudentNo() }} {{ $user->getName()}}
                           </h3>
