@@ -75,10 +75,22 @@ class GradeController extends Controller
 
         if( request()->has('search')) {
             $search = request('search');
-            $students = Student::where('student_no', 'like', '%'.$search.'%')
-                            ->whereNotIn('student_no', $except_grades)->paginate(10);
+            $students = Student::join('users', 'users.id', '=', 'student.user_id')
+                        ->where('date_graduated', '=', null)
+                        ->whereNotIn('student_no', $except_grades)
+                        ->where(function($q) use ($search) {
+                            $q->where('student_no', 'like', '%'.$search.'%')
+                            ->orWhere('first_name', 'like', '%'.$search.'%')
+                            ->orWhere('middle_name', 'like', '%'.$search.'%')
+                            ->orWhere('last_name', 'like', '%'.$search.'%');
+                        })
+                        ->orderBy('student_no')
+                        ->paginate(8);
         } else {
-            $students = Student::whereNotIn('student_no', $except_grades)->paginate(10);
+            $students = Student::where('date_graduated', '=', null)
+                            ->whereNotIn('student_no', $except_grades)
+                            ->orderBy('student_no')
+                            ->paginate(8);
         }
 
         return view('grades.create')
