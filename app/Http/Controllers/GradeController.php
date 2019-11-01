@@ -214,9 +214,9 @@ class GradeController extends Controller
         $activity->user_id = auth()->user()->id;
 
         if ($grade->sclass->section != null)
-            $activity->description = 'has altered the grades for ' . $sclass->course_code . '-' . $sclass->section . ' class.';
+            $activity->description = 'has altered the grades for ' . $grade->sclass->course_code . '-' . $grade->sclass->section . ' class.';
         else
-            $activity->description = 'has altered the grades for ' . $sclass->course_code . ' class.';
+            $activity->description = 'has altered the grades for ' . $grade->sclass->course_code . ' class.';
 
         $activity->timestamp = now();
         $activity->save();
@@ -242,7 +242,7 @@ class GradeController extends Controller
         $activity->user_id = auth()->user()->id;
 
         if ($grade->sclass->section != null)
-            $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->getCourse() . '-' . $sclass->getSection() . ' class.';
+            $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->getCourse() . '-' . $grade->sclass->section . ' class.';
         else
             $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' class.';
 

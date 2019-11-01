@@ -178,7 +178,7 @@ class SClassController extends Controller
         $activity->user_id = auth()->user()->id;
 
         if ($sclass->section != null)
-            $activity->description = 'has updated the locking of grades for ' . $sclass->getCourse() . '-' . $sclass->getSection() . ' class.';
+            $activity->description = 'has updated the locking of grades for ' . $sclass->getCourse() . '-' . $sclass->section . ' class.';
         else
             $activity->description = 'has updated the locking of grades for ' . $sclass->getCourse() . ' class.';
 

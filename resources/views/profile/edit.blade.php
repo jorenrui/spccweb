@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('User Profile')])
 
 @section('content')
-    @include('users.partials.header', [
+    @include('layouts.headers.header', [
         'title' => 'Hello '. auth()->user()->getName() . '!',
         'description' => 'Update your profile information using the form below.',
         'class' => 'col-lg-12'
