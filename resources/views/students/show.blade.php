@@ -388,13 +388,25 @@
           @else
             <div class="row mt-3 mb-5">
                 <div class="col text-center">
-                    <p class="lead">No Currently Enrolled Courses</p>
+                    @if( $user->student->getDateGraduated() != null )
+                        <p class="lead">Student has already graduated.</p>
+                    @elseif( !$user->student->is_paid )
+                        <p class="lead">Student hasn't paid the unsettled amount yet.</p>
+                    @else
+                        <p class="lead">No Currently Enrolled Courses</p>
+                    @endif
                     <br>
                     @role('admin')
                     <div class="col">
-                      <a href="/students/{{ $user->id }}/enlist" class="btn btn-lg btn-primary">
-                          Enlist Course
-                        </a>
+                        @if($user->student->getDateGraduated() != null)
+                            <a href="/students/{{ $user->id }}/tor" class="btn btn-lg btn-primary">
+                            View TOR
+                            </a>
+                        @elseif( $user->student->is_paid )
+                            <a href="/students/{{ $user->id }}/enlist" class="btn btn-lg btn-primary">
+                            Enlist Course
+                            </a>
+                        @endif
                     </div>
                     @endrole
                 </div>

@@ -100,6 +100,7 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::get('unpaid/students','StudentController@unpaidStudents');
 	Route::get('students/{student}/paid','StudentController@setAsPaidStudent');
 	Route::get('students/{student}/unpaid','StudentController@setAsUnpaidStudent');
+	Route::get('graduate/students','StudentController@graduateStudents');
 
 	Route::get('students/{student}/grades','StudentController@grades');
 	Route::get('students/{student}/enlistment','StudentController@enlistment');

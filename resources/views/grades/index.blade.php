@@ -109,7 +109,7 @@
                               </td>
                               <td class="text-center">
                                 {{ $sclass->course_code }}
-                                {{ $sclass->section != null ? $sclass->section : '-' }}
+                                {{ $sclass->section }}
                               </td>
                               <td>{{ $sclass->course->description }}</td>
                               <td>

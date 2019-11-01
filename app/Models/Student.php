@@ -102,8 +102,16 @@ class Student extends Model
     {
         $student_no = $this->attributes['student_no'];
 
-        if($this->isGraduate())
+        if ($this->isGraduate() && $this->student_type != 'Graduate') {
+            $student = Student::find($student_no);
+            $student->date_graduated = now();
+            $student->save();
+
             return 'Graduate';
+        }
+        else if($this->isGraduate()) {
+            return 'Graduate';
+        }
 
         $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
 

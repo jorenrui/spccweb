@@ -175,6 +175,11 @@
                                     Unpaid Students
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/graduate/students">
+                                    Graduate Students
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

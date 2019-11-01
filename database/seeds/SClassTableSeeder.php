@@ -143,7 +143,7 @@ class SClassTableSeeder extends Seeder
         $class->class_id = 11;
         $class->section = '401-A';
         $class->instructor_id = 'K491';
-        $class->course_code = 'IT 321';
+        $class->course_code = 'IT 312';
         $class->acad_term_id = '192001';
         $class->day = 'F';
         $class->time_start = '10:00:00';

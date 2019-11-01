@@ -38,7 +38,8 @@
                           @if($selected_acad_term >= $cur_acad_term &&
                               auth()->user()->hasRole('admin') &&
                               count($grades) > 0 &&
-                              $user->student->is_paid)
+                              $user->student->is_paid &&
+                              $user->student->getDateGraduated() == null)
                             <a href="/students/{{ $user->id }}/enlist" class="btn btn-sm btn-outline-primary">
                               Enlist Course
                             </a>
@@ -121,10 +122,14 @@
                   <div class="row border-1 mt-3 mb-5">
                       <div class="col text-center">
                           <p class="lead">No Enlistment found</p>
+
                           @role('admin')
-                          <a href="/students/{{ $user->id }}/enlist" class="btn btn-primary">
-                            Enlist Course
-                          </a>
+                          @if($user->student->getDateGraduated() == null &&
+                              $user->student->is_paid)
+                            <a href="/students/{{ $user->id }}/enlist" class="btn btn-primary">
+                              Enlist Course
+                            </a>
+                          @endif
                           @endrole
                       </div>
                   </div>
