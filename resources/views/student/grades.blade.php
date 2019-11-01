@@ -97,13 +97,12 @@
                                 @role('admin')
                                   <a href="/classes/{{ $grade->sclass->class_id }}">
                                     {{ $grade->sclass->course_code }}
+                                    {{ $grade->sclass->section}}
                                   </a>
                                 @else
                                   {{ $grade->sclass->course_code }}
+                                  {{ $grade->sclass->section}}
                                 @endrole
-                                @if($grade->sclass->section != null)
-                                 - {{ $grade->sclass->section}}
-                                @endif
                               </td>
                               <td>{{ $grade->sclass->course->description }}</td>
                               <td class="text-center">

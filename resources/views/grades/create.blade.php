@@ -96,7 +96,7 @@ $(document).ready(function() {
                           <form action="/classes/enroll_students/{{ $sclass->class_id }}?" method="get" class="form-horizontal">
                             <div class="form-group mb-0">
                               <div class="input-group input-group-sm pt-0">
-                                <input name="search" class="form-control" placeholder="e.g. 041830914" type="text">
+                                <input name="search" class="form-control" placeholder="e.g. 041830914 or Juan" type="text">
                                 <div class="input-group-append">
                                   <button class="btn btn-outline-default" type="submit">Search</button>
                                 </div>

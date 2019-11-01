@@ -17,7 +17,7 @@
                         </div>
 
                         <div class="col col-lg-4">
-                            <form action="/students/unpaid?" method="get" class="form-horizontal">
+                            <form action="/unpaid/students?" method="get" class="form-horizontal">
                                 <div class="form-group mb-0">
                                     <div class="input-group input-group-sm pt-0">
                                         <input name="search" class="form-control" placeholder="e.g. 041322078 or Juan" type="text">
@@ -30,16 +30,12 @@
                         </div>
                         @if($search != null)
                         <div class="col">
-                            <a href="/students/unpaid" class="btn btn-outline-secondary btn-sm">
+                            <a href="/unpaid/students" class="btn btn-outline-secondary btn-sm">
                                 {{ str_limit($search, 20) }}
                                 <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                             </a>
                         </div>
                         @endif
-
-                        <div class="col text-right">
-                            <a href="/students/create" class="btn btn-sm btn-primary">Add Student</a>
-                        </div>
                     </div>
                 </div>
 
