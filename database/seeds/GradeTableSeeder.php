@@ -264,7 +264,7 @@ class GradeTableSeeder extends Seeder
         $grade->curriculum_details_id = 23; // IT 211
         $grade->save();
 
-        // Class ID: 11 (IT 321)
+        // Class ID: 11 (IT 312)
 
         $grade = new Grade;
         $grade->prelims = 83;
@@ -272,7 +272,7 @@ class GradeTableSeeder extends Seeder
         $grade->finals = 88;
         $grade->class_id = 11;
         $grade->student_no = '041830904';
-        $grade->curriculum_details_id = 45; // IT 321
+        $grade->curriculum_details_id = 45; // IT 312
         $grade->save();
 
         $grade = new Grade;
@@ -281,7 +281,7 @@ class GradeTableSeeder extends Seeder
         $grade->finals = 88;
         $grade->class_id = 11;
         $grade->student_no = '041830905';
-        $grade->curriculum_details_id = 45; // IT 321
+        $grade->curriculum_details_id = 45; // IT 312
         $grade->save();
 
         // Class ID: 12 (IT 213)
