@@ -156,13 +156,28 @@
                 </li>
                 @endrole
                 @role('admin|registrar')
+
                 <li class="nav-item {{ $title == 'Students' ? 'active' : '' }}">
-                    <a class="nav-link" href="/students">
-                        <i class="ni ni-single-02"></i> Manage Students
+                    <a class="nav-link" href="#navbar-students" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-students">
+                        <i class="ni ni-single-02"></i>
+                        <span class="nav-link-text">Manage Students</span>
                     </a>
+
+                    <div class="collapse" id="navbar-students">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/students">
+                                    Students
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/unpaid/students">
+                                    Unpaid Students
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
-                @endrole
-                @role('admin|registrar')
                 <li class="nav-item {{ $title == 'Manage Curriculum' ? 'active' : '' }}">
                     <a class="nav-link" href="#navbar-curriculum" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-curriculum">
                         <i class="ni ni-collection"></i>

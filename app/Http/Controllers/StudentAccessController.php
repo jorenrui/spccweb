@@ -76,6 +76,10 @@ class StudentAccessController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
+        if( !$user->student->is_paid ) {
+            return view('student.unpaid');
+        }
+
         $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $curAcadTerm = AcadTerm::find($cur_acad_term);
 
@@ -113,6 +117,10 @@ class StudentAccessController extends Controller
     public function curriculum()
     {
         $user = User::find(auth()->user()->id);
+
+        if( !$user->student->is_paid ) {
+            return view('student.unpaid');
+        }
 
         $curriculum = Curriculum::find($user->student->curriculum_id);
 

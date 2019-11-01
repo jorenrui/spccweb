@@ -144,9 +144,15 @@ $(document).ready(function() {
                                       <input id="student_no" name="student_no" type="text" value="{{ $student->student_no }}" style="display:none;" required>
                                       <input id="class_id" name="class_id" type="text" value="{{ $sclass->class_id }}" style="display:none;" required>
 
-                                      <button type="submit" class="btn btn-outline-primary btn-sm">
-                                        Enroll
-                                      </button>
+                                      @if($student->is_paid)
+                                        <button type="submit" class="btn btn-outline-primary btn-sm">
+                                          Enroll
+                                        </button>
+                                      @else
+                                        <button class="btn btn-sm" disabled>
+                                          Not Paid
+                                        </button>
+                                      @endif
                                     </td>
                                     <td>
                                       <select name="curriculum_details_id" class="select2 form-control m-b" required>

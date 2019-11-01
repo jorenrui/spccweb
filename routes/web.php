@@ -97,6 +97,10 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::put('settings/set_cur_curriculum/{setting}','SettingsController@setCurCurriculum');
 
 	Route::resource('students','StudentController');
+	Route::get('unpaid/students','StudentController@unpaidStudents');
+	Route::get('students/{student}/paid','StudentController@setAsPaidStudent');
+	Route::get('students/{student}/unpaid','StudentController@setAsUnpaidStudent');
+
 	Route::get('students/{student}/grades','StudentController@grades');
 	Route::get('students/{student}/enlistment','StudentController@enlistment');
 	Route::get('students/{student}/curriculum','StudentController@curriculum');

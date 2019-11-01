@@ -13,11 +13,11 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col col-lg-3">
-                            <h3 class="mb-0">Students</h3>
+                            <h3 class="mb-0">Unpaid Students</h3>
                         </div>
 
                         <div class="col col-lg-4">
-                            <form action="/students?" method="get" class="form-horizontal">
+                            <form action="/students/unpaid?" method="get" class="form-horizontal">
                                 <div class="form-group mb-0">
                                     <div class="input-group input-group-sm pt-0">
                                         <input name="search" class="form-control" placeholder="e.g. 041322078 or Juan" type="text">
@@ -30,7 +30,7 @@
                         </div>
                         @if($search != null)
                         <div class="col">
-                            <a href="/students" class="btn btn-outline-secondary btn-sm">
+                            <a href="/students/unpaid" class="btn btn-outline-secondary btn-sm">
                                 {{ str_limit($search, 20) }}
                                 <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                             </a>
@@ -113,8 +113,8 @@
                                                     </button>
                                                 </form>
 
-                                                <a href="/students/{{ $student->user->id }}/unpaid" class="dropdown-item"">
-                                                    Set as Unpaid Student
+                                                <a href="/students/{{ $student->user->id }}/paid" class="dropdown-item"">
+                                                    Set as Paid Student
                                                 </a>
                                             </div>
                                         </div>
@@ -131,9 +131,9 @@
               @else
                   <div class="row mt-3 mb-5">
                       <div class="col text-center">
-                          <p class="lead">No student found</p>
+                          <p class="lead">No unpaid student found</p>
                           <br>
-                          <a href="/students/create" class="btn btn-primary btn-lg">Add Student</a>
+                          <a href="/students" class="btn btn-primary btn-lg">Return to Students List</a>
                       </div>
                   </div>
               @endif

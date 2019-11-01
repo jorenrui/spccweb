@@ -24,6 +24,7 @@ class CreateStudentTable extends Migration
             $table->string('secondary_sy', 9 )->nullable();
             $table->date('date_graduated')->nullable();
             $table->string('student_type', 10);
+            $table->boolean('is_paid')->default(true);
             $table->integer('curriculum_id')->unsigned();
             $table->foreign('curriculum_id')->references('curriculum_id')->on('curriculum')->onDelete('cascade');
             $table->string('acad_term_admitted_id', 6);

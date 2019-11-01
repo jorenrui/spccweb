@@ -37,10 +37,11 @@
 
                           @if($selected_acad_term >= $cur_acad_term &&
                               auth()->user()->hasRole('admin') &&
-                              count($grades) > 0)
-                          <a href="/students/{{ $user->id }}/enlist" class="btn btn-sm btn-outline-primary">
-                            Enlist Course
-                          </a>
+                              count($grades) > 0 &&
+                              $user->student->is_paid)
+                            <a href="/students/{{ $user->id }}/enlist" class="btn btn-sm btn-outline-primary">
+                              Enlist Course
+                            </a>
                           @endif
                         </div>
                     </div>

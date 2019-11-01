@@ -31,14 +31,17 @@ class StudentController extends Controller
         if( request()->has('search')) {
             $search = request('search');
             $students = Student::join('users', 'users.id', '=', 'student.user_id')
-                        ->where('student_no', 'like', '%'.$search.'%')
-                        ->orWhere('first_name', 'like', '%'.$search.'%')
-                        ->orWhere('middle_name', 'like', '%'.$search.'%')
-                        ->orWhere('last_name', 'like', '%'.$search.'%')
+                        ->where('is_paid', '=', true)
+                        ->where(function($q) use ($search) {
+                            $q->where('student_no', 'like', '%'.$search.'%')
+                            ->orWhere('first_name', 'like', '%'.$search.'%')
+                            ->orWhere('middle_name', 'like', '%'.$search.'%')
+                            ->orWhere('last_name', 'like', '%'.$search.'%');
+                        })
                         ->orderBy('student_no')
                         ->paginate(8);
         } else {
-            $students = Student::orderBy('student_no')->paginate(8);
+            $students = Student::where('is_paid', '=', true)->orderBy('student_no')->paginate(8);
         }
 
         return view('students.index')
@@ -411,6 +414,55 @@ class StudentController extends Controller
                 ->with('curriculum', $curriculum)
                 ->with('curriculum_details', $curriculum_details)
                 ->with('degree', $degree);
+    }
+
+    public function unpaidStudents()
+    {
+        $search = null;
+
+        if( request()->has('search')) {
+            $search = request('search');
+            $students = Student::join('users', 'users.id', '=', 'student.user_id')
+                        ->where('is_paid', '=', false)
+                        ->where(function($q) use ($search) {
+                            $q->where('student_no', 'like', '%'.$search.'%')
+                            ->orWhere('first_name', 'like', '%'.$search.'%')
+                            ->orWhere('middle_name', 'like', '%'.$search.'%')
+                            ->orWhere('last_name', 'like', '%'.$search.'%');
+                        })
+                        ->orderBy('student_no')
+                        ->paginate(8);
+        } else {
+            $students = Student::where('is_paid', '=', false)->orderBy('student_no')->paginate(8);
+        }
+
+        return view('students.unpaid')
+                ->with('students', $students)
+                ->with('search', $search);
+    }
+
+    public function setAsPaidStudent($id)
+    {
+        $user = User::find($id);
+
+        $student = Student::find($user->student->student_no);
+        $student->is_paid = true;
+        $student->save();
+
+        return redirect('unpaid/students')
+                ->with('success', $student->getStudentNo() . ' '. $user->getName() . ' has been set as paid');
+    }
+
+    public function setAsUnpaidStudent($id)
+    {
+        $user = User::find($id);
+
+        $student = Student::find($user->student->student_no);
+        $student->is_paid = false;
+        $student->save();
+
+        return redirect('students')
+                ->with('success', $student->getStudentNo() . ' '. $user->getName() . ' has been set as unpaid');
     }
 
     /**
