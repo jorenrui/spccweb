@@ -9,7 +9,6 @@
         {{ $post->title }}
       </h1>
       <div class="meta">
-        {{ $post->user->getName() }}
         <span class="publish-date">
           Created on {{ $post->created_at->format('g:iA M d, Y') }}
           | Updated on {{ $post->created_at->format('g:iA M d, Y') }}

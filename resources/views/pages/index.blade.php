@@ -127,7 +127,6 @@
         </a>
       </h3>
       <div class="meta">
-        {{ $post->user->getName() }}
         <span class="publish-date">{{ $post->getDateCreated() }}</span>
       </div>
       <p class="article-content">

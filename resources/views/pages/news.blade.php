@@ -26,7 +26,6 @@
           </a>
         </h2>
         <div class="meta">
-          {{ $latest_post[0]->user->getName() }}
           <span class="publish-date">{{ $latest_post[0]->created_at->format('M d, Y') }}</span>
         </div>
       </div>
@@ -60,7 +59,6 @@
           </a>
         </h2>
         <div class="meta">
-          {{ $post->user->getName() }}
           <span class="publish-date">{{ $post->created_at->format('M d, Y') }}</span>
         </div>
       </div>

@@ -870,15 +870,6 @@ section.latest-news .meta {
   font-family: 'Open Sans', sans-serif;
 }
 
-section.latest-news .meta::before {
-  content: 'by ';
-}
-
-section.latest-news .publish-date::before {
-  content: '⚬';
-  margin: 0 8px;
-}
-
 section.latest-news .article-content {
   width: 100%;
   line-height: 26px;
@@ -2058,15 +2049,6 @@ section.featured-news .meta {
   font-family: 'Open Sans', sans-serif;
 }
 
-section.featured-news .meta::before {
-  content: 'by ';
-}
-
-section.featured-news .publish-date::before {
-  content: '⚬';
-  margin: 0 8px;
-}
-
 section.featured-news .news-meta {
   margin-bottom: 30px;
 }
@@ -2191,15 +2173,6 @@ section.news .meta {
   font-family: 'Open Sans', sans-serif;
 }
 
-section.news .meta::before {
-  content: 'by ';
-}
-
-section.news .publish-date::before {
-  content: '⚬';
-  margin: 0 8px;
-}
-
 section.news .news-meta {
   margin-bottom: 30px;
 }
@@ -2269,15 +2242,6 @@ section.article .meta {
   font-size: 16px;
   color: #252525;
   font-family: 'Open Sans', sans-serif;
-}
-
-section.article .meta::before {
-  content: 'written by ';
-}
-
-section.article .publish-date::before {
-  content: '|';
-  margin: 0 8px;
 }
 
 section.article img {
