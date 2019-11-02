@@ -1599,18 +1599,19 @@ section.contact .bg .circle-pattern-small-top {
   right: 10%;
 }
 
-section.contact .bg .circle-pattern-big {
-  width: 200px;
-  position: absolute;
-  bottom: -5%;
-  left: -5%;
-}
-
 section.contact .bg .circle-pattern-small {
   width: 100px;
   position: absolute;
-  bottom: 20%;
-  left: 8%;
+  bottom: 10%;
+  left: 2%;
+}
+
+.contact-map {
+	height: 600px;
+  background-image: url('../img/map.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 43% 50%;
 }
 
 /* Responsiveness */
@@ -1636,11 +1637,6 @@ section.contact .bg .circle-pattern-small {
   section.contact .bg .circle-pattern-small-top {
     width: 50px;
     top: 20%;
-  }
-
-  section.contact .bg .circle-pattern-small {
-    width: 80px;
-    bottom: 15%;
   }
 }
 

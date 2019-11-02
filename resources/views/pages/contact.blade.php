@@ -46,9 +46,10 @@
   <div class="bg">
     <img src="{{ asset('spccweb/img/circle-pattern-white.svg') }}" class="circle-pattern-big-top" />
     <img src="{{ asset('spccweb/img/circle-pattern-white.svg') }}" class="circle-pattern-small-top" />
-    <img src="{{ asset('spccweb/img/circle-pattern-white.svg') }}" class="circle-pattern-big" />
     <img src="{{ asset('spccweb/img/circle-pattern-white.svg') }}" class="circle-pattern-small" />
   </div>
 </section>
 <!-- end Contact Section -->
+
+<div class="section contact-map"></div>
 @endsection
