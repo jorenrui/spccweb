@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $tot_posts = count(Post::all());
 
         $posts = Post::where('status', 'LIKE', 'Published')
@@ -30,13 +31,15 @@ class PagesController extends Controller
         return view('pages.index')->with(compact('posts', 'events', 'tot_posts', 'annoucement'));
     }
 
-    public function about() {
+    public function about()
+    {
         $tot_posts = count(Post::all());
 
         return view('pages.about')->with('tot_posts', $tot_posts);
     }
 
-    public function news() {
+    public function news()
+    {
         $tot_posts = count(Post::all());
 
         $latest_post = Post::where('status', 'LIKE', 'Published')
@@ -51,7 +54,8 @@ class PagesController extends Controller
         return view('pages.news')->with(compact('latest_post', 'posts', 'tot_posts'));
     }
 
-    public function articles($id) {
+    public function articles($id)
+    {
         $tot_posts = count(Post::all());
 
         $post = Post::find($id);
@@ -59,19 +63,27 @@ class PagesController extends Controller
         return view('pages.article')->with(compact('post', 'tot_posts'));
     }
 
-    public function contact() {
+    public function contact()
+    {
         $tot_posts = count(Post::all());
 
         return view('pages.contact')->with('tot_posts', $tot_posts);
     }
 
-    public function admission() {
+    public function admission()
+    {
         $tot_posts = count(Post::all());
 
         return view('pages.admission')->with('tot_posts', $tot_posts);
     }
 
-    public function team() {
+    public function team()
+    {
         return view('pages.team');
+    }
+
+    public function forgotPassword()
+    {
+        return view('auth.forgot_password');
     }
 }

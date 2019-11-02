@@ -60,11 +60,9 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-6">
-                        @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="text-light">
-                                <small>Forgot password?</small>
-                            </a>
-                        @endif
+                        <a href="/forgot_password" class="text-light">
+                            <small>Forgot password?</small>
+                        </a>
                     </div>
                     <div class="col-6 text-right">
                         <a href="/" class="text-light">

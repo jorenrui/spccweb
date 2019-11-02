@@ -18,6 +18,7 @@ Route::get('/articles/{article}', 'PagesController@articles');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/admission', 'PagesController@admission');
 Route::get('/team', 'PagesController@team');
+Route::get('/forgot_password', 'PagesController@forgotPassword');
 
 Auth::routes();
 
