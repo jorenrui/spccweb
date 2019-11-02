@@ -63,13 +63,6 @@ class PagesController extends Controller
         return view('pages.article')->with(compact('post', 'tot_posts'));
     }
 
-    public function contact()
-    {
-        $tot_posts = count(Post::all());
-
-        return view('pages.contact')->with('tot_posts', $tot_posts);
-    }
-
     public function admission()
     {
         $tot_posts = count(Post::all());

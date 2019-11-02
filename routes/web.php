@@ -15,10 +15,12 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/news', 'PagesController@news');
 Route::get('/articles/{article}', 'PagesController@articles');
-Route::get('/contact', 'PagesController@contact');
 Route::get('/admission', 'PagesController@admission');
 Route::get('/team', 'PagesController@team');
 Route::get('/forgot_password', 'PagesController@forgotPassword');
+
+Route::resource('contact','MessagesController')->only(['index', 'store']);
+Route::get('/contact/sent', 'MessagesController@messageSent');
 
 Auth::routes();
 
@@ -117,6 +119,9 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::post('settings', 'DashboardController@updateSettings');
 	Route::get('annoucement', 'DashboardController@annoucement');
 	Route::post('annoucement', 'DashboardController@updateAnnoucement');
+
+	Route::resource('messages','MessagesController')->only(['show', 'destroy']);
+	Route::get('feedback', 'MessagesController@feedback');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar|student']], function () {

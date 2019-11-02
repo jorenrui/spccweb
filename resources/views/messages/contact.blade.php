@@ -14,26 +14,27 @@
 <!-- Contact Section -->
 <section class="section contact">
   <p class="description">
-    Got something to ask? Inquire and send us a message. You can also email us at
-    <b>spcc.caloocan1985@gmail.com</b>.
+    Got something to ask? Inquire and send us a message.
   </p>
-  <form method="POST" action="https://formspree.io/spcc.caloocan1985@gmail.com" class="contact-form">
+  <form method="POST" action="{{ action('MessagesController@store') }}" class="contact-form">
+    @csrf
+
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Juan Dela Cruz" required />
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" name="_replyto" placeholder="e.g. juandelacruz@gmail.com"
-        required />
+      <input type="email" class="form-control" id="email" name="email" placeholder="Optional"
+      />
     </div>
     <div class="form-group">
       <label for="subject">Subject</label>
       <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject" />
     </div>
     <div class="form-group">
-      <label for="message">Message</label>
-      <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message"
+      <label for="body">Message</label>
+      <textarea class="form-control" name="body" id="body" rows="1" placeholder="Enter Message"
         required></textarea>
     </div>
     <div class="form-group">
