@@ -6,7 +6,7 @@
   <div class="content">
     <h1 class="headline">SPCC Caloocan</h1>
     <p class="description">Committed to Excellence.</p>
-    <a href="/enroll" class="btn">be an spcnian</a>
+    <a href="/admission" class="btn">be an spcnian</a>
   </div>
   <div class="image">
     <img src="{{ asset('spccweb/img/hero.jpg') }}" alt="SPCC Caloocan School Building" />
