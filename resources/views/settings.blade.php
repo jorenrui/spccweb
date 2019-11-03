@@ -89,28 +89,6 @@ $(document).ready(function() {
                               </div>
                           </div>
                       </form>
-
-                      @role('admin')
-                      <hr>
-
-                      <h3>Backup and Reset</h3>
-
-                      <h4 class="mt-4">Factory Data Reset</h4>
-                      <p>
-                        Reset system settings and erase all data.
-                      </p>
-                      <a href="#" class="btn btn-outline-warning btn-md">
-                          Factory Reset
-                      </a>
-
-                      <h4 class="mt-4">Backup data</h4>
-                      <p>
-                        Download a copy of the current database of the system.
-                      </p>
-                      <a href="#" class="btn btn-outline-info btn-md">
-                          Backup Database
-                      </a>
-                      @endrole
                     </div>
                 </div>
             </div>
