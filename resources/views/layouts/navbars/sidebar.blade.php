@@ -52,6 +52,10 @@
                         <i class="ni ni-calendar-grid-58"></i>
                         <span>Events</span>
                     </a>
+                    <a href="/feedback" class="dropdown-item {{ $title == 'Messages' ? 'active' : '' }}">
+                        <i class="ni ni-email-83"></i>
+                        <span>Messages</span>
+                    </a>
                     @endrole
                     <a href="/app/about" class="dropdown-item {{ $title == 'About' ? 'active' : '' }}">
                         <i class="ni ni-app"></i>

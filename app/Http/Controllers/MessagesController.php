@@ -23,9 +23,22 @@ class MessagesController extends Controller
 
     public function feedback()
     {
-        $msg = Message::orderBy('created_at', 'desc')->paginate(6);
+        $search = null;
 
-        return view('messages.feedback')->with('msg', $msg);
+        if( request()->has('search')) {
+            $search = request('search');
+            $messages = Message::where('name', 'like', '%'.$search.'%')
+                        ->orWhere('email', 'like', '%'.$search.'%')
+                        ->orWhere('subject', 'like', '%'.$search.'%')
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(2);
+        } else {
+            $messages = Message::orderBy('created_at', 'desc')->paginate(2);
+        }
+
+        return view('messages.feedback')
+                ->with('messages', $messages)
+                ->with('search', $search);
     }
 
     /**
