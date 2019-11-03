@@ -8,5 +8,11 @@ class Message extends Model
 {
     protected $table = 'message';
     public $primaryKey = 'message_id';
-    public $timestamps = true;
+    public $timestamps = false;
+
+    public function getDateCreated() {
+        $created_at = strtotime($this->attributes['created_at']);
+
+        return date('M d, Y', $created_at);
+    }
 }
