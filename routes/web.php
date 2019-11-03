@@ -82,6 +82,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('students/{student}/enlist','StudentController@enlist');
 	Route::delete('students/enlistment/{grade}/drop','StudentController@dropClass');
 	Route::post('students/enlist_class','StudentController@enlistClass');
+
+	Route::resource('messages','MessagesController')->only(['show', 'destroy']);
+	Route::get('feedback', 'MessagesController@feedback');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
@@ -119,9 +122,6 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::post('settings', 'DashboardController@updateSettings');
 	Route::get('annoucement', 'DashboardController@annoucement');
 	Route::post('annoucement', 'DashboardController@updateAnnoucement');
-
-	Route::resource('messages','MessagesController')->only(['show', 'destroy']);
-	Route::get('feedback', 'MessagesController@feedback');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar|student']], function () {
