@@ -222,5 +222,137 @@ class SClassTableSeeder extends Seeder
         $class->time_end = '12:00:00';
         $class->room = 'College Room';
         $class->save();
+
+        $class = new SClass;
+        $class->class_id = 18;
+        $class->section = '401-A';
+        $class->instructor_id = 'K100';
+        $class->course_code = 'ITELE 4';
+        $class->acad_term_id = '192001';
+        $class->day = 'T';
+        $class->time_start = '15:00:00';
+        $class->time_end = '18:00:00';
+        $class->room = null;
+        $class->save();
+
+        $class = new SClass;
+        $class->class_id = 19;
+        $class->section = '101-B';
+        $class->instructor_id = 'K519';
+        $class->course_code = 'IntroComp';
+        $class->acad_term_id = '192001';
+        $class->day = 'F';
+        $class->time_start = '14:00:00';
+        $class->time_end = '19:00:00';
+        $class->room = '123';
+        $class->save();
+
+        $class = new SClass;
+        $class->class_id = 20;
+        $class->section = '101-C';
+        $class->instructor_id = 'K519';
+        $class->course_code = 'IntroComp';
+        $class->acad_term_id = '192001';
+        $class->day = 'M';
+        $class->time_start = '07:00:00';
+        $class->time_end = '12:00:00';
+        $class->room = '123';
+        $class->save();
+
+        $class = new SClass;
+        $class->class_id = 21;
+        $class->section = '101-A';
+        $class->instructor_id = 'K491';
+        $class->course_code = 'IntroComp';
+        $class->acad_term_id = '192001';
+        $class->day = 'W';
+        $class->time_start = '13:00:00';
+        $class->time_end = '18:00:00';
+        $class->room = '105';
+        $class->save();
+
+        $class = new SClass;
+        $class->class_id = 22;
+        $class->section = '101-A';
+        $class->instructor_id = 'K491';
+        $class->course_code = 'ComPro1';
+        $class->acad_term_id = '192001';
+        $class->day = 'T';
+        $class->time_start = '13:00:00';
+        $class->time_end = '18:00:00';
+        $class->room = '105';
+        $class->save();
+
+        $class = new SClass;
+        $class->class_id = 23;
+        $class->section = '101-B';
+        $class->instructor_id = 'K491';
+        $class->course_code = 'ComPro1';
+        $class->acad_term_id = '192001';
+        $class->day = 'T';
+        $class->time_start = '13:00:00';
+        $class->time_end = '18:00:00';
+        $class->room = '123';
+        $class->save();
+
+        $class = new SClass;
+        $class->class_id = 24;
+        $class->section = '101-C';
+        $class->instructor_id = 'K519';
+        $class->course_code = 'ComPro1';
+        $class->acad_term_id = '192001';
+        $class->day = 'W';
+        $class->time_start = '07:00:00';
+        $class->time_end = '12:00:00';
+        $class->room = '123';
+        $class->save();
+
+        $class = new SClass;
+        $class->class_id = 25;
+        $class->section = '201-A';
+        $class->instructor_id = 'K519';
+        $class->course_code = 'PlatTech';
+        $class->acad_term_id = '192001';
+        $class->day = 'M';
+        $class->time_start = '13:00:00';
+        $class->time_end = '18:00:00';
+        $class->room = '123, 129 (LAB)';
+        $class->save();
+
+        $class = new SClass;
+        $class->class_id = 26;
+        $class->section = '201-A';
+        $class->instructor_id = 'K519';
+        $class->course_code = 'Anmod';
+        $class->acad_term_id = '192001';
+        $class->day = 'T';
+        $class->time_start = '13:00:00';
+        $class->time_end = '18:00:00';
+        $class->room = '130, 129 (LAB)';
+        $class->save();
+
+        $class = new SClass;
+        $class->class_id = 27;
+        $class->section = '201-A';
+        $class->instructor_id = 'K491';
+        $class->course_code = 'Datstruc';
+        $class->acad_term_id = '192001';
+        $class->day = 'TH';
+        $class->time_start = '13:00:00';
+        $class->time_end = '18:00:00';
+        $class->room = '130';
+        $class->save();
+
+        $class = new SClass;
+        $class->class_id = 28;
+        $class->section = '201-A';
+        $class->instructor_id = 'K491';
+        $class->course_code = 'OOP';
+        $class->acad_term_id = '192001';
+        $class->day = 'F';
+        $class->time_start = '14:00:00';
+        $class->time_end = '19:00:00';
+        $class->room = '130';
+        $class->save();
     }
 }
