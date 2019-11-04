@@ -262,7 +262,7 @@
                                                 <span class="badge badge-dot mr-4">
                                                   <i class="bg-danger"></i> {{ $grade->getRemarks() }}
                                                 </span>
-                                              @else
+                                              @elseif($grade->getRemarks() != null)
                                                 <span class="badge badge-dot mr-4">
                                                   <i class="bg-warning"></i> {{ $grade->getRemarks() }}
                                                 </span>
