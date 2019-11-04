@@ -444,6 +444,102 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
+        $user->first_name = 'Syllet Maan';
+        $user->last_name = 'Asuncion';
+        $user->gender = 'F';
+        $user->username = '041530810';
+        $user->password = Hash::make('041530810');
+        $user->created_at = now();
+        $user->updated_at = now();
+        $user->save();
+
+        $user->assignRole('student');
+
+        // Student Table
+        $student = new Student;
+        $student->student_no = '041530810';
+        $student->student_type = 'Irregular';
+        $student->curriculum_id = 2012;
+        $student->acad_term_admitted_id = '151601';
+        $student->user_id = $user->id;
+        $student->save();
+
+        /* ========================= */
+
+        // Users Table
+        $user = new User;
+        $user->first_name = 'Aubrey';
+        $user->last_name = 'Flores';
+        $user->gender = 'F';
+        $user->username = '041530849';
+        $user->password = Hash::make('041530849');
+        $user->created_at = now();
+        $user->updated_at = now();
+        $user->save();
+
+        $user->assignRole('student');
+
+        // Student Table
+        $student = new Student;
+        $student->student_no = '041530849';
+        $student->student_type = 'Irregular';
+        $student->curriculum_id = 2012;
+        $student->acad_term_admitted_id = '151601';
+        $student->user_id = $user->id;
+        $student->save();
+
+        /* ========================= */
+
+        // Users Table
+        $user = new User;
+        $user->first_name = 'Elizabeth';
+        $user->last_name = 'Galang';
+        $user->gender = null;
+        $user->username = '041530815';
+        $user->password = Hash::make('041530815');
+        $user->created_at = now();
+        $user->updated_at = now();
+        $user->save();
+
+        $user->assignRole('student');
+
+        // Student Table
+        $student = new Student;
+        $student->student_no = '041530815';
+        $student->student_type = 'Irregular';
+        $student->curriculum_id = 2012;
+        $student->acad_term_admitted_id = '151601';
+        $student->user_id = $user->id;
+        $student->save();
+
+        /* ========================= */
+
+        // Users Table
+        $user = new User;
+        $user->first_name = 'Ercell';
+        $user->last_name = 'Paguia';
+        $user->gender = null;
+        $user->username = '041536316';
+        $user->password = Hash::make('041536316');
+        $user->created_at = now();
+        $user->updated_at = now();
+        $user->save();
+
+        $user->assignRole('student');
+
+        // Student Table
+        $student = new Student;
+        $student->student_no = '041536316';
+        $student->student_type = 'Irregular';
+        $student->curriculum_id = 2012;
+        $student->acad_term_admitted_id = '151601';
+        $student->user_id = $user->id;
+        $student->save();
+
+        /* ========================= */
+
+        // Users Table
+        $user = new User;
         $user->first_name = 'Jessicah';
         $user->last_name = 'Bundalian';
         $user->gender = 'F';
@@ -458,7 +554,7 @@ class UsersTableSeeder extends Seeder
         // Student Table
         $student = new Student;
         $student->student_no = '999910000';
-        $student->student_type = 'Regular';
+        $student->student_type = 'Irregular';
         $student->curriculum_id = 2012;
         $student->acad_term_admitted_id = '161701';
         $student->user_id = $user->id;
@@ -482,7 +578,7 @@ class UsersTableSeeder extends Seeder
         // Student Table
         $student = new Student;
         $student->student_no = '999910001';
-        $student->student_type = 'Regular';
+        $student->student_type = 'Irregular';
         $student->curriculum_id = 2012;
         $student->acad_term_admitted_id = '161701';
         $student->user_id = $user->id;
@@ -506,7 +602,7 @@ class UsersTableSeeder extends Seeder
         // Student Table
         $student = new Student;
         $student->student_no = '999910002';
-        $student->student_type = 'Regular';
+        $student->student_type = 'Irregular';
         $student->curriculum_id = 2012;
         $student->acad_term_admitted_id = '161701';
         $student->user_id = $user->id;
@@ -764,7 +860,7 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->first_name = 'Abdul Zacaria';
+        $user->first_name = 'Abdul Napi/Zacaria';
         $user->last_name = 'Macmod';
         $user->gender = 'M';
         $user->username = '041931022';
@@ -1677,7 +1773,7 @@ class UsersTableSeeder extends Seeder
         // Users Table
         $user = new User;
         $user->first_name = 'Kyle Ivan';
-        $user->last_name = 'Balizon';
+        $user->last_name = 'Bauzon';
         $user->gender = 'M';
         $user->username = '041931005';
         $user->password = Hash::make('041931005');
