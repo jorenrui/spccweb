@@ -16,8 +16,12 @@ class SClass extends Model
     public function getCourse()
     {
         $course_code = $this->attributes['course_code'];
+        $section = $this->attributes['section'];
 
         $description = Course::where('course_code', 'LIKE', $course_code)->get()[0]->description;
+
+        if($section != null)
+            return $course_code . ' ' . $section . ' ' . $description;
 
         return $course_code . ' ' . $description;
     }

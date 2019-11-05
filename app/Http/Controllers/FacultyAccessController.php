@@ -77,6 +77,8 @@ class FacultyAccessController extends Controller
 
         $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)
                             ->where('instructor_id', 'LIKE', $user->employee->employee_no)
+                            ->orderBy('course_code')
+                            ->orderBy('section')
                             ->paginate(10);
 
         return view('faculty.load')
@@ -190,7 +192,13 @@ class FacultyAccessController extends Controller
         // Add Activity
         $activity = new Activity;
         $activity->user_id = auth()->user()->id;
-        $activity->description = 'has encoded the grades for ' . $grade->sclass->course_code . ' class.';
+
+        if($sclass->section != null) {
+            $activity->description = 'has encoded the grades for ' . $sclass->course_code . ' '. $sclass->section . ' class.';
+        } else {
+            $activity->description = 'has encoded the grades for ' . $sclass->course_code . ' class.';
+        }
+
         $activity->timestamp = now();
         $activity->save();
 

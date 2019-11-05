@@ -31,9 +31,9 @@ class MessagesController extends Controller
                         ->orWhere('email', 'like', '%'.$search.'%')
                         ->orWhere('subject', 'like', '%'.$search.'%')
                         ->orderBy('created_at', 'desc')
-                        ->paginate(2);
+                        ->paginate(5);
         } else {
-            $messages = Message::orderBy('created_at', 'desc')->paginate(2);
+            $messages = Message::orderBy('created_at', 'desc')->paginate(5);
         }
 
         return view('messages.feedback')

@@ -28,7 +28,7 @@ class EventsController extends Controller
                         ->orderBy('start_date', 'desc')
                         ->paginate(15);
         } else {
-            $events = Event::orderBy('start_date')->paginate(15);
+            $events = Event::orderBy('start_date', 'desc')->paginate(15);
         }
 
         return view('events.index')

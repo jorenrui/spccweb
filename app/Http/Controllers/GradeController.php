@@ -45,9 +45,14 @@ class GradeController extends Controller
                               ->orWhere('day', 'like', '%'.$search.'%')
                               ->orWhere('instructor_id', 'like', '%'.$search.'%');
                         })
+                        ->orderBy('course_code')
+                        ->orderBy('section')
                         ->paginate(10);
         } else {
-            $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)->paginate(10);
+            $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)
+                        ->orderBy('course_code')
+                        ->orderBy('section')
+                        ->paginate(10);
         }
 
         return view('grades.index')
@@ -125,7 +130,7 @@ class GradeController extends Controller
         $activity->user_id = auth()->user()->id;
 
         if ($grade->sclass->section != null)
-            $activity->description = ' has enrolled student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . '-' . $grade->sclass->section. '.';
+            $activity->description = ' has enrolled student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' ' . $grade->sclass->section. '.';
         else
             $activity->description = ' has enrolled student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . '.';
 
@@ -226,7 +231,7 @@ class GradeController extends Controller
         $activity->user_id = auth()->user()->id;
 
         if ($grade->sclass->section != null)
-            $activity->description = 'has altered the grades for ' . $grade->sclass->course_code . '-' . $grade->sclass->section . ' class.';
+            $activity->description = 'has altered the grades for ' . $grade->sclass->course_code . ' ' . $grade->sclass->section . ' class.';
         else
             $activity->description = 'has altered the grades for ' . $grade->sclass->course_code . ' class.';
 
@@ -254,7 +259,7 @@ class GradeController extends Controller
         $activity->user_id = auth()->user()->id;
 
         if ($grade->sclass->section != null)
-            $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->getCourse() . '-' . $grade->sclass->section . ' class.';
+            $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->getCourse() . ' ' . $grade->sclass->section . ' class.';
         else
             $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' class.';
 

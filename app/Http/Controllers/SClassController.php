@@ -45,9 +45,14 @@ class SClassController extends Controller
                               ->orWhere('day', 'like', '%'.$search.'%')
                               ->orWhere('instructor_id', 'like', '%'.$search.'%');
                         })
+                        ->orderBy('course_code')
+                        ->orderBy('section')
                         ->paginate(10);
         } else {
-            $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)->paginate(10);
+            $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)
+                        ->orderBy('course_code')
+                        ->orderBy('section')
+                        ->paginate(10);
         }
 
         return view('classes.index')

@@ -107,7 +107,7 @@
                                       View
                                   </a>
                               </td>
-                              <td class="text-center">
+                              <td>
                                 {{ $sclass->course_code }}
                                 {{ $sclass->section }}
                               </td>
