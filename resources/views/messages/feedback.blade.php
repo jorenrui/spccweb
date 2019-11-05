@@ -84,7 +84,7 @@
                 </div>
             @endif
         @else
-            <div class="row mt-3 mb-5">
+            <div class="row mt-5 mb-5">
                 <div class="col text-center">
                     <div class="card shadow">
                         <div class="card-body">
