@@ -31,14 +31,14 @@ class RegistrarController extends Controller
                         ->orWhere('first_name', 'like', '%'.$search.'%')
                         ->orWhere('middle_name', 'like', '%'.$search.'%')
                         ->orWhere('last_name', 'like', '%'.$search.'%')
-                        ->orderBy('employee_no', 'desc')
+                        ->orderBy('employee_no')
                         ->paginate(15);
         } else {
             $registrars = User::join('employee', 'users.id', '=', 'employee.user_id')
                         ->whereHas("roles", function($q){
                             $q->where('name', 'registrar');
                         })
-                        ->orderBy('employee_no', 'desc')
+                        ->orderBy('employee_no')
                         ->paginate(8);
         }
 
