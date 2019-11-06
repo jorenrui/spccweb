@@ -843,9 +843,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'CHEM 11';
         $ccourse->description = 'General Chemistry (lec)';
         $ccourse->grade = 2.50;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 151601;
         $ccourse->save();
@@ -854,9 +854,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'CHEM 11.1A';
         $ccourse->description = 'General Chemistry (lab)';
         $ccourse->grade = 2.25;
+        $ccourse->units = 1;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 151601;
         $ccourse->save();
@@ -865,9 +865,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ENG 101';
         $ccourse->description = 'English Proficiency Instruction I';
         $ccourse->grade = 1.75;
+        $ccourse->units = 4;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 1; // ENG1
         $ccourse->acad_term_id = 151601;
         $ccourse->save();
@@ -876,9 +876,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 111.1';
         $ccourse->description = 'Engineering Drawing I';
         $ccourse->grade = 3.00;
+        $ccourse->units = 1;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 151601;
         $ccourse->save();
@@ -887,9 +887,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 112';
         $ccourse->description = 'College Algebra';
         $ccourse->grade = 3.00;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 3; // MATH1
         $ccourse->acad_term_id = 151601;
         $ccourse->save();
@@ -898,9 +898,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 113';
         $ccourse->description = 'Plane and Spherical Trigonometry';
         $ccourse->grade = 2.75;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 12; // MATH2
         $ccourse->acad_term_id = 151601;
         $ccourse->save();
@@ -909,9 +909,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'FIL 101';
         $ccourse->description = 'Komunikasyon sa Akademikong Filipino';
         $ccourse->grade = 1.25;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 20; // FIL1
         $ccourse->acad_term_id = 151601;
         $ccourse->save();
@@ -920,9 +920,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'HIST 101';
         $ccourse->description = 'Philippine History';
         $ccourse->grade = 2.25;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 36; // SOCSCI3
         $ccourse->acad_term_id = 151601;
         $ccourse->save();
@@ -931,9 +931,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'SOC SCI 102';
         $ccourse->description = 'Politics and Governance with Philippine Constitution';
         $ccourse->grade = 2.25;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 43; // SOCSCI4
         $ccourse->acad_term_id = 151601;
         $ccourse->save();
@@ -942,9 +942,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'PE11';
         $ccourse->description = 'Foundation of Physical Activities';
         $ccourse->grade = 1.00;
+        $ccourse->units = 2;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 8; // PE1
         $ccourse->acad_term_id = 151601;
         $ccourse->save();
@@ -953,9 +953,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'NSTP1';
         $ccourse->description = 'National Service Training Program - ROTC1';
         $ccourse->grade = 2.00;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 9; // NSTP1
         $ccourse->acad_term_id = 151601;
         $ccourse->save();
@@ -966,9 +966,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ENG 102';
         $ccourse->description = 'English Proficiency Instruction II';
         $ccourse->grade = 2.25;
+        $ccourse->units = 4;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 10; // ENG2
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -977,9 +977,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 121.1';
         $ccourse->description = 'Engineering Drawing II';
         $ccourse->grade = 2.50;
+        $ccourse->units = 1;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -988,9 +988,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 122';
         $ccourse->description = 'Advanced Algebra';
         $ccourse->grade = 2.00;
+        $ccourse->units = 2;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -999,9 +999,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 123';
         $ccourse->description = 'Solid Mensuration';
         $ccourse->grade = 2.25;
+        $ccourse->units = 2;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -1010,9 +1010,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 124';
         $ccourse->description = 'Analytic Geometry';
         $ccourse->grade = 2.75;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -1021,9 +1021,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'FIL 102';
         $ccourse->description = 'Pagbasa at Pagsulat Tungo sa Pananaliksik';
         $ccourse->grade = 1.75;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 28; // FIL2
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -1032,9 +1032,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'PHILO 11';
         $ccourse->description = 'Introduction to Philosophy';
         $ccourse->grade = 1.50;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 11; // HUM2
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -1043,9 +1043,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'SOC SCI 101';
         $ccourse->description = 'General Psychology';
         $ccourse->grade = 1.75;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 13; // SOCSCI2
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -1054,9 +1054,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'PHY 121';
         $ccourse->description = 'Physics I (lec)';
         $ccourse->grade = 2.00;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 22; // NATSCI1
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -1065,9 +1065,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'PHY 121.1';
         $ccourse->description = 'Physics I (lab)';
         $ccourse->grade = 2.25;
+        $ccourse->units = 1;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -1076,9 +1076,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'PE12E';
         $ccourse->description = 'Soccer';
         $ccourse->grade = 1.50;
+        $ccourse->units = 2;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 17; // PE2
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -1087,9 +1087,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'NSTP2';
         $ccourse->description = 'National Service Training Program - ROTC2';
         $ccourse->grade = 1.50;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 18; // NSTP2
         $ccourse->acad_term_id = 151602;
         $ccourse->save();
@@ -1100,9 +1100,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'CPE 211';
         $ccourse->description = 'Discrete Mathematics';
         $ccourse->grade = 1.50;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 45; // IT321
         $ccourse->acad_term_id = 161701;
         $ccourse->save();
@@ -1111,9 +1111,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ENG 23';
         $ccourse->description = 'Technical Writing';
         $ccourse->grade = 2.25;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 27; // ENG4
         $ccourse->acad_term_id = 161701;
         $ccourse->save();
@@ -1122,9 +1122,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'MATH 204';
         $ccourse->description = 'Differential Calculus';
         $ccourse->grade = 2.75;
+        $ccourse->units = 4;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 37; // MATH4
         $ccourse->acad_term_id = 161701;
         $ccourse->save();
@@ -1133,9 +1133,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ETHICS 100';
         $ccourse->description = 'Ethics';
         $ccourse->grade = 1.75;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 161701;
         $ccourse->save();
@@ -1144,9 +1144,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'PHY 231';
         $ccourse->description = 'Physics II (lec)';
         $ccourse->grade = 2.00;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 29; // NATSCI2
         $ccourse->acad_term_id = 161701;
         $ccourse->save();
@@ -1155,9 +1155,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'PHY 231.1';
         $ccourse->description = 'Physics II (lab)';
         $ccourse->grade = 1.75;
+        $ccourse->units = 1;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 161701;
         $ccourse->save();
@@ -1166,9 +1166,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 315.1';
         $ccourse->description = 'Computer-Aided Drafting';
         $ccourse->grade = 1.75;
+        $ccourse->units = 1;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 161701;
         $ccourse->save();
@@ -1177,9 +1177,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'SOC SCI 201';
         $ccourse->description = 'Intro to Econimics with Taxation & Agrarian Reform';
         $ccourse->grade = 1.75;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 161701;
         $ccourse->save();
@@ -1188,9 +1188,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'PE13D';
         $ccourse->description = 'Bowling';
         $ccourse->grade = 1.25;
+        $ccourse->units = 2;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 26; // PE3
         $ccourse->acad_term_id = 161701;
         $ccourse->save();
@@ -1201,9 +1201,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'CSC 225.1';
         $ccourse->description = 'Computer Fundamentals  and Programming';
         $ccourse->grade = 1.75;
+        $ccourse->units = 2;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 161702;
         $ccourse->save();
@@ -1212,9 +1212,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'MATH 206';
         $ccourse->description = 'Integral Calculus';
         $ccourse->grade = 1.75;
+        $ccourse->units = 4;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 161702;
         $ccourse->save();
@@ -1223,9 +1223,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 223';
         $ccourse->description = 'Fundamentals of Material and Engineering';
         $ccourse->grade = 1.75;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 161702;
         $ccourse->save();
@@ -1234,9 +1234,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'RIZAL 101';
         $ccourse->description = 'Life and Works of Rizal';
         $ccourse->grade = 2.50;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 44; // SOCSCI5
         $ccourse->acad_term_id = 161702;
         $ccourse->save();
@@ -1245,9 +1245,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'HUM 21';
         $ccourse->description = 'Art, Man and Society';
         $ccourse->grade = 1.50;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 2; // HUM1
         $ccourse->acad_term_id = 161702;
         $ccourse->save();
@@ -1256,9 +1256,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'SOC SCI 202';
         $ccourse->description = 'Society and Culture with Family Planning';
         $ccourse->grade = 1.25;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 4; // SOCSCI1
         $ccourse->acad_term_id = 161702;
         $ccourse->save();
@@ -1267,9 +1267,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 322';
         $ccourse->description = 'Safety Management';
         $ccourse->grade = 1.75;
+        $ccourse->units = 1;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 161702;
         $ccourse->save();
@@ -1278,9 +1278,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'PE13K';
         $ccourse->description = 'Volleyball';
         $ccourse->grade = 1.00;
+        $ccourse->units = 2;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 34; // PE4
         $ccourse->acad_term_id = 161702;
         $ccourse->save();
@@ -1291,9 +1291,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ECE 311';
         $ccourse->description = 'Electronic Devices and Circuits (lec)';
         $ccourse->grade = 5.00;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 171801;
         $ccourse->save();
@@ -1302,9 +1302,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ECE 311.1';
         $ccourse->description = 'Electronic Devices and Circuits (lab)';
         $ccourse->grade = 1.50;
+        $ccourse->units = 1;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 171801;
         $ccourse->save();
@@ -1313,9 +1313,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ECE 312';
         $ccourse->description = 'Vector Analysis';
         $ccourse->grade = 5.00;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 171801;
         $ccourse->save();
@@ -1324,9 +1324,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ELE 316';
         $ccourse->description = 'Circuit Analysis I (lec)';
         $ccourse->grade = 2.75;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 171801;
         $ccourse->save();
@@ -1335,9 +1335,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ELE 316.1';
         $ccourse->description = 'Circuit Analysis I (lab)';
         $ccourse->grade = 1.75;
+        $ccourse->units = 1;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 171801;
         $ccourse->save();
@@ -1346,9 +1346,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 311';
         $ccourse->description = 'Differential Equations';
         $ccourse->grade = 5.00;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 171801;
         $ccourse->save();
@@ -1357,9 +1357,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 312';
         $ccourse->description = 'Statics of Rigid Bodies';
         $ccourse->grade = 5.00;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 171801;
         $ccourse->save();
@@ -1368,16 +1368,12 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ESC 313A';
         $ccourse->description = 'Probability and Statistics';
         $ccourse->grade = 2.75;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 3;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 21; // MATH3
         $ccourse->acad_term_id = 171801;
         $ccourse->save();
-
-        /* Geraldine's Credited Courses
-         * Credit ID: 4 (TIP)
-         * =============================*/
 
  		// Acad Term: 181901 (2018-2019 1st Semester)
 
@@ -1385,9 +1381,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'CS 100';
         $ccourse->description = 'Fundamentals of Algorithms';
         $ccourse->grade = 2.00;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 4;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 181901;
         $ccourse->save();
@@ -1396,9 +1392,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'ITE 001';
         $ccourse->description = 'Computer Programming 1';
         $ccourse->grade = 1.25;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 4;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = 5; // IT111
         $ccourse->acad_term_id = 181901;
         $ccourse->save();
@@ -1407,9 +1403,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'MATH 014';
         $ccourse->description = 'Fundamentals of Algorithms';
         $ccourse->grade = 1.25;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 4;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 181901;
         $ccourse->save();
@@ -1418,9 +1414,9 @@ class CourseCreditDetailsTableSeeder extends Seeder
         $ccourse->course_code = 'HUM 002';
         $ccourse->description = 'Logic';
         $ccourse->grade = 2.25;
+        $ccourse->units = 3;
         $ccourse->is_inc = false;
         $ccourse->credit_id = 4;
-        $ccourse->units = 3;
         $ccourse->curriculum_details_id = null;
         $ccourse->acad_term_id = 181901;
         $ccourse->save();
