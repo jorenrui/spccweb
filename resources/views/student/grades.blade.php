@@ -93,7 +93,7 @@
                         <tbody>
                           @foreach ($grades as $grade)
                             <tr>
-                              <td class="text-center" scope="row">
+                              <td scope="row">
                                 @role('admin')
                                   <a href="/classes/{{ $grade->sclass->class_id }}">
                                     {{ $grade->sclass->course_code }}
