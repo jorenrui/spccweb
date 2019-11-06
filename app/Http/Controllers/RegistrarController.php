@@ -166,7 +166,7 @@ class RegistrarController extends Controller
             'contact_no' => 'nullable|min:6|max:11',
             'address' => 'nullable|min:6|max:100',
             'email' => 'nullable',
-            'password' => 'nullable|confirmed|min:5',
+            'password' => 'nullable|confirmed|min:4',
         ]);
 
         // Handle File Upload

@@ -161,7 +161,7 @@ class UserController extends Controller
             'contact_no' => 'nullable|min:6|max:11',
             'address' => 'nullable|min:6|max:100',
             'email' => 'nullable|unique:users',
-            'password' => 'required|confirmed|min:5',
+            'password' => 'required|confirmed|min:4',
         ]);
 
         // Handle File Upload
@@ -253,7 +253,7 @@ class UserController extends Controller
             'secondary' => 'required|min:6|max:100',
             'secondary_sy' => 'required|min:9|max:9',
             'email' => 'nullable|unique:users',
-            'password' => 'required|confirmed|min:5',
+            'password' => 'required|confirmed|min:4',
         ]);
 
         // Handle File Upload
@@ -358,7 +358,7 @@ class UserController extends Controller
             'contact_no' => 'nullable|min:6|max:11',
             'address' => 'nullable|min:6|max:100',
             'email' => 'nullable',
-            'password' => 'nullable|confirmed|min:5',
+            'password' => 'nullable|confirmed|min:4',
         ]);
 
         // Handle File Upload
@@ -454,7 +454,7 @@ class UserController extends Controller
             'secondary_sy' => 'required|min:9|max:9',
             'date_graduated' => 'nullable|date',
             'email' => 'nullable',
-            'password' => 'nullable|confirmed|min:5',
+            'password' => 'nullable|confirmed|min:4',
         ]);
 
         // Handle File Upload

@@ -538,7 +538,7 @@ class StudentController extends Controller
             'secondary_sy' => 'required|min:9|max:9',
             'date_graduated' => 'nullable|date',
             'email' => 'nullable',
-            'password' => 'nullable|confirmed|min:5',
+            'password' => 'nullable|confirmed|min:4',
         ]);
 
         // Handle File Upload
