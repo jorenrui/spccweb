@@ -98,7 +98,7 @@ class AcadTermController extends Controller
             $finals_end_date = date("Y-m-d", strtotime($request->input('finals_end_date')));
 
             $event = new Event;
-            $event->title = 'Midterms Examination';
+            $event->title = 'Finals Examination';
             $event->start_date = $finals_start_date;
             $event->end_date = $finals_end_date;
             $event->save();

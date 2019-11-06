@@ -19,7 +19,11 @@ class PagesController extends Controller
                         ->limit(3)
                         ->get();
 
-        $events = Event::where('start_date', '>=', date('Y-m-d'))->limit(4)->orderBy('start_date')->get();
+        $events = Event::where('start_date', '>=', date('Y-m-d'))
+                        ->orWhere('end_date', '<=', date('Y-m-d'))
+                        ->limit(4)
+                        ->orderBy('start_date')
+                        ->get();
 
         $annoucement = Setting::where('name', 'LIKE', 'Annoucement')->get();
 
