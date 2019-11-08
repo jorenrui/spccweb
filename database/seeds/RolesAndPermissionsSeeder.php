@@ -47,7 +47,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $role->givePermissionTo(['write posts', 'edit posts', 'delete posts']);
 
         $role = Role::create(['name' => 'moderator']);
-        $role->givePermissionTo(['publish posts', 'delete posts']);
+        $role->givePermissionTo(['publish posts', 'delete posts', 'edit posts']);
 
         $role = Role::create(['name' => 'head registrar']);
         $role->givePermissionTo(['manage registrar staff', 'grades masterlist']);

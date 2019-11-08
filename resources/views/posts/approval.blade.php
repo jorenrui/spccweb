@@ -21,7 +21,6 @@
                                     <tr>
                                         <th scope="col"></th>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Description</th>
                                         <th scope="col">Author</th>
                                         <th scope="col">Date Created</th>
                                     </tr>
@@ -33,6 +32,10 @@
 
                                                 <a href="/posts/mod/{{ $post->post_id }}/publish" class="btn btn-outline-primary btn-sm">
                                                   Publish
+                                                </a>
+
+                                                <a href="/posts/{{ $post->post_id }}" class="btn btn-outline-primary btn-sm">
+                                                    View
                                                 </a>
 
                                                 <form action="{{ action('PostsController@destroy', $post->post_id) }}" method="post" style="display: inline;">
@@ -48,9 +51,6 @@
                                               <a href="/posts/{{ $post->post_id }}">
                                                 {{ $post->title }}
                                               </a>
-                                            </td>
-                                            <td>
-                                                {!! str_limit(strip_tags($post->body), 50) !!}
                                             </td>
                                             <td>{{ $post->user->getName() }}</td>
                                             <td>{{ $post->getDateCreated() }}</td>

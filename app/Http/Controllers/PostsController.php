@@ -84,7 +84,7 @@ class PostsController extends Controller
             return redirect('/posts')->with('success', 'Post Published');
         }
 
-        return redirect('/posts/' . $post->id)->with('success', 'Post Created');
+        return redirect('/posts/' . $post->post_id)->with('success', 'Post Created');
     }
 
     /**
@@ -177,7 +177,7 @@ class PostsController extends Controller
 
         $post->save();
 
-        return redirect('/posts/' . $post->id)->with('success', 'Post Updated');
+        return redirect('/posts/' . $post->post_id)->with('success', 'Post Updated');
     }
 
     /**

@@ -25,7 +25,7 @@ Route::get('/contact/sent', 'MessagesController@messageSent');
 Auth::routes();
 
 Route::group(['middleware' => ['auth', 'role:admin|writer']], function () {
-	Route::resource('posts','PostsController')->except('show');
+	Route::resource('posts','PostsController')->only(['index', 'create', 'store']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -37,6 +37,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('app/about', 'DashboardController@about');
 	Route::get('posts/{post}', 'PostsController@show');
 	Route::get('events', 'EventsController@index');
+});
+
+Route::group(['middleware' => ['auth', 'role:admin|moderator|writer']], function () {
+	Route::resource('posts','PostsController')->only(['edit', 'update', 'destroy']);
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|moderator']], function () {
