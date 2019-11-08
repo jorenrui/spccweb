@@ -62,6 +62,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::put('user/update/employees/{employee}','UserController@updateEmployee');
 	Route::put('user/update/students/{student}','UserController@updateStudent');
 	Route::get('user/log','UserController@log');
+	Route::delete('user/log/{activity}/destroy','UserController@logDestroy');
+	Route::delete('user/log/destroy/all','UserController@logDestroyAll');
 
 	Route::get('users/{user}/set_writer','UserController@setAsWriter');
 	Route::get('users/{user}/unset_writer','UserController@unsetAsWriter');

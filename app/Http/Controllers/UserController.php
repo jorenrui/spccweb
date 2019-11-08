@@ -119,6 +119,7 @@ class UserController extends Controller
                         ->orWhere('users.middle_name', 'like', '%'.$search.'%')
                         ->orWhere('users.last_name', 'like', '%'.$search.'%')
                         ->orWhere('activity.description', 'like', '%'.$search.'%')
+                        ->orWhere('activity.timestamp', 'like', '%'.$search.'%')
                         ->orderBy('timestamp', 'desc')
                         ->paginate(15);
         } else {
@@ -128,6 +129,22 @@ class UserController extends Controller
         return view('users.log')
                 ->with('activities', $activities)
                 ->with('search', $search);
+    }
+
+    public function logDestroy($id)
+    {
+        $activity = Activity::find($id);
+
+        $activity->delete();
+
+        return redirect('/user/log')->with('success', 'Activity has been deleted.');
+    }
+
+    public function logDestroyAll()
+    {
+        Activity::truncate();
+
+        return redirect('/user/log')->with('success', 'All activities have been deleted.');
     }
 
     /**
