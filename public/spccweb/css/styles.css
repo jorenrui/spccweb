@@ -934,14 +934,6 @@ section.latest-news .bg .circle-pattern-small {
     width: 600px;
     height: 100%;
   }
-
-  section.latest-news .bg .circle-pattern-big-top {
-    top: -10%;
-  }
-
-  section.latest-news .bg .circle-pattern-small-top {
-    top: 0;
-  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -957,7 +949,9 @@ section.latest-news .bg .circle-pattern-small {
   }
 
   section.latest-news .bg .circle-pattern-small,
-  section.latest-news .bg .circle-pattern-small-top {
+  section.latest-news .bg .circle-pattern-big,
+  section.latest-news .bg .circle-pattern-small-top,
+  section.latest-news .bg .circle-pattern-big-top {
     display: none;
   }
 }
