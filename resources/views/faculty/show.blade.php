@@ -210,7 +210,9 @@
                           <h3 class="mb-0">Students' Grades</h3>
                       </div>
                       <div class="col text-right">
+                        @role('faculty')
                         <a href="/faculty/load/{{ $sclass->class_id }}/students" class="btn btn-sm btn-outline-primary">View Student Masterlist</a>
+                        @endrole
                         @if($sclass->acad_term_id >= $cur_acad_term &&
                             date('Y-m-d') >= $acad_term->prelimsEvent->start_date)
                           @role('faculty|admin')

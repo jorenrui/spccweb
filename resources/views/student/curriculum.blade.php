@@ -24,7 +24,9 @@
                   <div class="col">
                     @role('admin|registrar')
                       <a href="/students/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
+                      @role('registrar')
                       <a href="/students/{{ $user->id }}/tor" class="btn btn-sm btn-outline-primary">View TOR</a>
+                      @endrole
                     @endrole
                     <a href="/students/{{ $user->id }}/curriculum_with_grades" class="btn btn-sm btn-outline-primary">View Curriculum with Grades</a>
                   </div>

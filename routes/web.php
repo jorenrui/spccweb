@@ -116,7 +116,6 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 	Route::resource('students/{student}/credited_courses','CreditedCoursesController');
 	Route::resource('students/{student}/{credit}/credit_course',
 					'CreditedCoursesDetailsController')->except([ 'index', 'show' ]);
-	Route::get('students/{student}/tor','StudentController@showTOR');
 
 	Route::get('settings', 'DashboardController@settings');
 	Route::post('settings', 'DashboardController@updateSettings');
@@ -132,6 +131,9 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar|stud
 	Route::get('students/{student}/grade_slip/{acad_term}','StudentController@showGradeSlip');
 });
 
+Route::group(['middleware' => ['auth', 'role:registrar']], function () {
+	Route::get('students/{student}/tor','StudentController@showTOR');
+});
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar|student']], function () {
 	Route::get('students/{student}/curriculum_with_grades','StudentController@showCurriculumWithGrades');
