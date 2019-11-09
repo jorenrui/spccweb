@@ -64,6 +64,7 @@
                                 Instructor:
                             </dt>
                             <dd class="col-sm-7">
+                              {{ $sclass->instructor->getEmployeeNo() }}
                                 {{ $sclass->instructor->user->getNameWithTitle() }}
                             </dd>
                             @if($sclass->section != null)
@@ -238,6 +239,9 @@
                                             <th scope="col" class="text-center">Completion</th>
                                             <th scope="col" class="text-center">Remarks</th>
                                             <th scope="col" class="text-center">Note</th>
+                                            @role('admin')
+                                              <th scope="col"></th>
+                                            @endrole
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -271,6 +275,28 @@
                                             <td class="text-center">
                                               {{ $grade->note }}
                                             </td>
+                                            @role('admin')
+                                              <td class="text-right">
+                                                @if ($grade->grade == null)
+                                                <div class="dropdown">
+                                                  <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      <i class="fas fa-ellipsis-v"></i>
+                                                  </a>
+                                                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                    @if( !$grade->is_inc)
+                                                      <a class="dropdown-item" href="/faculty/load/inc/{{ $grade->grade_id }}" onclick="return confirm('Are you sure you want to set {{ $grade->student->user->getName() }}\'s grade to Incomplete?')">
+                                                          Set as Incomplete
+                                                      </a>
+                                                    @elseif(auth()->user()->hasRole('admin'))
+                                                      <a class="dropdown-item" href="/faculty/load/completion/{{ $grade->grade_id }}">
+                                                          Enter Completion Grade
+                                                      </a>
+                                                    @endif
+                                                  </div>
+                                                </div>
+                                                @endif
+                                              </td>
+                                            @endrole
                                         </tr>
                                       @endforeach
                                     </tbody>

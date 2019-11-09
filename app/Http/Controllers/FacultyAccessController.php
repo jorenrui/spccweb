@@ -97,18 +97,60 @@ class FacultyAccessController extends Controller
         $grade->prelims = null;
         $grade->midterms = null;
         $grade->finals = null;
-        $grade->status = 'UD';
+        $grade->grade = 'UD';
         $grade->save();
+
+        // Add Activity
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+
+        if ($grade->sclass->section != null)
+            $activity->description = 'has unofficially dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' ' . $grade->sclass->section . ' class.';
+        else
+            $activity->description = 'has unofficially dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' class.';
+
+        $activity->timestamp = now();
+        $activity->save();
 
         if($grade->sclass->section == null)
             $message = $grade->student->getStudentNo() . ' ' . $grade->student->user->getName() . ' has been unoffically dropped to ' . $grade->sclass->course_code . ' class.';
         else
             $message = $grade->student->getStudentNo() . ' ' . $grade->student->user->getName() . ' has been unoffically dropped to ' . $grade->sclass->course_code . ' ' . $grade->sclass->section . ' class.';
 
-        if(auth()->user()->hasRole('faculty'))
+        if ($grade->sclass->instructor_id == auth()->user()->employee->employee_no) {
             return redirect('/faculty/load/' . $grade->sclass->class_id)->with('success', $message);
+        }
 
         return redirect('/faculties/' . $grade->sclass->instructor->user->id . '/load/' . $grade->sclass->class_id)->with('success', $message);
+    }
+
+    public function setAsIncomplete($id)
+    {
+        $grade = Grade::find($id);
+        $grade->prelims = null;
+        $grade->midterms = null;
+        $grade->finals = null;
+        $grade->is_inc = true;
+        $grade->save();
+
+        // Add Activity
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+
+        if ($grade->sclass->section != null)
+            $activity->description = 'has set student ' . $grade->student->getStudentNo() . '\'s grade in ' . $grade->sclass->course_code . ' ' . $grade->sclass->section . ' class to Incomplete.';
+        else
+            $activity->description = 'has set student ' . $grade->student->getStudentNo() . '\'s grade in ' . $grade->sclass->course_code . ' class to Incomplete.';
+
+        $activity->timestamp = now();
+        $activity->save();
+
+        if ($grade->sclass->instructor_id == auth()->user()->employee->employee_no) {
+            return redirect('/faculty/load/' . $grade->sclass->class_id)->with('success', 'Student ' . $grade->student->getStudentNo() . '\'s grade has been set as Incomplete');
+
+        }
+
+        return redirect('/grades/' . $grade->sclass->class_id)->with('success', 'Student ' . $grade->student->getStudentNo() . '\'s grade has been set as Incomplete');
     }
 
     /**
@@ -159,19 +201,6 @@ class FacultyAccessController extends Controller
             $grade->prelims = $request->prelims[$i];
             $grade->midterms = $request->midterms[$i];
             $grade->finals = $request->finals[$i];
-            $grade->note = $request->note[$i];
-
-            if($grade->is_inc && empty($request->is_inc[$i])) {
-                $grade->is_inc = false;
-                $grade->note = null;
-            }
-
-            if (!empty($request->is_inc[$i])) {
-                if($request->is_inc[$i] == 'on') {
-                    $grade->is_inc = true;
-                }
-            }
-
             $grade->save();
         }
 
@@ -202,13 +231,13 @@ class FacultyAccessController extends Controller
         $activity->timestamp = now();
         $activity->save();
 
-        if(auth()->user()->hasRole('admin')) {
-            $sclass = SClass::find($class_id);
-
-            return redirect('/faculties/' . $sclass->instructor->user->id . '/load/' . $class_id)->with('success', 'Grades Encoded');
+        if ($grade->sclass->instructor_id == auth()->user()->employee->employee_no) {
+            return redirect('/faculty/load/' . $class_id)->with('success', 'Grades Encoded');
         }
 
-        return redirect('/faculty/load/' . $class_id)->with('success', 'Grades Encoded');
+        $sclass = SClass::find($class_id);
+
+        return redirect('/faculties/' . $sclass->instructor->user->id . '/load/' . $class_id)->with('success', 'Grades Encoded');
     }
 
     public function showStudentMasterlist($id)

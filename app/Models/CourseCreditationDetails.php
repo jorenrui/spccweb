@@ -40,11 +40,12 @@ class CourseCreditationDetails extends Model
     public function getGrade()
     {
         $grade = $this->attributes['grade'];
+        $is_inc = $this->attributes['is_inc'];
 
         if( is_numeric($grade) )
             return number_format($grade, 2, '.', '');
-        else
-            return $grade;
+
+        return $grade;
     }
 
     /**

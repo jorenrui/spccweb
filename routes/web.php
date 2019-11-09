@@ -79,6 +79,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::resource('grades','GradeController')->except([
 		'create', 'index', 'show'
 	]);
+	Route::get('faculty/load/completion/{grade}','GradeController@enterCompletionGrade');
+	Route::put('faculty/load/completion/{grade}/update','GradeController@storeCompletionGrade');
 
 	Route::resource('faculties','FacultyController');
 	Route::get('faculties/{faculty}/load','FacultyController@load');
@@ -154,6 +156,7 @@ Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
 
 	Route::get('faculty/load','FacultyAccessController@load');
 	Route::get('faculty/load/unofficial_drop/{grade}','FacultyAccessController@unofficialDropStudent');
+	Route::get('faculty/load/inc/{grade}','FacultyAccessController@setAsIncomplete');
 	Route::get('faculty/load/{class}','FacultyAccessController@show');
 	Route::get('faculty/load/{class}/encode','FacultyAccessController@encodeGrades');
 	Route::get('faculty/load/{class}/students','FacultyAccessController@showStudentMasterlist');

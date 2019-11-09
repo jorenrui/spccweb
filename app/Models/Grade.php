@@ -64,23 +64,9 @@ class Grade extends Model
             return '5.00';
     }
 
-    public function getStatus()
-    {
-        $status = $this->attributes['status'];
-        $is_inc = $this->attributes['is_inc'];
-
-        if ($status == 'DRP')
-            return 'Dropped';
-        else if ($status == 'UD')
-            return 'Unofficially Dropped';
-        else if ($is_inc)
-            return 'Incomplete';
-
-        return 'Active';
-    }
-
     public function getGrade()
     {
+        $grade = $this->attributes['grade'];
         $is_inc = $this->attributes['is_inc'];
         $note = $this->attributes['note'];
 
@@ -88,6 +74,8 @@ class Grade extends Model
             return 'NFE';
         else if ($is_inc)
             return 'INC';
+        else if ($grade == 'DRP' || $grade == 'UD')
+            return $grade;
 
         $average = $this->getAverage();
 
@@ -96,35 +84,39 @@ class Grade extends Model
 
     public function getCompletion()
     {
+        $grade = $this->attributes['grade'];
         $is_inc = $this->attributes['is_inc'];
-        $status = $this->attributes['status'];
 
         if( !$is_inc )
             return null;
 
-        $average = $this->getAverage();
-
-        return $this->getTransmutatedGrade($average);
+        return $grade;
     }
 
     public function getRemarks()
     {
-        $status = $this->attributes['status'];
+        $grade = $this->attributes['grade'];
         $is_inc = $this->attributes['is_inc'];
         $average = $this->getAverage();
 
-        if($status == 'DRP' || $status == 'UD')
-            return strtoupper($this->getStatus());
+        if ($grade == 'DRP')
+            return 'Dropped';
+        else if ($grade == 'UD')
+            return 'Unofficially Dropped';
 
-        if($is_inc && $average == null)
+        if ($is_inc && $grade == null)
             return 'INCOMPLETE';
+        else if ($is_inc && $grade == 3.00)
+            return 'PASSED';
+        else if ($is_inc && $grade == 5.00)
+            return 'FAILED';
 
-        if($average == null)
+        if ($average == null)
             return null;
 
         $grade = $this->getTransmutatedGrade($average);
 
-        if($grade == 5)
+        if ($grade == 5)
             return 'FAILED';
         else
             return 'PASSED';

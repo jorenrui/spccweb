@@ -1,19 +1,7 @@
 @extends('layouts.app', ['title' => 'Grade Report'])
 
-@section('styles')
-<link href="{{ asset('vendor/select2-4.0.10/select2.min.css') }}" rel="stylesheet">
-@endsection
-
 @push('js')
-<script src="{{ asset('vendor/select2-4.0.10/select2.full.min.js') }}"></script>
-
 <script>
-$(document).ready(function() {
-  $('.select2').select2({
-    tags: true
-  });
-});
-
 $(document).on('keydown', 'input[pattern]', function(e){
   var input = $(this);
   var oldVal = input.val();
@@ -42,7 +30,7 @@ $(document).on('keydown', 'input[pattern]', function(e){
                           <div class="col">
                               <h2>Alteration of Grades</h2>
                               <p class="text-muted text-sm">
-                                  {{ $sclass->getCourse() }}
+                                {{ $sclass->getCourse() }}
                               </p>
                           </div>
                           <div class="col text-right">
@@ -66,22 +54,20 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     <th scope="col" class="text-center input-grade">Prelims</th>
                                     <th scope="col" class="text-center input-grade">Midterms</th>
                                     <th scope="col" class="text-center input-grade">Finals</th>
-                                    <th scope="col" class="text-center">Is INC?</th>
-                                    <th scope="col" class="text-center input-note">Note</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php $id = 0; ?>
                             @foreach ($grades as $grade)
 
-                              @if($grade->status == 'DRP' || $grade->status == 'UD')
+                              @if($grade->grade != null)
                                 <tr>
                                     <td class="text-center" scope="row">
                                       {{ $grade->student->getStudentNo() }}
                                     </td>
                                     <td colspan="6">
+                                        <span class="badge badge-primary ml-3">{{ $grade->getGrade() }}</span>
                                       {{ $grade->student->user->getName() }}
-                                      <span class="badge badge-primary ml-3">{{ $grade->getStatus() }}</span>
                                     </td>
                                 </tr>
                               @else
@@ -100,25 +86,6 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     </td>
                                     <td class="text-center">
                                       <input name="finals[]" class="form-control mb-3" type="text" placeholder="e.g. 85.00" pattern="^\d{0,2}(\.\d{0,2})?$" value="{{ $grade->finals }}">
-                                    </td>
-                                    <td class="text-center">
-                                      <label class="custom-toggle">
-                                        <input name="is_inc[{{$id}}]" type="checkbox" {{ $grade->is_inc ? 'checked' : '' }}>
-                                        <span class="custom-toggle-slider rounded-circle"></span>
-                                      </label>
-                                    </td>
-                                    <td>
-                                      @if($grade->is_inc)
-                                        <select name="note[]" class="select2 form-control mb-3" value="{{ $grade->note }}" required>
-                                          @if($grade->note != 'Project' && $grade->note != 'Final Exam')
-                                            <option value="{{ $grade->note }}">{{ $grade->note }}</option>
-                                          @endif
-                                          <option value="Project">Project</option>
-                                          <option value="Final Exam">Final Exam</option>
-                                        </select>
-                                      @else
-                                        <input name="note[]" type="text" style="display:none">
-                                      @endif
                                     </td>
                                 </tr>
                                 <?php $id++ ?>

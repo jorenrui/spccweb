@@ -33,17 +33,20 @@ class CurriculumDetails extends Model
 
     	switch ($sem) {
     		case 1:
-    			$sem = '1st';
+    			$sem = '1st Semester';
     			break;
     		case 2:
-    			$sem = '2nd';
+    			$sem = '2nd Semester';
     			break;
+            case 9:
+                $sem = 'Summer';
+                break;
 
     		default:
     			break;
     	}
 
-    	return $sy . ' Year ' . $sem . ' Semester';
+    	return $sy . ' Year ' . $sem;
     }
 
     public function getYearStadingReq()
@@ -77,7 +80,10 @@ class CurriculumDetails extends Model
     {
         foreach ($grades as $grade) {
             if ($grade->curriculum_details_id == $this->curriculum_details_id) {
-                return $grade->sclass->acadTerm->semester;
+                if ($grade->is_inc && $grade->getGrade() != 5)
+                    return $grade->sclass->acadTerm->semester;
+                else if( $grade->getGrade() != 'DRP' && $grade->getGrade() != 'UD'  )
+                    return $grade->sclass->acadTerm->semester;
             }
         }
 
@@ -92,7 +98,10 @@ class CurriculumDetails extends Model
         foreach ($cschools as $cschool) {
             foreach ($cschool->creditedCourses as $ccourse) {
                 if($ccourse->curriculum_details_id == $this->curriculum_details_id) {
-                    return $ccourse->acadTerm->semester;
+                    if ($ccourse->is_inc && $grade->grade != 5)
+                        return $ccourse->acadTerm->semester;
+                    else if( $grade->grade != 'DRP' && $grade->grade != 'UD' )
+                        return $ccourse->acadTerm->semester;
                 }
             }
         }
@@ -104,7 +113,10 @@ class CurriculumDetails extends Model
     {
         foreach ($grades as $grade) {
             if ($grade->curriculum_details_id == $this->curriculum_details_id) {
-                return $grade->sclass->acadTerm->sy;
+                if ($grade->is_inc && $grade->getGrade() != 5)
+                    return $grade->sclass->acadTerm->sy;
+                else if( $grade->getGrade() != 'DRP' && $grade->getGrade() != 'UD'  )
+                    return $grade->sclass->acadTerm->sy;
             }
         }
 
@@ -119,7 +131,10 @@ class CurriculumDetails extends Model
         foreach ($cschools as $cschool) {
             foreach ($cschool->creditedCourses as $ccourse) {
                 if($ccourse->curriculum_details_id == $this->curriculum_details_id) {
-                    return $ccourse->acadTerm->sy;
+                    if ($ccourse->is_inc && $grade->grade != 5)
+                        return $ccourse->acadTerm->sy;
+                    else if( $grade->grade != 'DRP' && $grade->grade != 'UD' )
+                        return $ccourse->acadTerm->sy;
                 }
             }
         }
@@ -131,7 +146,9 @@ class CurriculumDetails extends Model
     {
         foreach ($grades as $grade) {
             if ($grade->curriculum_details_id == $this->curriculum_details_id) {
-                if( $isNoDropped && $grade->getGrade() != 'DRP' && $grade->getGrade() != 'UD' )
+                if ( $isNoDropped && ($grade->is_inc && $grade->getGrade() != 5) )
+                    return 'INC';
+                else if( $isNoDropped && $grade->getGrade() != 'DRP' && $grade->getGrade() != 'UD' )
                     return $grade->getGrade();
                 else if ( !$isNoDropped )
                     return $grade->getGrade();
@@ -149,8 +166,12 @@ class CurriculumDetails extends Model
         foreach ($cschools as $cschool) {
             foreach ($cschool->creditedCourses as $ccourse) {
                 if($ccourse->curriculum_details_id == $this->curriculum_details_id) {
-                    if($isNoDropped && $ccourse->getGrade() != 'DRP' && $ccourse->getGrade() != 'UD')
-                        return $ccourse->getGrade();
+                    if($isNoDropped && $ccourse->getGrade() != 'DRP' && $ccourse->getGrade() != 'UD') {
+                        if ($ccourse->is_inc && $ccourse->grade != 5)
+                            return 'INC';
+                        else
+                            return $ccourse->getGrade();
+                    }
                     else if ( !$isNoDropped )
                         return $ccourse->getGrade();
                 }

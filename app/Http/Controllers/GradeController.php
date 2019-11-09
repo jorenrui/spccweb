@@ -42,7 +42,8 @@ class GradeController extends Controller
                             $q->where('class_id', 'like', '%'.$search.'%')
                               ->orWhere('course_code', 'like', '%'.$search.'%')
                               ->orWhere('section', 'like', '%'.$search.'%')
-                              ->orWhere('day', 'like', '%'.$search.'%')
+                              ->orWhere('lec_day', 'like', '%'.$search.'%')
+                              ->orWhere('lab_day', 'like', '%'.$search.'%')
                               ->orWhere('instructor_id', 'like', '%'.$search.'%');
                         })
                         ->orderBy('course_code')
@@ -207,20 +208,6 @@ class GradeController extends Controller
             $grade = Grade::find($request->grade_id[$i]);
             $grade->prelims = $request->prelims[$i];
             $grade->midterms = $request->midterms[$i];
-            $grade->finals = $request->finals[$i];
-            $grade->note = $request->note[$i];
-
-            if($grade->is_inc && empty($request->is_inc[$i])) {
-                $grade->is_inc = false;
-                $grade->note = null;
-            }
-
-            if (!empty($request->is_inc[$i])) {
-                if($request->is_inc[$i] == 'on') {
-                    $grade->is_inc = true;
-                }
-            }
-
             $grade->save();
         }
 
@@ -241,6 +228,39 @@ class GradeController extends Controller
         return redirect('/grades/' . $class_id)->with('success', 'Grades Altered');
     }
 
+    public function enterCompletionGrade($id) {
+        $grade = Grade::find($id);
+
+        return view('grades.completion_grade')->with('grade', $grade);
+    }
+
+    public function storeCompletionGrade(Request $request, $id) {
+        $this->validate($request, [
+            'grade' => 'required',
+            'note' => 'required|min:3|max:20'
+        ]);
+
+        $grade = Grade::find($id);
+        $grade->grade = $request->input('grade');
+        $grade->note = $request->input('note');
+        $grade->save();
+
+        // Add Activity
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+
+        if ($grade->sclass->section != null)
+            $activity->description = 'has encoded the completion grade for Student' .  $grade->student->getStudentNo() . ' in ' . $grade->sclass->course_code . ' ' . $grade->sclass->section . ' class.';
+        else
+            $activity->description = 'has encoded the completion grade for Student ' .  $grade->student->getStudentNo() . ' in ' . $grade->sclass->course_code . ' class.';
+
+        $activity->timestamp = now();
+        $activity->save();
+
+        return redirect('/grades/' . $grade->sclass->class_id )->with('success', 'Student ' . $grade->student->getStudentNo() . '\'s completion grade has been encoded.');
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -259,13 +279,13 @@ class GradeController extends Controller
         $activity->user_id = auth()->user()->id;
 
         if ($grade->sclass->section != null)
-            $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->getCourse() . ' ' . $grade->sclass->section . ' class.';
+            $activity->description = 'has removed the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' ' . $grade->sclass->section . ' class.';
         else
-            $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' class.';
+            $activity->description = 'has removed the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' class.';
 
         $activity->timestamp = now();
         $activity->save();
 
-        return redirect('/classes/' . $class_id)->with('success', 'Student Dropped');
+        return redirect('/classes/' . $class_id)->with('success', 'Student Removed');
     }
 }

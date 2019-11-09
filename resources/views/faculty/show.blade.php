@@ -238,7 +238,7 @@
                                 <th scope="col" class="text-center">Completion</th>
                                 <th scope="col" class="text-center">Remarks</th>
                                 <th scope="col" class="text-center">Note</th>
-                                @if($sclass->acad_term_id >= $cur_acad_term)
+                                @if($sclass->acad_term_id == $cur_acad_term)
                                 <th scope="col"></th>
                                 @endif
                             </tr>
@@ -275,22 +275,29 @@
                                   {{ $grade->note }}
                                 </td>
 
-                                @if($sclass->acad_term_id >= $cur_acad_term)
                                 <td class="text-right">
-                                  @if($grade->status == 'Active')
-                                    <div class="dropdown">
-                                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                          <i class="fas fa-ellipsis-v"></i>
-                                      </a>
-                                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                  @if($sclass->acad_term_id == $cur_acad_term && $grade->grade == null && !$grade->is_inc)
+                                  <div class="dropdown">
+                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                      @if( !$grade->is_inc )
                                         <a href="/faculty/load/unofficial_drop/{{ $grade->grade_id }}" class="dropdown-item" onclick="return confirm('Are you sure you want to unoffically drop {{ $grade->student->user->getName() }} in {{ $sclass->course_code }} class?')">
                                             Unoffically Drop
                                         </a>
-                                      </div>
+                                        <a class="dropdown-item" href="/faculty/load/inc/{{ $grade->grade_id }}" onclick="return confirm('Are you sure you want to set {{ $grade->student->user->getName() }}\'s grade to Incomplete?')">
+                                            Set as Incomplete
+                                        </a>
+                                      @elseif(auth()->user()->hasRole('admin'))
+                                        <a class="dropdown-item" href="/faculty/load/completion/{{ $grade->grade_id }}">
+                                            Enter Completion Grade
+                                        </a>
+                                      @endif
                                     </div>
+                                  </div>
                                   @endif
                                 </td>
-                                @endif
                             </tr>
                           @endforeach
                         </tbody>
