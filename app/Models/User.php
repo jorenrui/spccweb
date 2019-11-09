@@ -68,7 +68,11 @@ class User extends Authenticatable
     public function getName()
     {
     	$first_name = $this->attributes['first_name'];
-    	$middle_initial = $this->attributes['middle_name'][0] . '.';
+        $middle_initial = $this->attributes['middle_name'];
+
+        if($middle_initial != null)
+            $middle_initial = $middle_initial[0] . '.';
+
     	$last_name = $this->attributes['last_name'];
 
         if($middle_initial == '.')
@@ -80,7 +84,11 @@ class User extends Authenticatable
     public function getSortableName()
     {
     	$first_name = $this->attributes['first_name'];
-    	$middle_initial = $this->attributes['middle_name'][0] . '.';
+        $middle_initial = $this->attributes['middle_name'];
+
+        if($middle_initial != null)
+            $middle_initial = $middle_initial[0] . '.';
+
     	$last_name = $this->attributes['last_name'];
 
         if($middle_initial == '.')
