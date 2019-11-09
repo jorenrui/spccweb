@@ -26,7 +26,7 @@
                 <div class="col-lg-3 order-lg-2">
                     <div class="card-profile-image">
                         <img alt="Profile Picture placeholder"
-                            src="/storage/profile_pictures/{{ $user->profile_picture}}"
+                            src="{{ asset('/storage/profile_pictures/' . $user->profile_picture) }}"
                             class="rounded-circle">
                     </div>
                 </div>

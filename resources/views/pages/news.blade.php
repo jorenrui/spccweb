@@ -16,7 +16,7 @@
 <section class="section featured-news">
   <article>
     <div class="cover-image">
-      <img src="/storage/cover_images/{{$latest_post[0]->cover_image}}">
+      <img src="{{ asset('/storage/cover_images/' . $latest_post[0]->cover_image) }}">
     </div>
     <div class="content">
       <div class="news-meta">
@@ -51,7 +51,7 @@
   @foreach ($posts as $post)
     @if($post->post_id != $latest_post[0]->post_id)
     <article>
-      <img src="/storage/cover_images/{{$post->cover_image}}">
+      <img src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
       <div class="news-meta">
         <h2>
           <a href="/articles/{{ $post->post_id }}" class="title">

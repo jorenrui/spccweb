@@ -9,7 +9,7 @@
               @foreach ($posts as $post)
               <div class="col-xl-4 mt-5 mb-5 mb-xl-0">
                   <div class="card shadow">
-                      <img class="card-img-top card-img-top-post" src="/storage/cover_images/{{$post->cover_image}}">
+                      <img class="card-img-top card-img-top-post" src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
                       <div class="card-body card-body-post">
                         <h3 class="card-title">{{ $post->title }}</h3>
                         <p class="card-text card-text-post">

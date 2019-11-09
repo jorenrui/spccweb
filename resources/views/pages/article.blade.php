@@ -15,7 +15,7 @@
         </span>
       </div>
     </div>
-    <img src="/storage/cover_images/{{$post->cover_image}}">
+    <img src="{{ asset('/storage/cover_images/' . $post->cover_image) }}">
     <div class="article-content">
       {!! $post->body !!}
     </div>

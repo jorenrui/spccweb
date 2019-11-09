@@ -10,7 +10,7 @@
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
                             <img alt="Profile Picture placeholder"
-                                    src="/storage/profile_pictures/{{ auth()->user()->profile_picture}}">
+                                    src="{{ asset('storage/profile_pictures/' . auth()->user()->profile_picture) }}">
                         </span>
                         <div class="media-body ml-2 d-none d-lg-block">
                             <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->getName() }}</span>

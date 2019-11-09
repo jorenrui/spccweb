@@ -120,7 +120,7 @@
 
   @foreach ($posts as $post)
     <article>
-      <img src="/storage/cover_images/{{$post->cover_image}}" />
+      <img src="{{ asset('/storage/cover_images/' . $post->cover_image) }}" />
       <h3>
         <a href="/articles/{{ $post->post_id }}" class="title">
           {{ $post->title }}
