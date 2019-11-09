@@ -256,39 +256,6 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->profile_picture = '041930001.jpg';
-        $user->first_name = 'Red';
-        $user->middle_name = 'Dober';
-        $user->last_name = 'Woof';
-        $user->birthdate = '1998-08-06';
-        $user->address = 'Tondo, Manila';
-        $user->username = '041930001';
-        $user->password = Hash::make('041930001');
-        $user->created_at = now();
-        $user->updated_at = now();
-        $user->save();
-
-        $user->assignRole('student');
-
-        // Student Table
-        $student = new Student;
-        $student->student_no = '041930001';
-        $student->student_type = 'Regular';
-        $student->primary = 'Doggy Elementary School';
-        $student->primary_sy = '2003-2007';
-        $student->intermediate = 'Doggy Elementary School';
-        $student->intermediate_sy = '2007-2010';
-        $student->secondary = 'Doggy High School';
-        $student->secondary_sy = '2010-2015';
-        $student->curriculum_id = 2012;
-        $student->acad_term_admitted_id = '192001';
-        $student->user_id = $user->id;
-        $student->save();
-
-        /* ========================= */
-
-        // Users Table
-        $user = new User;
         $user->profile_picture = '041930003.jpg';
         $user->first_name = 'Steven';
         $user->middle_name = 'Riox';
