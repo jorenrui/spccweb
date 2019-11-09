@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             // Users2TableSeeder::class,
             ActivityTableSeeder::class,
-            // PostsTableSeeder::class,
+            PostsTableSeeder::class,
             // SClassTableSeeder::class,
             // GradeTableSeeder::class,
             // CourseCreditationTableSeeder::class,
