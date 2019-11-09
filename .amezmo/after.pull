@@ -14,3 +14,6 @@ composer \
     install
 
 php artisan migrate:refresh --no-interaction --no-ansi --force --seed;
+
+cp -r public/img/cover_images public/storage;
+cp -r public/img/profile_pictures public/storage;
