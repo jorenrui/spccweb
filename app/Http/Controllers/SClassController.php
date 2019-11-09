@@ -95,9 +95,9 @@ class SClassController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'acad_term_id' => 'required|min:6|max:6',
-            'course_code' => 'required|min:3|max:20',
-            'instructor_id' => 'required|min:4|max:5',
+            'acad_term_id' => 'required|exists:acad_term|min:6|max:6',
+            'course_code' => 'required|exists:course|min:3|max:20',
+            'instructor_id' => 'required|exists:employee,employee_no|min:4|max:5',
             'section' => 'nullable|min:1|max:10',
             'room' => 'nullable|min:3|max:20',
             'lec_day' => 'required|min:1|max:2',
@@ -107,6 +107,7 @@ class SClassController extends Controller
             'lab_time_start' => 'nullable',
             'lab_time_end' => 'nullable|after:lab_time_start',
         ]);
+
 
         // Add Class
         $sclass = new SClass;
@@ -118,9 +119,15 @@ class SClassController extends Controller
         $sclass->lec_day = $request->input('lec_day');
         $sclass->lec_time_start = $request->input('lec_time_start');
         $sclass->lec_time_end = $request->input('lec_time_end');
-        $sclass->lab_day = $request->input('lab_day');
-        $sclass->lab_time_start = $request->input('lab_time_start');
-        $sclass->lab_time_end = $request->input('lab_time_end');
+
+        $course = Course::find($request->input('course_code'));
+
+        if ($course->lab_units != null) {
+            $sclass->lab_day = $request->input('lab_day');
+            $sclass->lab_time_start = $request->input('lab_time_start');
+            $sclass->lab_time_end = $request->input('lab_time_end');
+        }
+
         $sclass->save();
 
         if ($sclass->section != null)
@@ -241,9 +248,9 @@ class SClassController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'acad_term_id' => 'required|min:6|max:6',
-            'course_code' => 'required|min:3|max:20',
-            'instructor_id' => 'required|min:4|max:5',
+            'acad_term_id' => 'required|exists:acad_term|min:6|max:6',
+            'course_code' => 'required|exists:course|min:3|max:20',
+            'instructor_id' => 'required|exists:employee,employee_no|min:4|max:5',
             'section' => 'nullable|min:1|max:10',
             'room' => 'nullable|min:3|max:20',
             'lec_day' => 'required|min:1|max:2',
@@ -264,9 +271,19 @@ class SClassController extends Controller
         $sclass->lec_day = $request->input('lec_day');
         $sclass->lec_time_start = $request->input('lec_time_start');
         $sclass->lec_time_end = $request->input('lec_time_end');
-        $sclass->lab_day = $request->input('lab_day');
-        $sclass->lab_time_start = $request->input('lab_time_start');
-        $sclass->lab_time_end = $request->input('lab_time_end');
+
+        $course = Course::find($request->input('course_code'));
+
+        if ($course->lab_units != null) {
+            $sclass->lab_day = $request->input('lab_day');
+            $sclass->lab_time_start = $request->input('lab_time_start');
+            $sclass->lab_time_end = $request->input('lab_time_end');
+        } else {
+            $sclass->lab_day = null;
+            $sclass->lab_time_start = null;
+            $sclass->lab_time_end = null;
+        }
+
         $sclass->save();
 
         if ($sclass->section != null)

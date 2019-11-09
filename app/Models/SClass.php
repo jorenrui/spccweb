@@ -57,7 +57,7 @@ class SClass extends Model
         $day = $this->attributes['lec_day'];
         $time = $this->getLecTime();
 
-        if($lab_day != null) {
+        if($this->course->lab_units != null) {
             $lab_time = $this->getLabTime();
 
             return $day . ' ' . $time . ', ' . $lab_day . ' ' . $lab_time;
@@ -80,7 +80,7 @@ class SClass extends Model
         $day = $this->attributes['lab_day'];
         $lab_time = $this->getLabTime();
 
-        if ($day == null)
+        if ($this->course->lab_units == null)
             return null;
 
         return $day . ', ' . $lab_time;
