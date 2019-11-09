@@ -1,7 +1,18 @@
-#!/bin/bash
 
+# Full path: <your repo>.amezmo/after.pull
 set -e;
 
-echo "Running php artisan migrate:refresh --seed from ${APPLICATION_ROOT}";
+echo "Running composer install (${COMMIT_ID})";
+
+composer \
+    --no-ansi \
+    --no-interaction \
+    --optimize-autoloader \
+    --no-progress \
+    --no-dev \
+    --profile \
+    install
 
 php artisan migrate:refresh --no-interaction --no-ansi --force --seed;
+
+npm install;
