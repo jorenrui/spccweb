@@ -14,5 +14,3 @@ composer \
     install
 
 php artisan migrate:refresh --no-interaction --no-ansi --force --seed;
-
-npm install;
