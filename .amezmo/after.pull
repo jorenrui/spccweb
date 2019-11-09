@@ -13,7 +13,15 @@ composer \
     --profile \
     install
 
+echo "Running php artisan migrate:refresh --seed";
+
 php artisan migrate:refresh --no-interaction --no-ansi --force --seed;
+
+echo "Running php artisan storage:link";
+
+php artisan storage:link;
+
+echo "Copying public/img/cover_images and public/img/profile_pictures to public/storage";
 
 cp -r public/img/cover_images public/storage;
 cp -r public/img/profile_pictures public/storage;
