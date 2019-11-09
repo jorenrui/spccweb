@@ -19,7 +19,10 @@ class FacultyAccessController extends Controller
 
         $classes = SClass::where('acad_term_id', 'LIKE', $cur_acad_term)
                             ->where('instructor_id', 'LIKE', $employee_no)
-                            ->where('day', 'LIKE', $day)
+                            ->where(function($q) use ($day) {
+                                $q->Where('lec_day', 'like', '%'.$day.'%')
+                                ->orWhere('lab_day', 'like', '%'.$day.'%');
+                            })
                             ->get();
 
         return $classes;

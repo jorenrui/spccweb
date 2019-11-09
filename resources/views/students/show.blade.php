@@ -266,25 +266,63 @@
                     </thead>
                     <tbody>
                       @foreach ($m_grades as $grade)
-                        <tr class="bg-white">
-                            <td scope="row">
-                                @if($grade->sclass->lec_day == 'M')
-                                    {{ $grade->sclass->getLecTime() }}
-                                @else
-                                    {{ $grade->sclass->getLabTime() }}
-                                @endif
-                            </td>
-                            <td>{{ $grade->sclass->getCourse() }}</td>
-                            <td>{{ $grade->sclass->course->getCredits() }}</td>
-                            <td>
-                                @if($grade->sclass->room != null)
-                                    {{ $grade->sclass->room }}
-                                @else
-                                    -
-                                @endif
-                            </td>
-                            <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
-                        </tr>
+
+                        @if($grade->sclass->lec_day == 'M' && $grade->sclass->lab_day == 'M')
+                            <tr class="bg-white">
+                                <td scope="row">{{ $grade->sclass->getLecTime() }}</td>
+                                <td>{{ $grade->sclass->getCourse() }} (LEC)</td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td scope="row">{{ $grade->sclass->getLabTime() }}</td>
+                                <td>{{ $grade->sclass->getCourse() }} (LAB)</td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                        @else
+                            <tr class="bg-white">
+                                <td scope="row">
+                                    @if($grade->sclass->lec_day == 'M')
+                                        {{ $grade->sclass->getLecTime() }}
+                                    @else
+                                        {{ $grade->sclass->getLabTime() }}
+                                    @endif
+                                </td>
+                                <td>
+                                    {{ $grade->sclass->getCourse() }}
+                                    @if($grade->sclass->lec_day == 'M')
+                                        (LEC)
+                                    @else
+                                        (LAB)
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                        @endif
+
                       @endforeach
                     </tbody>
                 </table>
@@ -303,19 +341,63 @@
                     </thead>
                     <tbody>
                       @foreach ($t_grades as $grade)
-                        <tr class="bg-white">
-                            <td scope="row">
-                                @if($grade->sclass->lec_day == 'T')
-                                    {{ $grade->sclass->getLecTime() }}
-                                @else
-                                    {{ $grade->sclass->getLabTime() }}
-                                @endif
-                            </td>
-                            <td>{{ $grade->sclass->getCourse() }}</td>
-                            <td>{{ $grade->sclass->course->getCredits() }}</td>
-                            <td>{{ $grade->sclass->room }}</td>
-                            <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
-                        </tr>
+
+                        @if($grade->sclass->lec_day == 'T' && $grade->sclass->lab_day == 'T')
+                            <tr class="bg-white">
+                                <td scope="row">{{ $grade->sclass->getLecTime() }}</td>
+                                <td>{{ $grade->sclass->getCourse() }} (LEC)</td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td scope="row">{{ $grade->sclass->getLabTime() }}</td>
+                                <td>{{ $grade->sclass->getCourse() }} (LAB)</td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                        @else
+                            <tr class="bg-white">
+                                <td scope="row">
+                                    @if($grade->sclass->lec_day == 'T')
+                                        {{ $grade->sclass->getLecTime() }}
+                                    @else
+                                        {{ $grade->sclass->getLabTime() }}
+                                    @endif
+                                </td>
+                                <td>
+                                    {{ $grade->sclass->getCourse() }}
+                                    @if($grade->sclass->lec_day == 'T')
+                                        (LEC)
+                                    @else
+                                        (LAB)
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                        @endif
+
                       @endforeach
                     </tbody>
                 </table>
@@ -334,19 +416,63 @@
                     </thead>
                     <tbody>
                       @foreach ($w_grades as $grade)
-                        <tr class="bg-white">
-                            <td scope="row">
-                                @if($grade->sclass->lec_day == 'W')
-                                    {{ $grade->sclass->getLecTime() }}
-                                @else
-                                    {{ $grade->sclass->getLabTime() }}
-                                @endif
-                            </td>
-                            <td>{{ $grade->sclass->getCourse() }}</td>
-                            <td>{{ $grade->sclass->course->getCredits() }}</td>
-                            <td>{{ $grade->sclass->room }}</td>
-                            <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
-                        </tr>
+
+                        @if($grade->sclass->lec_day == 'W' && $grade->sclass->lab_day == 'W')
+                            <tr class="bg-white">
+                                <td scope="row">{{ $grade->sclass->getLecTime() }}</td>
+                                <td>{{ $grade->sclass->getCourse() }} (LEC)</td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td scope="row">{{ $grade->sclass->getLabTime() }}</td>
+                                <td>{{ $grade->sclass->getCourse() }} (LAB)</td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                        @else
+                            <tr class="bg-white">
+                                <td scope="row">
+                                    @if($grade->sclass->lec_day == 'W')
+                                        {{ $grade->sclass->getLecTime() }}
+                                    @else
+                                        {{ $grade->sclass->getLabTime() }}
+                                    @endif
+                                </td>
+                                <td>
+                                    {{ $grade->sclass->getCourse() }}
+                                    @if($grade->sclass->lec_day == 'W')
+                                        (LEC)
+                                    @else
+                                        (LAB)
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                        @endif
+
                       @endforeach
                     </tbody>
                 </table>
@@ -365,19 +491,63 @@
                     </thead>
                     <tbody>
                       @foreach ($th_grades as $grade)
-                        <tr class="bg-white">
-                            <td scope="row">
-                                @if($grade->sclass->lec_day == 'TH')
-                                    {{ $grade->sclass->getLecTime() }}
-                                @else
-                                    {{ $grade->sclass->getLabTime() }}
-                                @endif
-                            </td>
-                            <td>{{ $grade->sclass->getCourse() }}</td>
-                            <td>{{ $grade->sclass->course->getCredits() }}</td>
-                            <td>{{ $grade->sclass->room }}</td>
-                            <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
-                        </tr>
+
+                        @if($grade->sclass->lec_day == 'TH' && $grade->sclass->lab_day == 'TH')
+                            <tr class="bg-white">
+                                <td scope="row">{{ $grade->sclass->getLecTime() }}</td>
+                                <td>{{ $grade->sclass->getCourse() }} (LEC)</td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td scope="row">{{ $grade->sclass->getLabTime() }}</td>
+                                <td>{{ $grade->sclass->getCourse() }} (LAB)</td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                        @else
+                            <tr class="bg-white">
+                                <td scope="row">
+                                    @if($grade->sclass->lec_day == 'TH')
+                                        {{ $grade->sclass->getLecTime() }}
+                                    @else
+                                        {{ $grade->sclass->getLabTime() }}
+                                    @endif
+                                </td>
+                                <td>
+                                    {{ $grade->sclass->getCourse() }}
+                                    @if($grade->sclass->lec_day == 'TH')
+                                        (LEC)
+                                    @else
+                                        (LAB)
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                        @endif
+
                       @endforeach
                     </tbody>
                 </table>
@@ -396,19 +566,63 @@
                     </thead>
                     <tbody>
                       @foreach ($f_grades as $grade)
-                        <tr class="bg-white">
-                            <td scope="row">
-                                @if($grade->sclass->lec_day == 'F')
-                                    {{ $grade->sclass->getLecTime() }}
-                                @else
-                                    {{ $grade->sclass->getLabTime() }}
-                                @endif
-                            </td>
-                            <td>{{ $grade->sclass->getCourse() }}</td>
-                            <td>{{ $grade->sclass->course->getCredits() }}</td>
-                            <td>{{ $grade->sclass->room }}</td>
-                            <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
-                        </tr>
+
+                        @if($grade->sclass->lec_day == 'F' && $grade->sclass->lab_day == 'F')
+                            <tr class="bg-white">
+                                <td scope="row">{{ $grade->sclass->getLecTime() }}</td>
+                                <td>{{ $grade->sclass->getCourse() }} (LEC)</td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td scope="row">{{ $grade->sclass->getLabTime() }}</td>
+                                <td>{{ $grade->sclass->getCourse() }} (LAB)</td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                        @else
+                            <tr class="bg-white">
+                                <td scope="row">
+                                    @if($grade->sclass->lec_day == 'F')
+                                        {{ $grade->sclass->getLecTime() }}
+                                    @else
+                                        {{ $grade->sclass->getLabTime() }}
+                                    @endif
+                                </td>
+                                <td>
+                                    {{ $grade->sclass->getCourse() }}
+                                    @if($grade->sclass->lec_day == 'F')
+                                        (LEC)
+                                    @else
+                                        (LAB)
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->course->getCredits() }}</td>
+                                <td>
+                                    @if($grade->sclass->room != null)
+                                        {{ $grade->sclass->room }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>{{ $grade->sclass->instructor->user->getNameWithTitle() }}</td>
+                            </tr>
+                        @endif
+
                       @endforeach
                     </tbody>
                 </table>
