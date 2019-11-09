@@ -42,6 +42,9 @@ class SClass extends Model
         $time_start = strtotime($this->attributes['lab_time_start']);
         $time_end = strtotime($this->attributes['lab_time_end']);
 
+        if($time_start == null)
+            return null;
+
         $time_start = date('h:iA', $time_start);
         $time_end = date('h:iA', $time_end);
 
@@ -76,6 +79,9 @@ class SClass extends Model
     {
         $day = $this->attributes['lab_day'];
         $lab_time = $this->getLabTime();
+
+        if ($day == null)
+            return null;
 
         return $day . ', ' . $lab_time;
     }

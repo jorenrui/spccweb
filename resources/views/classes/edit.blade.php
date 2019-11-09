@@ -250,6 +250,7 @@ $(document).ready(function() {
                                         Day
                                       </label>
                                       <select id="lab_day" name="lab_day" class="form-control form-control-alternative m-b">
+                                        <option value="" {{ old('lab_day') == null ? 'selected' : '' }}>-- Select day --</option>
                                         <option value="M" {{ old('lab_day', $sclass->lab_day) == 'M' ? 'selected' : '' }}>Monday</option>
                                         <option value="T" {{  old('lab_day', $sclass->lab_day) == 'T' ? 'selected' : '' }}>Tuesday</option>
                                         <option value="W" {{  old('lab_day', $sclass->lab_day) == 'W' ? 'selected' : '' }}>Wednesday</option>
