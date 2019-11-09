@@ -26,20 +26,10 @@ class SClass extends Model
         return $course_code . ' ' . $description;
     }
 
-    public function getTime()
-    {
-        $time_start = date('h:iA', strtotime($this->attributes['time_start']));
-        $time_end =  date('h:iA', strtotime($this->attributes['time_end']));
-
-        return $time_start . ' - ' . $time_end;
-    }
-
     public function getLecTime()
     {
-        $lab_units = $this->course->lab_units;
-        $time_start = strtotime($this->attributes['time_start']);
-
-        $time_end = strtotime('+' . $lab_units . ' hours', $time_start);
+        $time_start = strtotime($this->attributes['lec_time_start']);
+        $time_end = strtotime($this->attributes['lec_time_end']);
 
         $time_start = date('h:iA', $time_start);
         $time_end = date('h:iA', $time_end);
@@ -49,10 +39,8 @@ class SClass extends Model
 
     public function getLabTime()
     {
-        $lab_units = $this->course->lab_units;
-        $time_end = strtotime($this->attributes['time_end']);
-
-        $time_start = strtotime('-' . ($lab_units - 1) . ' hours', $time_end);
+        $time_start = strtotime($this->attributes['lab_time_start']);
+        $time_end = strtotime($this->attributes['lab_time_end']);
 
         $time_start = date('h:iA', $time_start);
         $time_end = date('h:iA', $time_end);
@@ -62,16 +50,23 @@ class SClass extends Model
 
     public function getSchedule()
     {
-        $day = $this->attributes['day'];
-        $time = $this->getTime();
+        $lab_day = $this->attributes['lab_day'];
+        $day = $this->attributes['lec_day'];
+        $time = $this->getLecTime();
 
-        return $day . ', ' . $time;
+        if($lab_day != null) {
+            $lab_time = $this->getLabTime();
+
+            return $day . ' ' . $time . ', ' . $lab_day . ' ' . $lab_time;
+        }
+
+        return $day . ' ' . $time;
     }
 
 
     public function getLecSchedule()
     {
-        $day = $this->attributes['day'];
+        $day = $this->attributes['lec_day'];
         $lec_time = $this->getLecTime();
 
         return $day . ', ' . $lec_time;
@@ -79,7 +74,7 @@ class SClass extends Model
 
     public function getLabSchedule()
     {
-        $day = $this->attributes['day'];
+        $day = $this->attributes['lab_day'];
         $lab_time = $this->getLabTime();
 
         return $day . ', ' . $lab_time;

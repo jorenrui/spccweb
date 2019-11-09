@@ -26,8 +26,8 @@
                 <div class="col-lg-3 order-lg-2">
                     <div class="card-profile-image">
                         <img alt="Profile Picture placeholder"
-                                    src="/storage/profile_pictures/{{ $user->profile_picture}}"
-                                    class="rounded-circle">
+                                src="/storage/profile_pictures/{{ $user->profile_picture}}"
+                                class="rounded-circle">
                     </div>
                 </div>
             </div>
@@ -267,7 +267,13 @@
                     <tbody>
                       @foreach ($m_grades as $grade)
                         <tr class="bg-white">
-                            <td scope="row">{{ $grade->sclass->getTime() }}</td>
+                            <td scope="row">
+                                @if($grade->sclass->lec_day == 'M')
+                                    {{ $grade->sclass->getLecTime() }}
+                                @else
+                                    {{ $grade->sclass->getLabTime() }}
+                                @endif
+                            </td>
                             <td>{{ $grade->sclass->getCourse() }}</td>
                             <td>{{ $grade->sclass->course->getCredits() }}</td>
                             <td>
@@ -298,7 +304,13 @@
                     <tbody>
                       @foreach ($t_grades as $grade)
                         <tr class="bg-white">
-                            <td scope="row">{{ $grade->sclass->getTime() }}</td>
+                            <td scope="row">
+                                @if($grade->sclass->lec_day == 'T')
+                                    {{ $grade->sclass->getLecTime() }}
+                                @else
+                                    {{ $grade->sclass->getLabTime() }}
+                                @endif
+                            </td>
                             <td>{{ $grade->sclass->getCourse() }}</td>
                             <td>{{ $grade->sclass->course->getCredits() }}</td>
                             <td>{{ $grade->sclass->room }}</td>
@@ -323,7 +335,13 @@
                     <tbody>
                       @foreach ($w_grades as $grade)
                         <tr class="bg-white">
-                            <td scope="row">{{ $grade->sclass->getTime() }}</td>
+                            <td scope="row">
+                                @if($grade->sclass->lec_day == 'W')
+                                    {{ $grade->sclass->getLecTime() }}
+                                @else
+                                    {{ $grade->sclass->getLabTime() }}
+                                @endif
+                            </td>
                             <td>{{ $grade->sclass->getCourse() }}</td>
                             <td>{{ $grade->sclass->course->getCredits() }}</td>
                             <td>{{ $grade->sclass->room }}</td>
@@ -348,7 +366,13 @@
                     <tbody>
                       @foreach ($th_grades as $grade)
                         <tr class="bg-white">
-                            <td scope="row">{{ $grade->sclass->getTime() }}</td>
+                            <td scope="row">
+                                @if($grade->sclass->lec_day == 'TH')
+                                    {{ $grade->sclass->getLecTime() }}
+                                @else
+                                    {{ $grade->sclass->getLabTime() }}
+                                @endif
+                            </td>
                             <td>{{ $grade->sclass->getCourse() }}</td>
                             <td>{{ $grade->sclass->course->getCredits() }}</td>
                             <td>{{ $grade->sclass->room }}</td>
@@ -373,7 +397,13 @@
                     <tbody>
                       @foreach ($f_grades as $grade)
                         <tr class="bg-white">
-                            <td scope="row">{{ $grade->sclass->getTime() }}</td>
+                            <td scope="row">
+                                @if($grade->sclass->lec_day == 'F')
+                                    {{ $grade->sclass->getLecTime() }}
+                                @else
+                                    {{ $grade->sclass->getLabTime() }}
+                                @endif
+                            </td>
                             <td>{{ $grade->sclass->getCourse() }}</td>
                             <td>{{ $grade->sclass->course->getCredits() }}</td>
                             <td>{{ $grade->sclass->room }}</td>

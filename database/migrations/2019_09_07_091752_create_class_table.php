@@ -16,9 +16,12 @@ class CreateClassTable extends Migration
         Schema::create('class', function (Blueprint $table) {
             $table->increments('class_id');
             $table->string('section', 10)->nullable();
-            $table->char('day', 2);
-            $table->time('time_start');
-            $table->time('time_end');
+            $table->char('lec_day', 2);
+            $table->time('lec_time_start');
+            $table->time('lec_time_end');
+            $table->char('lab_day', 2)->nullable()->default(null);
+            $table->time('lab_time_start')->nullable()->default(null);
+            $table->time('lab_time_end')->nullable()->default(null);
             $table->string('room', 20)->nullable();
             $table->string('sog_prelims')->nullable();
             $table->string('sog_midterms')->nullable();

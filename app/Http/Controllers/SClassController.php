@@ -42,12 +42,14 @@ class SClassController extends Controller
                             $q->where('class_id', 'like', '%'.$search.'%')
                               ->orWhere('course_code', 'like', '%'.$search.'%')
                               ->orWhere('section', 'like', '%'.$search.'%')
-                              ->orWhere('day', 'like', '%'.$search.'%')
+                              ->orWhere('lec_day', 'like', '%'.$search.'%')
+                              ->orWhere('lab_day', 'like', '%'.$search.'%')
                               ->orWhere('instructor_id', 'like', '%'.$search.'%');
                         })
                         ->orderBy('course_code')
                         ->orderBy('section')
                         ->paginate(10);
+            $classes->appends(['search' => $search, 'selected_acad_term' => $selected_acad_term]);
         } else {
             $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)
                         ->orderBy('course_code')
@@ -93,27 +95,38 @@ class SClassController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'day' => 'required',
-            'time_start' => 'required',
-            'time_end' => 'required',
-            'acad_term_id' => 'required',
-            'course_code' => 'required',
-            'instructor_id' => 'required'
+            'acad_term_id' => 'required|min:6|max:6',
+            'course_code' => 'required|min:3|max:20',
+            'instructor_id' => 'required|min:4|max:5',
+            'section' => 'nullable|min:1|max:10',
+            'room' => 'nullable|min:3|max:20',
+            'lec_day' => 'required|min:1|max:2',
+            'lec_time_start' => 'required',
+            'lec_time_end' => 'required|after:lec_time_start',
+            'lab_day' => 'nullable|min:1|max:2',
+            'lab_time_start' => 'nullable',
+            'lab_time_end' => 'nullable|after:lab_time_start',
         ]);
 
         // Add Class
         $sclass = new SClass;
-        $sclass->section = $request->input('section');
-        $sclass->day = $request->input('day');
-        $sclass->room = $request->input('room');
-        $sclass->time_start = $request->input('time_start');
-        $sclass->time_end = $request->input('time_end');
         $sclass->acad_term_id = $request->input('acad_term_id');
         $sclass->course_code = $request->input('course_code');
         $sclass->instructor_id = $request->input('instructor_id');
+        $sclass->section = $request->input('section');
+        $sclass->room = $request->input('room');
+        $sclass->lec_day = $request->input('lec_day');
+        $sclass->lec_time_start = $request->input('lec_time_start');
+        $sclass->lec_time_end = $request->input('lec_time_end');
+        $sclass->lab_day = $request->input('lab_day');
+        $sclass->lab_time_start = $request->input('lab_time_start');
+        $sclass->lab_time_end = $request->input('lab_time_end');
         $sclass->save();
 
-        return redirect('/classes/' . $sclass->class_id)->with('success', 'Class Created');
+        if ($sclass->section != null)
+            return redirect('/classes/' . $sclass->class_id)->with('success', $sclass->course_code . ' ' . $sclass->section . ' class has been successfully created.');
+
+        return redirect('/classes/' . $sclass->class_id)->with('success', $sclass->course_code . ' class has been successfully created.');
     }
 
     /**
@@ -227,27 +240,38 @@ class SClassController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'day' => 'required',
-            'time_start' => 'required',
-            'time_end' => 'required',
-            'acad_term_id' => 'required',
-            'course_code' => 'required',
-            'instructor_id' => 'required'
+            'acad_term_id' => 'required|min:6|max:6',
+            'course_code' => 'required|min:3|max:20',
+            'instructor_id' => 'required|min:4|max:5',
+            'section' => 'nullable|min:1|max:10',
+            'room' => 'nullable|min:3|max:20',
+            'lec_day' => 'required|min:1|max:2',
+            'lec_time_start' => 'required',
+            'lec_time_end' => 'required|after:lec_time_start',
+            'lab_day' => 'nullable|min:1|max:2',
+            'lab_time_start' => 'nullable',
+            'lab_time_end' => 'nullable|after:;lab_time_start',
         ]);
 
         // Update Class
         $sclass = SClass::find($id);
-        $sclass->section = $request->input('section');
-        $sclass->day = $request->input('day');
-        $sclass->room = $request->input('room');
-        $sclass->time_start = $request->input('time_start');
-        $sclass->time_end = $request->input('time_end');
         $sclass->acad_term_id = $request->input('acad_term_id');
         $sclass->course_code = $request->input('course_code');
         $sclass->instructor_id = $request->input('instructor_id');
+        $sclass->section = $request->input('section');
+        $sclass->room = $request->input('room');
+        $sclass->lec_day = $request->input('lec_day');
+        $sclass->lec_time_start = $request->input('lec_time_start');
+        $sclass->lec_time_end = $request->input('lec_time_end');
+        $sclass->lab_day = $request->input('lab_day');
+        $sclass->lab_time_start = $request->input('lab_time_start');
+        $sclass->lab_time_end = $request->input('lab_time_end');
         $sclass->save();
 
-        return redirect('/classes/' . $sclass->class_id)->with('success', 'Class Updated');
+        if ($sclass->section != null)
+            return redirect('/classes/' . $sclass->class_id)->with('success', $sclass->course_code . ' ' . $sclass->section . ' class has been successfully updated.');
+
+        return redirect('/classes/' . $sclass->class_id)->with('success', $sclass->course_code . ' class has been successfully updated.');
     }
 
     public function dropStudent($id, $grade_id)
@@ -256,8 +280,20 @@ class SClassController extends Controller
         $grade->prelims = null;
         $grade->midterms = null;
         $grade->finals = null;
-        $grade->status = 'DRP';
+        $grade->grade = 'DRP';
         $grade->save();
+
+        // Add Activity
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+
+        if ($grade->sclass->section != null)
+            $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' ' . $grade->sclass->section . ' class.';
+        else
+            $activity->description = 'has dropped the student ' . $grade->student->getStudentNo() . ' to ' . $grade->sclass->course_code . ' class.';
+
+        $activity->timestamp = now();
+        $activity->save();
 
         if($grade->sclass->section == null)
             return redirect('/classes/' . $id)->with('success', $grade->student->getStudentNo() . ' ' . $grade->student->user->getName() . ' has been dropped to ' . $grade->sclass->course_code . ' class.');

@@ -168,7 +168,7 @@ class StudentController extends Controller
         $grades = $this->getEnlistment($student_no);
 
         return array_filter($grades, function ($grade) use ($day){
-            return $grade->sclass->day == $day;
+            return $grade->sclass->lec_day == $day || $grade->sclass->lab_day == $day;
         });
     }
 

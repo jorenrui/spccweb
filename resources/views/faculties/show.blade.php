@@ -178,7 +178,13 @@
                     <tbody>
                       @foreach ($m_class as $sclass)
                         <tr class="bg-white">
-                            <td scope="row">{{ $sclass->getTime() }}</td>
+                            <td scope="row">
+                                @if($sclass->lec_day == 'M')
+                                    {{ $sclass->getLecTime() }}
+                                @else
+                                    {{ $sclass->getLabTime() }}
+                                @endif
+                            </td>
                             <td>{{ $sclass->getCourse() }}</td>
                             <td>{{ $sclass->course->getCredits() }}</td>
                             <td>
@@ -209,7 +215,13 @@
                     <tbody>
                       @foreach ($t_class as $sclass)
                         <tr class="bg-white">
-                            <td scope="row">{{ $sclass->getTime() }}</td>
+                            <td scope="row">
+                                @if($sclass->lec_day == 'T')
+                                    {{ $sclass->getLecTime() }}
+                                @else
+                                    {{ $sclass->getLabTime() }}
+                                @endif
+                            </td>
                             <td>{{ $sclass->getCourse() }}</td>
                             <td>{{ $sclass->course->getCredits() }}</td>
                             <td>{{ $sclass->room }}</td>
@@ -234,7 +246,13 @@
                     <tbody>
                       @foreach ($w_class as $sclass)
                         <tr class="bg-white">
-                            <td scope="row">{{ $sclass->getTime() }}</td>
+                            <td scope="row">
+                                @if($sclass->lec_day == 'W')
+                                    {{ $sclass->getLecTime() }}
+                                @else
+                                    {{ $sclass->getLabTime() }}
+                                @endif
+                            </td>
                             <td>{{ $sclass->getCourse() }}</td>
                             <td>{{ $sclass->course->getCredits() }}</td>
                             <td>{{ $sclass->room }}</td>
@@ -259,7 +277,13 @@
                     <tbody>
                       @foreach ($th_class as $sclass)
                         <tr class="bg-white">
-                            <td scope="row">{{ $sclass->getTime() }}</td>
+                            <td scope="row">
+                                @if($sclass->lec_day == 'TH')
+                                    {{ $sclass->getLecTime() }}
+                                @else
+                                    {{ $sclass->getLabTime() }}
+                                @endif
+                            </td>
                             <td>{{ $sclass->getCourse() }}</td>
                             <td>{{ $sclass->course->getCredits() }}</td>
                             <td>{{ $sclass->room }}</td>
@@ -284,7 +308,13 @@
                     <tbody>
                       @foreach ($f_class as $sclass)
                         <tr class="bg-white">
-                            <td scope="row">{{ $sclass->getTime() }}</td>
+                            <td scope="row">
+                                @if($sclass->lec_day == 'F')
+                                    {{ $sclass->getLecTime() }}
+                                @else
+                                    {{ $sclass->getLabTime() }}
+                                @endif
+                            </td>
                             <td>{{ $sclass->getCourse() }}</td>
                             <td>{{ $sclass->course->getCredits() }}</td>
                             <td>{{ $sclass->room }}</td>
