@@ -27,6 +27,7 @@ class CourseController extends Controller
                         ->orWhere('description', 'like', '%'.$search.'%')
                         ->orderBy('course_code')
                         ->paginate(15);
+            $courses->appends(['search' => $search]);
         } else {
             $courses = Course::orderBy('course_code')->paginate(15);
         }

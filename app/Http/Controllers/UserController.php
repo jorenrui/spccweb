@@ -42,6 +42,7 @@ class UserController extends Controller
                         })
                         ->orderBy('created_at')
                         ->paginate(15);
+            $users->appends(['search' => $search]);
         } else {
             $users = User::whereDoesntHave("roles", function($q) {
                             $q->where('name', 'hidden super admin');
@@ -122,6 +123,7 @@ class UserController extends Controller
                         ->orWhere('activity.timestamp', 'like', '%'.$search.'%')
                         ->orderBy('timestamp', 'desc')
                         ->paginate(15);
+            $activities->appends(['search' => $search]);
         } else {
             $activities = Activity::orderBy('timestamp', 'desc')->paginate(15);
         }

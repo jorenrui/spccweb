@@ -33,6 +33,7 @@ class RegistrarController extends Controller
                         ->orWhere('last_name', 'like', '%'.$search.'%')
                         ->orderBy('employee_no')
                         ->paginate(15);
+            $registrars->appends(['search' => $search]);
         } else {
             $registrars = User::join('employee', 'users.id', '=', 'employee.user_id')
                         ->whereHas("roles", function($q){

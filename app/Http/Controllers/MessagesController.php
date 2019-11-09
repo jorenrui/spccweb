@@ -32,6 +32,7 @@ class MessagesController extends Controller
                         ->orWhere('subject', 'like', '%'.$search.'%')
                         ->orderBy('created_at', 'desc')
                         ->paginate(5);
+            $messages->appends(['search' => $search]);
         } else {
             $messages = Message::orderBy('created_at', 'desc')->paginate(5);
         }

@@ -37,6 +37,7 @@ class FacultyController extends Controller
                         ->orWhere('last_name', 'like', '%'.$search.'%')
                         ->orderBy('employee_no')
                         ->paginate(15);
+            $faculties->appends(['search' => $search]);
         } else {
             $faculties = User::join('employee', 'users.id', '=', 'employee.user_id')
                         ->whereHas("roles", function($q){

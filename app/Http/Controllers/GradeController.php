@@ -49,6 +49,7 @@ class GradeController extends Controller
                         ->orderBy('course_code')
                         ->orderBy('section')
                         ->paginate(10);
+            $classes->appends(['search' => $search, 'selected_acad_term' => $selected_acad_term]);
         } else {
             $classes = SClass::where('acad_term_id', 'LIKE', $selected_acad_term)
                         ->orderBy('course_code')
@@ -92,6 +93,7 @@ class GradeController extends Controller
                         })
                         ->orderBy('student_no')
                         ->paginate(8);
+            $students->appends(['search' => $search]);
         } else {
             $students = Student::where('date_graduated', '=', null)
                             ->whereNotIn('student_no', $except_grades)
@@ -167,6 +169,7 @@ class GradeController extends Controller
                         })
                         ->orderBy('grade.student_no')
                         ->paginate(8);
+            $grades->appends(['search' => $search]);
         } else {
             $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
         }

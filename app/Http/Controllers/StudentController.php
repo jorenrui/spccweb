@@ -41,6 +41,7 @@ class StudentController extends Controller
                         })
                         ->orderBy('student_no')
                         ->paginate(8);
+            $students->appends(['search' => $search]);
         } else {
             $students = Student::where('is_paid', '=', true)->orderBy('student_no')->paginate(8);
         }
@@ -433,6 +434,7 @@ class StudentController extends Controller
                         })
                         ->orderBy('student_no')
                         ->paginate(8);
+            $students->appends(['search' => $search]);
         } else {
             $students = Student::where('is_paid', '=', false)->orderBy('student_no')->paginate(8);
         }
@@ -482,6 +484,7 @@ class StudentController extends Controller
                         })
                         ->orderBy('student_no')
                         ->paginate(8);
+            $students->appends(['search' => $search]);
         } else {
             $students = Student::where('date_graduated', '<>', null)->orderBy('student_no')->paginate(8);
         }

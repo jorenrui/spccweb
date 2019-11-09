@@ -155,6 +155,7 @@ class SClassController extends Controller
                         })
                         ->orderBy('grade.student_no')
                         ->paginate(8);
+            $grades->appends(['search' => $search]);
         } else {
             $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
         }

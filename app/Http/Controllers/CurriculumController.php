@@ -31,6 +31,7 @@ class CurriculumController extends Controller
                         ->orWhere('effective_sy', 'like', '%'.$search.'%')
                         ->orderBy('curriculum_id', 'desc')
                         ->paginate(15);
+            $curriculums->appends(['search' => $search]);
         } else {
             $curriculums = Curriculum::orderBy('curriculum_id', 'desc')->paginate(15);
         }

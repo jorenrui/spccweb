@@ -25,6 +25,7 @@ class AcadTermController extends Controller
             $acadTerms = AcadTerm::where('sy', 'like', '%'.$search.'%')
                         ->orderBy('acad_term_id', 'desc')
                         ->paginate(15);
+            $acadTerms->appends(['search' => $search]);
         } else {
             $acadTerms = AcadTerm::orderBy('acad_term_id', 'desc')->paginate(15);
         }

@@ -27,6 +27,7 @@ class EventsController extends Controller
                         ->orWhere('end_date', 'like', '%'.date('Y-m-d', strtotime($search)).'%')
                         ->orderBy('start_date', 'desc')
                         ->paginate(15);
+            $events->appends(['search' => $search]);
         } else {
             $events = Event::orderBy('start_date', 'desc')->paginate(15);
         }
