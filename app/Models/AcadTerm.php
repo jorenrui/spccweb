@@ -10,7 +10,7 @@ class AcadTerm extends Model
     protected $primaryKey = 'acad_term_id';
     public $timestamps = false;
 
-    private function getSem()
+    public function getSem()
     {
         $sem = $this->attributes['semester'];
 

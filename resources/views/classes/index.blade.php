@@ -110,7 +110,7 @@
                                 {{ $sclass->course->course_code }}
                                 {{ $sclass->section }}
                               </td>
-                              <td class="text-center">{{ $sclass->getSchedule() }}</td>
+                              <td>{{ $sclass->getSchedule() }}</td>
                               <td>
                                 <a href="/faculties/{{ $sclass->instructor->user->id }}">
                                   {{ $sclass->instructor->getEmployeeNo() }}

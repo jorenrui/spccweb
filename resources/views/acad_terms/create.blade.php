@@ -46,6 +46,7 @@
                                     <select id="semester" name="semester" class="form-control form-control-alternative m-b" required>
                                         <option value="01" {{ old('semester') == 1 ? 'selected' : '' }}>First Semester</option>
                                         <option value="02" {{ old('semester') == 2 ? 'selected' : '' }}>Second Semester</option>
+                                        <option value="09" {{ old('semester') == 2 ? 'selected' : '' }}>Summer</option>
                                     </select>
                                 </div>
                             </div>

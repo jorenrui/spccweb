@@ -173,8 +173,8 @@
                                 </a>
                               </td>
                               <td class="text-right">
-                              @if($grade->status != 'Active')
-                                <span class="badge badge-primary">{{ $grade->getStatus() }}</span>
+                              @if($grade->grade != null)
+                                <span class="badge badge-primary">{{ $grade->getGrade() }}</span>
                               @else
                                 <div class="dropdown">
                                   <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
