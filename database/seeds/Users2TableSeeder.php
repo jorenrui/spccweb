@@ -6,7 +6,7 @@ use App\Models\Student;
 
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder2 extends Seeder
+class Users2TableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
