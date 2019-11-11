@@ -147,20 +147,51 @@
                 @endrole
                 @role('admin')
                 <li class="nav-item {{ $title == 'Faculty' ? 'active' : '' }}">
-                    <a class="nav-link" href="/faculties">
-                        <i class="ni ni-badge"></i> Manage Faculty
+                    <a class="nav-link" href="#navbar-faculties" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-faculties">
+                        <i class="ni ni-badge"></i>
+                        <span class="nav-link-text">Manage Faculty</span>
                     </a>
+
+                    <div class="collapse" id="navbar-faculties">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/faculties">
+                                    Faculty
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/archived/faculties">
+                                    Archived Faculty
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 @endrole
                 @role('head registrar')
                 <li class="nav-item {{ $title == 'Registrar Staff' ? 'active' : '' }}">
-                    <a class="nav-link" href="/registrars">
-                        <i class="ni ni-badge"></i> Manage Registrar Staff
+                    <a class="nav-link" href="#navbar-registrars" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-registrars">
+                        <i class="ni ni-badge"></i>
+                        <span class="nav-link-text">Manage Registrar Staff</span>
                     </a>
+
+                    <div class="collapse" id="navbar-registrars">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/registrars">
+                                    Registrars
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/achived/registrars">
+                                    Archived Registrars
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 @endrole
                 @role('admin|registrar')
-
                 <li class="nav-item {{ $title == 'Students' ? 'active' : '' }}">
                     <a class="nav-link" href="#navbar-students" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-students">
                         <i class="ni ni-single-02"></i>
@@ -182,6 +213,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/graduate/students">
                                     Graduate Students
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/achived/students">
+                                    Archived Students
                                 </a>
                             </li>
                         </ul>
