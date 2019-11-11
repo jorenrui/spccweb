@@ -13,11 +13,11 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col col-lg-3">
-                            <h3 class="mb-0">Student Masterlist</h3>
+                            <h3 class="mb-0">Archived Students</h3>
                         </div>
 
                         <div class="col col-lg-4">
-                            <form action="/students?" method="get" class="form-horizontal">
+                            <form action="/archived/students?" method="get" class="form-horizontal">
                                 <div class="form-group mb-0">
                                     <div class="input-group input-group-sm pt-0">
                                         <input name="search" class="form-control" placeholder="e.g. 041322078 or Juan" type="text">
@@ -30,16 +30,12 @@
                         </div>
                         @if($search != null)
                         <div class="col">
-                            <a href="/students" class="btn btn-outline-secondary btn-sm">
+                            <a href="/archived/students" class="btn btn-outline-secondary btn-sm">
                                 {{ str_limit($search, 20) }}
                                 <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                             </a>
                         </div>
                         @endif
-
-                        <div class="col text-right">
-                            <a href="/students/create" class="btn btn-sm btn-primary">Add Student</a>
-                        </div>
                     </div>
                 </div>
 
@@ -104,8 +100,8 @@
                                                     Edit
                                                 </a>
 
-                                                <a href="/students/{{ $student->user->id }}/archive" class="dropdown-item" onclick="return confirm('Are you sure you want to archive Student {{ $student->getStudentNo() }} {{ $student->user->getName() }}?')">
-                                                    Archive Student
+                                                <a href="/students/{{ $student->user->id }}/unarchive" class="dropdown-item" onclick="return confirm('Are you sure you want to unarchive Student {{ $student->getStudentNo() }} {{ $student->user->getName() }}?')">
+                                                    Unarchive Student
                                                 </a>
 
                                                 <form action="{{ action('StudentController@destroy', $student->user->id) }}" method="post">
@@ -135,9 +131,9 @@
               @else
                   <div class="row mt-3 mb-5">
                       <div class="col text-center">
-                          <p class="lead">No student found</p>
+                          <p class="lead">No archive student found</p>
                           <br>
-                          <a href="/students/create" class="btn btn-primary btn-lg">Add Student</a>
+                          <a href="/students" class="btn btn-primary btn-lg">Return Student Masterlist</a>
                       </div>
                   </div>
               @endif

@@ -19,18 +19,11 @@ use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    private function getStudents($search, $is_active)
     {
-        $search = null;
-
-        if( request()->has('search')) {
-            $search = request('search');
+        if( $search != null ) {
             $students = Student::join('users', 'users.id', '=', 'student.user_id')
+                        ->where('is_active', $is_active)
                         ->where('date_graduated', '=', null)
                         ->where('is_paid', '=', true)
                         ->where(function($q) use ($search) {
@@ -40,15 +33,70 @@ class StudentController extends Controller
                             ->orWhere('last_name', 'like', '%'.$search.'%');
                         })
                         ->orderBy('student_no')
-                        ->paginate(8);
+                        ->paginate(15);
             $students->appends(['search' => $search]);
         } else {
-            $students = Student::where('is_paid', '=', true)->orderBy('student_no')->paginate(8);
+            $students = Student::join('users', 'users.id', '=', 'student.user_id')
+                            ->where('is_paid', '=', true)
+                            ->where('is_active', $is_active)
+                            ->orderBy('student_no')
+                            ->paginate(15);
         }
+
+        return $students;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if ( request()->has('search') )
+            $search = request('search');
+        else
+            $search = null;
+
+        $students = $this->getStudents($search, true);
 
         return view('students.index')
                 ->with('students', $students)
                 ->with('search', $search);
+    }
+
+    public function archived()
+    {
+        if ( request()->has('search') )
+            $search = request('search');
+        else
+            $search = null;
+
+        $students = $this->getStudents($search, false);
+
+        return view('students.archived')
+                ->with('students', $students)
+                ->with('search', $search);
+    }
+
+    public function setAsArchived($id)
+    {
+        $user = User::find($id);
+        $user->is_active = false;
+        $user->save();
+
+        return redirect('/students')
+                ->with('success', 'Student ' . $user->student->getStudentNo() . ' ' . $user->getName() . ' has been archived');
+    }
+
+    public function setAsUnarchived($id)
+    {
+        $user = User::find($id);
+        $user->is_active = true;
+        $user->save();
+
+        return redirect('/archived/students')
+                ->with('success', 'Student ' . $user->student->getStudentNo() . ' ' . $user->getName() . ' has been unarchived');
     }
 
     /**
