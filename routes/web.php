@@ -83,6 +83,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::put('faculty/load/completion/{grade}/update','GradeController@storeCompletionGrade');
 
 	Route::resource('faculties','FacultyController');
+	Route::get('archived/faculties','FacultyController@archived');
+	Route::get('faculties/{faculty}/archive','FacultyController@setAsArchived');
+	Route::get('faculties/{faculty}/unarchive','FacultyController@setAsUnarchived');
 	Route::get('faculties/{faculty}/load','FacultyController@load');
 	Route::get('faculties/{faculty}/load/{class}','FacultyController@classGrades');
 	Route::get('faculties/{faculty}/load/{class}/encode','FacultyController@encodeGrades');

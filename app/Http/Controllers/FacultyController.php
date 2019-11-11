@@ -16,6 +16,36 @@ use Illuminate\Support\Facades\Storage;
 
 class FacultyController extends Controller
 {
+    private function getFaculties($search, $is_active)
+    {
+        if( $search != null ) {
+            $faculties = User::join('employee', 'users.id', '=', 'employee.user_id')
+                        ->where('is_active', $is_active)
+                        ->whereHas("roles", function($q){
+                            $q->where('name', 'faculty');
+                        })
+                        ->where(function($q) use ($search) {
+                            $q->where('employee_no', 'like', '%'.$search.'%')
+                            ->orWhere('first_name', 'like', '%'.$search.'%')
+                            ->orWhere('middle_name', 'like', '%'.$search.'%')
+                            ->orWhere('last_name', 'like', '%'.$search.'%');
+                        })
+                        ->orderBy('employee_no')
+                        ->paginate(15);
+            $faculties->appends(['search' => $search]);
+        } else {
+            $faculties = User::join('employee', 'users.id', '=', 'employee.user_id')
+                        ->where('is_active', $is_active)
+                        ->whereHas("roles", function($q){
+                            $q->where('name', 'faculty');
+                        })
+                        ->orderBy('employee_no')
+                        ->paginate(15);
+        }
+
+        return $faculties;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,33 +53,50 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $search = null;
-
-        if( request()->has('search')) {
+        if ( request()->has('search') )
             $search = request('search');
-            $faculties = User::join('employee', 'users.id', '=', 'employee.user_id')
-                        ->whereHas("roles", function($q){
-                            $q->where('name', 'faculty');
-                        })
-                        ->where('employee_no', 'like', '%'.$search.'%')
-                        ->orWhere('first_name', 'like', '%'.$search.'%')
-                        ->orWhere('middle_name', 'like', '%'.$search.'%')
-                        ->orWhere('last_name', 'like', '%'.$search.'%')
-                        ->orderBy('employee_no')
-                        ->paginate(15);
-            $faculties->appends(['search' => $search]);
-        } else {
-            $faculties = User::join('employee', 'users.id', '=', 'employee.user_id')
-                        ->whereHas("roles", function($q){
-                            $q->where('name', 'faculty');
-                        })
-                        ->orderBy('employee_no')
-                        ->paginate(8);
-        }
+        else
+            $search = null;
+
+        $faculties = $this->getFaculties($search, true);
 
         return view('faculties.index')
                 ->with('faculties', $faculties)
                 ->with('search', $search);
+    }
+
+    public function archived()
+    {
+        if ( request()->has('search') )
+            $search = request('search');
+        else
+            $search = null;
+
+        $faculties = $this->getFaculties($search, false);
+
+        return view('faculties.archived')
+                ->with('faculties', $faculties)
+                ->with('search', $search);
+    }
+
+    public function setAsArchived($id)
+    {
+        $user = User::find($id);
+        $user->is_active = false;
+        $user->save();
+
+        return redirect('/faculties')
+                ->with('success', 'Employee ' . $user->employee->getEmployeeNo() . ' ' . $user->getName() . ' has been archived');
+    }
+
+    public function setAsUnarchived($id)
+    {
+        $user = User::find($id);
+        $user->is_active = true;
+        $user->save();
+
+        return redirect('/archived/faculties')
+                ->with('success', 'Employee ' . $user->employee->getEmployeeNo() . ' ' . $user->getName() . ' has been unarchived');
     }
 
     /**

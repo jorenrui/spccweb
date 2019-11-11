@@ -13,11 +13,11 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col col-lg-3">
-                            <h3 class="mb-0">Faculty Masterlist</h3>
+                            <h3 class="mb-0">Archived Faculty Masterlist</h3>
                         </div>
 
                         <div class="col col-lg-4">
-                            <form action="/faculties?" method="get" class="form-horizontal">
+                            <form action="/archived/faculties?" method="get" class="form-horizontal">
                                 <div class="form-group mb-0">
                                     <div class="input-group input-group-sm pt-0">
                                         <input name="search" class="form-control" placeholder="e.g. K519 or Juan" type="text">
@@ -30,16 +30,12 @@
                         </div>
                         @if($search != null)
                         <div class="col">
-                            <a href="/faculties" class="btn btn-outline-secondary btn-sm">
+                            <a href="/archived/faculties" class="btn btn-outline-secondary btn-sm">
                                 {{ str_limit($search, 20) }}
                                 <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                             </a>
                         </div>
                         @endif
-
-                        <div class="col text-right">
-                            <a href="/faculties/create" class="btn btn-sm btn-primary">Add Faculty</a>
-                        </div>
                     </div>
                 </div>
 
@@ -60,7 +56,7 @@
                                     <th scope="col" class="text-center">Employee No</th>
                                     <th scope="col">Name</th>
                                     <th scope="col" class="text-center">Date Employed</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col" class="text-center">Total Classes Handled</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
@@ -79,16 +75,8 @@
                                     <td class="text-center">
                                         {{ $faculty->employee->getDateEmployed() }}
                                     </td>
-                                    <td>
-                                    @if($faculty->employee->getStatus() == 'Active')
-                                        <span class="badge badge-dot mr-4">
-                                        <i class="bg-info"></i> Active
-                                        </span>
-                                    @else
-                                        <span class="badge badge-dot mr-4">
-                                        <i class="bg-default"></i> Inactive
-                                        </span>
-                                    @endif
+                                    <td class="text-center">
+                                        {{ $faculty->employee->getTotalHandledClasses() }}
                                     </td>
                                     <td class="text-right">
                                         <div class="dropdown">
@@ -100,8 +88,8 @@
                                                     Edit
                                                 </a>
 
-                                                <a href="/faculties/{{ $faculty->id }}/archive" class="dropdown-item" onclick="return confirm('Are you sure you want to archive Employee {{ $faculty->employee->getEmployeeNo() }} {{ $faculty->getName() }}?')">
-                                                    Archive Faculty
+                                                <a href="/faculties/{{ $faculty->id }}/unarchive" class="dropdown-item" onclick="return confirm('Are you sure you want to unarchive Employee {{ $faculty->employee->getEmployeeNo() }} {{ $faculty->getName() }}?')">
+                                                    Unarchive Faculty
                                                 </a>
 
                                                 <form action="{{ action('FacultyController@destroy', $faculty->id) }}" method="post">
@@ -109,7 +97,7 @@
                                                     @method('DELETE')
 
                                                     <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete Employee {{ $faculty->employee->getEmployeeNo() }} {{ $faculty->getName() }}? Doing this will also delete the classes associated with this account. You may want to archive this Employee instead.') ? this.parentElement.submit() : ''">
-                                                        Delete
+                                                      Delete
                                                     </button>
                                                 </form>
                                             </div>
@@ -127,9 +115,11 @@
               @else
                   <div class="row mt-3 mb-5">
                       <div class="col text-center">
-                          <p class="lead">No faculty found</p>
+                          <p class="lead">No archived faculty found</p>
                           <br>
-                          <a href="/faculties/create" class="btn btn-primary btn-lg">Add Faculty</a>
+                          <a href="/faculties" class="btn btn-primary btn-lg">
+                            Return to Faculty Masterlist
+                          </a>
                       </div>
                   </div>
               @endif

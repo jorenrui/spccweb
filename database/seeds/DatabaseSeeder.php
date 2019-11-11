@@ -23,14 +23,14 @@ class DatabaseSeeder extends Seeder
             Prerequisite2012TableSeeder::class,
             Prerequisite2018TableSeeder::class,
             SettingsTableSeeder::class,
-            UsersTableSeeder::class,
-            // Users2TableSeeder::class,
+            //UsersTableSeeder::class,
+            Users2TableSeeder::class,
             ActivityTableSeeder::class,
             PostsTableSeeder::class,
-            // SClassTableSeeder::class,
-            // GradeTableSeeder::class,
-            // CourseCreditationTableSeeder::class,
-            // CourseCreditDetailsTableSeeder::class,
+            SClassTableSeeder::class,
+            GradeTableSeeder::class,
+            CourseCreditationTableSeeder::class,
+            CourseCreditDetailsTableSeeder::class,
         ]);
     }
 }
