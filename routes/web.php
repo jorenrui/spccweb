@@ -155,6 +155,9 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar|student']], functio
 
 Route::group(['middleware' => ['auth', 'role:admin|head registrar']], function () {
 	Route::resource('registrars','RegistrarController');
+	Route::get('archived/registrars','RegistrarController@archived');
+	Route::get('registrars/{registrar}/archive','RegistrarController@setAsArchived');
+	Route::get('registrars/{registrar}/unarchive','RegistrarController@setAsUnarchived');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {

@@ -12,18 +12,11 @@ use Illuminate\Support\Facades\Storage;
 
 class RegistrarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    private function getRegistrars($search, $is_active)
     {
-        $search = null;
-
-        if( request()->has('search')) {
-            $search = request('search');
+        if( $search != null ) {
             $registrars = User::join('employee', 'users.id', '=', 'employee.user_id')
+                        ->where('is_active', $is_active)
                         ->whereHas("roles", function($q){
                             $q->where('name', 'registrar');
                         })
@@ -36,16 +29,68 @@ class RegistrarController extends Controller
             $registrars->appends(['search' => $search]);
         } else {
             $registrars = User::join('employee', 'users.id', '=', 'employee.user_id')
+                        ->where('is_active', $is_active)
                         ->whereHas("roles", function($q){
                             $q->where('name', 'registrar');
                         })
                         ->orderBy('employee_no')
-                        ->paginate(8);
+                        ->paginate(15);
         }
+
+        return $registrars;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if ( request()->has('search') )
+            $search = request('search');
+        else
+            $search = null;
+
+        $registrars = $this->getRegistrars($search, true);
 
         return view('registrars.index')
                 ->with('registrars', $registrars)
                 ->with('search', $search);
+    }
+
+    public function archived()
+    {
+        if ( request()->has('search') )
+            $search = request('search');
+        else
+            $search = null;
+
+        $registrars = $this->getRegistrars($search, false);
+
+        return view('registrars.archived')
+                ->with('registrars', $registrars)
+                ->with('search', $search);
+    }
+
+    public function setAsArchived($id)
+    {
+        $user = User::find($id);
+        $user->is_active = false;
+        $user->save();
+
+        return redirect('/registrars')
+                ->with('success', 'Employee ' . $user->employee->getEmployeeNo() . ' ' . $user->getName() . ' has been archived');
+    }
+
+    public function setAsUnarchived($id)
+    {
+        $user = User::find($id);
+        $user->is_active = true;
+        $user->save();
+
+        return redirect('/archived/registrars')
+                ->with('success', 'Employee ' . $user->employee->getEmployeeNo() . ' ' . $user->getName() . ' has been unarchived');
     }
 
     /**

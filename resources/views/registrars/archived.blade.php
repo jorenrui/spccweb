@@ -17,7 +17,7 @@
                         </div>
 
                         <div class="col col-lg-4">
-                            <form action="/registrars?" method="get" class="form-horizontal">
+                            <form action="/archived/registrars?" method="get" class="form-horizontal">
                                 <div class="form-group mb-0">
                                     <div class="input-group input-group-sm pt-0">
                                         <input name="search" class="form-control" placeholder="e.g. K001 or Juan" type="text">
@@ -30,16 +30,12 @@
                         </div>
                         @if($search != null)
                         <div class="col">
-                            <a href="/registrars" class="btn btn-outline-secondary btn-sm">
+                            <a href="/archived/registrars" class="btn btn-outline-secondary btn-sm">
                                 {{ str_limit($search, 20) }}
                                 <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                             </a>
                         </div>
                         @endif
-
-                        <div class="col text-right">
-                            <a href="/registrars/create" class="btn btn-sm btn-primary">Add Registrar</a>
-                        </div>
                     </div>
                 </div>
 
@@ -88,8 +84,8 @@
                                                 Edit
                                             </a>
 
-                                            <a href="/registrars/{{ $registrar->id }}/archive" class="dropdown-item" onclick="return confirm('Are you sure you want to archive Employee {{ $registrar->employee->getEmployeeNo() }} {{ $registrar->getName() }}?')">
-                                                Archive Registrar
+                                            <a href="/registrars/{{ $registrar->id }}/unarchive" class="dropdown-item" onclick="return confirm('Are you sure you want to unarchive Employee {{ $registrar->employee->getEmployeeNo() }} {{ $registrar->getName() }}?')">
+                                                Unarchive Registrar
                                             </a>
 
                                             <form action="{{ action('RegistrarController@destroy', $registrar->id) }}" method="post" style="display: inline;">
@@ -115,9 +111,9 @@
               @else
                   <div class="row mt-3 mb-5">
                       <div class="col text-center">
-                          <p class="lead">No registrar found</p>
+                          <p class="lead">No archived registrar found</p>
                           <br>
-                          <a href="/registrars/create" class="btn btn-primary btn-lg">Add Registrar</a>
+                          <a href="/registrars" class="btn btn-primary btn-lg">Return to Registrar Staff Masterlist</a>
                       </div>
                   </div>
               @endif
