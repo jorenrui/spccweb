@@ -26,8 +26,6 @@ class Employee extends Model
     {
         $employee_no = $this->attributes['employee_no'];
 
-        /* TODO: Add logic for checking if student has graduated */
-
         $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->get()[0]->value;
 
         $totalLoad = 0;
@@ -51,6 +49,11 @@ class Employee extends Model
             return null;
 
         return Carbon::parse($date_employed)->format('F j, Y');
+    }
+
+    public function getTotalHandledClasses()
+    {
+        return count($this->classes);
     }
 
     /**
