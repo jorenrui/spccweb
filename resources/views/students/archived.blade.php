@@ -12,10 +12,14 @@
             @if(count($students) > 0 || $search != null)
                 <div class="card-header border-0">
                     <div class="row align-items-center">
-                        <div class="col col-lg-3">
+                        <div class="col col-lg-12">
                             <h3 class="mb-0">Archived Students</h3>
+                            <p class="text-muted text-sm">
+                                Archived students will not be included in the enrollment of students in a class.
+                            </p>
                         </div>
-
+                    </div>
+                    <div class="row align-items-center">
                         <div class="col col-lg-4">
                             <form action="/archived/students?" method="get" class="form-horizontal">
                                 <div class="form-group mb-0">

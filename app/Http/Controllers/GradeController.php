@@ -83,6 +83,7 @@ class GradeController extends Controller
         if( request()->has('search')) {
             $search = request('search');
             $students = Student::join('users', 'users.id', '=', 'student.user_id')
+                        ->where('is_active', true)
                         ->where('date_graduated', '=', null)
                         ->whereNotIn('student_no', $except_grades)
                         ->where(function($q) use ($search) {
@@ -95,7 +96,9 @@ class GradeController extends Controller
                         ->paginate(8);
             $students->appends(['search' => $search]);
         } else {
-            $students = Student::where('date_graduated', '=', null)
+            $students = Student::join('users', 'users.id', '=', 'student.user_id')
+                            ->where('is_active', true)
+                            ->where('date_graduated', '=', null)
                             ->whereNotIn('student_no', $except_grades)
                             ->orderBy('student_no')
                             ->paginate(8);

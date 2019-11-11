@@ -75,7 +75,11 @@ class SClassController extends Controller
     {
         $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $acad_terms = AcadTerm::where('acad_term_id', '>=', $cur_acad_term)->get();
-        $instructors = User::whereHas("roles", function($q){ $q->where("name", "faculty"); })->get();
+        $instructors = User::whereHas("roles", function($q){
+                        $q->where("name", "faculty");
+                       })
+                       ->where('is_active', true)
+                       ->get();
         $admins = User::whereHas("roles", function($q){ $q->where("name", "super admin"); })->get();
         $courses = Course::all();
 
