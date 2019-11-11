@@ -183,7 +183,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/achived/registrars">
+                                <a class="nav-link" href="/archived/registrars">
                                     Archived Registrars
                                 </a>
                             </li>
@@ -216,7 +216,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/achived/students">
+                                <a class="nav-link" href="/archived/students">
                                     Archived Students
                                 </a>
                             </li>
