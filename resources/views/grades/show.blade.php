@@ -210,9 +210,11 @@
                             </div>
                             @endif
 
+                            @role('admin|faculty')
                             <div class="col text-right">
                                 <a href="/faculty/load/{{ $sclass->class_id }}/students" class="btn btn-sm btn-outline-primary">View Student Masterlist</a>
                             </div>
+                            @endrole
                           </div>
 
 
