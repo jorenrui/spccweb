@@ -116,8 +116,8 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
 
 	Route::resource('students','StudentController');
 	Route::get('archived/students','StudentController@archived');
-	Route::get('students/{facult}/archive','StudentController@setAsArchived');
-	Route::get('students/{facult}/unarchive','StudentController@setAsUnarchived');
+	Route::get('students/{student}/archive','StudentController@setAsArchived');
+	Route::get('students/{student}/unarchive','StudentController@setAsUnarchived');
 	Route::get('unpaid/students','StudentController@unpaidStudents');
 	Route::get('students/{student}/paid','StudentController@setAsPaidStudent');
 	Route::get('students/{student}/unpaid','StudentController@setAsUnpaidStudent');
