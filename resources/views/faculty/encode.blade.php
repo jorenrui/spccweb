@@ -43,7 +43,7 @@ $(document).on('keydown', 'input[pattern]', function(e){
                       </div>
                     </div>
 
-                    <form id="form-post" method="POST" action="{{ action('FacultyAccessController@update', $sclass->class_id) }}">
+                    <form id="form-post" method="POST" action="{{ action('FacultyAccessController@update', $sclass->class_id) }}" autocomplete="off">
                     @csrf
                     @method('PUT')
 

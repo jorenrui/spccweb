@@ -62,11 +62,11 @@
                 <div class="row">
                   <div class="col">
                     @role('faculty')
-                      <a href="/faculty/load" class="btn btn-outline-secondary btn-sm">
+                      <a href="/faculty/load" class="btn btn-outline-primary btn-sm">
                         Return
                       </a>
                     @else
-                      <a href="/faculties/{{ $sclass->instructor->user->id }}/load" class="btn btn-outline-secondary btn-sm">
+                      <a href="/faculties/{{ $sclass->instructor->user->id }}/load" class="btn btn-outline-primary btn-sm">
                         Return
                       </a>
                     @endrole
