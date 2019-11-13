@@ -113,10 +113,8 @@
                               </td>
                               <td>{{ $sclass->course->description }}</td>
                               <td>
-                                  <a href="/faculties/{{ $sclass->instructor->user->id }}">
-                                    {{ $sclass->instructor->getEmployeeNo() }}
-                                    {{ $sclass->instructor->user->getNameWithTitle() }}
-                                  </a>
+                                {{ $sclass->instructor->getEmployeeNo() }}
+                                {{ $sclass->instructor->user->getNameWithTitle() }}
                               </td>
                               <td class="text-center">
                                   {{ $sclass->getTotalStudents() }}

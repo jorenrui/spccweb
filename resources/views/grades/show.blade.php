@@ -65,7 +65,7 @@
                             </dt>
                             <dd class="col-sm-7">
                               {{ $sclass->instructor->getEmployeeNo() }}
-                                {{ $sclass->instructor->user->getNameWithTitle() }}
+                              {{ $sclass->instructor->user->getNameWithTitle() }}
                             </dd>
                             @if($sclass->section != null)
                             <dt class="col-sm-5">
