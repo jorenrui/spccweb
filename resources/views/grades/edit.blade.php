@@ -60,7 +60,7 @@ $(document).on('keydown', 'input[pattern]', function(e){
                             <?php $id = 0; ?>
                             @foreach ($grades as $grade)
 
-                              @if($grade->grade != null)
+                              @if($grade->grade != null || $grade->is_inc)
                                 <tr>
                                     <td class="text-center" scope="row">
                                       {{ $grade->student->getStudentNo() }}
