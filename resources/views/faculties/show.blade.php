@@ -205,23 +205,24 @@
                                 </td>
                                 <td>{{ $sclass->getTotalStudents() }}</td>
                             </tr>
-                        @else
+                        @elseif($sclass->lec_day != null)
                             <tr class="bg-white">
-                                <td scope="row">
-                                    @if($sclass->lec_day == 'M')
-                                        {{ $sclass->getLecTime() }}
-                                    @else
-                                        {{ $sclass->getLabTime() }}
-                                    @endif
-                                </td>
+                                <td scope="row">{{ $sclass->getLecTime() }}</td>
+                                <td>{{ $sclass->getCourse() }} (LEC)</td>
+                                <td>{{ $sclass->course->getCredits() }}</td>
                                 <td>
-                                    {{ $sclass->getCourse() }}
-                                    @if($sclass->lec_day == 'M')
-                                        (LEC)
+                                    @if($sclass->room != null)
+                                        {{ $sclass->room }}
                                     @else
-                                        (LAB)
+                                        -
                                     @endif
                                 </td>
+                                <td>{{ $sclass->getTotalStudents() }}</td>
+                            </tr>
+                        @elseif($sclass->lab_day != null)
+                            <tr class="bg-white">
+                                <td scope="row">{{ $sclass->getLabTime() }}</td>
+                                <td>{{ $sclass->getCourse() }} (LAB)</td>
                                 <td>{{ $sclass->course->getCredits() }}</td>
                                 <td>
                                     @if($sclass->room != null)
@@ -280,23 +281,24 @@
                                 </td>
                                 <td>{{ $sclass->getTotalStudents() }}</td>
                             </tr>
-                        @else
+                        @elseif($sclass->lec_day != null)
                             <tr class="bg-white">
-                                <td scope="row">
-                                    @if($sclass->lec_day == 'T')
-                                        {{ $sclass->getLecTime() }}
-                                    @else
-                                        {{ $sclass->getLabTime() }}
-                                    @endif
-                                </td>
+                                <td scope="row">{{ $sclass->getLecTime() }}</td>
+                                <td>{{ $sclass->getCourse() }} (LEC)</td>
+                                <td>{{ $sclass->course->getCredits() }}</td>
                                 <td>
-                                    {{ $sclass->getCourse() }}
-                                    @if($sclass->lec_day == 'T')
-                                        (LEC)
+                                    @if($sclass->room != null)
+                                        {{ $sclass->room }}
                                     @else
-                                        (LAB)
+                                        -
                                     @endif
                                 </td>
+                                <td>{{ $sclass->getTotalStudents() }}</td>
+                            </tr>
+                        @elseif($sclass->lab_day != null)
+                            <tr class="bg-white">
+                                <td scope="row">{{ $sclass->getLabTime() }}</td>
+                                <td>{{ $sclass->getCourse() }} (LAB)</td>
                                 <td>{{ $sclass->course->getCredits() }}</td>
                                 <td>
                                     @if($sclass->room != null)
@@ -355,23 +357,24 @@
                                 </td>
                                 <td>{{ $sclass->getTotalStudents() }}</td>
                             </tr>
-                        @else
+                        @elseif($sclass->lec_day != null)
                             <tr class="bg-white">
-                                <td scope="row">
-                                    @if($sclass->lec_day == 'W')
-                                        {{ $sclass->getLecTime() }}
-                                    @else
-                                        {{ $sclass->getLabTime() }}
-                                    @endif
-                                </td>
+                                <td scope="row">{{ $sclass->getLecTime() }}</td>
+                                <td>{{ $sclass->getCourse() }} (LEC)</td>
+                                <td>{{ $sclass->course->getCredits() }}</td>
                                 <td>
-                                    {{ $sclass->getCourse() }}
-                                    @if($sclass->lec_day == 'W')
-                                        (LEC)
+                                    @if($sclass->room != null)
+                                        {{ $sclass->room }}
                                     @else
-                                        (LAB)
+                                        -
                                     @endif
                                 </td>
+                                <td>{{ $sclass->getTotalStudents() }}</td>
+                            </tr>
+                        @elseif($sclass->lab_day != null)
+                            <tr class="bg-white">
+                                <td scope="row">{{ $sclass->getLabTime() }}</td>
+                                <td>{{ $sclass->getCourse() }} (LAB)</td>
                                 <td>{{ $sclass->course->getCredits() }}</td>
                                 <td>
                                     @if($sclass->room != null)
@@ -430,23 +433,24 @@
                                 </td>
                                 <td>{{ $sclass->getTotalStudents() }}</td>
                             </tr>
-                        @else
+                        @elseif($sclass->lec_day != null)
                             <tr class="bg-white">
-                                <td scope="row">
-                                    @if($sclass->lec_day == 'TH')
-                                        {{ $sclass->getLecTime() }}
-                                    @else
-                                        {{ $sclass->getLabTime() }}
-                                    @endif
-                                </td>
+                                <td scope="row">{{ $sclass->getLecTime() }}</td>
+                                <td>{{ $sclass->getCourse() }} (LEC)</td>
+                                <td>{{ $sclass->course->getCredits() }}</td>
                                 <td>
-                                    {{ $sclass->getCourse() }}
-                                    @if($sclass->lec_day == 'TH')
-                                        (LEC)
+                                    @if($sclass->room != null)
+                                        {{ $sclass->room }}
                                     @else
-                                        (LAB)
+                                        -
                                     @endif
                                 </td>
+                                <td>{{ $sclass->getTotalStudents() }}</td>
+                            </tr>
+                        @elseif($sclass->lab_day != null)
+                            <tr class="bg-white">
+                                <td scope="row">{{ $sclass->getLabTime() }}</td>
+                                <td>{{ $sclass->getCourse() }} (LAB)</td>
                                 <td>{{ $sclass->course->getCredits() }}</td>
                                 <td>
                                     @if($sclass->room != null)
@@ -505,23 +509,24 @@
                                 </td>
                                 <td>{{ $sclass->getTotalStudents() }}</td>
                             </tr>
-                        @else
+                        @elseif($sclass->lec_day != null)
                             <tr class="bg-white">
-                                <td scope="row">
-                                    @if($sclass->lec_day == 'F')
-                                        {{ $sclass->getLecTime() }}
-                                    @else
-                                        {{ $sclass->getLabTime() }}
-                                    @endif
-                                </td>
+                                <td scope="row">{{ $sclass->getLecTime() }}</td>
+                                <td>{{ $sclass->getCourse() }} (LEC)</td>
+                                <td>{{ $sclass->course->getCredits() }}</td>
                                 <td>
-                                    {{ $sclass->getCourse() }}
-                                    @if($sclass->lec_day == 'F')
-                                        (LEC)
+                                    @if($sclass->room != null)
+                                        {{ $sclass->room }}
                                     @else
-                                        (LAB)
+                                        -
                                     @endif
                                 </td>
+                                <td>{{ $sclass->getTotalStudents() }}</td>
+                            </tr>
+                        @elseif($sclass->lab_day != null)
+                            <tr class="bg-white">
+                                <td scope="row">{{ $sclass->getLabTime() }}</td>
+                                <td>{{ $sclass->getCourse() }} (LAB)</td>
                                 <td>{{ $sclass->course->getCredits() }}</td>
                                 <td>
                                     @if($sclass->room != null)
