@@ -160,6 +160,12 @@ Route::group(['middleware' => ['auth', 'role:admin|head registrar']], function (
 	Route::get('registrars/{registrar}/unarchive','RegistrarController@setAsUnarchived');
 });
 
+
+Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar|faculty']], function () {
+	Route::get('summary_grades/{class}/{period}/download','FileSummaryOfGrades@download');
+	Route::get('summary_grades/{class}/{period}/view','FileSummaryOfGrades@view');
+});
+
 Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
 	Route::resource('faculty','FacultyAccessController')->only(['index', 'update']);
 
@@ -172,8 +178,6 @@ Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
 
 	Route::get('summary_grades/{class}/{period}','FileSummaryOfGrades@index');
 	Route::put('summary_grades/{class}/{period}/store','FileSummaryOfGrades@store');
-	Route::get('summary_grades/{class}/{period}/download','FileSummaryOfGrades@download');
-	Route::get('summary_grades/{class}/{period}/view','FileSummaryOfGrades@view');
 	Route::get('summary_grades/{class}/{period}/remove','FileSummaryOfGrades@remove');
 });
 
