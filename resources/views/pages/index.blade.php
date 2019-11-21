@@ -5,7 +5,7 @@
 <section class="section hero">
   <div class="content">
     <h1 class="headline">SPCC Caloocan</h1>
-    <p class="description">Committed to Excellence.</p>
+    <p class="description">A Commitment to Excellence.</p>
     <a href="/admission" class="btn">be an spcnian</a>
   </div>
   <div class="image">
