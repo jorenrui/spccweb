@@ -75,7 +75,7 @@
                                 @if($selected_acad_term >= $cur_acad_term && auth()->user()->hasRole('admin'))
                                 <th scope="col"></th>
                                 @endif
-                                <th scope="col" class="text-center">Course Code</th>
+                                <th scope="col" class="text-center">Class</th>
                                 <th scope="col">Description</th>
                                 <th scope="col" class="text-center">Credits</th>
                                 <th scope="col" class="text-center">Instructor</th>

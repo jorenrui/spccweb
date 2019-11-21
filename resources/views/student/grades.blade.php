@@ -76,7 +76,7 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col" class="text-center">Course Code</th>
+                                <th scope="col" class="text-center">Class</th>
                                 <th scope="col">Description</th>
                                 <th scope="col" class="text-center">Credits</th>
                                 <th scope="col" class="text-center">Prelims</th>

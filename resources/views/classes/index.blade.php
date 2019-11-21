@@ -89,7 +89,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col" class="text-center">Course Code</th>
+                                <th scope="col" class="text-center">Class</th>
                                 <th scope="col" class="text-center">Schedule</th>
                                 <th scope="col" class="text-center">Instructor</th>
                                 <th scope="col" class="text-center">Total Students</th>
