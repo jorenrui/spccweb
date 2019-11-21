@@ -197,7 +197,11 @@ class GradeController extends Controller
     public function edit($id)
     {
         $sclass = SClass::find($id);
-        $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->get();
+        $grades = Grade::join('student', 'grade.student_no', '=', 'student.student_no')
+                    ->join('users', 'users.id', '=', 'student.user_id')
+                    ->where('class_id', 'LIKE', $id)
+                    ->orderBy('users.last_name')
+                    ->get();
 
         return view('grades.edit')
                 ->with('sclass', $sclass)

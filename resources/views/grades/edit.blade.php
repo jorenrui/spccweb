@@ -67,7 +67,7 @@ $(document).on('keydown', 'input[pattern]', function(e){
                                     </td>
                                     <td colspan="6">
                                         <span class="badge badge-primary ml-3">{{ $grade->getGrade() }}</span>
-                                      {{ $grade->student->user->getName() }}
+                                      {{ $grade->student->user->getSortableName() }}
                                     </td>
                                 </tr>
                               @else

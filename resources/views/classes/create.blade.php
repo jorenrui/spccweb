@@ -17,7 +17,7 @@ $(document).ready(function() {
 
   $('#lec_time_start').on('input', function() {
     let time_start = $(this).val();
-    let hours = Number(time_start[0] + time_start[1]) + 2;
+    let hours = Number(time_start[0] + time_start[1]) + 3;
     let time_end = null;
 
     if(hours >= 24)
