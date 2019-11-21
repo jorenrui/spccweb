@@ -228,6 +228,9 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
+                              @if($sclass->acad_term_id == $cur_acad_term)
+                                <th scope="col"></th>
+                              @endif
                                 <th scope="col" class="text-center">Student No.</th>
                                 <th scope="col" class="text-center">Name</th>
                                 <th scope="col" class="text-center">Prelims</th>
@@ -238,18 +241,42 @@
                                 <th scope="col" class="text-center">Completion</th>
                                 <th scope="col" class="text-center">Remarks</th>
                                 <th scope="col" class="text-center">Note</th>
-                                @if($sclass->acad_term_id == $cur_acad_term)
-                                <th scope="col"></th>
-                                @endif
                             </tr>
                         </thead>
                         <tbody>
                           @foreach ($grades as $grade)
                             <tr>
+                              @if($grade->getGrade() == null)
+                                <td class="text-right">
+                                  @if($sclass->acad_term_id == $cur_acad_term && $grade->grade == null && !$grade->is_inc)
+                                  <div class="dropdown">
+                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                      @if( !$grade->is_inc )
+                                        <a href="/faculty/load/unofficial_drop/{{ $grade->grade_id }}" class="dropdown-item" onclick="return confirm('Are you sure you want to unoffically drop {{ $grade->student->user->getName() }} in {{ $sclass->course_code }} class?')">
+                                            Unoffically Drop
+                                        </a>
+                                        <a class="dropdown-item" href="/faculty/load/inc/{{ $grade->grade_id }}" onclick="return confirm('Are you sure you want to set {{ $grade->student->user->getName() }}\'s grade to Incomplete?')">
+                                            Set as Incomplete
+                                        </a>
+                                      @elseif(auth()->user()->hasRole('admin'))
+                                        <a class="dropdown-item" href="/faculty/load/completion/{{ $grade->grade_id }}">
+                                            Enter Completion Grade
+                                        </a>
+                                      @endif
+                                    </div>
+                                  </div>
+                                  @endif
+                                </td>
+                              @else
+                                <td></td>
+                              @endif
                                 <td class="text-center" scope="row">
                                   {{ $grade->student->getStudentNo() }}
                                 </td>
-                                <td>{{ $grade->student->user->getName() }}</td>
+                                <td>{{ $grade->student->user->getSortableName() }}</td>
                                 <td class="text-center">{{ $grade->prelims }}</td>
                                 <td class="text-center">{{ $grade->midterms }}</td>
                                 <td class="text-center">{{ $grade->finals }}</td>
@@ -273,30 +300,6 @@
                                 </td>
                                 <td class="text-center">
                                   {{ $grade->note }}
-                                </td>
-
-                                <td class="text-right">
-                                  @if($sclass->acad_term_id == $cur_acad_term && $grade->grade == null && !$grade->is_inc)
-                                  <div class="dropdown">
-                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                      @if( !$grade->is_inc )
-                                        <a href="/faculty/load/unofficial_drop/{{ $grade->grade_id }}" class="dropdown-item" onclick="return confirm('Are you sure you want to unoffically drop {{ $grade->student->user->getName() }} in {{ $sclass->course_code }} class?')">
-                                            Unoffically Drop
-                                        </a>
-                                        <a class="dropdown-item" href="/faculty/load/inc/{{ $grade->grade_id }}" onclick="return confirm('Are you sure you want to set {{ $grade->student->user->getName() }}\'s grade to Incomplete?')">
-                                            Set as Incomplete
-                                        </a>
-                                      @elseif(auth()->user()->hasRole('admin'))
-                                        <a class="dropdown-item" href="/faculty/load/completion/{{ $grade->grade_id }}">
-                                            Enter Completion Grade
-                                        </a>
-                                      @endif
-                                    </div>
-                                  </div>
-                                  @endif
                                 </td>
                             </tr>
                           @endforeach
