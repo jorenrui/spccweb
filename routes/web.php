@@ -145,6 +145,7 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar|stud
 	]);
 
 	Route::get('students/{student}/grade_slip/{acad_term}','StudentController@showGradeSlip');
+	Route::get('students/{student}/scholastic_record/{acad_term}','StudentController@showScholasticRecord');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|head registrar|faculty']], function () {

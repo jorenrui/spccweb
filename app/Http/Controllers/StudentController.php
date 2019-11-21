@@ -356,6 +356,31 @@ class StudentController extends Controller
                 ->with('head_registrar', $head_registrar);
     }
 
+    public function showScholasticRecord($id, $acad_term_id)
+    {
+        $user = User::find($id);
+        $head_registrar = User::whereHas("roles", function($q){ $q->where('name', 'head registrar'); })->get();
+
+        if($head_registrar != null)
+            $head_registrar = $head_registrar[0];
+
+        $acad_term = AcadTerm::find($acad_term_id);
+
+        $grades = Grade::where('student_no', 'LIKE', $user->student->student_no)->get();
+        $classes = collect();
+
+        foreach ($grades as $grade) {
+            $classes->push($grade->sclass);
+        }
+
+        return view('reports.scholastic_record')
+                ->with('user', $user)
+                ->with('acad_term', $acad_term)
+                ->with('classes', $classes)
+                ->with('head_registrar', $head_registrar);
+
+    }
+
     public function showCurriculumWithGrades($id)
     {
         $user = User::find($id);

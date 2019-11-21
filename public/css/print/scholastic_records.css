@@ -1,0 +1,73 @@
+body,
+table th {
+  font-family: Arial, sans-serif !important;
+}
+
+footer.footer {
+  display: none !important;
+}
+
+h2 {
+  font-size: 26px !important;
+}
+
+p {
+  font-size: 22px !important;
+  color: #000 !important;
+}
+
+table th,
+table td {
+  font-size: 19px !important;
+  color: #000 !important;
+  word-break: break-word !important;
+}
+
+table td {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.navbar {
+  display: none !important;
+}
+
+.main-content {
+  margin: 0 !important;
+}
+
+.card-row {
+  margin-top: 0 !important;
+  margin-bottom: 50px;
+}
+
+.card-grade {
+  margin-top: -100px;
+  border: none;
+}
+
+.card.shadow {
+  box-shadow: none !important;
+}
+
+.button-group {
+  display: none;
+}
+
+h2 {
+  letter-spacing: 5px;
+}
+
+.text-indent {
+  text-indent: 4em;
+  text-align: justify;
+}
+
+table th,
+table td {
+  border: none !important;
+}
+
+.signature {
+  margin-left: 60%;
+}

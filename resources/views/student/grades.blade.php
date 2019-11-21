@@ -39,7 +39,8 @@
 
                         @role('admin|registrar|head registrar|student')
                         <div class="col text-right">
-                          <a href="/students/{{ $user->id }}/grade_slip/{{ $selected_acad_term }}" class="btn btn-sm btn-outline-primary">View Grade Slip</a>
+                          <a href="/students/{{ $user->id }}/grade_slip/{{ $selected_acad_term }}" class="btn btn-sm btn-outline-primary">Grade Slip</a>
+                          <a href="/students/{{ $user->id }}/scholastic_record/{{ $selected_acad_term }}" class="btn btn-sm btn-outline-primary">Scholastic Record</a>
                           @role('admin|registrar|head registrar')
                             <a href="/students/{{ $user->id }}" class="btn btn-sm btn-outline-secondary">Return</a>
                           @endrole
