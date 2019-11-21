@@ -74,7 +74,7 @@
                                     <td class="text-center">
                                     {{ $registrar->employee->getEmployeeNo() }}
                                     </td>
-                                    <td>{{ $registrar->getName() }}</td>
+                                    <td>{{ $registrar->getSortableName() }}</td>
                                     <td class="text-center">
                                         {{ $registrar->employee->getDateEmployed() }}
                                     </td>

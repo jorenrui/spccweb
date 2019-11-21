@@ -95,7 +95,7 @@
                                   </form>
                               </td>
                               @endif
-                              <td>
+                              <td class="text-center">
                                 {{ $grade->sclass->course_code }}
                                 @if($grade->sclass->section != null)
                                    {{ $grade->sclass->section }}

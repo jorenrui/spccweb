@@ -77,7 +77,7 @@
                         <tbody>
                           @foreach ($classes as $sclass)
                             <tr>
-                              <td class="text-left" scope="row">
+                              <td scope="row">
                                 @role('faculty')
                                   <a href="/faculty/load/{{ $sclass->class_id }}" class="btn btn-outline-primary btn-sm">
                                       View
@@ -88,7 +88,7 @@
                                   </a>
                                 @endif
                               </td>
-                              <td>
+                              <td class="text-center">
                                 {{ $sclass->course_code }}
                                 {{ $sclass->section }}
                               </td>

@@ -82,6 +82,8 @@ class SClass extends Model
 
         if ($this->course->lab_units == null)
             return null;
+        else if ($day == null && $lab_time == null)
+            return '-';
 
         return $day . ', ' . $lab_time;
     }
