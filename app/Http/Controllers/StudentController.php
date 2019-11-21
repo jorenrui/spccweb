@@ -292,6 +292,37 @@ class StudentController extends Controller
             ->with('selected_acad_term', $selected_acad_term);
     }
 
+    private function getTotalUnits($grades)
+    {
+        $sum = 0;
+
+        foreach ($grades as $grade) {
+            $sum += $grade->sclass->course->units;
+        }
+
+        return $sum;
+    }
+
+    private function getGeneralAverage($grades)
+    {
+        $sum = 0;
+        $count = 0;
+
+        foreach ($grades as $grade) {
+            if ( is_numeric($grade->getGrade()) && $grade->getGrade() != null && $grade->getGrade() > 0) {
+                $sum += $grade->getGrade();
+                $count++;
+            }
+        }
+
+        if ($sum == 0)
+            return null;
+
+        $average = number_format($sum / $count, 2, '.', '');
+
+        return $average;
+    }
+
     public function showGradeSlip($id, $acad_term_id)
     {
         $user = User::find($id);
@@ -313,10 +344,15 @@ class StudentController extends Controller
             }
         }
 
+        $totalUnits = $this->getTotalUnits($filtered_grades);
+        $generalAverage = $this->getGeneralAverage($filtered_grades);
+
         return view('reports.grade_slip')
                 ->with('user', $user)
                 ->with('acad_term', $acad_term)
                 ->with('grades', $filtered_grades)
+                ->with('totalUnits', $totalUnits)
+                ->with('generalAverage', $generalAverage)
                 ->with('head_registrar', $head_registrar);
     }
 

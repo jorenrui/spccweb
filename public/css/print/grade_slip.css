@@ -41,11 +41,6 @@ table td {
   margin-bottom: 50px;
 }
 
-.card-grade-slip {
-  margin-top: -100px;
-  border: none;
-}
-
 .card.shadow {
   box-shadow: none !important;
 }
@@ -54,28 +49,22 @@ table td {
   display: none;
 }
 
-h2 {
-  letter-spacing: 5px;
+h2,
+dt,
+dd,
+div {
+  color: #000;
 }
 
-.text-indent {
-  text-indent: 4em;
-  text-align: justify;
-}
-
-table {
-  margin-left:-20px;
+.card-grade-slip {
+  border: none;
 }
 
 table th,
-table td {
+table td:not(.total-units) {
   border: none !important;
 }
 
 .signature {
   margin-left: 60%;
-}
-
-.seal {
-  margin-top: 300px;
 }
