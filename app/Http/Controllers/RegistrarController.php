@@ -24,7 +24,7 @@ class RegistrarController extends Controller
                         ->orWhere('first_name', 'like', '%'.$search.'%')
                         ->orWhere('middle_name', 'like', '%'.$search.'%')
                         ->orWhere('last_name', 'like', '%'.$search.'%')
-                        ->orderBy('employee_no')
+                        ->orderBy('users.last_name')
                         ->paginate(15);
             $registrars->appends(['search' => $search]);
         } else {
@@ -33,7 +33,7 @@ class RegistrarController extends Controller
                         ->whereHas("roles", function($q){
                             $q->where('name', 'registrar');
                         })
-                        ->orderBy('employee_no')
+                        ->orderBy('users.last_name')
                         ->paginate(15);
         }
 

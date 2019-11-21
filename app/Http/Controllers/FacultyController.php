@@ -30,7 +30,7 @@ class FacultyController extends Controller
                             ->orWhere('middle_name', 'like', '%'.$search.'%')
                             ->orWhere('last_name', 'like', '%'.$search.'%');
                         })
-                        ->orderBy('employee_no')
+                        ->orderBy('last_name')
                         ->paginate(15);
             $faculties->appends(['search' => $search]);
         } else {
@@ -39,7 +39,7 @@ class FacultyController extends Controller
                         ->whereHas("roles", function($q){
                             $q->where('name', 'faculty');
                         })
-                        ->orderBy('employee_no')
+                        ->orderBy('last_name')
                         ->paginate(15);
         }
 

@@ -164,11 +164,14 @@ class SClassController extends Controller
                               ->orWhere('users.middle_name', 'like', '%'.$search.'%')
                               ->orWhere('users.last_name', 'like', '%'.$search.'%');
                         })
-                        ->orderBy('grade.student_no')
-                        ->paginate(8);
+                        ->orderBy('users.last_name')
+                        ->paginate(10);
             $grades->appends(['search' => $search]);
         } else {
-            $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
+            $grades = Grade::join('student', 'grade.student_no', '=', 'student.student_no')
+                        ->join('users', 'users.id', '=', 'student.user_id')
+                        ->where('class_id', 'LIKE', $id)
+                        ->orderBy('users.last_name')->paginate(10);
         }
 
         return view('classes.show')

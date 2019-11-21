@@ -32,14 +32,14 @@ class StudentController extends Controller
                             ->orWhere('middle_name', 'like', '%'.$search.'%')
                             ->orWhere('last_name', 'like', '%'.$search.'%');
                         })
-                        ->orderBy('student_no')
+                        ->orderBy('users.last_name')
                         ->paginate(15);
             $students->appends(['search' => $search]);
         } else {
             $students = Student::join('users', 'users.id', '=', 'student.user_id')
                             ->where('is_paid', '=', true)
                             ->where('is_active', $is_active)
-                            ->orderBy('student_no')
+                            ->orderBy('users.last_name')
                             ->paginate(15);
         }
 
@@ -480,11 +480,14 @@ class StudentController extends Controller
                             ->orWhere('middle_name', 'like', '%'.$search.'%')
                             ->orWhere('last_name', 'like', '%'.$search.'%');
                         })
-                        ->orderBy('student_no')
-                        ->paginate(8);
+                        ->orderBy('users.last_name')
+                        ->paginate(15);
             $students->appends(['search' => $search]);
         } else {
-            $students = Student::where('is_paid', '=', false)->orderBy('student_no')->paginate(8);
+            $students = Student::join('users', 'users.id', '=', 'student.user_id')
+                            ->where('is_paid', '=', false)
+                            ->orderBy('users.last_name')
+                            ->paginate(15);
         }
 
         return view('students.unpaid')
@@ -530,11 +533,14 @@ class StudentController extends Controller
                             ->orWhere('middle_name', 'like', '%'.$search.'%')
                             ->orWhere('last_name', 'like', '%'.$search.'%');
                         })
-                        ->orderBy('student_no')
-                        ->paginate(8);
+                        ->orderBy('users.last_name')
+                        ->paginate(15);
             $students->appends(['search' => $search]);
         } else {
-            $students = Student::where('date_graduated', '<>', null)->orderBy('student_no')->paginate(8);
+            $students = Student::join('users', 'users.id', '=', 'student.user_id')
+                            ->where('date_graduated', '<>', null)
+                            ->orderBy('users.last_name')
+                            ->paginate(15);
         }
 
         return view('students.graduate')

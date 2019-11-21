@@ -165,7 +165,11 @@ class FacultyAccessController extends Controller
     public function show($id)
     {
         $sclass = SClass::find($id);
-        $grades = Grade::where('class_id', 'LIKE', $id)->orderBy('student_no')->paginate(8);
+        $grades = Grade::join('student', 'grade.student_no', '=', 'student.student_no')
+                        ->join('users', 'users.id', '=', 'student.user_id')
+                        ->where('class_id', 'LIKE', $id)
+                        ->orderBy('users.last_name')
+                        ->paginate(10);
         $degree = Setting::where('name', 'LIKE', 'Degree')->first()->value;
         $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
         $acad_term = $sclass->acadTerm;

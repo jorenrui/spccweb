@@ -75,7 +75,7 @@
                                     <td class="text-center">
                                         {{ $faculty->employee->getEmployeeNo() }}
                                     </td>
-                                    <td>{{ $faculty->getName() }}</td>
+                                    <td>{{ $faculty->getSortableName() }}</td>
                                     <td class="text-center">
                                         {{ $faculty->employee->getDateEmployed() }}
                                     </td>

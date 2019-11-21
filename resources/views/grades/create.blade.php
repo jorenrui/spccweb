@@ -175,7 +175,7 @@ $(document).ready(function() {
                                         {{ $student->getStudentNo() }}
                                       </a>
                                     </td>
-                                    <td>{{ $student->user->getName() }}</td>
+                                    <td>{{ $student->user->getSortableName() }}</td>
                                     <td class="text-center">{{ $student->curriculum_id }}</td>
                                 </tr>
                               </form>

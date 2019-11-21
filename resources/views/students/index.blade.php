@@ -75,7 +75,7 @@
                                     <td class="text-center">
                                         {{ $student->getStudentNo() }}
                                     </td>
-                                    <td>{{ $student->user->getName() }}</td>
+                                    <td>{{ $student->user->getSortableName() }}</td>
                                     <td class="text-center">
                                         {{ $student->getStudentType() }}
                                     </td>
