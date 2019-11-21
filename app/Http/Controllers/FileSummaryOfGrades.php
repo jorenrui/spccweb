@@ -73,10 +73,10 @@ class FileSummaryOfGrades extends Controller
         $activity->timestamp = now();
         $activity->save();
 
-        if(auth()->user()->hasRole('admin'))
-            return redirect('/grades/' . $sclass->class_id)->with('success', ucfirst($period) . ' Summary of Grades Uploaded');
+        if(auth()->user()->employee->employee_no == $sclass->instructor_id)
+            return redirect('/faculty/load/' . $sclass->class_id)->with('success', ucfirst($period) . ' Summary of Grades Uploaded');
 
-        return redirect('/faculty/load/' . $sclass->class_id)->with('success', ucfirst($period) . ' Summary of Grades Uploaded');
+        return redirect('/grades/' . $sclass->class_id)->with('success', ucfirst($period) . ' Summary of Grades Uploaded');
     }
 
     public function download($id, $period)
@@ -153,9 +153,10 @@ class FileSummaryOfGrades extends Controller
         $activity->timestamp = now();
         $activity->save();
 
-        if(auth()->user()->hasRole('admin'))
-            return redirect('/grades/' . $sclass->class_id)->with('success', ucfirst($period) . ' Summary of Grades Removed');
+        if(auth()->user()->employee->employee_no == $sclass->instructor_id)
+            return redirect('/faculty/load/' . $sclass->class_id)->with('success', ucfirst($period) . ' Summary of Grades Removed');
 
-        return redirect('/faculty/load/' . $sclass->class_id)->with('success', ucfirst($period) . ' Summary of Grades Removed');
+        return redirect('/grades/' . $sclass->class_id)->with('success', ucfirst($period) . ' Summary of Grades Removed');
+
     }
 }

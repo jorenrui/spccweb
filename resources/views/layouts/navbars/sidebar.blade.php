@@ -114,7 +114,7 @@
                     </a>
                 </li>
                 @endrole
-                @role('admin')
+                @role('admin|head registrar')
                 <li class="nav-item {{ $title == 'Class Scheduling' ? 'active' : '' }}">
                     <a class="nav-link" href="/classes">
                         <i class="ni ni-calendar-grid-58"></i> Class Scheduling

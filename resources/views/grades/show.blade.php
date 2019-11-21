@@ -104,19 +104,23 @@
                             </dd>
                             @endif
                           </dl>
-                          @role('admin')
+                          @role('admin|head registrar')
 
                           <hr class="my-4" />
 
                           <h3>Alteration of Grades</h3>
                           <p class="description">
                             Alteration of grades should only be done in case of emergency where the faculty is unable to alter the submitted grades. In these cases, the OIC or Admin may alter it.
+                            <br /><br />
+                            Other cases is when entering grades for old students by the head registrar.
                           </p>
 
                           <a href="/grades/{{ $sclass->class_id }}/edit" class="btn btn-outline-warning btn-md">
                               Alter Grades
                           </a>
+                          @endrole
 
+                          @role('admin')
                           <hr class="my-4" />
 
                           <h3>Locking of Grades</h3>
@@ -261,7 +265,7 @@
                                                     <a class="dropdown-item" href="/faculty/load/inc/{{ $grade->grade_id }}" onclick="return confirm('Are you sure you want to set {{ $grade->student->user->getName() }}\'s grade to Incomplete?')">
                                                         Set as Incomplete
                                                     </a>
-                                                  @elseif(auth()->user()->hasRole('admin'))
+                                                  @elseif(auth()->user()->hasRole('admin') || auth()->user()->hasRole('head registrar'))
                                                     <a class="dropdown-item" href="/faculty/load/completion/{{ $grade->grade_id }}">
                                                         Enter Completion Grade
                                                     </a>
@@ -321,7 +325,7 @@
                                   Prelims Grades
                               </dt>
                               <dd class="col-8 col-lg-10">
-                                @role('admin')
+                                @role('admin|head registrar')
                                 <a href="/summary_grades/{{ $sclass->class_id }}/prelims" class="btn btn-outline-secondary btn-sm">
                                   Upload
                                 </a>
@@ -333,7 +337,7 @@
                                 <a href="/summary_grades/{{ $sclass->class_id }}/prelims/view" class="btn btn-outline-info btn-sm">
                                   View & Print
                                 </a>
-                                @role('admin')
+                                @role('admin|head registrar')
                                 <a href="/summary_grades/{{ $sclass->class_id }}/prelims/remove" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this file?')">
                                   Remove
                                 </a>
@@ -348,7 +352,7 @@
                                   Midterms Grades
                               </dt>
                               <dd class="col-8 col-lg-10 mt-2">
-                                @role('admin')
+                                @role('admin|head registrar')
                                 <a href="/summary_grades/{{ $sclass->class_id }}/midterms" class="btn btn-outline-secondary btn-sm">
                                   Upload
                                 </a>
@@ -360,7 +364,7 @@
                                 <a href="/summary_grades/{{ $sclass->class_id }}/midterms/view" class="btn btn-outline-info btn-sm">
                                   View & Print
                                 </a>
-                                @role('admin')
+                                @role('admin|head registrar')
                                 <a href="/summary_grades/{{ $sclass->class_id }}/midterms/remove" class="btn btn-outline-danger btn-sm">
                                   Remove
                                 </a>
@@ -375,7 +379,7 @@
                                   Finals Grades
                               </dt>
                               <dd class="col-8 col-lg-10 mt-2">
-                                @role('admin')
+                                @role('admin|head registrar')
                                 <a href="/summary_grades/{{ $sclass->class_id }}/finals" class="btn btn-outline-secondary btn-sm">
                                   Upload
                                 </a>
@@ -387,7 +391,7 @@
                                 <a href="/summary_grades/{{ $sclass->class_id }}/finals/view" class="btn btn-outline-info btn-sm">
                                   View & Print
                                 </a>
-                                @role('admin')
+                                @role('admin|head registrar')
                                 <a href="/summary_grades/{{ $sclass->class_id }}/finals/remove" class="btn btn-outline-danger btn-sm">
                                   Remove
                                 </a>
@@ -402,7 +406,7 @@
                                   Average Grades
                               </dt>
                               <dd class="col-8 col-lg-10 mt-2">
-                                @role('admin')
+                                @role('admin|head registrar')
                                 <a href="/summary_grades/{{ $sclass->class_id }}/average" class="btn btn-outline-secondary btn-sm">
                                   Upload
                                 </a>
@@ -414,7 +418,7 @@
                                 <a href="/summary_grades/{{ $sclass->class_id }}/average/view" class="btn btn-outline-info btn-sm">
                                   View & Print
                                 </a>
-                                @role('admin')
+                                @role('admin|head registrar')
                                 <a href="/summary_grades/{{ $sclass->class_id }}/average/remove" class="btn btn-outline-danger btn-sm">
                                   Remove
                                 </a>

@@ -77,7 +77,7 @@
                     <a href="/classes" class="btn btn-outline-secondary btn-sm">
                       Return
                     </a>
-                    @role('admin')
+                    @role('admin|head registrar')
                     <a href="/classes/{{ $sclass->class_id }}/edit" class="btn btn-outline-info btn-sm">
                       Edit Class
                     </a>
@@ -130,7 +130,7 @@
                     </div>
                     @endif
 
-                    @role('admin')
+                    @role('admin|head registrar')
                     <div class="col text-right">
                       <a href="/classes/enroll_students/{{ $sclass->class_id}}" class="btn btn-sm btn-primary">
                           Enroll Student
@@ -211,7 +211,7 @@
                 <div class="col text-center">
                     <p class="lead">No Enrolled Students</p>
                     <br>
-                    @role('admin')
+                    @role('admin|head registrar')
                     <div class="col">
                       <a href="/classes/enroll_students/{{ $sclass->class_id}}" class="btn btn-lg btn-primary">
                           Enroll Student

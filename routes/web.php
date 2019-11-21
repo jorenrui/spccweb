@@ -72,16 +72,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('users/{user}/set_admin','UserController@setAsAdmin');
 	Route::get('users/{user}/unset_admin','UserController@unsetAsAdmin');
 
-	Route::resource('classes','SClassController');
-	Route::get('classes/{class}/drop/{grade}','SClassController@dropStudent');
-	Route::post('classes/lock_grades','SClassController@lockGrades');
-	Route::get('classes/enroll_students/{class}','GradeController@enrollStudent');
-	Route::resource('grades','GradeController')->except([
-		'create', 'index', 'show'
-	]);
-	Route::get('faculty/load/completion/{grade}','GradeController@enterCompletionGrade');
-	Route::put('faculty/load/completion/{grade}/update','GradeController@storeCompletionGrade');
-
 	Route::resource('faculties','FacultyController');
 	Route::get('archived/faculties','FacultyController@archived');
 	Route::get('faculties/{faculty}/archive','FacultyController@setAsArchived');
@@ -96,6 +86,18 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
 	Route::resource('messages','MessagesController')->only(['show', 'destroy']);
 	Route::get('feedback', 'MessagesController@feedback');
+});
+
+Route::group(['middleware' => ['auth', 'role:admin|head registrar']], function () {
+	Route::resource('classes','SClassController');
+	Route::get('classes/{class}/drop/{grade}','SClassController@dropStudent');
+	Route::post('classes/lock_grades','SClassController@lockGrades');
+	Route::get('classes/enroll_students/{class}','GradeController@enrollStudent');
+	Route::resource('grades','GradeController')->except([
+		'create', 'index', 'show'
+	]);
+	Route::get('faculty/load/completion/{grade}','GradeController@enterCompletionGrade');
+	Route::put('faculty/load/completion/{grade}/update','GradeController@storeCompletionGrade');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar']], function () {
@@ -145,25 +147,34 @@ Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar|stud
 	Route::get('students/{student}/grade_slip/{acad_term}','StudentController@showGradeSlip');
 });
 
-Route::group(['middleware' => ['auth', 'role:registrar']], function () {
-	Route::get('students/{student}/tor','StudentController@showTOR');
+Route::group(['middleware' => ['auth', 'role:admin|head registrar|faculty']], function () {
+	Route::get('faculty/load/inc/{grade}','FacultyAccessController@setAsIncomplete');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|registrar|student']], function () {
 	Route::get('students/{student}/curriculum_with_grades','StudentController@showCurriculumWithGrades');
 });
 
-Route::group(['middleware' => ['auth', 'role:admin|head registrar']], function () {
+Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar|faculty']], function () {
+	Route::get('summary_grades/{class}/{period}/download','FileSummaryOfGrades@download');
+	Route::get('summary_grades/{class}/{period}/view','FileSummaryOfGrades@view');
+});
+
+Route::group(['middleware' => ['auth', 'role:admin|head registrar|faculty']], function () {
+	Route::get('summary_grades/{class}/{period}','FileSummaryOfGrades@index');
+	Route::put('summary_grades/{class}/{period}/store','FileSummaryOfGrades@store');
+	Route::get('summary_grades/{class}/{period}/remove','FileSummaryOfGrades@remove');
+});
+
+Route::group(['middleware' => ['auth', 'role:head registrar']], function () {
 	Route::resource('registrars','RegistrarController');
 	Route::get('archived/registrars','RegistrarController@archived');
 	Route::get('registrars/{registrar}/archive','RegistrarController@setAsArchived');
 	Route::get('registrars/{registrar}/unarchive','RegistrarController@setAsUnarchived');
 });
 
-
-Route::group(['middleware' => ['auth', 'role:admin|registrar|head registrar|faculty']], function () {
-	Route::get('summary_grades/{class}/{period}/download','FileSummaryOfGrades@download');
-	Route::get('summary_grades/{class}/{period}/view','FileSummaryOfGrades@view');
+Route::group(['middleware' => ['auth', 'role:registrar']], function () {
+	Route::get('students/{student}/tor','StudentController@showTOR');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
@@ -171,14 +182,9 @@ Route::group(['middleware' => ['auth', 'role:admin|faculty']], function () {
 
 	Route::get('faculty/load','FacultyAccessController@load');
 	Route::get('faculty/load/unofficial_drop/{grade}','FacultyAccessController@unofficialDropStudent');
-	Route::get('faculty/load/inc/{grade}','FacultyAccessController@setAsIncomplete');
 	Route::get('faculty/load/{class}','FacultyAccessController@show');
 	Route::get('faculty/load/{class}/encode','FacultyAccessController@encodeGrades');
 	Route::get('faculty/load/{class}/students','FacultyAccessController@showStudentMasterlist');
-
-	Route::get('summary_grades/{class}/{period}','FileSummaryOfGrades@index');
-	Route::put('summary_grades/{class}/{period}/store','FileSummaryOfGrades@store');
-	Route::get('summary_grades/{class}/{period}/remove','FileSummaryOfGrades@remove');
 });
 
 Route::group(['middleware' => ['auth', 'role:student']], function () {

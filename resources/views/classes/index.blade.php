@@ -93,7 +93,7 @@
                                 <th scope="col" class="text-center">Schedule</th>
                                 <th scope="col" class="text-center">Instructor</th>
                                 <th scope="col" class="text-center">Total Students</th>
-                                @role('admin')
+                                @role('admin|head registrar')
                                 <th scope="col"></th>
                                 @endrole
                             </tr>
@@ -120,7 +120,7 @@
                               <td class="text-center">
                                   {{ $sclass->getTotalStudents() }}
                               </td>
-                              @role('admin')
+                              @role('admin|head registrar')
                               <td class="text-right">
                                 <div class="dropdown">
                                   <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -155,7 +155,9 @@
                   <div class="row border-1 mt-3 mb-5">
                       <div class="col text-center">
                           <p class="lead">No Class found</p>
-                          @if($selected_acad_term >= $cur_acad_term)
+                          @if($selected_acad_term >= $cur_acad_term ||
+                              auth()->user()->hasRole('admin') ||
+                              auth()->user()->hasRole('head registrar'))
                           <br>
                           <a href="/classes/create" class="btn btn-primary btn-lg">Add Class</a>
                           @endif

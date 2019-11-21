@@ -94,7 +94,7 @@
                                 <th scope="col">Description</th>
                                 <th scope="col" class="text-center">Instructor</th>
                                 <th scope="col" class="text-center">Total Students</th>
-                                @role('admin')
+                                @role('admin|head registrar')
                                 <th scope="col"></th>
                                 @endrole
                             </tr>
@@ -119,7 +119,7 @@
                               <td class="text-center">
                                   {{ $sclass->getTotalStudents() }}
                               </td>
-                              @role('admin')
+                              @role('admin|head registrar')
                               <td class="text-right">
                                 <div class="dropdown">
                                   <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
