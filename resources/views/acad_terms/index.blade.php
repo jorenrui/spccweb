@@ -112,7 +112,7 @@
                                                     @csrf
                                                     @method('delete')
 
-                                                    <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $acadTerm->getAcadTerm() }} academic term') ? this.parentElement.submit() : ''">
+                                                    <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $acadTerm->getAcadTerm() }} academic term? This will delete all the data, including classes and grades, under this academic term.') ? this.parentElement.submit() : ''">
                                                         Delete
                                                     </button>
                                                 </form>

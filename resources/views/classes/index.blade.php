@@ -135,7 +135,7 @@
                                         @csrf
                                         @method('DELETE')
 
-                                        <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $sclass->course_code }} class?') ? this.parentElement.submit() : ''">
+                                        <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $sclass->course_code }} class? This will also delete all the grades associated to this class.') ? this.parentElement.submit() : ''">
                                             Delete
                                         </button>
                                     </form>

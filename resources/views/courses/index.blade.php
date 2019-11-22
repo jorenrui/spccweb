@@ -86,7 +86,7 @@
                                                     @csrf
                                                     @method('delete')
 
-                                                    <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $course->course_code }}?') ? this.parentElement.submit() : ''">
+                                                    <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete {{ $course->course_code }}? This will also delete curriculum details associated with this course.') ? this.parentElement.submit() : ''">
                                                         Delete
                                                     </button>
                                                 </form>
