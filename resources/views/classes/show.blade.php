@@ -167,11 +167,11 @@
                           <tr>
                               <td scope="row">
                                 @role('head registrar')
+                                  {{ $grade->student->getStudentNo() }}
+                                @else
                                   <a href="/students/{{ $grade->student->user->id }}">
                                     {{ $grade->student->getStudentNo() }}
                                   </a>
-                                @else
-                                  {{ $grade->student->getStudentNo() }}
                                 @endrole
                                 {{ $grade->student->user->getName() }}
                               </td>
