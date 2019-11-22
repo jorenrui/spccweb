@@ -32,7 +32,7 @@ class Grade extends Model
         $average = ($prelims + $midterms + $finals) / 3;
         $average = round( $average );
 
-        return $average;
+        return number_format($average, '2', '.', '');
     }
 
     public function getTransmutatedGrade($average)
