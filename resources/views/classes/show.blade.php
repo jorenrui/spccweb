@@ -28,9 +28,13 @@
                         Instructor:
                     </dt>
                     <dd class="col-sm-7">
+                      @role('admin')
                       <a href="/faculties/{{ $sclass->instructor->user->id }}">
                         {{ $sclass->instructor->user->getNameWithTitle() }}
                       </a>
+                      @else
+                        {{ $sclass->instructor->user->getNameWithTitle() }}
+                      @endrole
                     </dd>
                     @if($sclass->section != null)
                     <dt class="col-sm-5">
@@ -162,15 +166,23 @@
                         @foreach ($grades as $grade)
                           <tr>
                               <td scope="row">
-                                <a href="/students/{{ $grade->student->user->id }}">
+                                @role('head registrar')
+                                  <a href="/students/{{ $grade->student->user->id }}">
+                                    {{ $grade->student->getStudentNo() }}
+                                  </a>
+                                @else
                                   {{ $grade->student->getStudentNo() }}
-                                </a>
+                                @endrole
                                 {{ $grade->student->user->getName() }}
                               </td>
                               <td class="text-center">
-                                <a href="/curriculums/{{ $grade->curriculumDetails->curriculum_id }}">
+                                @role('head registrar')
                                   {{ $grade->curriculumDetails->curriculum_id }} {{ $grade->curriculumDetails->course->course_code}}
-                                </a>
+                                @else
+                                  <a href="/curriculums/{{ $grade->curriculumDetails->curriculum_id }}">
+                                    {{ $grade->curriculumDetails->curriculum_id }} {{ $grade->curriculumDetails->course->course_code}}
+                                  </a>
+                                @endrole
                               </td>
                               <td class="text-right">
                               @if($grade->grade != null)

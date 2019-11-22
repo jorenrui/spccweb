@@ -112,10 +112,15 @@
                               </td>
                               <td class="text-center">{{ $sclass->getSchedule() }}</td>
                               <td>
+                                @role('admin')
                                 <a href="/faculties/{{ $sclass->instructor->user->id }}">
                                   {{ $sclass->instructor->getEmployeeNo() }}
                                   {{ $sclass->instructor->user->getNameWithTitle() }}
                                 </a>
+                                @else
+                                  {{ $sclass->instructor->getEmployeeNo() }}
+                                  {{ $sclass->instructor->user->getNameWithTitle() }}
+                                @endrole
                               </td>
                               <td class="text-center">
                                   {{ $sclass->getTotalStudents() }}
