@@ -222,6 +222,7 @@ class GradeController extends Controller
             $grade = Grade::find($request->grade_id[$i]);
             $grade->prelims = $request->prelims[$i];
             $grade->midterms = $request->midterms[$i];
+            $grade->finals = $request->finals[$i];
             $grade->save();
         }
 
