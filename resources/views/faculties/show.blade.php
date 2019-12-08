@@ -155,7 +155,7 @@
           @include('layouts.headers.messages')
 
           <div class="card shadow">
-          @if($totalClasses > 0)
+          @if($total_classes > 0)
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
@@ -163,12 +163,14 @@
                     </div>
                 </div>
             </div>
+
+            @foreach ($classes as $day_classes)
+            @if(count($day_classes['classes']) > 0)
             <div class="table-responsive">
-                @if(count($m_class) > 0)
                 <table class="table footable align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
-                            <th>Monday</th>
+                            <th>{{ $day_classes['day'] }}</th>
                             <th></th>
                             <th data-breakpoints="all" class="bg-white">Credits:</th>
                             <th data-breakpoints="all" class="bg-white">Room:</th>
@@ -176,374 +178,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach ($m_class as $sclass)
+                        @foreach ($day_classes['classes'] as $sclass)
 
-                        @if($sclass->lec_day == 'M' && $sclass->lab_day == 'M')
                             <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLecTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LEC)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
+                                <td scope="row">{{ $sclass['time'] }}</td>
+                                <td>{{ $sclass['course'] }}</td>
+                                <td>{{ $sclass['credits'] }}</td>
+                                <td>{{ $sclass['room'] }}</td>
+                                <td>{{ $sclass['total_students'] }}</td>
                             </tr>
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLabTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LAB)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @elseif($sclass->lec_day != null)
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLecTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LEC)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @elseif($sclass->lab_day != null)
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLabTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LAB)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @endif
 
-                      @endforeach
+                        @endforeach
                     </tbody>
                 </table>
-                @endif
-
-                @if(count($t_class) > 0)
-                <table class="table footable align-items-center table-flush">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Tuesday</th>
-                            <th></th>
-                            <th data-breakpoints="all" class="bg-white">Credits:</th>
-                            <th data-breakpoints="all" class="bg-white">Room:</th>
-                            <th data-breakpoints="all" class="bg-white">Total Students:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      @foreach ($t_class as $sclass)
-
-                        @if($sclass->lec_day == 'T' && $sclass->lab_day == 'T')
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLecTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LEC)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLabTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LAB)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @elseif($sclass->lec_day != null)
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLecTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LEC)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @elseif($sclass->lab_day != null)
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLabTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LAB)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @endif
-
-                      @endforeach
-                    </tbody>
-                </table>
-                @endif
-
-                @if(count($w_class) > 0)
-                <table class="table footable align-items-center table-flush">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Wednesday</th>
-                            <th></th>
-                            <th data-breakpoints="all" class="bg-white">Credits:</th>
-                            <th data-breakpoints="all" class="bg-white">Room:</th>
-                            <th data-breakpoints="all" class="bg-white">Total Students:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      @foreach ($w_class as $sclass)
-
-                        @if($sclass->lec_day == 'W' && $sclass->lab_day == 'W')
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLecTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LEC)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLabTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LAB)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @elseif($sclass->lec_day != null)
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLecTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LEC)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @elseif($sclass->lab_day != null)
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLabTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LAB)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @endif
-
-                      @endforeach
-                    </tbody>
-                </table>
-                @endif
-
-                @if(count($th_class) > 0)
-                <table class="table footable align-items-center table-flush">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Thursday</th>
-                            <th></th>
-                            <th data-breakpoints="all" class="bg-white">Credits:</th>
-                            <th data-breakpoints="all" class="bg-white">Room:</th>
-                            <th data-breakpoints="all" class="bg-white">Total Students:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      @foreach ($th_class as $sclass)
-
-                        @if($sclass->lec_day == 'TH' && $sclass->lab_day == 'TH')
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLecTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LEC)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLabTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LAB)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @elseif($sclass->lec_day != null)
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLecTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LEC)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @elseif($sclass->lab_day != null)
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLabTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LAB)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @endif
-
-                      @endforeach
-                    </tbody>
-                </table>
-                @endif
-
-                @if(count($f_class) > 0)
-                <table class="table footable align-items-center table-flush">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Friday</th>
-                            <th></th>
-                            <th data-breakpoints="all" class="bg-white">Credits:</th>
-                            <th data-breakpoints="all" class="bg-white">Room:</th>
-                            <th data-breakpoints="all" class="bg-white">Total Students:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      @foreach ($f_class as $sclass)
-
-                        @if($sclass->lec_day == 'F' && $sclass->lab_day == 'F')
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLecTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LEC)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLabTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LAB)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @elseif($sclass->lec_day != null)
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLecTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LEC)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @elseif($sclass->lab_day != null)
-                            <tr class="bg-white">
-                                <td scope="row">{{ $sclass->getLabTime() }}</td>
-                                <td>{{ $sclass->getCourse() }} (LAB)</td>
-                                <td>{{ $sclass->course->getCredits() }}</td>
-                                <td>
-                                    @if($sclass->room != null)
-                                        {{ $sclass->room }}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>{{ $sclass->getTotalStudents() }}</td>
-                            </tr>
-                        @endif
-
-                      @endforeach
-                    </tbody>
-                </table>
-                @endif
             </div>
+            @endif
+            @endforeach
 
           @else
             <div class="row mt-3 mb-5">

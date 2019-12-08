@@ -172,17 +172,78 @@ class FacultyController extends Controller
                 ->with('success', 'Employee ' . $employee->getEmployeeNo() . ' Created. Default username is the Employee No. with no dashes while the default password is the user\'s birthdate.');
     }
 
-    private function getClassesByDay($employee_no, $day)
+    private function getClassesByDay($classes, $day)
+    {
+        $filtered_classes = collect([]);
+
+        foreach ($classes as $sclass) {
+
+            if ($sclass->lec_day == $day || $sclass->getLabDay() == $day) {
+
+                if ($sclass->lec_day == $day) {
+
+                    $new_class = array(
+                        'time_start' => $sclass->lec_time_start,
+                        'time_end' => $sclass->lec_time_end,
+                        'time' => $sclass->getLecTime(),
+                        'course' => $sclass->getCourse() . ' (LEC)',
+                        'credits' => $sclass->course->getCredits(),
+                        'room' => $sclass->room == null ? '-' : $sclass->room,
+                        'total_students' => $sclass->getTotalStudents()
+                    );
+
+                    $filtered_classes->push($new_class);
+
+                }
+
+                if ($sclass->getLabDay() == $day) {
+
+                    $new_class = array(
+                        'time_start' => $sclass->lab_time_start,
+                        'time_end' => $sclass->lab_time_end,
+                        'time' => $sclass->getLabTime(),
+                        'course' => $sclass->getCourse() . ' (LAB)',
+                        'credits' => $sclass->course->getCredits(),
+                        'room' => $sclass->room == null ? '-' : $sclass->room,
+                        'total_students' => $sclass->getTotalStudents()
+                    );
+
+                    $filtered_classes->push($new_class);
+                }
+
+            }
+        }
+
+        $sorted = $filtered_classes->sortBy('time_start');
+
+        return $sorted->values()->all();
+    }
+
+    private function getFacultyLoad($employee_no)
     {
         $cur_acad_term = Setting::where('name', 'LIKE', 'Current Acad Term')->first()->value;
 
-        $classes = SClass::where('acad_term_id', 'LIKE', $cur_acad_term)
-                            ->where('instructor_id', 'LIKE', $employee_no)
-                            ->where(function($q) use ($day) {
-                                $q->Where('lec_day', 'like', '%'.$day.'%')
-                                ->orWhere('lab_day', 'like', '%'.$day.'%');
-                            })
-                            ->get();
+        $load = SClass::where('acad_term_id', 'LIKE', $cur_acad_term)
+                    ->where('instructor_id', 'LIKE', $employee_no)
+                    ->get();
+
+        return $load;
+    }
+
+    private function getClasses($load)
+    {
+        $classes = collect();
+
+        $sclass = $this->getClassesByDay($load, 'M');
+        $classes->push([ 'day' => 'Monday', 'classes' => $sclass]);
+        $sclass = $this->getClassesByDay($load, 'T');
+        $classes->push([ 'day' => 'Tuesday', 'classes' => $sclass]);
+        $sclass = $this->getClassesByDay($load, 'W');
+        $classes->push([ 'day' => 'Wednesday', 'classes' => $sclass]);
+        $sclass = $this->getClassesByDay($load, 'TH');
+        $classes->push([ 'day' => 'Thursday', 'classes' => $sclass]);
+        $sclass = $this->getClassesByDay($load, 'F');
+        $classes->push([ 'day' => 'Friday', 'classes' => $sclass]);
 
         return $classes;
     }
@@ -201,23 +262,13 @@ class FacultyController extends Controller
 
         $employee_no = $user->employee->employee_no;
 
-        $m_class = $this->getClassesByDay($employee_no, 'M');
-        $t_class = $this->getClassesByDay($employee_no, 'T');
-        $w_class = $this->getClassesByDay($employee_no, 'W');
-        $th_class = $this->getClassesByDay($employee_no, 'TH');
-        $f_class = $this->getClassesByDay($employee_no, 'F');
-
-        $totalClasses = count($m_class) + count($t_class) +count($w_class) +
-                        count($th_class) + count($f_class);
+        $load = $this->getFacultyLoad($employee_no);
+        $classes = $this->getClasses($load);
 
         return view('faculties.show')
                 ->with('user', $user)
-                ->with('totalClasses', $totalClasses)
-                ->with('m_class', $m_class)
-                ->with('t_class', $t_class)
-                ->with('w_class', $w_class)
-                ->with('th_class', $th_class)
-                ->with('f_class', $f_class)
+                ->with('classes', $classes)
+                ->with('total_classes', count($load))
                 ->with('degree', $degree);
     }
 
