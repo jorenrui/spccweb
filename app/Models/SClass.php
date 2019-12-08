@@ -26,6 +26,18 @@ class SClass extends Model
         return $course_code . ' ' . $description;
     }
 
+    public function getLabDay()
+    {
+        $lab_units = $this->course->lab_units;
+        $lab_day = $this->attributes['lab_day'];
+
+        if($lab_units == null || $lab_units == 0)
+            return null;
+
+
+        return $lab_day;
+    }
+
     public function getLecTime()
     {
         $time_start = strtotime($this->attributes['lec_time_start']);
