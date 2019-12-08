@@ -19,14 +19,14 @@ class Course2018TableSeeder extends Seeder
         $course->course_code = 'IntroComp';
         $course->description = 'Introduction to Computing';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'ComPro1';
         $course->description = 'Computer Programming 1';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -68,7 +68,7 @@ class Course2018TableSeeder extends Seeder
         $course->course_code = 'HumCom';
         $course->description = 'Introduction to Human Computer Interaction';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -103,28 +103,28 @@ class Course2018TableSeeder extends Seeder
         $course->course_code = 'OS';
         $course->description = 'Operating Systems';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'Datstruc';
         $course->description = 'Data Structures and Algorithms';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'OOP';
         $course->description = 'Object Oriented Programming';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'PlatTech';
         $course->description = 'Platform Technologies';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -166,21 +166,21 @@ class Course2018TableSeeder extends Seeder
         $course->course_code = 'Net1';
         $course->description = 'Networking 1 (Fundamentals)';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'InTech1';
         $course->description = 'Integrative Programming and Technologies 1';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'WebApps';
         $course->description = 'Web Applications Development';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -194,7 +194,7 @@ class Course2018TableSeeder extends Seeder
         $course->course_code = 'FunDBS';
         $course->description = 'Fundamentals of Database Systems';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -208,28 +208,28 @@ class Course2018TableSeeder extends Seeder
         $course->course_code = 'Net2';
         $course->description = 'Networking 2 (Routing Protocols)';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'SIA1';
         $course->description = 'Systems Integration and Architecture 1';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'Intech2';
         $course->description = 'Integrative Programming and Technologies 2';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'FDWDM';
         $course->description = 'Fundamentals of Data Warehousing and Data Mining';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -264,7 +264,7 @@ class Course2018TableSeeder extends Seeder
         $course->course_code = 'ADET';
         $course->description = 'Application Development and Emerging Technologies';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -306,7 +306,7 @@ class Course2018TableSeeder extends Seeder
         $course->course_code = 'SAM';
         $course->description = 'System Administration and Maintenace 1';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -320,7 +320,7 @@ class Course2018TableSeeder extends Seeder
         $course->course_code = 'ITProj2';
         $course->description = 'Capstone Project and Research 2';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -334,7 +334,7 @@ class Course2018TableSeeder extends Seeder
         $course->course_code = 'SIA2';
         $course->description = 'Systems Integration and Architecture 2';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
     }
 }

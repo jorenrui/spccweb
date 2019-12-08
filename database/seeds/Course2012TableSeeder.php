@@ -49,14 +49,14 @@ class Course2012TableSeeder extends Seeder
         $course->course_code = 'IT 111';
         $course->description = 'Programming Fundamentals 1';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'IT 112';
         $course->description = 'Computing Fundamentals';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -112,21 +112,21 @@ class Course2012TableSeeder extends Seeder
         $course->course_code = 'IT 121';
         $course->description = 'Programming Fundamentals 2';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'IT 122';
         $course->description = 'Data Structure';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'IT 123';
         $course->description = 'Applied Operating Systems';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -168,21 +168,21 @@ class Course2012TableSeeder extends Seeder
         $course->course_code = 'NATSCI 1';
         $course->description = 'College Physics 1';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'IT 211';
         $course->description = 'Programming Fundamentals 3';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'IT 212';
         $course->description = 'Object Oriented Programming';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -217,14 +217,14 @@ class Course2012TableSeeder extends Seeder
         $course->course_code = 'NATSCI 2';
         $course->description = 'College Physics 2';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'IT 221';
         $course->description = 'Web Programming';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -238,7 +238,7 @@ class Course2012TableSeeder extends Seeder
         $course->course_code = 'IT 224';
         $course->description = 'Database Applications';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -294,21 +294,21 @@ class Course2012TableSeeder extends Seeder
         $course->course_code = 'IT 313';
         $course->description = 'Relational Database Management Systems';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'ITELE 1';
         $course->description = 'IT Elective 1';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'ITELE 2';
         $course->description = 'IT Elective 2';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -336,7 +336,7 @@ class Course2012TableSeeder extends Seeder
         $course->course_code = 'IT 322';
         $course->description = 'Web Development';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
@@ -350,21 +350,21 @@ class Course2012TableSeeder extends Seeder
         $course->course_code = 'ITELE 3';
         $course->description = 'IT Elective 3';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'ELE 1';
         $course->description = 'Free Elective 1';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
         $course->course_code = 'ELE 2';
         $course->description = 'Free Elective 2';
         $course->units = 3;
-        $course->lab_units = 3;
+        $course->lab_units = 1;
         $course->save();
 
         $course = new Course;
