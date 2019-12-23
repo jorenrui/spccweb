@@ -214,7 +214,7 @@ class UsersTableSeeder extends Seeder
         $student->secondary = 'Doggy High School';
         $student->secondary_sy = '2010-2015';
         $student->curriculum_id = 2012;
-        $student->acad_term_admitted_id = '192001';
+        $student->acad_term_admitted_id = '202101';
         $student->user_id = $user->id;
         $student->save();
 
@@ -248,7 +248,7 @@ class UsersTableSeeder extends Seeder
         $student->secondary = 'All Girls High School';
         $student->secondary_sy = '2010-2015';
         $student->curriculum_id = 2012;
-        $student->acad_term_admitted_id = '192001';
+        $student->acad_term_admitted_id = '202101';
         $student->user_id = $user->id;
         $student->save();
 
@@ -282,7 +282,7 @@ class UsersTableSeeder extends Seeder
         $student->secondary = 'Mendiola Science High School';
         $student->secondary_sy = '2010-2015';
         $student->curriculum_id = 2012;
-        $student->acad_term_admitted_id = '192001';
+        $student->acad_term_admitted_id = '202101';
         $student->user_id = $user->id;
         $student->save();
 
@@ -316,7 +316,7 @@ class UsersTableSeeder extends Seeder
         $student->secondary = 'Lacson High School';
         $student->secondary_sy = '2010-2015';
         $student->curriculum_id = 2012;
-        $student->acad_term_admitted_id = '192001';
+        $student->acad_term_admitted_id = '202101';
         $student->user_id = $user->id;
         $student->save();
 
@@ -349,7 +349,7 @@ class UsersTableSeeder extends Seeder
         $student->secondary = 'Lacson High School';
         $student->secondary_sy = '2010-2015';
         $student->curriculum_id = 2012;
-        $student->acad_term_admitted_id = '192001';
+        $student->acad_term_admitted_id = '202101';
         $student->user_id = $user->id;
         $student->save();
 
@@ -382,7 +382,7 @@ class UsersTableSeeder extends Seeder
         $student->secondary = 'Lacson High School';
         $student->secondary_sy = '2010-2015';
         $student->curriculum_id = 2012;
-        $student->acad_term_admitted_id = '192001';
+        $student->acad_term_admitted_id = '202101';
         $student->user_id = $user->id;
         $student->save();
     }
