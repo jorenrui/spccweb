@@ -16,7 +16,7 @@ class AcadTermTableSeeder extends Seeder
 
         $acadTerm = new AcadTerm;
         $acadTerm->acad_term_id = '202101';
-        $acadTerm->sy = '2020-20201';
+        $acadTerm->sy = '2020-2021';
         $acadTerm->semester = 1;
         $acadTerm->prelims_id = 1;
         $acadTerm->midterms_id = 2;
