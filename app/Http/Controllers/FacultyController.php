@@ -169,7 +169,7 @@ class FacultyController extends Controller
         $employee->save();
 
         return redirect('/faculties/' . $user->id)
-                ->with('success', 'Employee ' . $employee->getEmployeeNo() . ' Created. Default username is the Employee No. with no dashes while the default password is the user\'s birthdate.');
+                ->with('success', 'Employee ' . $employee->getEmployeeNo() . ' Created. Default username is the Employee No. with no dashes while the default password is the user\'s birthdate (YYYY-MM-DD).');
     }
 
     private function getClassesByDay($classes, $day)

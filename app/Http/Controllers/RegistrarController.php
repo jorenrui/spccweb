@@ -163,7 +163,7 @@ class RegistrarController extends Controller
         $employee->save();
 
         return redirect('/registrars/' . $user->id)
-                ->with('success', 'Employee ' . $employee->getEmployeeNo() . ' Created. Default username is the Employee No. with no dashes while the default password is the user\'s birthdate.');
+                ->with('success', 'Employee ' . $employee->getEmployeeNo() . ' Created. Default username is the Employee No. with no dashes while the default password is the user\'s birthdate (YYYY-MM-DD).');
     }
 
     /**
