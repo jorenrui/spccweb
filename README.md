@@ -215,6 +215,8 @@ docker exec -it spccweb-app php artisan db:seed
 
 g. Check the app:
 
-    1. Open a browser and go to localhost:8000
-    2. Try to login.
-    3. Congrats! You're all set.
+    - Open a browser and go to localhost:8000
+
+    - Try to login.
+
+    - Congrats! You're all set.
