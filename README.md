@@ -81,11 +81,7 @@ b. Open Notepad as **Administrator**. Then Open File: `C:/Windows/System32/drive
 
 a. Run both `Apache` and `mySQL` in the XAMPP Control Panel.
 
-b. Create a database named `spcc`
-
-Go to `localhost/phpmyadmin` in your browser. Then login and create a database named `spcc`
-
-b. In the main directory of `spccweb`, find `.env.example`. Open it and update the database information below. After that, save it as `.env`.
+b. Go to `localhost/phpmyadmin` in your browser. Then login and create a database named `spcc`. In the main directory of `spccweb`, find `.env.example`. Open it and update the database information below. After that, save it as `.env`.
 
 > **Note**
 >
@@ -111,7 +107,7 @@ c. Generate the Application Key
 php artisan key:generate
 ```
 
-d. Reset the Database if you have already run the Database Migration at least once else proceed to the next step.
+d. Reset the Database if you have already ran the Database Migration at least once, else proceed to the next step.
 
 ```bash
 php artisan migrate:reset
