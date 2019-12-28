@@ -146,59 +146,75 @@ d After that you're all set! You may now use the dummy accounts.
 #### Dummy Accounts
 
 **Admin**
+
 username: admin
+
 password: secret
 
 **Head Registrar**
+
 username & password: K002
 
 **Registrar**
+
 username & password: K003
 
 **Faculty** (K004-K006)
+
 username & password: K004
 
 **Student** (042030001-042030006)
+
 username & password: 042030001
 
 ### 5. Check the App <a name="check"></a>
 
 a. Open a browser and go to `spccweb.me`. Make sure that both `Apache` and `MySQL` are running on the XAMPP Control Panel.
 
-b. Try to register then login.
+b. Try to login.
 
 c. Congrats! You're all set.
 
 ## Installation with docker
 
--   With docker and docker-compose installed jus run;
+a. With docker and docker-compose installed just run:
 
-`docker composer up -d`
+```
+docker composer up -d
+```
 
--   Install Dependencies;
+b. Install Dependencies:
 
-`docker exec -it spccweb-app composer install`
+```
+docker exec -it spccweb-app composer install
+```
 
--   Copy the env.example to .env and configure database access;
+c. Copy the `env.example` to `.env` and configure database access:
 
-`docker exec -it spccweb-app cp .env.example .env`
+```
+docker exec -it spccweb-app cp .env.example .env
+```
 
--   Generate the Application Key;
+d. Generate the Application Key:
 
-`docker exec -it spccweb-app php artisan ke:generate`
+```
+docker exec -it spccweb-app php artisan key:generate
+```
 
--   Run the Database Migration;
+e. Run the Database Migration:
 
-`docker exec -it spccweb-app php artisan migrate`
+```
+docker exec -it spccweb-app php artisan migrate
+```
 
--   Populate the Database by running the Database Seeder (if any);
+f. Populate the Database by running the Database Seeder (if any);
 
-`docker exec -it spccweb-app php artisan db:seed`
+```
+docker exec -it spccweb-app php artisan db:seed
+```
 
--   Check the app;
+g. Check the app:
 
-    a. Open a browser and go to localhost:8000
-
-    b. Try to register then login.
-
-    c. Congrats! You're all set.
+    1. Open a browser and go to localhost:8000
+    2. Try to login.
+    3. Congrats! You're all set.
