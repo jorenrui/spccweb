@@ -90,7 +90,9 @@ b. In the main directory of `spccweb`, find `.env.example`. Open it and update t
 > **Note**
 >
 > The default credentials for the phpMyAdmin are:
+>
 > username: root
+>
 > password:
 >
 > _You can leave the password blank._
