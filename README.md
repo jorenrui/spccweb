@@ -1,21 +1,28 @@
 # SPCC Portal
 
+![SPCC Portal](public/img/spcc-portal.png "SPCC Portal")
+
 An electronic grading web application, integrated with a school website, built using Laravel and Bootstrap. A capstone project for the Bachelor's Degree of Information Technology in SPCC - Caloocan.
+
+## Case Study
+
+Coming soon.
 
 ## Pre-requisite
 
-- [XAMPP](https://www.apachefriends.org/download.html)
-- [NPM](https://nodejs.org/en/download/)
-- [Git / Git Bash](https://git-scm.com/downloads)
-- [Composer](https://getcomposer.org/download/)
-- Familiar with mySQL and PHP
+-   [XAMPP](https://www.apachefriends.org/download.html)
+-   [NPM](https://nodejs.org/en/download/)
+-   [Git / Git Bash](https://git-scm.com/downloads)
+-   [Composer](https://getcomposer.org/download/)
+-   Familiar with mySQL and PHP
 
 ## Installation
 
 1. [Clone the Repository](#clone-repo)
 2. [Setting up a Virtual Host](#vhost)
 3. [Database Configuration](#database)
-4. [Check the App](#check)
+4. [Populating the Database with some dummy data (optional)](#seeder)
+5. [Check the App](#check)
 
 ### 1. Clone the Repository <a name="clone-repo"></a>
 
@@ -83,15 +90,13 @@ b. In the main directory of `spccweb`, find `.env.example`. Open it and update t
 > **Note**
 >
 > The default credentials for the phpMyAdmin are:
->
 > username: root
->
 > password:
 >
-> *You can leave the password blank.*
+> _You can leave the password blank._
 
 ```
-APP_NAME='SPCC - Caloocan'
+APP_NAME='SPCC Caloocan'
 ...
 DB_DATABASE=spcc
 DB_USERNAME=myUsername
@@ -116,7 +121,9 @@ e. Run the Database Migration
 php artisan migrate
 ```
 
-f. Populate the Database by running the Database Seeder (if any)
+### 4. Populating the Database with some dummy data (optional) <a name="seeder"></a>
+
+a. Populate the Database by running the Database Seeder. A dummy data has been provided.
 
 ```
 composer dump-autoload
@@ -126,7 +133,35 @@ composer dump-autoload
 php artisan db:seed
 ```
 
-### 4. Check the App <a name="check"></a>
+b. Create a symbolic link:
+
+```bash
+php artisan storage:link
+```
+
+c. In the root directory of the repository, go to `public/img`. Copy both `cover_images` and `profile_pictures` to `public/storage/`.
+
+d After that you're all set! You may now use the dummy accounts.
+
+#### Dummy Accounts
+
+**Admin**
+username: admin
+password: secret
+
+**Head Registrar**
+username & password: K002
+
+**Registrar**
+username & password: K003
+
+**Faculty** (K004-K006)
+username & password: K004
+
+**Student** (042030001-042030006)
+username & password: 042030001
+
+### 5. Check the App <a name="check"></a>
 
 a. Open a browser and go to `spccweb.me`. Make sure that both `Apache` and `MySQL` are running on the XAMPP Control Panel.
 
@@ -136,31 +171,31 @@ c. Congrats! You're all set.
 
 ## Installation with docker
 
-* With docker and docker-compose installed jus run;
- 
-```docker composer up -d```
+-   With docker and docker-compose installed jus run;
 
-* Install Dependencies;
+`docker composer up -d`
 
-```docker exec -it spccweb-app composer install```
+-   Install Dependencies;
 
-* Copy the env.example to .env and configure database access;
+`docker exec -it spccweb-app composer install`
 
-```docker exec -it spccweb-app cp .env.example .env```
+-   Copy the env.example to .env and configure database access;
 
-* Generate the Application Key;
+`docker exec -it spccweb-app cp .env.example .env`
 
-```docker exec -it spccweb-app php artisan ke:generate```
+-   Generate the Application Key;
 
-* Run the Database Migration;
+`docker exec -it spccweb-app php artisan ke:generate`
 
-```docker exec -it spccweb-app php artisan migrate```
+-   Run the Database Migration;
 
-* Populate the Database by running the Database Seeder (if any);
+`docker exec -it spccweb-app php artisan migrate`
 
-```docker exec -it spccweb-app php artisan db:seed```
+-   Populate the Database by running the Database Seeder (if any);
 
-* Check the app;
+`docker exec -it spccweb-app php artisan db:seed`
+
+-   Check the app;
 
     a. Open a browser and go to localhost:8000
 
