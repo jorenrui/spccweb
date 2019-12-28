@@ -189,14 +189,14 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->profile_picture = '042130001.jpg';
+        $user->profile_picture = '042030001.jpg';
         $user->first_name = 'Red';
         $user->middle_name = 'Dober';
         $user->last_name = 'Woof';
         $user->birthdate = '1998-08-06';
         $user->address = 'Tondo, Manila';
-        $user->username = '042130001';
-        $user->password = Hash::make('042130001');
+        $user->username = '042030001';
+        $user->password = Hash::make('042030001');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -205,7 +205,7 @@ class UsersTableSeeder extends Seeder
 
         // Student Table
         $student = new Student;
-        $student->student_no = '042130001';
+        $student->student_no = '042030001';
         $student->student_type = 'Regular';
         $student->primary = 'Doggy Elementary School';
         $student->primary_sy = '2003-2007';
@@ -222,15 +222,15 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->profile_picture = '042130002.jpg';
+        $user->profile_picture = '042030002.jpg';
         $user->first_name = 'Loise';
         $user->middle_name = 'Dela Cruz';
         $user->last_name = 'Ruiz';
         $user->gender = 'F';
         $user->birthdate = '1998-09-16';
         $user->address = 'Baker Street';
-        $user->username = '042130002';
-        $user->password = Hash::make('042130002');
+        $user->username = '042030002';
+        $user->password = Hash::make('042030002');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -239,7 +239,7 @@ class UsersTableSeeder extends Seeder
 
         // Student Table
         $student = new Student;
-        $student->student_no = '042130002';
+        $student->student_no = '042030002';
         $student->student_type = 'Regular';
         $student->primary = 'All Girls Elementary School';
         $student->primary_sy = '2003-2007';
@@ -256,15 +256,15 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->profile_picture = '042130003.jpg';
+        $user->profile_picture = '042030003.jpg';
         $user->first_name = 'Steven';
         $user->middle_name = 'Riox';
         $user->last_name = 'Jackson';
         $user->gender = 'M';
         $user->birthdate = '1998-01-04';
         $user->address = 'Mendiola';
-        $user->username = '042130003';
-        $user->password = Hash::make('042130003');
+        $user->username = '042030003';
+        $user->password = Hash::make('042030003');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -273,7 +273,7 @@ class UsersTableSeeder extends Seeder
 
         // Student Table
         $student = new Student;
-        $student->student_no = '042130003';
+        $student->student_no = '042030003';
         $student->student_type = 'Regular';
         $student->primary = 'Mendiola Science Elementary School';
         $student->primary_sy = '2003-2007';
@@ -290,15 +290,15 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->profile_picture = '042130004.jpg';
+        $user->profile_picture = '042030004.jpg';
         $user->first_name = 'Lea';
         $user->middle_name = 'Mandayaw';
         $user->last_name = 'Santiago';
         $user->gender = 'F';
         $user->birthdate = '1998-02-13';
         $user->address = 'Lacson Blvd';
-        $user->username = '042130004';
-        $user->password = Hash::make('042130004');
+        $user->username = '042030004';
+        $user->password = Hash::make('042030004');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -307,7 +307,7 @@ class UsersTableSeeder extends Seeder
 
         // Student Table
         $student = new Student;
-        $student->student_no = '042130004';
+        $student->student_no = '042030004';
         $student->student_type = 'Regular';
         $student->primary = 'Lacson Elementary School';
         $student->primary_sy = '2004-2008';
@@ -324,14 +324,14 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->profile_picture = '042130005.jpg';
+        $user->profile_picture = '042030005.jpg';
         $user->first_name = 'Pea';
         $user->middle_name = 'Bird';
         $user->last_name = 'Rainbow';
         $user->birthdate = '1998-05-27';
         $user->address = 'Lacson Blvd';
-        $user->username = '042130005';
-        $user->password = Hash::make('042130005');
+        $user->username = '042030005';
+        $user->password = Hash::make('042030005');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -340,7 +340,7 @@ class UsersTableSeeder extends Seeder
 
         // Student Table
         $student = new Student;
-        $student->student_no = '042130005';
+        $student->student_no = '042030005';
         $student->student_type = 'Regular';
         $student->primary = 'Lacson Elementary School';
         $student->primary_sy = '2004-2008';
@@ -357,14 +357,14 @@ class UsersTableSeeder extends Seeder
 
         // Users Table
         $user = new User;
-        $user->profile_picture = '042130006.jpg';
+        $user->profile_picture = '042030006.jpg';
         $user->first_name = 'Rufus';
         $user->middle_name = 'El';
         $user->last_name = 'Dela Cruz';
         $user->birthdate = '1998-05-27';
         $user->address = 'Lacson Blvd';
-        $user->username = '042130006';
-        $user->password = Hash::make('042130006');
+        $user->username = '042030006';
+        $user->password = Hash::make('042030006');
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
@@ -373,7 +373,7 @@ class UsersTableSeeder extends Seeder
 
         // Student Table
         $student = new Student;
-        $student->student_no = '042130006';
+        $student->student_no = '042030006';
         $student->student_type = 'Regular';
         $student->primary = 'Lacson Elementary School';
         $student->primary_sy = '2004-2008';
