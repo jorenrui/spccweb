@@ -8,7 +8,9 @@ An electronic grading web application, integrated with a school website, built u
 
 Coming soon.
 
-## Pre-requisite
+## Getting Started
+
+### Pre-requisite
 
 -   [XAMPP](https://www.apachefriends.org/download.html)
 -   [NPM](https://nodejs.org/en/download/)
@@ -16,7 +18,7 @@ Coming soon.
 -   [Composer](https://getcomposer.org/download/)
 -   Familiar with mySQL and PHP
 
-## Installation
+### Installation
 
 1. [Clone the Repository](#clone-repo)
 2. [Setting up a Virtual Host](#vhost)
@@ -24,7 +26,7 @@ Coming soon.
 4. [Populating the Database with some dummy data (optional)](#seeder)
 5. [Check the App](#check)
 
-### 1. Clone the Repository <a name="clone-repo"></a>
+#### 1. Clone the Repository <a name="clone-repo"></a>
 
 a. Go to `C:/xampp/htdocs`
 
@@ -50,7 +52,7 @@ d. Install Dependencies
 composer install
 ```
 
-### 2. Setting up a Virtual Host <a name="vhost"></a>
+#### 2. Setting up a Virtual Host <a name="vhost"></a>
 
 a. Go to `C:/xampp/apache/conf/extra/httpd-vhosts.conf`. Edit then save.
 
@@ -77,7 +79,7 @@ b. Open Notepad as **Administrator**. Then Open File: `C:/Windows/System32/drive
 127.0.0.1 spccweb.me
 ```
 
-### 3. Database Configuration <a name="database"></a>
+#### 3. Database Configuration <a name="database"></a>
 
 a. Run both `Apache` and `mySQL` in the XAMPP Control Panel.
 
@@ -119,7 +121,7 @@ e. Run the Database Migration
 php artisan migrate
 ```
 
-### 4. Populating the Database with some dummy data (optional) <a name="seeder"></a>
+#### 4. Populating the Database with some dummy data (optional) <a name="seeder"></a>
 
 a. Populate the Database by running the Database Seeder. A dummy data has been provided.
 
@@ -141,7 +143,7 @@ c. In the root directory of the repository, go to `public/img`. Copy both `cover
 
 d After that you're all set! You may now use the dummy accounts.
 
-#### Dummy Accounts
+##### Dummy Accounts
 
 **Admin**
 
@@ -165,7 +167,7 @@ username & password: K004
 
 username & password: 042030001
 
-### 5. Check the App <a name="check"></a>
+#### 5. Check the App <a name="check"></a>
 
 a. Open a browser and go to `spccweb.me`. Make sure that both `Apache` and `MySQL` are running on the XAMPP Control Panel.
 
@@ -173,7 +175,7 @@ b. Try to login.
 
 c. Congrats! You're all set.
 
-## Installation with docker
+### Installation with Docker
 
 a. With docker and docker-compose installed just run:
 
@@ -218,3 +220,21 @@ g. Check the app:
 -   Try to login.
 
 -   Congrats! You're all set.
+
+## Built With
+
+### Main Techs
+
+-   HTML, CSS, JavaScript, PHP and MySQL
+-   [Laravel](https://laravel.com/) - The web framework used
+-   [jQuery](https://jquery.com/) - JavaScript library
+-   [Bootstrap](https://getbootstrap.com/) - CSS Framework
+
+### OS Techs
+
+-   [Argon Laravel Dashboard](https://www.creative-tim.com/product/argon-dashboard-laravel) - Frontend Preset for Laravel
+-   [spatie/laravel-permission](https://github.com/spatie/laravel-permission) - Laravel package to manage user permissions and roles in the database
+-   [select2](https://select2.org/) - JavaScript plugin for select boxes
+-   [particles.js](https://github.com/marcbruederlin/particles.js) - JavaScript plugin for particle backgrounds
+-   [quilljs](https://quilljs.com/) - An API Driven Rich Text Editor
+-   [FooTable](https://fooplugins.github.io/FooTable/) - responsive jQuery table plugin
