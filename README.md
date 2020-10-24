@@ -4,10 +4,6 @@
 
 An electronic grading web application, integrated with a school website, built using Laravel and Bootstrap. A capstone project for the Bachelor's Degree of Information Technology in SPCC - Caloocan.
 
-## Case Study
-
-Coming soon.
-
 ## Getting Started
 
 ### Pre-requisite
